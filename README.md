@@ -1,4 +1,4 @@
-STATISTICS- II (OBJECTIVE TYPE) (For ISS only)
+Upsc-ISS-Paper2-STATISTICS- II (OBJECTIVE TYPE) (For ISS only)
 (i) Linear Models: 
 Theory of linear estimation, Gauss-Markov linear models, estimable functions, error and estimation space, 
 normal equations and least square estimators, estimation of error variance, estimation with correlated 
