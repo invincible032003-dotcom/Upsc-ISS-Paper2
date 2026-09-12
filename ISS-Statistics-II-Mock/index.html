@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>ISS Statistics Paper II - Offline Mock Exam Platform</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <div class="topbar">
+    <div class="brand" data-action="go-home"><span class="dot"></span> ISS Stats Paper II <span class="faint" style="color:rgba(255,255,255,.75); font-weight:400;">Offline Mock</span></div>
+    <div class="topbar-actions">
+      <input type="text" id="global-search" placeholder="Search questions, topics, years..." data-action="search-input">
+      <button data-action="export-progress">Export</button>
+      <button data-action="import-progress">Import</button>
+      <button data-action="reset-progress">Reset</button>
+    </div>
+  </div>
+  <main id="app-root"></main>
+  <footer class="appfoot">100% offline - no server, no CDN, no internet required. All data stays in this browser's local storage.</footer>
+</div>
+<div id="toast"></div>
+<input type="file" id="import-file-input" accept="application/json" style="display:none">
+<script src="questions2.js"></script>
+<script>
+(function(){
+"use strict";
+
+/* =========================================================================
+   0. DATA INDICES
+   ========================================================================= */
+var ALL_Q = (window.quizDataPaper2 || []).slice();
+var BY_ID = {};
+ALL_Q.forEach(function(q){ BY_ID[q.id] = q; });
+var YEARS = Array.from(new Set(ALL_Q.map(function(q){return q.year;}))).sort();
+var UNIT_ORDER = ["Linear Models","Statistical Inference and Hypothesis Testing","Official Statistics"];
+var UNITS = UNIT_ORDER.filter(function(u){ return ALL_Q.some(function(q){return q.unit===u;}); });
+
+function topicsForUnit(unit){
+  var seen = {}; var out = [];
+  ALL_Q.forEach(function(q){ if(q.unit===unit && !seen[q.topic]){ seen[q.topic]=true; out.push(q.topic); } });
+  return out;
+}
+function subtopicsFor(unit, topic){
+  var seen = {}; var out = [];
+  ALL_Q.forEach(function(q){ if(q.unit===unit && q.topic===topic && !seen[q.subtopic]){ seen[q.subtopic]=true; out.push(q.subtopic); } });
+  return out;
+}
+var QUESTION_TYPES = Array.from(new Set(ALL_Q.map(function(q){return q.questionType;})));
+
+/* =========================================================================
+   1. LOCAL STORAGE (all keys prefixed iss_p2_)
+   ========================================================================= */
+var LS_PREFIX = "iss_p2_";
+function lsGet(key, fallback){
+  try{
+    var v = localStorage.getItem(LS_PREFIX+key);
+    return v ? JSON.parse(v) : fallback;
+  }catch(e){ return fallback; }
+}
+function lsSet(key, val){
+  try{ localStorage.setItem(LS_PREFIX+key, JSON.stringify(val)); }catch(e){ /* storage full / unavailable */ }
+}
+function lsAllKeys(){
+  var out = [];
+  for(var i=0;i<localStorage.length;i++){
+    var k = localStorage.key(i);
+    if(k && k.indexOf(LS_PREFIX)===0) out.push(k);
+  }
+  return out;
+}
+
+/* =========================================================================
+   2. GENERAL HELPERS
+   ========================================================================= */
+function escapeHtmlPlain(s){
+  return String(s).replace(/[&<>]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; });
+}
+function fmtTime(sec){
+  sec = Math.max(0, Math.round(sec));
+  var h = Math.floor(sec/3600), m = Math.floor((sec%3600)/60), s = sec%60;
+  function pad(n){ return n<10?"0"+n:""+n; }
+  return h>0 ? (h+":"+pad(m)+":"+pad(s)) : (pad(m)+":"+pad(s));
+}
+function fmtTimeHuman(sec){
+  sec = Math.max(0, Math.round(sec));
+  var h = Math.floor(sec/3600), m = Math.floor((sec%3600)/60), s = sec%60;
+  var parts = [];
+  if(h) parts.push(h+"h");
+  if(m||h) parts.push(m+"m");
+  parts.push(s+"s");
+  return parts.join(" ");
+}
+function fmtDate(ts){
+  var d = new Date(ts);
+  return d.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"}) + " " + d.toLocaleTimeString(undefined,{hour:"2-digit",minute:"2-digit"});
+}
+function shuffle(arr){
+  var a = arr.slice();
+  for(var i=a.length-1;i>0;i--){
+    var j = Math.floor(Math.random()*(i+1));
+    var t=a[i]; a[i]=a[j]; a[j]=t;
+  }
+  return a;
+}
+function toast(msg){
+  var t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(function(){ t.classList.remove("show"); }, 2400);
+}
+function unitBadgeClass(unit){
+  if(unit===UNIT_ORDER[0]) return "badge-unit-lm";
+  if(unit===UNIT_ORDER[1]) return "badge-unit-si";
+  return "badge-unit-os";
+}
+function unitShort(unit){
+  if(unit===UNIT_ORDER[0]) return "Linear Models";
+  if(unit===UNIT_ORDER[1]) return "Statistical Inference";
+  return "Official Statistics";
+}
+
+/* =========================================================================
+   3. MINI LaTeX -> HTML MATH RENDERER (offline-safe, no external libs)
+   ========================================================================= */
+var GREEK_MAP = {
+  theta:"θ", Theta:"Θ", mu:"μ", beta:"β", sigma:"σ", Sigma:"Σ",
+  alpha:"α", lambda:"λ", varepsilon:"ε", epsilon:"ε", gamma:"γ", Gamma:"Γ",
+  pi:"π", chi:"χ", phi:"φ", varphi:"φ", Phi:"Φ", rho:"ρ", delta:"δ",
+  omega:"ω", Omega:"Ω", tau:"τ", eta:"η", psi:"ψ", Psi:"Ψ", zeta:"ζ",
+  kappa:"κ", nu:"ν", xi:"ξ", upsilon:"υ"
+};
+var SYM_MAP = {
+  le:"≤", leq:"≤", ge:"≥", geq:"≥", ne:"≠", neq:"≠", approx:"≈",
+  equiv:"≡", to:"→", sim:"∼", in:"∈", notin:"∉", mid:"∣", pm:"±",
+  times:"×", cdot:"⋅", infty:"∞", partial:"∂", ldots:"…", dots:"…",
+  cdots:"⋯", vdots:"⋮", ddots:"⋱", Rightarrow:"⇒", Leftarrow:"⇐",
+  leftrightarrow:"↔", forall:"∀", exists:"∃", emptyset:"∅", cup:"∪", cap:"∩",
+  subset:"⊂", subseteq:"⊆", supset:"⊃", propto:"∝", perp:"⊥", angle:"∠",
+  therefore:"∴", because:"∵", star:"★", circ:"∘", oplus:"⊕", otimes:"⊗"
+};
+var OP_NAMES = {log:1, ln:1, exp:1, max:1, min:1, lim:1, sup:1, inf:1, det:1, gcd:1, arg:1, tan:1, sin:1, cos:1, argmax:1, argmin:1, Var:1, Cov:1, Bias:1, MSE:1, Corr:1};
+var BIGOPS = {sum:"∑", prod:"∏", int:"∫", oint:"∮"};
+var MATHBB_MAP = {R:"ℝ", N:"ℕ", Z:"ℤ", Q:"ℚ", C:"ℂ", E:"ᵐᵉ".length? "𝔼":"E", P:"ℙ", V:"𝕍"};
+var BRACKET_OPEN = {"":"{","":"(","":"[","":"|","":"‖"};
+var BRACKET_CLOSE = {"":"}","":")","":"]","":"|","":"‖"};
+
+function preprocessLatex(s){
+  return s
+    .replace(/\\\\\s*\[[^\]]*\]/g, "\\\\")
+    .replace(/\\left\s*\\\{/g, "")
+    .replace(/\\right\s*\\\}/g, "")
+    .replace(/\\left\s*\(/g, "")
+    .replace(/\\right\s*\)/g, "")
+    .replace(/\\left\s*\[/g, "")
+    .replace(/\\right\s*\]/g, "")
+    .replace(/\\left\s*\|/g, "")
+    .replace(/\\right\s*\|/g, "")
+    .replace(/\\left\s*\\\|/g, "")
+    .replace(/\\right\s*\\\|/g, "")
+    .replace(/\\left\s*\./g, "")
+    .replace(/\\right\s*\./g, "")
+    .replace(/\\,/g, " ")
+    .replace(/\\;/g, " ")
+    .replace(/\\!/g, "")
+    .replace(/\\%/g, "%")
+    .replace(/\\xrightarrow/g, "\\to");
+}
+
+function tokenizeLatex(s){
+  var tokens = [];
+  var i = 0, n = s.length;
+  while(i < n){
+    var c = s[i];
+    if(c === "\\"){
+      if(s[i+1] === "\\"){ tokens.push({t:"LINEBREAK"}); i+=2; continue; }
+      var j = i+1, name = "";
+      while(j<n && /[a-zA-Z]/.test(s[j])){ name += s[j]; j++; }
+      if(name.length>0){ tokens.push({t:"CMD", name:name}); i=j; continue; }
+      var esc = s[i+1] || "";
+      tokens.push({t:"TEXT", v: esc}); i += 2; continue;
+    }
+    if(c === "{"){ tokens.push({t:"LBRACE"}); i++; continue; }
+    if(c === "}"){ tokens.push({t:"RBRACE"}); i++; continue; }
+    if(c === "_"){ tokens.push({t:"SUB"}); i++; continue; }
+    if(c === "^"){ tokens.push({t:"SUP"}); i++; continue; }
+    if(c === "&"){ tokens.push({t:"AMP"}); i++; continue; }
+    if(c === "~"){ tokens.push({t:"TEXT", v:" "}); i++; continue; }
+    var k = i, buf = "";
+    while(k<n && "\\{}_^&~".indexOf(s[k]) === -1){ buf += s[k]; k++; }
+    tokens.push({t:"TEXT", v: buf});
+    i = k;
+  }
+  return tokens;
+}
+
+function MathParser(tokens){
+  this.toks = tokens;
+  this.pos = 0;
+}
+MathParser.prototype.peek = function(off){ return this.toks[this.pos + (off||0)]; };
+MathParser.prototype.next = function(){ return this.toks[this.pos++]; };
+MathParser.prototype.atEnd = function(){ return this.pos >= this.toks.length; };
+
+MathParser.prototype.parseSequence = function(stop){
+  var nodes = [];
+  while(!this.atEnd() && !stop(this.peek())){
+    nodes.push(this.parseAtomWithScripts());
+  }
+  return nodes;
+};
+
+MathParser.prototype.parseAtomWithScripts = function(){
+  var atom = this.parseAtom();
+  var sub=null, sup=null, guard=0;
+  while(guard++<4){
+    var t = this.peek();
+    if(t && t.t==="SUB" && !sub){ this.next(); sub = this.readArg(); }
+    else if(t && t.t==="SUP" && !sup){ this.next(); sup = this.readArg(); }
+    else break;
+  }
+  if(sub || sup) return {type:"scripts", base:atom, sub:sub, sup:sup};
+  return atom;
+};
+
+MathParser.prototype.readArg = function(){
+  var t = this.peek();
+  if(t && t.t==="LBRACE"){
+    this.next();
+    var body = this.parseSequence(function(tk){ return tk.t==="RBRACE"; });
+    this.next();
+    return {type:"group", body: body};
+  }
+  /* A bare (un-braced) argument is exactly ONE character in real LaTeX
+     (e.g. x_12 means x-sub-1 followed by literal "2"), but our tokenizer
+     merges runs of plain characters into a single TEXT token for
+     simplicity elsewhere - so split off just the first character here
+     and leave the remainder in place for continued parsing. */
+  if(t && t.t==="TEXT" && t.v.length>1){
+    var first = t.v.charAt(0);
+    t.v = t.v.slice(1);
+    return {type:"text", v:first};
+  }
+  return this.parseAtom();
+};
+
+MathParser.prototype.parseEnvBody = function(envName){
+  var self = this;
+  var nodes = [];
+  while(!this.atEnd()){
+    var t = this.peek();
+    if(t.t==="CMD" && t.name==="end" && this.peek(1) && this.peek(1).t==="LBRACE" &&
+       this.peek(2) && this.peek(2).t==="TEXT" && this.peek(2).v===envName &&
+       this.peek(3) && this.peek(3).t==="RBRACE"){
+      this.pos += 4;
+      break;
+    }
+    nodes.push(this.parseAtomWithScripts());
+  }
+  return nodes;
+};
+
+function splitRows(nodes){
+  var rows = [[]]; var cur = 0;
+  nodes.forEach(function(nd){
+    if(nd.type==="linebreak"){ rows.push([]); cur++; return; }
+    rows[cur].push(nd);
+  });
+  return rows.map(function(row){
+    var cells = [[]]; var c = 0;
+    row.forEach(function(nd){
+      if(nd.type==="amp"){ cells.push([]); c++; return; }
+      cells[c].push(nd);
+    });
+    return cells;
+  });
+}
+
+MathParser.prototype.parseAtom = function(){
+  var tok = this.next();
+  if(!tok) return {type:"text", v:""};
+  if(tok.t==="TEXT") return {type:"text", v: tok.v};
+  if(tok.t==="AMP") return {type:"amp"};
+  if(tok.t==="LINEBREAK") return {type:"linebreak"};
+  if(tok.t==="LBRACE"){
+    var body = this.parseSequence(function(tk){ return tk.t==="RBRACE"; });
+    this.next();
+    return {type:"group", body: body};
+  }
+  if(tok.t==="RBRACE") return {type:"text", v:""};
+  if(tok.t==="CMD") return this.parseCommand(tok.name);
+  return {type:"text", v:""};
+};
+
+MathParser.prototype.parseCommand = function(name){
+  if(GREEK_MAP.hasOwnProperty(name)) return {type:"sym", v: GREEK_MAP[name]};
+  if(SYM_MAP.hasOwnProperty(name)) return {type:"sym", v: SYM_MAP[name]};
+  if(BIGOPS.hasOwnProperty(name)){
+    return {type:"bigop", v: BIGOPS[name]};
+  }
+  if(OP_NAMES.hasOwnProperty(name)) return {type:"op", name: name};
+  if(name==="quad") return {type:"space", size:"quad"};
+  if(name==="qquad") return {type:"space", size:"qquad"};
+  if(name==="displaystyle" || name==="textstyle" || name==="scriptstyle" || name==="limits" || name==="nolimits") return {type:"noop"};
+  if(name==="frac" || name==="dfrac" || name==="tfrac"){
+    var num = this.readArg(); var den = this.readArg();
+    return {type:"frac", num:num, den:den};
+  }
+  if(name==="sqrt"){
+    var body = this.readArg();
+    return {type:"sqrt", body: body};
+  }
+  if(name==="binom" || name==="dbinom" || name==="tbinom"){
+    var top = this.readArg(); var bot = this.readArg();
+    return {type:"binom", top:top, bottom:bot};
+  }
+  if(name==="text" || name==="mathrm" || name==="operatorname"){
+    var arg = this.readArg();
+    return {type:"decorate", deco:"upright", body: arg};
+  }
+  if(name==="mathbf" || name==="boldsymbol" || name==="bm"){
+    var b = this.readArg();
+    return {type:"decorate", deco:"bold", body: b};
+  }
+  if(name==="mathbb"){
+    var bb = this.readArg();
+    return {type:"decorate", deco:"bb", body: bb};
+  }
+  if(name==="bar" || name==="overline"){
+    var barb = this.readArg();
+    return {type:"decorate", deco:"bar", body: barb};
+  }
+  if(name==="hat" || name==="widehat"){
+    var hatb = this.readArg();
+    return {type:"decorate", deco:"hat", body: hatb};
+  }
+  if(name==="tilde" || name==="widetilde"){
+    var tb = this.readArg();
+    return {type:"decorate", deco:"tilde", body: tb};
+  }
+  if(name==="dot"){
+    var db = this.readArg();
+    return {type:"decorate", deco:"dot", body: db};
+  }
+  if(name==="vec"){
+    var vb = this.readArg();
+    return {type:"decorate", deco:"vec", body: vb};
+  }
+  if(name==="underline"){
+    var ub = this.readArg();
+    return {type:"decorate", deco:"under", body: ub};
+  }
+  if(name==="begin"){
+    this.next(); /* LBRACE */
+    var envTok = this.next(); /* TEXT env name */
+    this.next(); /* RBRACE */
+    var envName = envTok ? envTok.v : "";
+    var body = this.parseEnvBody(envName);
+    var rows = splitRows(body);
+    if(envName==="cases") return {type:"cases", rows: rows};
+    return {type:"matrix", rows: rows, envName: envName};
+  }
+  /* Unknown command: safe fallback, render the command name as upright text */
+  return {type:"op", name: name};
+};
+
+function renderNodes(nodes){
+  return nodes.map(renderNode).join("");
+}
+function htmlForTextValue(v){
+  var out = ""; var i=0, n=v.length;
+  while(i<n){
+    var ch = v[i];
+    if(BRACKET_OPEN[ch]){ out += '<span class="bracket">'+BRACKET_OPEN[ch]+'</span>'; i++; continue; }
+    if(BRACKET_CLOSE[ch]){ out += '<span class="bracket">'+BRACKET_CLOSE[ch]+'</span>'; i++; continue; }
+    if(/[0-9.]/.test(ch)){
+      var j=i, buf="";
+      while(j<n && /[0-9.]/.test(v[j])){ buf+=v[j]; j++; }
+      out += '<span class="upright">'+escapeHtmlPlain(buf)+'</span>';
+      i=j; continue;
+    }
+    var k=i, plain="";
+    while(k<n && !/[0-9.]/.test(v[k]) && !BRACKET_OPEN[v[k]] && !BRACKET_CLOSE[v[k]]){ plain+=v[k]; k++; }
+    out += escapeHtmlPlain(plain);
+    i=k;
+  }
+  return out;
+}
+function renderNode(node){
+  switch(node.type){
+    case "text": return htmlForTextValue(node.v);
+    case "sym": return escapeHtmlPlain(node.v);
+    case "op": return '<span class="op">'+escapeHtmlPlain(node.name)+'</span>';
+    case "bigop": return '<span class="bigop">'+node.v+'</span>';
+    case "space": return node.size==="qquad" ? '<span class="space-qquad"></span>' : '<span class="space-quad"></span>';
+    case "noop": return "";
+    case "amp": return "";
+    case "linebreak": return "";
+    case "group": return renderNodes(node.body);
+    case "scripts": {
+      var base = renderNode(node.base);
+      var supH = node.sup ? renderNode(node.sup) : "";
+      var subH = node.sub ? renderNode(node.sub) : "";
+      if(node.sup && node.sub) return base + '<sup>'+supH+'</sup><sub>'+subH+'</sub>';
+      if(node.sup) return base + '<sup>'+supH+'</sup>';
+      if(node.sub) return base + '<sub>'+subH+'</sub>';
+      return base;
+    }
+    case "frac":
+      return '<span class="frac"><span class="num">'+renderNode(node.num)+'</span><span class="den">'+renderNode(node.den)+'</span></span>';
+    case "sqrt":
+      return '<span class="sqrt"><span class="radical">√</span><span class="sqrt-body">'+renderNode(node.body)+'</span></span>';
+    case "binom":
+      return '<span class="bracket">(</span><span class="frac" style="margin:0 1px"><span class="num">'+renderNode(node.top)+'</span><span class="den">'+renderNode(node.bottom)+'</span></span><span class="bracket">)</span>';
+    case "decorate": {
+      var body = renderNode(node.body);
+      switch(node.deco){
+        case "bar": return '<span class="decorate-bar">'+body+'</span>';
+        case "hat": return '<span class="decorate-hat">'+body+'</span>';
+        case "tilde": return '<span class="decorate-tilde">'+body+'</span>';
+        case "dot": return '<span class="decorate-dot">'+body+'</span>';
+        case "vec": return '<span class="decorate-vec">'+body+'</span>';
+        case "under": return '<span style="text-decoration:underline;">'+body+'</span>';
+        case "upright": return '<span class="upright">'+body+'</span>';
+        case "bold": return '<b>'+body+'</b>';
+        case "bb": {
+          if(node.body && node.body.type==="text" && node.body.v.length===1 && MATHBB_MAP[node.body.v]){
+            return escapeHtmlPlain(MATHBB_MAP[node.body.v]);
+          }
+          return '<b>'+body+'</b>';
+        }
+        default: return body;
+      }
+    }
+    case "matrix": {
+      var open = node.envName==="bmatrix" ? "[" : node.envName==="vmatrix" ? "|" : node.envName==="Bmatrix" ? "{" : "(";
+      var close = node.envName==="bmatrix" ? "]" : node.envName==="vmatrix" ? "|" : node.envName==="Bmatrix" ? "}" : ")";
+      var rowsHtml = node.rows.map(function(row){
+        return "<tr>" + row.map(function(cell){ return "<td>"+renderNodes(cell)+"</td>"; }).join("") + "</tr>";
+      }).join("");
+      return '<span class="matrix"><span class="bracket">'+open+'</span><table>'+rowsHtml+'</table><span class="bracket">'+close+'</span></span>';
+    }
+    case "cases": {
+      var rowsHtml2 = node.rows.map(function(row){
+        return "<tr>" + row.map(function(cell,ci){
+          return '<td class="'+(ci>0?"case-cond":"")+'">'+renderNodes(cell)+"</td>";
+        }).join("") + "</tr>";
+      }).join("");
+      return '<span class="cases"><span class="brace-big">{</span><table>'+rowsHtml2+'</table></span>';
+    }
+    default: return "";
+  }
+}
+
+function renderMathToHtml(latexSrc, isDisplay){
+  try{
+    var pre = preprocessLatex(latexSrc);
+    var toks = tokenizeLatex(pre);
+    var parser = new MathParser(toks);
+    var nodes = parser.parseSequence(function(){ return false; });
+    var html = renderNodes(nodes);
+    if(isDisplay) return '<span class="mathblock"><span class="math">'+html+'</span></span>';
+    return '<span class="math mathinline">'+html+'</span>';
+  }catch(e){
+    var raw = isDisplay ? ("$$"+latexSrc+"$$") : ("$"+latexSrc+"$");
+    return '<span style="font-family:var(--mono);">'+escapeHtmlPlain(raw)+'</span>';
+  }
+}
+
+/* =========================================================================
+   4. RICH TEXT (markdown-lite tables + bold + inline/display math)
+   ========================================================================= */
+function processInlineMath(raw){
+  var tokens = [];
+  var replaced = raw.replace(/\$\$([\s\S]+?)\$\$|\$([^$\n]+?)\$/g, function(m, disp, inl){
+    var html = (disp!==undefined) ? renderMathToHtml(disp, true) : renderMathToHtml(inl, false);
+    tokens.push(html);
+    return "M"+(tokens.length-1)+"";
+  });
+  var escaped = escapeHtmlPlain(replaced);
+  escaped = escaped.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  escaped = escaped.replace(/\n/g, "<br>");
+  escaped = escaped.replace(/M(\d+)/g, function(m, i){ return tokens[Number(i)]; });
+  return escaped;
+}
+function isTableLine(line){ return /^\s*\|/.test(line); }
+function renderMarkdownTable(lines){
+  var rows = lines.filter(function(l){ return l.trim().length>0; }).map(function(l){
+    var t = l.trim();
+    if(t.charAt(0)==="|") t = t.slice(1);
+    if(t.charAt(t.length-1)==="|") t = t.slice(0,-1);
+    return t.split("|").map(function(c){ return c.trim(); });
+  });
+  if(rows.length && rows[1] && rows[1].every(function(c){ return /^:?-+:?$/.test(c); })){
+    var head = rows[0], body = rows.slice(2);
+    var thead = "<thead><tr>"+head.map(function(c){ return "<th>"+processInlineMath(c)+"</th>"; }).join("")+"</tr></thead>";
+    var tbody = "<tbody>"+body.map(function(r){ return "<tr>"+r.map(function(c){ return "<td>"+processInlineMath(c)+"</td>"; }).join("")+"</tr>"; }).join("")+"</tbody>";
+    return "<table>"+thead+tbody+"</table>";
+  }
+  var tbody2 = "<tbody>"+rows.map(function(r){ return "<tr>"+r.map(function(c){ return "<td>"+processInlineMath(c)+"</td>"; }).join("")+"</tr>"; }).join("")+"</tbody>";
+  return "<table>"+tbody2+"</table>";
+}
+function renderRich(raw){
+  if(!raw) return "";
+  var lines = String(raw).split("\n");
+  var out = []; var buf = []; var tbl = [];
+  function flushText(){
+    if(buf.length){
+      out.push("<p>"+processInlineMath(buf.join("\n"))+"</p>");
+      buf = [];
+    }
+  }
+  function flushTable(){
+    if(tbl.length){ out.push(renderMarkdownTable(tbl)); tbl = []; }
+  }
+  lines.forEach(function(line){
+    if(isTableLine(line)){ flushText(); tbl.push(line); }
+    else { flushTable(); buf.push(line); }
+  });
+  flushTable(); flushText();
+  return '<div class="richtext">'+out.join("")+"</div>";
+}
+function renderQuestionText(raw){
+  return processInlineMath(raw || "");
+}
+
+/* =========================================================================
+   5. APP STATE
+   ========================================================================= */
+var App = {
+  view: "home",
+  mock: null,
+  lastResult: null,
+  reviewFilter: "all",
+  searchQuery: "",
+  customSel: { years:[], units:[], topics:[], subtopics:[], count:40, order:"sequential", mode:"strict", randomizeOptions:false },
+  setupCtx: null,
+  timerHandle: null
+};
+
+function defaultSettings(){ return { negativeMarking:false }; }
+function getSettings(){ return Object.assign(defaultSettings(), lsGet("settings", {})); }
+
+/* =========================================================================
+   6. MOCK ENGINE
+   ========================================================================= */
+function cloneForRandomizedOptions(q){
+  var order = shuffle([0,1,2,3]);
+  var newOptions = order.map(function(idx){ return q.options[idx]; });
+  var newCorrect = order.indexOf(q.correctAnswer);
+  var clone = Object.assign({}, q, { options:newOptions, correctAnswer:newCorrect });
+  return clone;
+}
+function makeMock(title, mode, questions, timeLimitSec, opts){
+  opts = opts || {};
+  var qs = questions;
+  if(opts.randomizeOptions) qs = qs.map(cloneForRandomizedOptions);
+  return {
+    title: title, mode: mode, questions: qs,
+    answers: {}, marked: {}, revealStage: {},
+    current: 0, startedAt: Date.now(), timeLimitSec: timeLimitSec || null,
+    submitted: false, submittedAt: null
+  };
+}
+function startMock(mock){
+  if(!mock || !mock.questions.length){ toast("No questions match this selection."); return; }
+  App.mock = mock;
+  App.view = "exam";
+  render();
+  startTimer();
+}
+function stopTimer(){
+  if(App.timerHandle){ clearInterval(App.timerHandle); App.timerHandle = null; }
+}
+function startTimer(){
+  stopTimer();
+  if(!App.mock || !App.mock.timeLimitSec) return;
+  App.timerHandle = setInterval(function(){
+    if(!App.mock || App.mock.submitted){ stopTimer(); return; }
+    var elapsed = (Date.now() - App.mock.startedAt)/1000;
+    var remaining = App.mock.timeLimitSec - elapsed;
+    var el = document.getElementById("exam-timer");
+    if(el){
+      el.textContent = fmtTime(remaining);
+      el.classList.toggle("low", remaining <= 60);
+    }
+    if(remaining <= 0){
+      stopTimer();
+      toast("Time up - auto-submitting.");
+      submitMock(true);
+    }
+  }, 1000);
+}
+
+function computeResult(mock){
+  var correct=0, incorrect=0, unanswered=0;
+  var perUnit={}, perTopic={}, perSubtopic={}, perType={}, perYear={};
+  function bucket(obj,key){ if(!obj[key]) obj[key]={correct:0,total:0}; obj[key].total++; }
+  mock.questions.forEach(function(q,i){
+    bucket(perUnit,q.unit);
+    bucket(perTopic,q.unit+" › "+q.topic);
+    bucket(perSubtopic,q.subtopic);
+    bucket(perType,q.questionType);
+    bucket(perYear,q.year);
+    var a = mock.answers[i];
+    if(a===undefined || a===null){ unanswered++; return; }
+    if(a===q.correctAnswer){
+      correct++;
+      perUnit[q.unit].correct++;
+      perTopic[q.unit+" › "+q.topic].correct++;
+      perSubtopic[q.subtopic].correct++;
+      perType[q.questionType].correct++;
+      perYear[q.year].correct++;
+    } else incorrect++;
+  });
+  var total = mock.questions.length;
+  var attempted = correct+incorrect;
+  var percentage = total ? (correct/total*100) : 0;
+  var accuracy = attempted ? (correct/attempted*100) : 0;
+  var timeTakenSec = Math.round(((mock.submittedAt||Date.now()) - mock.startedAt)/1000);
+  var upscMarks = +(correct*2.5 - incorrect*(2.5/3)).toFixed(2);
+  var maxMarks = total*2.5;
+  return {
+    title: mock.title, mode: mock.mode, total: total, attempted: attempted,
+    correct: correct, incorrect: incorrect, unanswered: unanswered,
+    percentage: percentage, accuracy: accuracy, timeTakenSec: timeTakenSec,
+    avgTimePerAttempted: attempted ? timeTakenSec/attempted : 0,
+    upscMarks: upscMarks, maxMarks: maxMarks,
+    perUnit: perUnit, perTopic: perTopic, perSubtopic: perSubtopic, perType: perType, perYear: perYear,
+    timestamp: Date.now()
+  };
+}
+function updateStatsAndMistakes(mock){
+  var stats = lsGet("stats", {});
+  var mistakes = lsGet("mistakes", []);
+  var mistakeSet = {}; mistakes.forEach(function(id){ mistakeSet[id]=true; });
+  mock.questions.forEach(function(q,i){
+    var a = mock.answers[i];
+    if(a===undefined || a===null) return;
+    if(!stats[q.id]) stats[q.id] = {attempts:0, correct:0};
+    stats[q.id].attempts++;
+    if(a===q.correctAnswer){ stats[q.id].correct++; delete mistakeSet[q.id]; }
+    else mistakeSet[q.id] = true;
+  });
+  lsSet("stats", stats);
+  lsSet("mistakes", Object.keys(mistakeSet));
+}
+function pushHistory(mock, result){
+  var hist = lsGet("history", []);
+  hist.unshift({
+    title: result.title, mode: result.mode, timestamp: result.timestamp,
+    total: result.total, correct: result.correct, incorrect: result.incorrect, unanswered: result.unanswered,
+    percentage: result.percentage, accuracy: result.accuracy, timeTakenSec: result.timeTakenSec,
+    questionIds: mock.questions.map(function(q){ return q.id; }),
+    answers: mock.answers, marked: mock.marked
+  });
+  lsSet("history", hist.slice(0,300));
+}
+function submitMock(isAutoSubmit){
+  if(!App.mock || App.mock.submitted) return;
+  stopTimer();
+  App.mock.submitted = true;
+  App.mock.submittedAt = Date.now();
+  var result = computeResult(App.mock);
+  updateStatsAndMistakes(App.mock);
+  pushHistory(App.mock, result);
+  App.lastResult = result;
+  App.reviewFilter = "all";
+  App.view = "result";
+  closeModal();
+  render();
+}
+
+/* =========================================================================
+   7. MOCK BUILDERS
+   ========================================================================= */
+function buildYearMock(year){
+  var qs = ALL_Q.filter(function(q){ return q.year===year; });
+  return makeMock(year+" Full Mock (Paper II)", "strict", qs, 120*60);
+}
+function buildSectionalMock(unit, year, mode){
+  var qs = ALL_Q.filter(function(q){ return q.unit===unit && (year==="all" || q.year===year); });
+  var timer = mode==="strict" ? Math.round(qs.length*90) : null;
+  var title = (year==="all"?"All Years":year) + " → " + unitShort(unit);
+  return makeMock(title, mode, qs, timer);
+}
+function buildTopicMock(unit, topic, subtopic, mode){
+  var qs = ALL_Q.filter(function(q){
+    return q.unit===unit && q.topic===topic && (!subtopic || q.subtopic===subtopic);
+  });
+  var timer = mode==="strict" ? Math.round(qs.length*90) : null;
+  var title = unitShort(unit) + " → " + (subtopic || topic);
+  return makeMock(title, mode, qs, timer);
+}
+function buildCustomMock(sel){
+  var pool = ALL_Q.filter(function(q){
+    if(sel.years.length && sel.years.indexOf(q.year)===-1) return false;
+    if(sel.units.length && sel.units.indexOf(q.unit)===-1) return false;
+    if(sel.topics.length && sel.topics.indexOf(q.topic)===-1) return false;
+    if(sel.subtopics.length && sel.subtopics.indexOf(q.subtopic)===-1) return false;
+    return true;
+  });
+  if(sel.order==="random") pool = shuffle(pool);
+  var count = Math.max(1, Math.min(sel.count||pool.length, pool.length));
+  var qs = pool.slice(0, count);
+  var timer = sel.mode==="strict" ? Math.round(qs.length*90) : null;
+  return makeMock("Custom Mock ("+qs.length+" questions)", sel.mode, qs, timer, {randomizeOptions: sel.randomizeOptions});
+}
+function buildMistakeMock(mode){
+  var ids = lsGet("mistakes", []);
+  var qs = ids.map(function(id){ return BY_ID[id]; }).filter(Boolean);
+  return makeMock("Practice My Mistakes ("+qs.length+")", mode||"learning", qs, null);
+}
+function buildBookmarkMock(mode){
+  var ids = lsGet("bookmarks", []);
+  var qs = ids.map(function(id){ return BY_ID[id]; }).filter(Boolean);
+  return makeMock("My Bookmarks ("+qs.length+")", mode||"learning", qs, null);
+}
+function computeGlobalAnalytics(){
+  var stats = lsGet("stats", {});
+  var byUnit={}, byTopic={}, byType={}, byYear={};
+  var totalAttempts=0, totalCorrect=0;
+  Object.keys(stats).forEach(function(qid){
+    var s = stats[qid]; var q = BY_ID[qid]; if(!q) return;
+    totalAttempts += s.attempts; totalCorrect += s.correct;
+    function add(obj,key){ if(!obj[key]) obj[key]={attempts:0,correct:0}; obj[key].attempts+=s.attempts; obj[key].correct+=s.correct; }
+    add(byUnit,q.unit); add(byTopic,q.unit+" › "+q.topic); add(byType,q.questionType); add(byYear,q.year);
+  });
+  return {byUnit:byUnit, byTopic:byTopic, byType:byType, byYear:byYear, totalAttempts:totalAttempts, totalCorrect:totalCorrect};
+}
+function weakTopics(minAttempts, limit){
+  var ga = computeGlobalAnalytics();
+  var arr = Object.keys(ga.byTopic).map(function(k){
+    var v = ga.byTopic[k];
+    return {topic:k, accuracy: v.attempts ? v.correct/v.attempts*100 : 0, attempts:v.attempts};
+  });
+  var qualified = arr.filter(function(x){ return x.attempts>=minAttempts; });
+  if(!qualified.length) qualified = arr.filter(function(x){ return x.attempts>0; });
+  qualified.sort(function(a,b){ return a.accuracy-b.accuracy; });
+  return qualified.slice(0, limit);
+}
+function buildWeakAreaMock(){
+  var weak = weakTopics(3,5);
+  if(!weak.length) return null;
+  var topicSet = {}; weak.forEach(function(w){ topicSet[w.topic]=true; });
+  var stats = lsGet("stats", {});
+  var pool = ALL_Q.filter(function(q){ return topicSet[q.unit+" › "+q.topic]; });
+  pool.sort(function(a,b){
+    var sa = stats[a.id], sb = stats[b.id];
+    var scoreA = sa ? sa.correct/sa.attempts : -1;
+    var scoreB = sb ? sb.correct/sb.attempts : -1;
+    return scoreA-scoreB;
+  });
+  pool = pool.slice(0,30);
+  return makeMock("Practice: Weak Areas", "learning", pool, null);
+}
+
+/* =========================================================================
+   8. RENDERING - VIEW BUILDERS
+   ========================================================================= */
+var root;
+
+function render(){
+  root = document.getElementById("app-root");
+  var html = "";
+  switch(App.view){
+    case "home": html = viewHome(); break;
+    case "setupYear": html = viewSetupYear(); break;
+    case "setupSectional": html = viewSetupSectional(); break;
+    case "setupTopic": html = viewSetupTopic(); break;
+    case "setupSubtopic": html = viewSetupTopic(true); break;
+    case "setupCustom": html = viewSetupCustom(); break;
+    case "setupMistakes": html = viewSetupSimple("mistakes"); break;
+    case "setupBookmarks": html = viewSetupSimple("bookmarks"); break;
+    case "exam": html = viewExam(); break;
+    case "result": html = viewResult(); break;
+    case "review": html = viewReview(); break;
+    case "analytics": html = viewAnalytics(); break;
+    case "bookmarksList": html = viewBookmarksList(); break;
+    case "history": html = viewHistory(); break;
+    case "search": html = viewSearch(); break;
+    default: html = viewHome();
+  }
+  root.innerHTML = html;
+  afterRender();
+}
+
+function badge(text, cls){ return '<span class="badge '+(cls||"")+'">'+escapeHtmlPlain(text)+'</span>'; }
+
+function viewHome(){
+  var total = ALL_Q.length;
+  var hist = lsGet("history", []);
+  var mistakes = lsGet("mistakes", []);
+  var bookmarks = lsGet("bookmarks", []);
+  var yearsRow = YEARS.map(function(y){
+    return '<button class="tile" data-action="pick-year" data-year="'+y+'">'
+      + '<div class="tile-title">'+y+' Full Mock</div>'
+      + '<div class="tile-sub">80 questions &middot; Strict Exam &middot; 2h00m</div></button>';
+  }).join("");
+  var sectionalRow = UNITS.map(function(u){
+    var cnt = ALL_Q.filter(function(q){return q.unit===u;}).length;
+    return '<button class="tile" data-action="pick-sectional" data-unit="'+encodeURIComponent(u)+'">'
+      + '<div class="tile-title">'+unitShort(u)+'</div>'
+      + '<div class="tile-sub">'+cnt+' PYQs across '+YEARS.length+' years</div></button>';
+  }).join("");
+  return ""
+  + '<div class="hero">'
+  +   '<h1>UPSC ISS Statistics Paper II - Mock Exam Platform</h1>'
+  +   '<p>All 720 authentic PYQs (2018-2026), classified by syllabus unit, topic and subtopic, with AI-derived exam shortcuts, tips &amp; tricks and step-by-step solutions.</p>'
+  +   '<div class="stats">'
+  +     '<div class="stat"><b>'+total+'</b><span>Authentic PYQs</span></div>'
+  +     '<div class="stat"><b>'+YEARS.length+'</b><span>Years 2018-2026</span></div>'
+  +     '<div class="stat"><b>3</b><span>Syllabus Units</span></div>'
+  +     '<div class="stat"><b>'+hist.length+'</b><span>Attempts so far</span></div>'
+  +   '</div>'
+  + '</div>'
+  + '<div class="section-title">Full Year Mocks</div>'
+  + '<div class="grid cols-4">'+yearsRow+'</div>'
+  + '<div class="section-title">Sectional Mocks</div>'
+  + '<div class="grid cols-3">'+sectionalRow+'</div>'
+  + '<div class="section-title">More ways to practice</div>'
+  + '<div class="grid cols-3">'
+  +   '<button class="tile" data-action="go-view" data-view="setupTopic"><div class="tile-icon">📚</div><div class="tile-title">Topic Mocks</div><div class="tile-sub">Filter by unit &rarr; topic</div></button>'
+  +   '<button class="tile" data-action="go-view" data-view="setupSubtopic"><div class="tile-icon">🔎</div><div class="tile-title">Subtopic Mocks</div><div class="tile-sub">Drill a micro-topic</div></button>'
+  +   '<button class="tile" data-action="go-view" data-view="setupCustom"><div class="tile-icon">⚙️</div><div class="tile-title">Custom Mock Generator</div><div class="tile-sub">Pick years, units, topics, count</div></button>'
+  +   '<button class="tile" data-action="go-view" data-view="setupMistakes"><div class="tile-icon">✖️</div><div class="tile-title">Practice My Mistakes</div><div class="tile-sub">'+mistakes.length+' question(s) in your mistake bank</div></button>'
+  +   '<button class="tile" data-action="go-view" data-view="bookmarksList"><div class="tile-icon">🔖</div><div class="tile-title">My Bookmarks</div><div class="tile-sub">'+bookmarks.length+' bookmarked question(s)</div></button>'
+  +   '<button class="tile" data-action="go-view" data-view="analytics"><div class="tile-icon">📊</div><div class="tile-title">Analytics &amp; Weak Areas</div><div class="tile-sub">Track your accuracy by topic</div></button>'
+  +   '<button class="tile" data-action="go-view" data-view="history"><div class="tile-icon">🕒</div><div class="tile-title">Attempt History</div><div class="tile-sub">'+hist.length+' past attempt(s)</div></button>'
+  + '</div>';
+}
+
+function modeRadios(name, current){
+  return '<div class="btn-row">'
+    + '<label class="check-row"><input type="radio" name="'+name+'" value="strict" '+(current==="strict"?"checked":"")+'> Strict Exam Mode</label>'
+    + '<label class="check-row"><input type="radio" name="'+name+'" value="learning" '+(current==="learning"?"checked":"")+'> Learning Mode</label>'
+    + '</div>';
+}
+
+function viewSetupYear(){
+  var year = App.setupCtx && App.setupCtx.year;
+  var count = ALL_Q.filter(function(q){return q.year===year;}).length;
+  return backBar() + '<div class="card">'
+    + '<h2>'+year+' Full Mock (Paper II)</h2>'
+    + '<p class="muted">Authentic paper simulation: original question order, original options, original numbering.</p>'
+    + '<div class="grid cols-3">'
+    +   '<div><label>Questions</label>'+count+'</div>'
+    +   '<div><label>Mode</label>Strict Exam (fixed)</div>'
+    +   '<div><label>Timer</label>2h 00m</div>'
+    + '</div>'
+    + '<div class="btn-row" style="margin-top:14px;">'
+    +   '<button class="btn btn-primary" data-action="start-year" data-year="'+year+'">Start Exam</button>'
+    + '</div>'
+    + '</div>';
+}
+
+function viewSetupSectional(){
+  var unit = App.setupCtx && App.setupCtx.unit;
+  var yearOpts = ['<option value="all">All Years</option>'].concat(YEARS.map(function(y){return '<option value="'+y+'">'+y+'</option>';})).join("");
+  return backBar() + '<div class="card">'
+    + '<h2>Sectional Mock: '+unitShort(unit)+'</h2>'
+    + '<div class="grid cols-2">'
+    +   '<div class="field"><label>Year</label><select id="sec-year">'+yearOpts+'</select></div>'
+    +   '<div class="field"><label>Mode</label>'+modeRadios("sec-mode","strict")+'</div>'
+    + '</div>'
+    + '<div class="btn-row"><button class="btn btn-primary" data-action="start-sectional" data-unit="'+encodeURIComponent(unit)+'">Start Mock</button></div>'
+    + '</div>';
+}
+
+function viewSetupTopic(subtopicMode){
+  var unit = (App.setupCtx && App.setupCtx.unit) || UNITS[0];
+  var topics = topicsForUnit(unit);
+  var topic = (App.setupCtx && App.setupCtx.topic) || topics[0];
+  var subtopics = subtopicsFor(unit, topic);
+  var unitOpts = UNITS.map(function(u){ return '<option value="'+encodeURIComponent(u)+'" '+(u===unit?"selected":"")+'>'+unitShort(u)+'</option>'; }).join("");
+  var topicOpts = topics.map(function(t){ return '<option value="'+encodeURIComponent(t)+'" '+(t===topic?"selected":"")+'>'+t+'</option>'; }).join("");
+  var subtopicOpts = subtopics.map(function(s){ return '<option value="'+encodeURIComponent(s)+'">'+s+'</option>'; }).join("");
+  var poolCount = ALL_Q.filter(function(q){ return q.unit===unit && q.topic===topic; }).length;
+  return backBar() + '<div class="card">'
+    + '<h2>'+(subtopicMode?"Subtopic":"Topic")+' Mock</h2>'
+    + '<div class="grid cols-3">'
+    +   '<div class="field"><label>Unit</label><select id="tm-unit">'+unitOpts+'</select></div>'
+    +   '<div class="field"><label>Topic</label><select id="tm-topic">'+topicOpts+'</select></div>'
+    +   (subtopicMode ? '<div class="field"><label>Subtopic</label><select id="tm-subtopic">'+subtopicOpts+'</select></div>' : '<div class="field"><label>Questions available</label>'+poolCount+'</div>')
+    + '</div>'
+    + '<div class="field"><label>Mode</label>'+modeRadios("tm-mode","strict")+'</div>'
+    + '<div class="btn-row"><button class="btn btn-primary" data-action="start-topic" data-subtopicmode="'+(subtopicMode?"1":"0")+'">Start Mock</button></div>'
+    + '</div>';
+}
+
+function checkboxList(idPrefix, items, selected, labelFn){
+  return '<div class="check-list">' + items.map(function(it, idx){
+    var val = encodeURIComponent(it);
+    var checked = selected.indexOf(it)!==-1 ? "checked" : "";
+    return '<label class="check-row"><input type="checkbox" data-group="'+idPrefix+'" value="'+val+'" '+checked+'> '+(labelFn?labelFn(it):it)+'</label>';
+  }).join("") + '</div>';
+}
+function viewSetupCustom(){
+  var sel = App.customSel;
+  var topicsPool = [];
+  if(sel.units.length){
+    sel.units.forEach(function(u){ topicsForUnit(u).forEach(function(t){ if(topicsPool.indexOf(t)===-1) topicsPool.push(t); }); });
+  } else {
+    UNITS.forEach(function(u){ topicsForUnit(u).forEach(function(t){ if(topicsPool.indexOf(t)===-1) topicsPool.push(t); }); });
+  }
+  var subtopicsPool = [];
+  var topicsToScan = sel.topics.length ? sel.topics : topicsPool;
+  UNITS.forEach(function(u){
+    topicsToScan.forEach(function(t){
+      subtopicsFor(u,t).forEach(function(s){ if(subtopicsPool.indexOf(s)===-1) subtopicsPool.push(s); });
+    });
+  });
+  var pool = ALL_Q.filter(function(q){
+    if(sel.years.length && sel.years.indexOf(q.year)===-1) return false;
+    if(sel.units.length && sel.units.indexOf(q.unit)===-1) return false;
+    if(sel.topics.length && sel.topics.indexOf(q.topic)===-1) return false;
+    if(sel.subtopics.length && sel.subtopics.indexOf(q.subtopic)===-1) return false;
+    return true;
+  });
+  return backBar() + '<div class="card">'
+    + '<h2>Custom Mock Generator</h2>'
+    + '<div class="grid cols-2">'
+    +   '<div><label>Year(s) <span class="faint">(none selected = all years)</span></label>'+checkboxList("cm-year", YEARS, sel.years)+'</div>'
+    +   '<div><label>Unit(s) <span class="faint">(none selected = all units)</span></label>'+checkboxList("cm-unit", UNITS, sel.units, function(v){return unitShort(v);})+'</div>'
+    + '</div>'
+    + '<div class="grid cols-2">'
+    +   '<div><label>Topic(s) <span class="faint">(none selected = all topics)</span></label>'+checkboxList("cm-topic", topicsPool, sel.topics)+'</div>'
+    +   '<div><label>Subtopic(s) <span class="faint">(none selected = all subtopics)</span></label>'+checkboxList("cm-subtopic", subtopicsPool, sel.subtopics)+'</div>'
+    + '</div>'
+    + '<div class="grid cols-3">'
+    +   '<div class="field"><label>Question count (pool: '+pool.length+')</label><input type="number" id="cm-count" min="1" max="'+Math.max(1,pool.length)+'" value="'+Math.min(sel.count, Math.max(1,pool.length))+'"></div>'
+    +   '<div class="field"><label>Order</label><select id="cm-order"><option value="sequential" '+(sel.order==="sequential"?"selected":"")+'>Sequential (original order)</option><option value="random" '+(sel.order==="random"?"selected":"")+'>Randomized</option></select></div>'
+    +   '<div class="field"><label>Mode</label>'+modeRadios("cm-mode", sel.mode)+'</div>'
+    + '</div>'
+    + '<label class="check-row"><input type="checkbox" id="cm-randopt" '+(sel.randomizeOptions?"checked":"")+'> Randomize option order (correct answer mapping updates automatically)</label>'
+    + '<div class="btn-row" style="margin-top:12px;"><button class="btn btn-primary" data-action="start-custom" '+(pool.length?"":"disabled")+'>Start Mock ('+pool.length+' available)</button></div>'
+    + '</div>';
+}
+
+function viewSetupSimple(kind){
+  var ids = lsGet(kind, []);
+  var count = ids.filter(function(id){return BY_ID[id];}).length;
+  var label = kind==="mistakes" ? "Practice My Mistakes" : "My Bookmarks";
+  if(!count){
+    return backBar() + '<div class="card empty"><div class="big-icon">'+(kind==="mistakes"?"✅":"🔖")+'</div>'
+      + '<h3>'+(kind==="mistakes"?"No mistakes recorded yet.":"No bookmarks yet.")+'</h3>'
+      + '<p class="muted">'+(kind==="mistakes"?"Answer some mocks - questions you get wrong will appear here automatically.":"Bookmark questions during review to build a custom revision list.")+'</p></div>';
+  }
+  return backBar() + '<div class="card">'
+    + '<h2>'+label+' ('+count+')</h2>'
+    + '<div class="field"><label>Mode</label>'+modeRadios(kind+"-mode","learning")+'</div>'
+    + '<div class="btn-row"><button class="btn btn-primary" data-action="start-simple" data-kind="'+kind+'">Start</button></div>'
+    + '</div>';
+}
+
+function backBar(){
+  return '<div class="btn-row" style="margin-bottom:14px;"><button class="btn btn-ghost" data-action="go-home">&larr; Back to Home</button></div>';
+}
+
+/* ---------------- Exam screen ---------------- */
+function paletteState(i){
+  var m = App.mock;
+  var answered = m.answers[i] !== undefined;
+  var marked = !!m.marked[i];
+  if(answered && marked) return "answered-marked";
+  if(marked) return "marked";
+  if(answered) return "answered";
+  return "unanswered";
+}
+function viewExam(){
+  var m = App.mock;
+  var i = m.current;
+  var q = m.questions[i];
+  var answered = m.answers[i];
+  var isLearning = m.mode==="learning";
+  var stage = m.revealStage[i] || 0;
+  var locked = isLearning && answered!==undefined;
+
+  var metaBadges = badge(q.year+" Q"+q.questionNumber) + badge(unitShort(q.unit), unitBadgeClass(q.unit)) + badge(q.topic) + badge(q.questionType);
+
+  var sharedStemHtml = q.sharedStem ? '<div class="shared-stem"><span class="tag">Shared context</span>'+renderRich(q.sharedStem)+'</div>' : "";
+  var trailingHtml = q.trailingNote ? '<div class="trailing-note">'+renderQuestionText(q.trailingNote)+'</div>' : "";
+
+  var optionsHtml = q.options.map(function(opt, idx){
+    var cls = "option";
+    if(!isLearning && answered===idx) cls += " selected";
+    if(isLearning && locked){
+      if(idx===q.correctAnswer) cls += " correct";
+      else if(idx===answered) cls += " incorrect";
+      cls += " locked";
+    } else if(!isLearning && answered===idx){
+      /* selected only, already added */
+    }
+    var letter = "ABCD"[idx];
+    return '<button type="button" class="'+cls+'" data-action="answer" data-idx="'+idx+'" '+(isLearning&&locked?"disabled":"")+'>'
+      + '<span class="optlabel">'+letter+'</span><span class="opttext">'+renderQuestionText(opt)+'</span></button>';
+  }).join("");
+
+  var feedbackHtml = "";
+  if(isLearning && locked){
+    var isCorrect = answered===q.correctAnswer;
+    feedbackHtml = '<div class="feedback-panel">';
+    feedbackHtml += '<div class="feedback-banner '+(isCorrect?"correct":"incorrect")+'">'
+      + (isCorrect ? "✓ Correct" : "✗ Incorrect - correct answer is "+"ABCD"[q.correctAnswer])
+      + '</div>';
+    if(stage>=1){
+      feedbackHtml += '<div class="reveal-block"><h4>Exam Shortcut <span class="ai-note">AI-derived explanation</span></h4>'+renderQuestionText(q.examShortcut||"Not available.")+'</div>';
+    } else {
+      feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Exam Shortcut</button></div>';
+    }
+    if(stage>=2){
+      feedbackHtml += '<div class="reveal-block"><h4>Tips &amp; Tricks</h4><ul>'+(q.tipsTricks||[]).map(function(t){return "<li>"+renderQuestionText(t)+"</li>";}).join("")+'</ul></div>';
+    } else if(stage>=1){
+      feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Tips &amp; Tricks</button></div>';
+    }
+    if(stage>=3){
+      feedbackHtml += '<div class="reveal-block"><h4>Step-by-Step Solution</h4><ol>'+(q.solution||[]).map(function(s){return "<li>"+renderQuestionText(s.text)+"</li>";}).join("")+'</ol></div>';
+    } else if(stage>=2){
+      feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Step-by-Step Solution</button></div>';
+    }
+    if(q.sourceAmbiguityNote){
+      feedbackHtml += '<div class="source-note"><b>Source note:</b> '+renderQuestionText(q.sourceAmbiguityNote)+'</div>';
+    }
+    feedbackHtml += '</div>';
+  }
+
+  var bookmarks = lsGet("bookmarks", []);
+  var isBookmarked = bookmarks.indexOf(q.id) !== -1;
+
+  var timerHtml = m.timeLimitSec ? '<span class="timer" id="exam-timer">'+fmtTime(m.timeLimitSec - (Date.now()-m.startedAt)/1000)+'</span>' : '<span class="faint">No timer</span>';
+
+  var answeredCount = Object.keys(m.answers).length;
+  var markedCount = Object.keys(m.marked).filter(function(k){return m.marked[k];}).length;
+
+  var paletteHtml = m.questions.map(function(_,idx){
+    var st = paletteState(idx);
+    return '<div class="pnum '+st+' '+(idx===i?"current":"")+'" data-action="jump" data-idx="'+idx+'">'+(idx+1)+'</div>';
+  }).join("");
+
+  return ''
+  + '<div class="exam-header">'
+  +   '<div><b>'+escapeHtmlPlain(m.title)+'</b> <span class="faint">'+(m.mode==="strict"?"Strict Exam":"Learning Mode")+'</span></div>'
+  +   '<div class="progress-text">Question '+(i+1)+' / '+m.questions.length+'</div>'
+  +   timerHtml
+  +   '<button class="btn btn-danger btn-sm" data-action="confirm-submit">Submit</button>'
+  + '</div>'
+  + '<div class="exam-layout">'
+  +   '<div class="card qcard">'
+  +     '<div class="qmeta">'+metaBadges+'<button class="btn btn-ghost btn-sm" style="margin-left:auto;" data-action="toggle-bookmark" data-id="'+q.id+'">'+(isBookmarked?"★ Bookmarked":"☆ Bookmark")+'</button></div>'
+  +     sharedStemHtml
+  +     '<div class="qtext">'+renderQuestionText(q.question)+'</div>'
+  +     trailingHtml
+  +     '<div class="options">'+optionsHtml+'</div>'
+  +     feedbackHtml
+  +     '<div class="qactions">'
+  +       '<div class="btn-row">'
+  +         '<button class="btn" data-action="prev" '+(i===0?"disabled":"")+'>&larr; Previous</button>'
+  +         '<button class="btn" data-action="next" '+(i===m.questions.length-1?"disabled":"")+'>Next &rarr;</button>'
+  +       '</div>'
+  +       '<button class="btn '+(m.marked[i]?"btn-primary":"")+'" data-action="toggle-mark">'+(m.marked[i]?"✓ Marked for Review":"Mark for Review")+' <span class="kbd">M</span></button>'
+  +     '</div>'
+  +   '</div>'
+  +   '<div class="card palette-card">'
+  +     '<h3>Question Palette</h3>'
+  +     '<div class="palette-legend">'
+  +       '<span><span class="legend-dot" style="background:var(--success)"></span>Answered</span>'
+  +       '<span><span class="legend-dot" style="background:var(--marked)"></span>Marked</span>'
+  +       '<span><span class="legend-dot" style="background:#fff;border:1px solid var(--border)"></span>Unanswered</span>'
+  +     '</div>'
+  +     '<div class="palette-grid">'+paletteHtml+'</div>'
+  +     '<div style="margin-top:12px;font-size:12.5px;" class="muted">Answered: '+answeredCount+'/'+m.questions.length+' &middot; Marked: '+markedCount+'</div>'
+  +     '<button class="btn btn-danger btn-block" style="margin-top:10px;" data-action="confirm-submit">Submit '+(m.mode==="strict"?"Exam":"Mock")+'</button>'
+  +   '</div>'
+  + '</div>';
+}
+
+/* ---------------- Result screen ---------------- */
+function perfBars(obj, order){
+  var keys = order || Object.keys(obj);
+  return keys.filter(function(k){return obj[k];}).map(function(k){
+    var v = obj[k];
+    var pct = v.total ? Math.round(v.correct/v.total*100) : 0;
+    return '<div class="perf-bar-row"><div class="label">'+escapeHtmlPlain(k)+'</div><div class="perf-bar-track"><div class="perf-bar-fill" style="width:'+pct+'%"></div></div><div class="val">'+pct+'%</div></div>';
+  }).join("");
+}
+function viewResult(){
+  var r = App.lastResult;
+  if(!r) return backBar()+'<div class="empty">No result to show.</div>';
+  return ''
+  + '<div class="score-hero">'
+  +   '<div class="big">'+r.correct+' / '+r.total+'</div>'
+  +   '<div class="pct">'+r.percentage.toFixed(1)+'% &middot; UPSC-style marks: '+r.upscMarks+' / '+r.maxMarks+'</div>'
+  + '</div>'
+  + '<div class="card"><div class="stat-grid">'
+  +   statBox(r.attempted,"Attempted") + statBox(r.correct,"Correct") + statBox(r.incorrect,"Incorrect") + statBox(r.unanswered,"Unanswered") + statBox(r.accuracy.toFixed(1)+"%","Accuracy")
+  +   statBox(fmtTimeHuman(r.timeTakenSec),"Time Taken") + statBox(fmtTimeHuman(r.avgTimePerAttempted),"Avg / Attempted")
+  + '</div></div>'
+  + '<div class="card"><h3>Performance by Unit</h3>'+perfBars(r.perUnit, UNIT_ORDER)+'</div>'
+  + '<div class="card"><h3>Performance by Topic</h3>'+perfBars(r.perTopic)+'</div>'
+  + '<div class="card"><h3>Performance by Question Type</h3>'+perfBars(r.perType)+'</div>'
+  + '<div class="btn-row">'
+  +   '<button class="btn btn-primary" data-action="go-view" data-view="review">View Full Review</button>'
+  +   '<button class="btn" data-action="retry-incorrect">Retry Incorrect</button>'
+  +   '<button class="btn" data-action="retry-unanswered">Retry Unanswered</button>'
+  +   '<button class="btn btn-ghost" data-action="go-home">Back to Home</button>'
+  + '</div>';
+}
+function statBox(val,label){ return '<div class="stat-box"><b>'+val+'</b><span>'+label+'</span></div>'; }
+
+/* ---------------- Review screen ---------------- */
+function viewReview(){
+  var m = App.mock;
+  if(!m) return backBar()+'<div class="empty">No mock to review.</div>';
+  var bookmarks = lsGet("bookmarks", []);
+  var filters = [
+    ["all","All"], ["correct","Correct"], ["incorrect","Incorrect"],
+    ["unanswered","Unanswered"], ["marked","Marked"], ["bookmarked","Bookmarked"]
+  ];
+  var chips = filters.map(function(f){
+    return '<div class="chip '+(App.reviewFilter===f[0]?"active":"")+'" data-action="review-filter" data-f="'+f[0]+'">'+f[1]+'</div>';
+  }).join("");
+  var items = m.questions.map(function(q,i){ return {q:q, i:i}; }).filter(function(o){
+    var a = m.answers[o.i];
+    if(App.reviewFilter==="correct") return a===o.q.correctAnswer;
+    if(App.reviewFilter==="incorrect") return a!==undefined && a!==o.q.correctAnswer;
+    if(App.reviewFilter==="unanswered") return a===undefined;
+    if(App.reviewFilter==="marked") return !!m.marked[o.i];
+    if(App.reviewFilter==="bookmarked") return bookmarks.indexOf(o.q.id)!==-1;
+    return true;
+  });
+  var body = items.length ? items.map(function(o){ return reviewCard(o.q, o.i, m); }).join("") : '<div class="empty">No questions match this filter.</div>';
+  return backBar()
+    + '<div class="card"><h2>Review: '+escapeHtmlPlain(m.title)+'</h2><div class="chip-row">'+chips+'</div></div>'
+    + body;
+}
+function reviewCard(q, i, m){
+  var a = m.answers[i];
+  var bookmarks = lsGet("bookmarks", []);
+  var isBookmarked = bookmarks.indexOf(q.id) !== -1;
+  var optionsHtml = q.options.map(function(opt, idx){
+    var cls = "option locked";
+    if(idx===q.correctAnswer) cls += " correct";
+    else if(idx===a) cls += " incorrect";
+    return '<div class="'+cls+'"><span class="optlabel">'+"ABCD"[idx]+'</span><span class="opttext">'+renderQuestionText(opt)+'</span></div>';
+  }).join("");
+  var status = a===undefined ? '<span class="badge">Unanswered</span>' : (a===q.correctAnswer ? '<span class="badge" style="background:var(--success-bg);color:var(--success);border-color:#bfe9cf;">Correct</span>' : '<span class="badge" style="background:var(--danger-bg);color:var(--danger);border-color:#f2c6c2;">Incorrect</span>');
+  return '<div class="card qcard">'
+    + '<div class="qmeta">'+badge(q.year+" Q"+q.questionNumber)+badge(unitShort(q.unit), unitBadgeClass(q.unit))+badge(q.subtopic)+status
+    +   '<button class="btn btn-ghost btn-sm" style="margin-left:auto;" data-action="toggle-bookmark" data-id="'+q.id+'">'+(isBookmarked?"★":"☆")+'</button></div>'
+    + (q.sharedStem ? '<div class="shared-stem"><span class="tag">Shared context</span>'+renderRich(q.sharedStem)+'</div>' : "")
+    + '<div class="qtext">'+renderQuestionText(q.question)+'</div>'
+    + (q.trailingNote ? '<div class="trailing-note">'+renderQuestionText(q.trailingNote)+'</div>' : "")
+    + '<div class="options">'+optionsHtml+'</div>'
+    + '<div class="feedback-panel">'
+    +   '<div class="reveal-block"><h4>Exam Shortcut <span class="ai-note">AI-derived explanation</span></h4>'+renderQuestionText(q.examShortcut||"Not available.")+'</div>'
+    +   '<div class="reveal-block"><h4>Tips &amp; Tricks</h4><ul>'+(q.tipsTricks||[]).map(function(t){return "<li>"+renderQuestionText(t)+"</li>";}).join("")+'</ul></div>'
+    +   '<div class="reveal-block"><h4>Step-by-Step Solution</h4><ol>'+(q.solution||[]).map(function(s){return "<li>"+renderQuestionText(s.text)+"</li>";}).join("")+'</ol></div>'
+    +   (q.sourceAmbiguityNote ? '<div class="source-note"><b>Source note:</b> '+renderQuestionText(q.sourceAmbiguityNote)+'</div>' : "")
+    + '</div>'
+    + '</div>';
+}
+
+/* ---------------- Analytics ---------------- */
+function viewAnalytics(){
+  var ga = computeGlobalAnalytics();
+  var overallAcc = ga.totalAttempts ? (ga.totalCorrect/ga.totalAttempts*100) : 0;
+  var weak = weakTopics(1, 8);
+  var hist = lsGet("history", []).slice(0,15).reverse();
+  var trendHtml = hist.length ? hist.map(function(h){
+    return '<div class="perf-bar-row"><div class="label">'+fmtDate(h.timestamp)+'</div><div class="perf-bar-track"><div class="perf-bar-fill" style="width:'+Math.round(h.percentage)+'%"></div></div><div class="val">'+Math.round(h.percentage)+'%</div></div>';
+  }).join("") : '<p class="muted">No attempts yet.</p>';
+  return backBar()
+    + '<div class="card"><h2>Analytics</h2><div class="stat-grid">'
+    +   statBox(ga.totalAttempts,"Total Attempts") + statBox(ga.totalCorrect,"Total Correct") + statBox(overallAcc.toFixed(1)+"%","Overall Accuracy")
+    + '</div></div>'
+    + '<div class="card"><h3>Performance by Unit</h3>'+perfBars(objFromEntries(ga.byUnit), UNIT_ORDER)+'</div>'
+    + '<div class="card"><h3>Weakest Topics</h3>'
+    +   (weak.length ? weak.map(function(w){ return '<div class="perf-bar-row"><div class="label">'+escapeHtmlPlain(w.topic)+'</div><div class="perf-bar-track"><div class="perf-bar-fill" style="width:'+Math.round(w.accuracy)+'%"></div></div><div class="val">'+Math.round(w.accuracy)+'%</div></div>'; }).join("") : '<p class="muted">Attempt some mocks to see weak-area analysis.</p>')
+    +   '<div class="btn-row" style="margin-top:10px;"><button class="btn btn-primary" data-action="start-weak">Practice My Weak Areas</button></div>'
+    + '</div>'
+    + '<div class="card"><h3>Recent Score Trend</h3>'+trendHtml+'</div>';
+}
+function objFromEntries(o){ return o; }
+
+/* ---------------- Bookmarks list ---------------- */
+function viewBookmarksList(){
+  var ids = lsGet("bookmarks", []);
+  var qs = ids.map(function(id){ return BY_ID[id]; }).filter(Boolean);
+  if(!qs.length) return backBar()+'<div class="card empty"><div class="big-icon">🔖</div><h3>No bookmarks yet.</h3><p class="muted">Bookmark a question during an exam or review to save it here.</p></div>';
+  var rows = qs.map(function(q){
+    return '<div class="history-row"><div><div class="h-title">'+q.year+' Q'+q.questionNumber+' - '+escapeHtmlPlain(q.subtopic)+'</div><div class="h-meta">'+unitShort(q.unit)+'</div></div><button class="btn btn-sm btn-ghost" data-action="toggle-bookmark" data-id="'+q.id+'">Remove</button></div>';
+  }).join("");
+  return backBar() + '<div class="card"><h2>My Bookmarks ('+qs.length+')</h2>'+rows+'<div class="btn-row" style="margin-top:12px;"><button class="btn btn-primary" data-action="go-view" data-view="setupBookmarks">Practice All Bookmarks</button></div></div>';
+}
+
+/* ---------------- History ---------------- */
+function viewHistory(){
+  var hist = lsGet("history", []);
+  if(!hist.length) return backBar()+'<div class="card empty"><div class="big-icon">🕒</div><h3>No attempts yet.</h3></div>';
+  var rows = hist.map(function(h, idx){
+    return '<div class="history-row">'
+      + '<div><div class="h-title">'+escapeHtmlPlain(h.title)+'</div><div class="h-meta">'+fmtDate(h.timestamp)+' &middot; '+(h.mode==="strict"?"Strict":"Learning")+' &middot; '+fmtTimeHuman(h.timeTakenSec)+'</div></div>'
+      + '<div><b>'+h.correct+'/'+h.total+'</b> <span class="faint">('+h.percentage.toFixed(1)+'%)</span></div>'
+      + '<button class="btn btn-sm" data-action="view-history-review" data-idx="'+idx+'">Review</button>'
+      + '</div>';
+  }).join("");
+  return backBar() + '<div class="card"><h2>Attempt History ('+hist.length+')</h2>'+rows+'</div>';
+}
+
+/* ---------------- Search ---------------- */
+function viewSearch(){
+  var q = App.searchQuery.trim().toLowerCase();
+  if(!q) return backBar()+'<div class="card empty"><div class="big-icon">🔎</div><h3>Type in the search box above</h3><p class="muted">Search across question text, year, unit, topic, subtopic and syllabus concept.</p></div>';
+  var results = ALL_Q.filter(function(item){
+    return (item.question+" "+item.year+" "+item.unit+" "+item.topic+" "+item.subtopic+" "+item.syllabusConcept).toLowerCase().indexOf(q)!==-1;
+  }).slice(0,150);
+  var rows = results.map(function(r){
+    return '<div class="history-row"><div><div class="h-title">'+r.year+' Q'+r.questionNumber+' &middot; '+escapeHtmlPlain(r.subtopic)+'</div><div class="h-meta">'+escapeHtmlPlain(r.question.replace(/\$.*?\$/g,"[math]").slice(0,140))+'</div></div></div>';
+  }).join("");
+  return backBar() + '<div class="card"><h2>Search results for "'+escapeHtmlPlain(App.searchQuery)+'" ('+results.length+')</h2>'
+    + (results.length ? rows + '<div class="btn-row" style="margin-top:12px;"><button class="btn btn-primary" data-action="start-search-mock">Practice These '+results.length+' Questions</button></div>' : '<p class="muted">No matches.</p>')
+    + '</div>';
+}
+
+/* =========================================================================
+   9. MODAL
+   ========================================================================= */
+function showModal(title, bodyHtml, actionsHtml){
+  closeModal();
+  var overlay = document.createElement("div");
+  overlay.id = "modal-overlay";
+  overlay.style.cssText = "position:fixed;inset:0;background:rgba(20,25,40,.45);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;";
+  overlay.innerHTML = '<div class="card" style="max-width:420px;width:100%;">'
+    + '<h3>'+title+'</h3><div style="margin-bottom:14px;">'+bodyHtml+'</div><div class="btn-row">'+actionsHtml+'</div></div>';
+  document.body.appendChild(overlay);
+}
+function closeModal(){
+  var el = document.getElementById("modal-overlay");
+  if(el) el.remove();
+}
+
+/* =========================================================================
+   10. EXPORT / IMPORT / RESET
+   ========================================================================= */
+function exportProgress(){
+  var data = {};
+  lsAllKeys().forEach(function(k){
+    try{ data[k.slice(LS_PREFIX.length)] = JSON.parse(localStorage.getItem(k)); }catch(e){}
+  });
+  var blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.href = url;
+  a.download = "iss-p2-progress-"+(new Date().toISOString().slice(0,10))+".json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+  toast("Progress exported.");
+}
+function importProgressFile(file){
+  var reader = new FileReader();
+  reader.onload = function(){
+    try{
+      var data = JSON.parse(reader.result);
+      Object.keys(data).forEach(function(k){ lsSet(k, data[k]); });
+      toast("Progress imported.");
+      render();
+    }catch(e){ toast("Import failed: invalid file."); }
+  };
+  reader.readAsText(file);
+}
+function resetProgress(){
+  showModal("Reset all progress?",
+    "<p class='muted'>This clears attempt history, bookmarks, mistakes, stats and settings stored in this browser. This cannot be undone.</p>",
+    '<button class="btn" data-action="close-modal">Cancel</button><button class="btn btn-danger" data-action="do-reset">Reset Everything</button>');
+}
+
+/* =========================================================================
+   11. EVENT HANDLING (delegated)
+   ========================================================================= */
+function afterRender(){
+  var timerEl = document.getElementById("exam-timer");
+  if(timerEl && App.mock && App.mock.timeLimitSec){
+    timerEl.textContent = fmtTime(App.mock.timeLimitSec - (Date.now()-App.mock.startedAt)/1000);
+  }
+}
+
+function readCheckedGroup(group){
+  var out = [];
+  document.querySelectorAll('input[data-group="'+group+'"]:checked').forEach(function(el){
+    out.push(decodeURIComponent(el.value));
+  });
+  return out;
+}
+
+document.addEventListener("click", function(e){
+  var t = e.target.closest("[data-action]");
+  if(!t) return;
+  var action = t.getAttribute("data-action");
+
+  switch(action){
+    case "go-home": App.view="home"; App.mock=null; render(); break;
+    case "go-view": App.view = t.getAttribute("data-view"); App.setupCtx = null; render(); break;
+
+    case "pick-year": App.setupCtx = {year: Number(t.getAttribute("data-year"))}; App.view="setupYear"; render(); break;
+    case "start-year": startMock(buildYearMock(Number(t.getAttribute("data-year")))); break;
+
+    case "pick-sectional": App.setupCtx = {unit: decodeURIComponent(t.getAttribute("data-unit"))}; App.view="setupSectional"; render(); break;
+    case "start-sectional": {
+      var unit = decodeURIComponent(t.getAttribute("data-unit"));
+      var yearSel = document.getElementById("sec-year").value;
+      var year = yearSel==="all" ? "all" : Number(yearSel);
+      var mode = document.querySelector('input[name="sec-mode"]:checked').value;
+      startMock(buildSectionalMock(unit, year, mode));
+      break;
+    }
+
+    case "start-topic": {
+      var subMode = t.getAttribute("data-subtopicmode")==="1";
+      var uu = decodeURIComponent(document.getElementById("tm-unit").value);
+      var tt = decodeURIComponent(document.getElementById("tm-topic").value);
+      var st = subMode ? decodeURIComponent(document.getElementById("tm-subtopic").value) : null;
+      var md = document.querySelector('input[name="tm-mode"]:checked').value;
+      startMock(buildTopicMock(uu, tt, st, md));
+      break;
+    }
+
+    case "start-simple": {
+      var kind = t.getAttribute("data-kind");
+      var md2 = document.querySelector('input[name="'+kind+'-mode"]:checked').value;
+      startMock(kind==="mistakes" ? buildMistakeMock(md2) : buildBookmarkMock(md2));
+      break;
+    }
+    case "start-weak": {
+      var wm = buildWeakAreaMock();
+      if(!wm) toast("Attempt more questions first to build weak-area analytics.");
+      else startMock(wm);
+      break;
+    }
+
+    case "start-custom": startMock(buildCustomMock(App.customSel)); break;
+
+    case "start-search-mock": {
+      var q3 = App.searchQuery.trim().toLowerCase();
+      var results = ALL_Q.filter(function(item){
+        return (item.question+" "+item.year+" "+item.unit+" "+item.topic+" "+item.subtopic+" "+item.syllabusConcept).toLowerCase().indexOf(q3)!==-1;
+      }).slice(0,150);
+      startMock(makeMock("Search: "+App.searchQuery, "learning", results, null));
+      break;
+    }
+
+    case "answer": {
+      var idx = Number(t.getAttribute("data-idx"));
+      var m = App.mock; var i = m.current;
+      if(m.mode==="learning" && m.answers[i]!==undefined) break;
+      m.answers[i] = idx;
+      if(m.mode==="learning") m.revealStage[i] = 0;
+      render();
+      break;
+    }
+    case "reveal-next": {
+      var m2 = App.mock; var i2 = m2.current;
+      m2.revealStage[i2] = (m2.revealStage[i2]||0) + 1;
+      render();
+      break;
+    }
+    case "prev": App.mock.current = Math.max(0, App.mock.current-1); render(); break;
+    case "next": App.mock.current = Math.min(App.mock.questions.length-1, App.mock.current+1); render(); break;
+    case "jump": App.mock.current = Number(t.getAttribute("data-idx")); render(); break;
+    case "toggle-mark": {
+      var i3 = App.mock.current;
+      App.mock.marked[i3] = !App.mock.marked[i3];
+      render();
+      break;
+    }
+    case "toggle-bookmark": {
+      var qid = t.getAttribute("data-id");
+      var bm = lsGet("bookmarks", []);
+      var pos = bm.indexOf(qid);
+      if(pos===-1){ bm.push(qid); toast("Bookmarked."); } else { bm.splice(pos,1); toast("Bookmark removed."); }
+      lsSet("bookmarks", bm);
+      render();
+      break;
+    }
+
+    case "confirm-submit": {
+      var m3 = App.mock;
+      var answered = Object.keys(m3.answers).length;
+      var unanswered = m3.questions.length - answered;
+      var marked = Object.keys(m3.marked).filter(function(k){return m3.marked[k];}).length;
+      showModal("Submit "+(m3.mode==="strict"?"Exam":"Mock")+"?",
+        "<p>Answered: <b>"+answered+"</b> &middot; Unanswered: <b>"+unanswered+"</b> &middot; Marked for review: <b>"+marked+"</b></p><p class='muted'>You cannot change answers after submitting.</p>",
+        '<button class="btn" data-action="close-modal">Cancel</button><button class="btn btn-primary" data-action="do-submit">Yes, Submit</button>');
+      break;
+    }
+    case "do-submit": submitMock(false); break;
+    case "close-modal": closeModal(); break;
+
+    case "retry-incorrect": {
+      var wrongIds = App.mock.questions.filter(function(q,i){ return App.mock.answers[i]!==undefined && App.mock.answers[i]!==q.correctAnswer; }).map(function(q){return q.id;});
+      if(!wrongIds.length){ toast("No incorrect answers to retry."); break; }
+      var qs = wrongIds.map(function(id){return BY_ID[id];});
+      startMock(makeMock("Retry Incorrect", "learning", qs, null));
+      break;
+    }
+    case "retry-unanswered": {
+      var unansIds = App.mock.questions.filter(function(q,i){ return App.mock.answers[i]===undefined; }).map(function(q){return q.id;});
+      var qs2 = unansIds.map(function(id){return BY_ID[id];});
+      if(!qs2.length){ toast("No unanswered questions."); break; }
+      startMock(makeMock("Retry Unanswered", "strict", qs2, qs2.length*90));
+      break;
+    }
+
+    case "review-filter": App.reviewFilter = t.getAttribute("data-f"); render(); break;
+    case "view-history-review": {
+      var hist2 = lsGet("history", []);
+      var h = hist2[Number(t.getAttribute("data-idx"))];
+      if(!h) break;
+      var qs3 = h.questionIds.map(function(id){return BY_ID[id];}).filter(Boolean);
+      App.mock = {title:h.title, mode:h.mode, questions:qs3, answers:h.answers||{}, marked:h.marked||{}, revealStage:{}, current:0, submitted:true};
+      App.reviewFilter = "all";
+      App.view = "review";
+      render();
+      break;
+    }
+
+    case "export-progress": exportProgress(); break;
+    case "import-progress": document.getElementById("import-file-input").click(); break;
+    case "reset-progress": resetProgress(); break;
+    case "do-reset": {
+      lsAllKeys().forEach(function(k){ localStorage.removeItem(k); });
+      closeModal();
+      toast("All progress reset.");
+      App.view="home"; App.mock=null;
+      render();
+      break;
+    }
+    default: break;
+  }
+});
+
+document.addEventListener("change", function(e){
+  var el = e.target;
+  if(el.id === "tm-unit"){
+    var u = decodeURIComponent(el.value);
+    App.setupCtx = {unit: u, topic: topicsForUnit(u)[0]};
+    render();
+    return;
+  }
+  if(el.id === "tm-topic"){
+    var u2 = (App.setupCtx && App.setupCtx.unit) || UNITS[0];
+    var tp = decodeURIComponent(el.value);
+    App.setupCtx = {unit:u2, topic:tp};
+    render();
+    return;
+  }
+  /* Only year/unit/topic/subtopic selection changes the available pool and
+     dependent topic/subtopic lists, so only those warrant a full re-render.
+     Count/order/mode/randomize are read live from the DOM at start-custom
+     time as well, but we mirror them into state immediately (without a
+     disruptive full re-render) so App.customSel stays authoritative. */
+  if(el.matches('input[data-group^="cm-"]')){
+    App.customSel.years = readCheckedGroup("cm-year").map(Number);
+    App.customSel.units = readCheckedGroup("cm-unit");
+    App.customSel.topics = readCheckedGroup("cm-topic");
+    App.customSel.subtopics = readCheckedGroup("cm-subtopic");
+    render();
+    return;
+  }
+  if(el.id === "cm-count"){ App.customSel.count = Number(el.value)||40; }
+  if(el.id === "cm-order"){ App.customSel.order = el.value; }
+  if(el.name === "cm-mode"){ App.customSel.mode = el.value; }
+  if(el.id === "cm-randopt"){ App.customSel.randomizeOptions = el.checked; }
+  if(el.id === "import-file-input" && el.files && el.files[0]){
+    importProgressFile(el.files[0]);
+    el.value = "";
+  }
+});
+document.addEventListener("input", function(e){
+  if(e.target.id === "cm-count"){ App.customSel.count = Number(e.target.value)||40; }
+});
+
+var searchDebounce;
+document.addEventListener("input", function(e){
+  if(e.target.id === "global-search"){
+    App.searchQuery = e.target.value;
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(function(){
+      if(App.searchQuery.trim()){ App.view = "search"; render(); document.getElementById("global-search").focus(); document.getElementById("global-search").value = App.searchQuery; }
+    }, 250);
+  }
+});
+
+/* Keyboard shortcuts: 1-4 options, arrows nav, M mark. Disabled while typing. */
+document.addEventListener("keydown", function(e){
+  var tag = (e.target.tagName||"").toLowerCase();
+  if(tag==="input" || tag==="textarea" || tag==="select") return;
+  if(App.view !== "exam" || !App.mock) return;
+  if(["1","2","3","4"].indexOf(e.key)!==-1){
+    var idx = Number(e.key)-1;
+    var m = App.mock, i = m.current;
+    if(idx < m.questions[i].options.length){
+      if(!(m.mode==="learning" && m.answers[i]!==undefined)){
+        m.answers[i] = idx;
+        if(m.mode==="learning") m.revealStage[i]=0;
+        render();
+      }
+    }
+  } else if(e.key === "ArrowLeft"){
+    App.mock.current = Math.max(0, App.mock.current-1); render();
+  } else if(e.key === "ArrowRight"){
+    App.mock.current = Math.min(App.mock.questions.length-1, App.mock.current+1); render();
+  } else if(e.key === "m" || e.key === "M"){
+    var i2 = App.mock.current;
+    App.mock.marked[i2] = !App.mock.marked[i2];
+    render();
+  }
+});
+
+/* =========================================================================
+   12. BOOT
+   ========================================================================= */
+if(!ALL_Q.length){
+  document.getElementById("app-root").innerHTML = '<div class="card empty"><h3>questions2.js failed to load or is empty.</h3><p class="muted">Make sure index.html, questions2.js and styles.css are in the same folder and you opened index.html directly.</p></div>';
+} else {
+  render();
+}
+
+})();
+</script>
+</body>
+</html>
