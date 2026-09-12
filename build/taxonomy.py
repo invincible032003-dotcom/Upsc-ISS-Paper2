@@ -1,0 +1,103 @@
+# -*- coding: utf-8 -*-
+"""Statistics-II classification taxonomy.
+
+UNIT  -> TOPIC -> SUBTOPIC (micro-topic) -> SYLLABUS CONCEPT (official clause text)
+Micro-topic codes and the item-level (year, qno) -> code map come from the
+repository's own mined-intelligence files and classify.py.
+"""
+
+UNIT_LM = "Linear Models"
+UNIT_SI = "Statistical Inference and Hypothesis Testing"
+UNIT_OS = "Official Statistics"
+
+# code -> (unit, topic, subtopic, syllabusConcept)
+MICRO = {
+ "LM-1":  (UNIT_LM, "Theory of Linear Estimation", "Estimable Functions, Estimation and Error Space",
+           "Estimable functions; error and estimation space"),
+ "LM-2":  (UNIT_LM, "Theory of Linear Estimation", "Gauss-Markov Theorem, Normal Equations and BLUE",
+           "Theory of linear estimation; Gauss-Markov linear models; normal equations and least square estimators"),
+ "LM-3":  (UNIT_LM, "Theory of Linear Estimation", "Variances and Covariances of LSEs; Error Variance",
+           "Estimation of error variance; variances and covariances of least square estimators"),
+ "LM-4":  (UNIT_LM, "Matrix Theory for Linear Models", "Generalized Inverse of a Matrix",
+           "Generalized inverse of a matrix and solution of normal equations"),
+ "LM-5":  (UNIT_LM, "Matrix Theory for Linear Models", "Hat Matrix, Residuals and Quadratic Forms",
+           "Properties of least square estimators; analysis of variance"),
+ "LM-6":  (UNIT_LM, "Theory of Linear Estimation", "Correlated Observations, Weighted LS and GLS",
+           "Estimation with correlated observations"),
+ "LM-7":  (UNIT_LM, "Analysis of Variance", "One-way Classification and ANOVA",
+           "One way and two-way classifications; analysis of variance"),
+ "LM-8":  (UNIT_LM, "Analysis of Variance", "Two-way Classification and ANOVA",
+           "Analysis of variance (two-way classification only)"),
+ "LM-9":  (UNIT_LM, "Analysis of Variance", "Fixed, Random and Mixed Effects Models",
+           "Fixed, random and mixed effects models"),
+ "LM-10": (UNIT_LM, "Analysis of Variance", "Multiple Comparison Tests (Tukey, Scheffe, SNK-Duncan)",
+           "Multiple comparison tests due to Tukey, Scheffe and Student-Newmann-Keul-Duncan"),
+ "LM-11": (UNIT_LM, "Theory of Linear Estimation", "Regression Specifics, Design Matrix, Multicollinearity",
+           "Theory of linear estimation; properties of least square estimators"),
+
+ "SI-1":  (UNIT_SI, "Point Estimation", "Characteristics of a Good Estimator (Unbiasedness, Consistency, Efficiency, MSE)",
+           "Characteristics of good estimator"),
+ "SI-2":  (UNIT_SI, "Methods of Estimation", "Maximum Likelihood Estimation",
+           "Estimation methods of maximum likelihood"),
+ "SI-3":  (UNIT_SI, "Methods of Estimation", "Optimal Properties of MLE",
+           "Optimal properties of maximum likelihood estimators"),
+ "SI-4":  (UNIT_SI, "Methods of Estimation", "Method of Moments",
+           "Estimation methods of moments"),
+ "SI-5":  (UNIT_SI, "Methods of Estimation", "Minimum Chi-square and Least Squares as Estimation Methods",
+           "Estimation methods of minimum chi-square and least squares"),
+ "SI-6":  (UNIT_SI, "Sufficiency and Completeness", "Sufficient Estimator and Factorization Theorem",
+           "Sufficient estimator; factorization theorem"),
+ "SI-7":  (UNIT_SI, "Sufficiency and Completeness", "Completeness, Minimal Sufficiency, Ancillarity, Basu's Theorem",
+           "Complete statistics"),
+ "SI-8":  (UNIT_SI, "Optimal Estimation", "Rao-Blackwell Theorem and UMVUE Construction",
+           "Minimum variance unbiased estimators; Rao-Blackwell theorem"),
+ "SI-9":  (UNIT_SI, "Optimal Estimation", "Cramer-Rao Inequality, MVB and Fisher Information",
+           "Minimum variance bound estimators; Cramer-Rao inequality"),
+ "SI-10": (UNIT_SI, "Optimal Estimation", "Bhattacharya Bounds",
+           "Bhattacharya bounds"),
+ "SI-11": (UNIT_SI, "Interval Estimation", "Confidence Intervals, Pivots and Optimum Bounds",
+           "Confidence interval estimation; optimum confidence bounds"),
+ "SI-12": (UNIT_SI, "Interval Estimation", "Resampling: Bootstrap and Jackknife",
+           "Resampling, Bootstrap and Jacknife"),
+ "SI-13": (UNIT_SI, "Hypothesis Testing", "Simple and Composite Hypotheses, Two Kinds of Error, Size and Power",
+           "Simple and composite hypotheses; two kinds of error; critical region; power function"),
+ "SI-14": (UNIT_SI, "Hypothesis Testing", "Neyman-Pearson Lemma and Best Critical Region",
+           "Neyman-Pearson fundamental lemma"),
+ "SI-15": (UNIT_SI, "Hypothesis Testing", "UMP, MLR, Unbiased and Similar Tests",
+           "Most powerful and uniformly most powerful tests; different types of critical regions and similar regions; unbiased test"),
+ "SI-16": (UNIT_SI, "Hypothesis Testing", "Randomized Tests",
+           "Randomized test"),
+ "SI-17": (UNIT_SI, "Hypothesis Testing", "Likelihood Ratio Test",
+           "Likelihood ratio test"),
+ "SI-18": (UNIT_SI, "Sequential and Decision Theory", "Wald's SPRT, OC and ASN Functions",
+           "Wald's SPRT, OC and ASN functions"),
+ "SI-19": (UNIT_SI, "Sequential and Decision Theory", "Decision Theory, Loss, Risk and Bayes Estimators",
+           "Elements of decision theory"),
+ "SI-20": (UNIT_SI, "Point Estimation", "Cross-over Distribution Theory Items",
+           "Characteristics of good estimator"),
+
+ "OS-1":  (UNIT_OS, "Statistical System", "Structure of the National and International Statistical System",
+           "National and International official statistical system"),
+ "OS-2":  (UNIT_OS, "Nature of Official Statistics", "Need, Uses, Users, Reliability, Relevance, Transparency",
+           "Official Statistics: need, uses, users, reliability, relevance, limitations, transparency, its visibility"),
+ "OS-3":  (UNIT_OS, "Nature of Official Statistics", "Compilation, Collection, Processing, Analysis and Dissemination",
+           "Compilation, Collection, Processing, Analysis and Dissemination, Agencies Involved, Methods"),
+ "OS-4":  (UNIT_OS, "Statistical System", "NSO / CSO / NSSO - Roles, Divisions and Activities",
+           "National Statistical Organization: Vision and Mission, NSSO and CSO; roles and responsibilities"),
+ "OS-5":  (UNIT_OS, "Statistical System", "National Statistical Commission",
+           "National Statistical Commission: Need, Constitution, its role, functions"),
+ "OS-6":  (UNIT_OS, "Statistical System", "Legal Acts and Constitutional Provisions",
+           "Legal Acts/ Provisions/ Support for Official Statistics; Important Acts"),
+ "OS-7":  (UNIT_OS, "Index Numbers", "Index Numbers - Types, Formulae, Tests, Agencies, Base Years",
+           "Index Numbers: Different Types, Need, Data Collection Mechanism, Periodicity, Agencies Involved, Uses"),
+ "OS-8":  (UNIT_OS, "Sector-wise Statistics", "Agriculture, Industry, Labour, Health, Education, Women and Child",
+           "Sector Wise Statistics: Agriculture, Health, Education, Women and Child etc. Important Surveys & Census, Indicators, Agencies and Usages"),
+ "OS-9":  (UNIT_OS, "National Accounts", "GDP, GVA, GNI, Sectors and Approaches",
+           "National Accounts: Definition, Basic Concepts; issues; the Strategy, Collection of Data and Release"),
+ "OS-10": (UNIT_OS, "Population Census and Vital Statistics", "Census, CRS/SRS, RGI, Vital Rates",
+           "Population Census: Need, Data Collected, Periodicity, Methods of data collection, dissemination, Agencies involved"),
+ "OS-11": (UNIT_OS, "Socio-economic Indicators", "SDGs, HDI, PQLI, GHI and Gender Statistics",
+           "Misc: Socio Economic Indicators, Gender Awareness/Statistics, Important Surveys and Censuses"),
+}
+
+UNIT_ORDER = [UNIT_LM, UNIT_SI, UNIT_OS]
