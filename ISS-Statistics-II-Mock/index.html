@@ -11,7 +11,7 @@
   <div class="topbar">
     <div class="brand" data-action="go-home"><span class="dot"></span> ISS Stats Paper II <span class="faint" style="color:rgba(255,255,255,.75); font-weight:400;">Offline Mock</span></div>
     <div class="topbar-actions">
-      <input type="text" id="global-search" placeholder="Search questions, topics, years..." data-action="search-input">
+      <input type="text" id="global-search" placeholder="Search questions, topics, years..." aria-label="Search questions, topics and years" data-action="search-input">
       <button data-action="export-progress">Export</button>
       <button data-action="import-progress">Import</button>
       <button data-action="reset-progress">Reset</button>
@@ -20,7 +20,7 @@
   <main id="app-root"></main>
   <footer class="appfoot">100% offline - no server, no CDN, no internet required. All data stays in this browser's local storage.</footer>
 </div>
-<div id="toast"></div>
+<div id="toast" role="status" aria-live="polite"></div>
 <input type="file" id="import-file-input" accept="application/json" style="display:none">
 <script src="questions2.js"></script>
 <script>
@@ -1071,7 +1071,9 @@ function viewExam(){
 
   var paletteHtml = m.questions.map(function(_,idx){
     var st = paletteState(idx);
-    return '<div class="pnum '+st+' '+(idx===i?"current":"")+'" data-action="jump" data-idx="'+idx+'">'+(idx+1)+'</div>';
+    var stLabel = st==="answered-marked" ? "answered, marked for review" : st==="marked" ? "marked for review" : st;
+    var label = "Question "+(idx+1)+", "+stLabel+(idx===i?", current":"");
+    return '<button type="button" class="pnum '+st+' '+(idx===i?"current":"")+'" data-action="jump" data-idx="'+idx+'" aria-label="'+label+'">'+(idx+1)+'</button>';
   }).join("");
 
   return ''
@@ -1085,7 +1087,7 @@ function viewExam(){
   +   '<div class="card qcard">'
   +     '<div class="qmeta">'+metaBadges+'<button class="btn btn-ghost btn-sm" style="margin-left:auto;" data-action="toggle-bookmark" data-id="'+q.id+'">'+(isBookmarked?"★ Bookmarked":"☆ Bookmark")+'</button></div>'
   +     sharedStemHtml
-  +     '<div class="qtext">'+renderQuestionText(q.question)+'</div>'
+  +     '<div class="qtext">'+renderRich(q.question)+'</div>'
   +     trailingHtml
   +     '<div class="options">'+optionsHtml+'</div>'
   +     feedbackHtml
@@ -1185,7 +1187,7 @@ function reviewCard(q, i, m){
     + '<div class="qmeta">'+badge(q.year+" Q"+q.questionNumber)+badge(unitShort(q.unit), unitBadgeClass(q.unit))+badge(q.subtopic)+status
     +   '<button class="btn btn-ghost btn-sm" style="margin-left:auto;" data-action="toggle-bookmark" data-id="'+q.id+'">'+(isBookmarked?"★":"☆")+'</button></div>'
     + (q.sharedStem ? '<div class="shared-stem"><span class="tag">Shared context</span>'+renderRich(q.sharedStem)+'</div>' : "")
-    + '<div class="qtext">'+renderQuestionText(q.question)+'</div>'
+    + '<div class="qtext">'+renderRich(q.question)+'</div>'
     + (q.trailingNote ? '<div class="trailing-note">'+renderQuestionText(q.trailingNote)+'</div>' : "")
     + '<div class="options">'+optionsHtml+'</div>'
     + '<div class="feedback-panel">'

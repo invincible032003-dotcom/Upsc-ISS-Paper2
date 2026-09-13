@@ -215,7 +215,7 @@ label{font-size:13px; font-weight:600; color:var(--text-dim); display:block; mar
 .pnum{
   aspect-ratio:1; border-radius:6px; border:1px solid var(--border); background:#fff;
   display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; cursor:pointer; color:var(--text-dim);
-  position:relative;
+  position:relative; font-family:inherit; padding:0;
 }
 .pnum.current{outline:2px solid var(--brand); outline-offset:1px;}
 .pnum.answered{background:var(--success); border-color:var(--success); color:#fff;}
@@ -332,5 +332,14 @@ footer.appfoot{text-align:center; padding:18px; color:var(--text-faint); font-si
 }
 
 .kbd{font-family:var(--mono); font-size:11px; background:var(--panel-alt); border:1px solid var(--border); border-radius:4px; padding:1px 5px;}
+
+/* ---------- Accessibility: visible, consistent focus states ---------- */
+.btn:focus-visible, .option:focus-visible, .tile:focus-visible, .pnum:focus-visible,
+.chip:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+  outline:2.5px solid var(--brand); outline-offset:2px;
+}
+.topbar button:focus-visible, .topbar input:focus-visible{
+  outline:2.5px solid #fff; outline-offset:2px;
+}
 
 [hidden]{display:none !important;}
