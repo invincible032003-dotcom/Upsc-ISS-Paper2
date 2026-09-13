@@ -12,7 +12,27 @@ Writes: ISS-Statistics-II-Mock/forecast.js
 import json
 import os
 import random
+import re
 import sys
+
+LETTERS = "abcd"
+OPTION_LETTER_RE = re.compile(r"\(([abcd])\)")
+
+
+def remap_option_letters(text, order):
+    """Rewrite every '(a)'..'(d)' reference in prose to match the shuffled
+    option order. `order[new_pos] = old_pos`, so old letter -> new letter is
+    the inverse lookup. Audited: every such token in build/forecast/*.py is
+    immediately preceded by 'option'/'options', so this substitution is safe
+    and total (see the assembly-time consistency check below)."""
+    old_to_new = {}
+    for new_pos in range(4):
+        old_to_new[LETTERS[order[new_pos]]] = LETTERS[new_pos]
+
+    def repl(m):
+        return "(" + old_to_new[m.group(1)] + ")"
+
+    return OPTION_LETTER_RE.sub(repl, text)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -60,7 +80,28 @@ def main():
             # position is wherever its old index appears in `order`.
             shuffled_options = [item["options"][order[p]] for p in range(4)]
             shuffled_ans = order.index(item["ans"])
-            solution = [{"step": j + 1, "text": t} for j, t in enumerate(item.get("sol", []))]
+            # The hand-written sc/tips/sol prose refers to option letters
+            # using the ORIGINAL (pre-shuffle) position - e.g. "Option (a)."
+            # - which would now name the wrong letter after reordering the
+            # options above. Remap every such reference so the prose always
+            # names the shuffled, on-screen letter.
+            remapped_sc = remap_option_letters(item.get("sc", ""), order)
+            remapped_tips = [remap_option_letters(t, order) for t in item.get("tips", [])]
+            remapped_sol = [remap_option_letters(t, order) for t in item.get("sol", [])]
+            solution = [{"step": j + 1, "text": t} for j, t in enumerate(remapped_sol)]
+
+            # Self-check: the solution's own concluding "option (x)" mention
+            # (if any) must now match the shuffled correctAnswer exactly -
+            # this is exactly the class of bug the shuffle introduced before
+            # this remap existed (see the commit that added this function).
+            concluding_text = " ".join(remapped_sol) + " " + remapped_sc
+            mentions = OPTION_LETTER_RE.findall(concluding_text)
+            if mentions and mentions[-1] != LETTERS[shuffled_ans]:
+                raise SystemExit(
+                    "Forecast item %s: prose concludes option (%s) but shuffled "
+                    "correctAnswer is (%s)" % (qid, mentions[-1], LETTERS[shuffled_ans])
+                )
+
             record = {
                 "id": qid,
                 "section": section_name,
@@ -71,8 +112,8 @@ def main():
                 "correctAnswer": shuffled_ans,
                 "questionType": item.get("qtype", "Conceptual"),
                 "difficulty": item.get("diff", "Medium"),
-                "examShortcut": item.get("sc", ""),
-                "tipsTricks": item.get("tips", []),
+                "examShortcut": remapped_sc,
+                "tipsTricks": remapped_tips,
                 "solution": solution,
                 "explanationSource": "AI-derived explanation",
                 "isForecast": True,
