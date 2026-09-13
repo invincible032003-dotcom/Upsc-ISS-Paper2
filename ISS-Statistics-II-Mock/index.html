@@ -23,6 +23,7 @@
 <div id="toast" role="status" aria-live="polite"></div>
 <input type="file" id="import-file-input" accept="application/json" style="display:none">
 <script src="questions2.js"></script>
+<script src="forecast.js"></script>
 <script>
 (function(){
 "use strict";
@@ -31,8 +32,18 @@
    0. DATA INDICES
    ========================================================================= */
 var ALL_Q = (window.quizDataPaper2 || []).slice();
+/* Forecast questions are AI-generated, NOT authentic PYQs. Kept in a
+   completely separate array from ALL_Q so they can never leak into a
+   year/sectional/topic/custom/search PYQ mock - only the dedicated
+   Forecast Sectional Mocks flow ever reads ALL_FORECAST_Q. They share
+   the BY_ID lookup (id namespaces "2018-P2-Q01" vs "F-LM-01" never
+   collide) purely so bookmarks/mistakes/history/retry - all keyed by
+   id - work uniformly for both without duplicating that machinery. */
+var ALL_FORECAST_Q = (window.forecastDataPaper2 || []).slice();
+var FORECAST_SECTIONS = ["Linear Models", "Estimation", "Hypothesis Testing"];
 var BY_ID = {};
 ALL_Q.forEach(function(q){ BY_ID[q.id] = q; });
+ALL_FORECAST_Q.forEach(function(q){ BY_ID[q.id] = q; });
 var YEARS = Array.from(new Set(ALL_Q.map(function(q){return q.year;}))).sort();
 var UNIT_ORDER = ["Linear Models","Statistical Inference and Hypothesis Testing","Official Statistics"];
 var UNITS = UNIT_ORDER.filter(function(u){ return ALL_Q.some(function(q){return q.unit===u;}); });
@@ -753,12 +764,16 @@ function buildBookmarkMock(mode){
   var qs = ids.map(function(id){ return BY_ID[id]; }).filter(Boolean);
   return makeMock("My Bookmarks ("+qs.length+")", mode||"learning", qs, null);
 }
+function buildForecastMock(section){
+  var qs = ALL_FORECAST_Q.filter(function(q){ return q.section===section; });
+  return makeMock("Forecast: "+section, "learning", qs, null);
+}
 function computeGlobalAnalytics(){
   var stats = lsGet("stats", {});
   var byUnit={}, byTopic={}, byType={}, byYear={};
   var totalAttempts=0, totalCorrect=0;
   Object.keys(stats).forEach(function(qid){
-    var s = stats[qid]; var q = BY_ID[qid]; if(!q) return;
+    var s = stats[qid]; var q = BY_ID[qid]; if(!q || q.isForecast) return; /* keep analytics scoped to authentic-PYQ performance */
     totalAttempts += s.attempts; totalCorrect += s.correct;
     function add(obj,key){ if(!obj[key]) obj[key]={attempts:0,correct:0}; obj[key].attempts+=s.attempts; obj[key].correct+=s.correct; }
     add(byUnit,q.unit); add(byTopic,q.unit+" › "+q.topic); add(byType,q.questionType); add(byYear,q.year);
@@ -855,6 +870,14 @@ function viewHome(){
   + '<div class="grid cols-4">'+yearsRow+'</div>'
   + '<div class="section-title">Sectional Mocks</div>'
   + '<div class="grid cols-3">'+sectionalRow+'</div>'
+  + '<div class="section-title">Forecast Sectional Mocks <span class="badge badge-ai" style="margin-left:6px;">AI-GENERATED &middot; NOT AUTHENTIC PYQs</span></div>'
+  + '<div class="card" style="margin-bottom:16px;"><p class="muted" style="margin:0 0 12px;">75 examiner-style forecast questions built from the 2018-2026 topic-weightage analysis - 25 per section. Every question is clearly labeled and kept completely separate from the authentic-PYQ mocks above.</p>'
+  +   '<div class="grid cols-3">'
+  +     FORECAST_SECTIONS.map(function(s){
+          var cnt = ALL_FORECAST_Q.filter(function(q){return q.section===s;}).length;
+          return '<button class="tile" data-action="start-forecast" data-section="'+encodeURIComponent(s)+'"><div class="tile-title">'+s+'</div><div class="tile-sub">'+cnt+' forecast questions &middot; shortcut shown after each answer</div></button>';
+        }).join("")
+  +   '</div></div>'
   + '<div class="section-title">More ways to practice</div>'
   + '<div class="grid cols-3">'
   +   '<button class="tile" data-action="go-view" data-view="setupTopic"><div class="tile-icon">📚</div><div class="tile-title">Topic Mocks</div><div class="tile-sub">Filter by unit &rarr; topic</div></button>'
@@ -1013,7 +1036,10 @@ function viewExam(){
   var stage = m.revealStage[i] || 0;
   var locked = isLearning && answered!==undefined;
 
-  var metaBadges = badge(q.year+" Q"+q.questionNumber) + badge(unitShort(q.unit), unitBadgeClass(q.unit)) + badge(q.topic) + badge(q.questionType);
+  var metaBadges = q.isForecast
+    ? badge(q.section, "badge-ai") + badge(q.topic) + badge(q.subtopic) + badge(q.questionType)
+    : badge(q.year+" Q"+q.questionNumber) + badge(unitShort(q.unit), unitBadgeClass(q.unit)) + badge(q.topic) + badge(q.questionType);
+  var forecastBanner = q.isForecast ? '<div class="forecast-banner">🔮 '+escapeHtmlPlain(q.provenanceLabel||"FORECAST / AI-GENERATED")+'</div>' : "";
 
   var sharedStemHtml = q.sharedStem ? '<div class="shared-stem"><span class="tag">Shared context</span>'+renderRich(q.sharedStem)+'</div>' : "";
   var trailingHtml = q.trailingNote ? '<div class="trailing-note">'+renderQuestionText(q.trailingNote)+'</div>' : "";
@@ -1085,6 +1111,7 @@ function viewExam(){
   + '</div>'
   + '<div class="exam-layout">'
   +   '<div class="card qcard">'
+  +     forecastBanner
   +     '<div class="qmeta">'+metaBadges+'<button class="btn btn-ghost btn-sm" style="margin-left:auto;" data-action="toggle-bookmark" data-id="'+q.id+'">'+(isBookmarked?"★ Bookmarked":"☆ Bookmark")+'</button></div>'
   +     sharedStemHtml
   +     '<div class="qtext">'+renderRich(q.question)+'</div>'
@@ -1183,8 +1210,13 @@ function reviewCard(q, i, m){
     return '<div class="'+cls+'"><span class="optlabel">'+"ABCD"[idx]+'</span><span class="opttext">'+renderQuestionText(opt)+'</span></div>';
   }).join("");
   var status = a===undefined ? '<span class="badge">Unanswered</span>' : (a===q.correctAnswer ? '<span class="badge" style="background:var(--success-bg);color:var(--success);border-color:#bfe9cf;">Correct</span>' : '<span class="badge" style="background:var(--danger-bg);color:var(--danger);border-color:#f2c6c2;">Incorrect</span>');
+  var reviewMetaBadges = q.isForecast
+    ? badge(q.section, "badge-ai") + badge(q.topic) + badge(q.subtopic) + status
+    : badge(q.year+" Q"+q.questionNumber)+badge(unitShort(q.unit), unitBadgeClass(q.unit))+badge(q.subtopic)+status;
+  var reviewForecastBanner = q.isForecast ? '<div class="forecast-banner">🔮 '+escapeHtmlPlain(q.provenanceLabel||"FORECAST / AI-GENERATED")+'</div>' : "";
   return '<div class="card qcard">'
-    + '<div class="qmeta">'+badge(q.year+" Q"+q.questionNumber)+badge(unitShort(q.unit), unitBadgeClass(q.unit))+badge(q.subtopic)+status
+    + reviewForecastBanner
+    + '<div class="qmeta">'+reviewMetaBadges
     +   '<button class="btn btn-ghost btn-sm" style="margin-left:auto;" data-action="toggle-bookmark" data-id="'+q.id+'">'+(isBookmarked?"★":"☆")+'</button></div>'
     + (q.sharedStem ? '<div class="shared-stem"><span class="tag">Shared context</span>'+renderRich(q.sharedStem)+'</div>' : "")
     + '<div class="qtext">'+renderRich(q.question)+'</div>'
@@ -1369,6 +1401,11 @@ document.addEventListener("click", function(e){
       var kind = t.getAttribute("data-kind");
       var md2 = document.querySelector('input[name="'+kind+'-mode"]:checked').value;
       startMock(kind==="mistakes" ? buildMistakeMock(md2) : buildBookmarkMock(md2));
+      break;
+    }
+    case "start-forecast": {
+      var section = decodeURIComponent(t.getAttribute("data-section"));
+      startMock(buildForecastMock(section));
       break;
     }
     case "start-weak": {

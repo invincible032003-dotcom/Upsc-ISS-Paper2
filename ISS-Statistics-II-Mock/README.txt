@@ -19,7 +19,8 @@ with the ambiguity explained rather than silently fixed.
 
 HOW TO OPEN IT
 ---------------
-1. Keep index.html, questions2.js and styles.css in the SAME folder.
+1. Keep index.html, questions2.js, forecast.js and styles.css in the SAME
+   folder.
 2. Double-click index.html (or open it from your browser's File > Open).
 3. That's it. No install, no internet connection, no server, no Python,
    no Node.js required. Works entirely from the local file.
@@ -47,6 +48,17 @@ MAIN MODES
 
 - My Bookmarks: bookmark any question during an exam or review and
   revisit it later.
+
+- Forecast Sectional Mocks: 75 AI-generated, examiner-style forecast
+  questions for the next paper - 25 each for Linear Models, Estimation
+  and Hypothesis Testing - built from a topic-weightage analysis of all
+  nine years of PYQs. Every forecast question carries a bright
+  "FORECAST / AI-GENERATED - NOT AN AUTHENTIC PYQ" banner and is kept
+  in a completely separate question bank from the 720 real PYQs above -
+  it is never mixed into a year, sectional, topic, or custom mock, and
+  never counted in the main Analytics (which stays scoped to your real-
+  PYQ performance). These mocks always run in Learning Mode, so the
+  Exam Shortcut appears immediately after you answer each question.
 
 - Analytics: accuracy broken down by unit, topic and question type,
   your weakest topics, a "Practice My Weak Areas" button, and a trend

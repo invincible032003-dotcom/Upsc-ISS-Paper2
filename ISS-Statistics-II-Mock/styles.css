@@ -206,6 +206,11 @@ label{font-size:13px; font-weight:600; color:var(--text-dim); display:block; mar
 .reveal-block li{margin-bottom:6px;}
 .ai-note{font-size:11px; color:var(--warn); background:var(--warn-bg); border:1px solid #f2d9a6; padding:2px 8px; border-radius:999px;}
 .source-note{font-size:12.5px; background:var(--danger-bg); border:1px solid #f2c6c2; color:#7a1f19; padding:8px 10px; border-radius:8px; margin-top:8px;}
+.forecast-banner{
+  font-weight:700; font-size:13px; color:var(--warn); background:var(--warn-bg);
+  border:1px solid #f2d9a6; border-radius:8px; padding:9px 12px; margin-bottom:12px;
+  letter-spacing:.01em;
+}
 
 /* ---------- Palette sidebar ---------- */
 .palette-card{position:sticky; top:110px;}
