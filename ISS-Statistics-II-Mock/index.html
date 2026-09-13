@@ -142,7 +142,14 @@ var SYM_MAP = {
   therefore:"∴", because:"∵", star:"★", circ:"∘", oplus:"⊕", otimes:"⊗"
 };
 var OP_NAMES = {log:1, ln:1, exp:1, max:1, min:1, lim:1, sup:1, inf:1, det:1, gcd:1, arg:1, tan:1, sin:1, cos:1, argmax:1, argmin:1, Var:1, Cov:1, Bias:1, MSE:1, Corr:1};
+/* Per amsmath convention, these "movable limits" operators stack their
+   sub/superscript directly above/below the operator name in display
+   style, exactly like \sum/\int/\prod - but keep side scripts in text/
+   inline style. det/arg/log/ln/exp/sin/cos/tan etc. always use side
+   scripts regardless of style. */
+var STACKING_OPS = {gcd:1, inf:1, lim:1, max:1, min:1, sup:1};
 var BIGOPS = {sum:"∑", prod:"∏", int:"∫", oint:"∮"};
+var RENDER_DISPLAY = false;
 var MATHBB_MAP = {R:"ℝ", N:"ℕ", Z:"ℤ", Q:"ℚ", C:"ℂ", E:"ᵐᵉ".length? "𝔼":"E", P:"ℙ", V:"𝕍"};
 var BRACKET_OPEN = {"":"{","":"(","":"[","":"|","":"‖"};
 var BRACKET_CLOSE = {"":"}","":")","":"]","":"|","":"‖"};
@@ -369,6 +376,12 @@ MathParser.prototype.parseCommand = function(name){
 function renderNodes(nodes){
   return nodes.map(renderNode).join("");
 }
+function bracketSize(rowCount){
+  return Math.min(1.5 + Math.max(0,rowCount-1)*0.62, 3.4).toFixed(2)+"em";
+}
+function braceSize(rowCount){
+  return Math.min(1.3 + Math.max(0,rowCount-1)*0.6, 3.4).toFixed(2)+"em";
+}
 function htmlForTextValue(v){
   var out = ""; var i=0, n=v.length;
   while(i<n){
@@ -400,9 +413,20 @@ function renderNode(node){
     case "linebreak": return "";
     case "group": return renderNodes(node.body);
     case "scripts": {
-      var base = renderNode(node.base);
       var supH = node.sup ? renderNode(node.sup) : "";
       var subH = node.sub ? renderNode(node.sub) : "";
+      var baseIsBigop = node.base.type === "bigop";
+      var baseIsStackingOp = node.base.type === "op" && STACKING_OPS.hasOwnProperty(node.base.name);
+      if((baseIsBigop || baseIsStackingOp) && RENDER_DISPLAY){
+        var baseH = renderNode(node.base);
+        var stack = '<span class="opstack">';
+        if(node.sup) stack += '<span class="opstack-sup">'+supH+'</span>';
+        stack += '<span class="opstack-mid">'+baseH+'</span>';
+        if(node.sub) stack += '<span class="opstack-sub">'+subH+'</span>';
+        stack += '</span>';
+        return stack;
+      }
+      var base = renderNode(node.base);
       if(node.sup && node.sub) return base + '<sup>'+supH+'</sup><sub>'+subH+'</sub>';
       if(node.sup) return base + '<sup>'+supH+'</sup>';
       if(node.sub) return base + '<sub>'+subH+'</sub>';
@@ -413,7 +437,7 @@ function renderNode(node){
     case "sqrt":
       return '<span class="sqrt"><span class="radical">√</span><span class="sqrt-body">'+renderNode(node.body)+'</span></span>';
     case "binom":
-      return '<span class="bracket">(</span><span class="frac" style="margin:0 1px"><span class="num">'+renderNode(node.top)+'</span><span class="den">'+renderNode(node.bottom)+'</span></span><span class="bracket">)</span>';
+      return '<span class="bracket">(</span><span class="binom-stack"><span class="binom-top">'+renderNode(node.top)+'</span><span class="binom-bottom">'+renderNode(node.bottom)+'</span></span><span class="bracket">)</span>';
     case "decorate": {
       var body = renderNode(node.body);
       switch(node.deco){
@@ -435,35 +459,46 @@ function renderNode(node){
       }
     }
     case "matrix": {
+      /* Rendered with span + CSS display:table*, never a real <table>/<tr>/<td>:
+         a literal <table> tag inside an open <p> forces the HTML parser to
+         implicitly close that <p> (and everything nested above it, spans
+         included) before the table, mangling the surrounding markup - see
+         renderRich(), which wraps shared-stem text in <p>...</p>. Spans with
+         CSS table display are pure phrasing content and never trigger that. */
       var open = node.envName==="bmatrix" ? "[" : node.envName==="vmatrix" ? "|" : node.envName==="Bmatrix" ? "{" : "(";
       var close = node.envName==="bmatrix" ? "]" : node.envName==="vmatrix" ? "|" : node.envName==="Bmatrix" ? "}" : ")";
       var rowsHtml = node.rows.map(function(row){
-        return "<tr>" + row.map(function(cell){ return "<td>"+renderNodes(cell)+"</td>"; }).join("") + "</tr>";
+        return '<span class="mrow">' + row.map(function(cell){ return '<span class="mcell">'+renderNodes(cell)+'</span>'; }).join("") + '</span>';
       }).join("");
-      return '<span class="matrix"><span class="bracket">'+open+'</span><table>'+rowsHtml+'</table><span class="bracket">'+close+'</span></span>';
+      var bsz = bracketSize(node.rows.length);
+      return '<span class="matrix"><span class="bracket" style="font-size:'+bsz+'">'+open+'</span><span class="mtable">'+rowsHtml+'</span><span class="bracket" style="font-size:'+bsz+'">'+close+'</span></span>';
     }
     case "cases": {
       var rowsHtml2 = node.rows.map(function(row){
-        return "<tr>" + row.map(function(cell,ci){
-          return '<td class="'+(ci>0?"case-cond":"")+'">'+renderNodes(cell)+"</td>";
-        }).join("") + "</tr>";
+        return '<span class="crow">' + row.map(function(cell,ci){
+          return '<span class="ccell'+(ci>0?" case-cond":"")+'">'+renderNodes(cell)+"</span>";
+        }).join("") + '</span>';
       }).join("");
-      return '<span class="cases"><span class="brace-big">{</span><table>'+rowsHtml2+'</table></span>';
+      return '<span class="cases"><span class="brace-big" style="font-size:'+braceSize(node.rows.length)+'">{</span><span class="ctable">'+rowsHtml2+'</span></span>';
     }
     default: return "";
   }
 }
 
 function renderMathToHtml(latexSrc, isDisplay){
+  var prevDisplay = RENDER_DISPLAY;
   try{
+    RENDER_DISPLAY = !!isDisplay;
     var pre = preprocessLatex(latexSrc);
     var toks = tokenizeLatex(pre);
     var parser = new MathParser(toks);
     var nodes = parser.parseSequence(function(){ return false; });
     var html = renderNodes(nodes);
+    RENDER_DISPLAY = prevDisplay;
     if(isDisplay) return '<span class="mathblock"><span class="math">'+html+'</span></span>';
     return '<span class="math mathinline">'+html+'</span>';
   }catch(e){
+    RENDER_DISPLAY = prevDisplay;
     var raw = isDisplay ? ("$$"+latexSrc+"$$") : ("$"+latexSrc+"$");
     return '<span style="font-family:var(--mono);">'+escapeHtmlPlain(raw)+'</span>';
   }
