@@ -1,0 +1,5682 @@
+{
+ "1": {
+  "id": "Q1",
+  "num": 1,
+  "title": "Unbiasedness",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "An estimator̂ 𝜃is unbiased if:",
+  "options": [
+   "𝐸[̂𝜃] = 𝜃for all 𝜃",
+   "Var(̂𝜃) = 0",
+   "̂ 𝜃→𝜃in probability",
+   "MSE(̂𝜃) = 0"
+  ],
+  "answer_letter": "A",
+  "explanation": "C is consistency, not unbiasedness; D implies both bias=0 AND var=0 simultaneously"
+ },
+ "2": {
+  "id": "Q2",
+  "num": 2,
+  "title": "MSE Decomposition",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "MSE(̂𝜃) equals:",
+  "options": [
+   "Var(̂𝜃) + [Bias(̂𝜃)]2",
+   "Var(̂𝜃) −[Bias(̂𝜃)]2",
+   "[Bias(̂𝜃)]2 only",
+   "Var(̂𝜃) only"
+  ],
+  "answer_letter": "A",
+  "explanation": "D holds only when estimator is unbiased; never subtract bias²"
+ },
+ "3": {
+  "id": "Q3",
+  "num": 3,
+  "title": "Consistency",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "𝜃𝑛is consistent for 𝜃if:",
+  "options": [
+   "𝐸[̂𝜃𝑛] →𝜃and Var(̂𝜃𝑛) →0",
+   "𝑃(|̂𝜃𝑛−𝜃| > 𝜖) →0 for every 𝜖> 0",
+   "̂ 𝜃𝑛→𝜃almost surely",
+   "Both A and B"
+  ],
+  "answer_letter": "B",
+  "explanation": "A is sufficient (by Chebyshev) but not necessary; C is strong consistency (stricter)"
+ },
+ "4": {
+  "id": "Q4",
+  "num": 4,
+  "title": "Efficiency",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "The relative efficiency of̂ 𝜃1 w.r.t.̂ 𝜃2 is:",
+  "options": [
+   "Var(̂𝜃1)/Var(̂𝜃2)",
+   "Var(̂𝜃2)/Var(̂𝜃1)",
+   "MSE(̂𝜃1)/MSE(̂𝜃2)",
+   "Bias(̂𝜃1)/Bias(̂𝜃2)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Efficiency of̂ 𝜃1 = CRLB/Var(̂𝜃1); relative efficiency = Var of denominator over numerator"
+ },
+ "5": {
+  "id": "Q5",
+  "num": 5,
+  "title": "Sufficiency Definition",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "A statistic 𝑇(𝑋) is sufficient for 𝜃if:",
+  "options": [
+   "𝑇has minimum variance among all unbiased estimators",
+   "The conditional distribution of 𝑋given 𝑇does not depend on 𝜃",
+   "𝑇attains the Cramér-Rao lower bound",
+   "𝑇is a complete statistic"
+  ],
+  "answer_letter": "B",
+  "explanation": "Sufficiency is about conditional distribution, not variance; completeness is a separate concept"
+ },
+ "6": {
+  "id": "Q6",
+  "num": 6,
+  "title": "Admissibility",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "An estimator̂ 𝜃is inadmissible if:",
+  "options": [
+   "It is biased",
+   "There exists another estimator with smaller MSE for ALL 𝜃",
+   "It does not attain the CRLB",
+   "It is not a function of sufficient statistic"
+  ],
+  "answer_letter": "B",
+  "explanation": "Biased estimators can be admissible (e.g., James-Stein); CRLB non-attainment ≠ inadmissibility"
+ },
+ "7": {
+  "id": "Q7",
+  "num": 7,
+  "title": "Ancillary Stat",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "A statistic 𝐴(𝑋) is ancillary if:",
+  "options": [
+   "Its distribution does not depend on 𝜃",
+   "It is independent of the sufficient statistic",
+   "𝐸[𝐴(𝑋)] = 0 for all 𝜃",
+   "It has minimum variance"
+  ],
+  "answer_letter": "A",
+  "explanation": "B is Basu’s theorem consequence (ancillary ⟂complete sufficient), not the definition"
+ },
+ "8": {
+  "id": "Q8",
+  "num": 8,
+  "title": "Completeness Def",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "A statistic 𝑇is complete if:",
+  "options": [
+   "𝐸𝜃[𝑔(𝑇)] = 0 for all 𝜃implies 𝑔(𝑇) = 0 a.s.",
+   "𝑇is sufficient and unbiased",
+   "𝑇achieves minimum variance",
+   "The family of distributions of 𝑇is full-rank exponential"
+  ],
+  "answer_letter": "A",
+  "explanation": "D is sufficient for completeness (exponential family with full rank) but not the definition itself"
+ },
+ "9": {
+  "id": "Q9",
+  "num": 9,
+  "title": "Consistent Unbiased",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "Sample mean̄ 𝑋from 𝑁(𝜇, 𝜎2) is:",
+  "options": [
+   "Unbiased and consistent for 𝜇",
+   "Consistent but biased for 𝜇",
+   "Unbiased but inconsistent for 𝜇",
+   "Neither unbiased nor consistent"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐸[̄𝑋] = 𝜇(unbiased); Var(̄𝑋) = 𝜎2/𝑛→0 (consistent)"
+ },
+ "10": {
+  "id": "Q10",
+  "num": 10,
+  "title": "Best Linear Unbiased",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "By Gauss-Markov theorem, OLS estimator is BLUE meaning:",
+  "options": [
+   "Best (minimum variance) among all unbiased estimators",
+   "Best (minimum variance) among all LINEAR unbiased estimators",
+   "Best among all estimators including biased ones",
+   "Minimum MSE among linear estimators"
+  ],
+  "answer_letter": "B",
+  "explanation": "“Linear” is crucial; MLE may be better overall; Gauss-Markov does NOT require normality"
+ },
+ "11": {
+  "id": "Q11",
+  "num": 11,
+  "title": "Asymptotic Efficiency",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "An estimator is asymptotically efficient if:",
+  "options": [
+   "√𝑛(̂𝜃−𝜃) 𝑑−→𝑁(0, 1/𝐼(𝜃))",
+   "̂ 𝜃is unbiased for all 𝑛",
+   "Var(̂𝜃) = 1/(𝑛𝐼(𝜃)) exactly",
+   "̂ 𝜃is consistent"
+  ],
+  "answer_letter": "A",
+  "explanation": "C is exact CRLB attainment (finite 𝑛); A is the asymptotic version; D alone is insufficient"
+ },
+ "12": {
+  "id": "Q12",
+  "num": 12,
+  "title": "Pitman Closeness",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "Pitman closeness criterion preferŝ 𝜃1 over̂ 𝜃2 if:",
+  "options": [
+   "MSE(̂𝜃1) < MSE(̂𝜃2)",
+   "𝑃(|̂𝜃1 −𝜃| < |̂𝜃2 −𝜃|) > 1/2",
+   "Var(̂𝜃1) < Var(̂𝜃2)",
+   "Bias(̂𝜃1) < Bias(̂𝜃2)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Pitman closeness can contradict MSE ordering — classic ISS trap"
+ },
+ "13": {
+  "id": "Q13",
+  "num": 13,
+  "title": "Invariance MLE",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "If̂ 𝜃is MLE of 𝜃, then MLE of 𝑔(𝜃) is:",
+  "options": [
+   "𝑔(̂𝜃) always",
+   "𝑔(̂𝜃) only if 𝑔is monotone",
+   "𝑔(̂𝜃) only if 𝑔is differentiable",
+   "Obtained by separate maximization"
+  ],
+  "answer_letter": "A",
+  "explanation": "Invariance of MLE holds for ANY function 𝑔, not just monotone or differentiable ones"
+ },
+ "14": {
+  "id": "Q14",
+  "num": 14,
+  "title": "Unbiased Estimator Unique",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "If a complete sufficient statistic exists, then:",
+  "options": [
+   "There is at most one unbiased estimator based on it",
+   "There is exactly one UMVUE",
+   "All unbiased estimators are functions of it",
+   "The MLE is always unbiased"
+  ],
+  "answer_letter": "B",
+  "explanation": "A is wrong (there can be many unbiased estimators); B follows from Lehmann- Scheffé theorem"
+ },
+ "15": {
+  "id": "Q15",
+  "num": 15,
+  "title": "Fisher Information Additive",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "For i.i.d. sample of size 𝑛, 𝐼𝑛(𝜃) equals:",
+  "options": [
+   "𝐼1(𝜃)/𝑛",
+   "𝑛⋅𝐼1(𝜃)",
+   "√𝑛⋅𝐼1(𝜃)",
+   "𝐼1(𝜃)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Fisher information is ADDITIVE for independent observations; CRLB = 1/(𝑛𝐼1(𝜃))"
+ },
+ "16": {
+  "id": "Q16",
+  "num": 16,
+  "title": "Median Unbiased",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "An estimator̂ 𝜃is median-unbiased if:",
+  "options": [
+   "𝐸[̂𝜃] = 𝜃",
+   "𝑃(̂𝜃≤𝜃) = 𝑃(̂𝜃≥𝜃) = 1/2",
+   "Median of̂ 𝜃equals 𝐸[̂𝜃]",
+   "̂ 𝜃has symmetric distribution"
+  ],
+  "answer_letter": "B",
+  "explanation": "Mean-unbiasedness ≠median-unbiasedness; for skewed distributions they differ"
+ },
+ "17": {
+  "id": "Q17",
+  "num": 17,
+  "title": "Cramer Rao Regularity",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "CRLB requires regularity conditions including:",
+  "options": [
+   "Support of 𝑓(𝑥; 𝜃) must NOT depend on 𝜃",
+   "𝜃must be a location parameter",
+   "The distribution must be normal",
+   "The sample size must be large"
+  ],
+  "answer_letter": "A",
+  "explanation": "For 𝑈(0, 𝜃), Exp(𝜃) shifted — support depends on 𝜃, so CRLB does NOT apply"
+ },
+ "18": {
+  "id": "Q18",
+  "num": 18,
+  "title": "Sufficiency Minimal",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "A minimal sufficient statistic is:",
+  "options": [
+   "A sufficient statistic of smallest possible dimension",
+   "A function of every other sufficient statistic",
+   "Both A and B",
+   "The complete sufficient statistic"
+  ],
+  "answer_letter": "C",
+  "explanation": "Minimal sufficient = coarsest sufficient partition; complete sufficient ⊆minimal sufficient (when it exists)"
+ },
+ "19": {
+  "id": "Q19",
+  "num": 19,
+  "title": "Equivariant Estimator",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "A location equivariant estimator̂ 𝜃satisfies:",
+  "options": [
+   "̂ 𝜃(𝑋+ 𝑐) =̂ 𝜃(𝑋) + 𝑐for all 𝑐",
+   "̂ 𝜃(𝑐𝑋) = 𝑐̂𝜃(𝑋) for all 𝑐> 0",
+   "𝐸[̂𝜃] = 𝜃",
+   "̂ 𝜃is a function of order statistics"
+  ],
+  "answer_letter": "A",
+  "explanation": "B is scale equivariance; both together give affine equivariance"
+ },
+ "20": {
+  "id": "Q20",
+  "num": 20,
+  "title": "Consistent Estimator Function",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "If̂ 𝜃𝑛 𝑝 −→𝜃and 𝑔is continuous, then:",
+  "options": [
+   "𝑔(̂𝜃𝑛) 𝑝 −→𝑔(𝜃)",
+   "𝑔(̂𝜃𝑛) 𝑝 −→𝑔(𝜃) only if 𝑔is monotone",
+   "𝑔(̂𝜃𝑛) may not be consistent",
+   "𝐸[𝑔(̂𝜃𝑛)] →𝑔(𝜃)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Continuous mapping theorem guarantees A; D requires uniform integrability (stronger condition)"
+ },
+ "21": {
+  "id": "Q21",
+  "num": 21,
+  "title": "Bias Variance Tradeoff",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "Shrinkage estimators like James-Stein are preferred because:",
+  "options": [
+   "They are unbiased with smaller variance",
+   "They introduce bias but reduce variance enough to lower total MSE",
+   "They are consistent while OLS is not",
+   "They satisfy CRLB"
+  ],
+  "answer_letter": "B",
+  "explanation": "James-Stein is BIASED; its advantage is total MSE reduction in 𝑝≥3 dimensions"
+ },
+ "22": {
+  "id": "Q22",
+  "num": 22,
+  "title": "Order Stat Distribution",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "PDF of 𝑘-th order statistic 𝑋(𝑘) from 𝑓(𝑥) with CDF 𝐹(𝑥) is:",
+  "options": [
+   "𝑛! (𝑘−1)!(𝑛−𝑘)![𝐹(𝑥)]𝑘−1[1 −𝐹(𝑥)]𝑛−𝑘𝑓(𝑥)",
+   "𝑛! 𝑘!(𝑛−𝑘)![𝐹(𝑥)]𝑘[1 −𝐹(𝑥)]𝑛−𝑘𝑓(𝑥)",
+   "𝑛[𝐹(𝑥)]𝑛−1𝑓(𝑥)",
+   "𝑛[1 −𝐹(𝑥)]𝑛−1𝑓(𝑥)"
+  ],
+  "answer_letter": "A",
+  "explanation": "C is PDF of maximum (𝑘= 𝑛); D is PDF of minimum (𝑘= 1); check factorial carefully"
+ },
+ "23": {
+  "id": "Q23",
+  "num": 23,
+  "title": "Exponential Family Complete",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "For a full-rank exponential family 𝑓(𝑥; 𝜃) = ℎ(𝑥) exp[𝜂(𝜃)𝑇(𝑥) −𝐵(𝜃)]:",
+  "options": [
+   "𝑇(𝑥) is complete sufficient",
+   "𝑇(𝑥) is sufficient but not necessarily complete",
+   "𝑇(𝑥) is complete but not sufficient",
+   "Completeness depends on sample size"
+  ],
+  "answer_letter": "A",
+  "explanation": "Full-rank (open set in natural parameter space) is the key condition; curved exponential families may lack completeness"
+ },
+ "24": {
+  "id": "Q24",
+  "num": 24,
+  "title": "Ancillary Basu",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "By Basu’s theorem, if 𝑇is complete sufficient and 𝐴is ancillary, then:",
+  "options": [
+   "𝑇and 𝐴are independent",
+   "𝐴is a function of 𝑇",
+   "𝑇and 𝐴have the same distribution",
+   "𝐴is also sufficient"
+  ],
+  "answer_letter": "A",
+  "explanation": "This is Basu’s theorem — independence, not functional relationship; requires completeness"
+ },
+ "25": {
+  "id": "Q25",
+  "num": 25,
+  "title": "Unbiased Estimator Existence",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "For 𝑈(0, 𝜃), an unbiased estimator of 𝜃−1 based on 𝑋(𝑛):",
+  "options": [
+   "Does not exist",
+   "Is (n−1)/(n·X_(n))",
+   "Is X_(n)",
+   "Is ((n+1)/n)·X_(n)"
+  ],
+  "answer_letter": "B",
+  "explanation": "E[X_(n)] = nθ/(n+1); by direct integration E[1/X_(n)] = n/((n−1)θ) for n>1, so (n−1)/(n·X_(n)) is unbiased for 1/θ."
+ },
+ "26": {
+  "id": "Q26",
+  "num": 26,
+  "title": "Lehmann Scheffe",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "Lehmann-Scheffé theorem states:",
+  "options": [
+   "Any unbiased estimator based on complete sufficient statistic is UMVUE",
+   "UMVUE always attains CRLB",
+   "Complete sufficient statistic is always MLE",
+   "Rao-Blackwell improvement always yields UMVUE"
+  ],
+  "answer_letter": "A",
+  "explanation": "B is false (UMVUE may not attain CRLB); D requires completeness for uniqueness"
+ },
+ "27": {
+  "id": "Q27",
+  "num": 27,
+  "title": "Fisher Consistency",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "An estimator 𝑇𝑛is Fisher consistent if:",
+  "options": [
+   "𝑇𝑛 𝑝 −→𝜃as 𝑛→∞",
+   "The functional 𝑇(𝐹𝜃) = 𝜃where 𝐹𝜃is the true CDF",
+   "𝐸[𝑇𝑛] = 𝜃for all 𝑛",
+   "𝑇𝑛is a function of sufficient statistic"
+  ],
+  "answer_letter": "B",
+  "explanation": "Fisher consistency is a property of the functional form, not a sequence property; different from ordinary consistency"
+ },
+ "28": {
+  "id": "Q28",
+  "num": 28,
+  "title": "Superefficiency",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "Hodges’ superefficient estimator demonstrates:",
+  "options": [
+   "An estimator can have asymptotic variance below CRLB at isolated points",
+   "MLE is never asymptotically efficient",
+   "CRLB can be beaten uniformly",
+   "Superefficiency implies admissibility"
+  ],
+  "answer_letter": "A",
+  "explanation": "Superefficiency occurs only on a set of measure zero; Le Cam showed it cannot hold on a dense set"
+ },
+ "29": {
+  "id": "Q29",
+  "num": 29,
+  "title": "Stein Paradox",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "James-Stein estimator dominates sample mean in terms of MSE when:",
+  "options": [
+   "𝑝≥1 (any dimension)",
+   "𝑝≥2",
+   "𝑝≥3",
+   "𝑝≥4"
+  ],
+  "answer_letter": "C",
+  "explanation": "For 𝑝= 1, 2 sample mean is admissible; Stein paradox kicks in at 𝑝≥3"
+ },
+ "30": {
+  "id": "Q30",
+  "num": 30,
+  "title": "Moment Estimator Consistency",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "Method of moments estimators are generally:",
+  "options": [
+   "Consistent and efficient",
+   "Consistent but not necessarily efficient",
+   "Efficient but not consistent",
+   "Neither consistent nor efficient"
+  ],
+  "answer_letter": "B",
+  "explanation": "MOM estimators are consistent (by LLN) but typically less efficient than MLE"
+ },
+ "31": {
+  "id": "Q31",
+  "num": 31,
+  "title": "CRLB Multiparameter",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "For multiparameter case, CRLB for 𝑔(𝜃) involves:",
+  "options": [
+   "Scalar Fisher information",
+   "Fisher information matrix 𝐼(𝜃) and gradient ∇𝑔",
+   "Only diagonal elements of 𝐼(𝜃)",
+   "Determinant of 𝐼(𝜃)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Var(̂𝑔) ≥[∇𝑔]𝑇𝐼(𝜃)−1[∇𝑔]; off-diagonal elements matter"
+ },
+ "32": {
+  "id": "Q32",
+  "num": 32,
+  "title": "Truncated Distribution MLE",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "For truncated normal 𝑁(𝜇, 1) truncated to (0, ∞), MLE of 𝜇:",
+  "options": [
+   "Is̄ 𝑋(same as untruncated)",
+   "Requires solving a nonlinear equation",
+   "Does not exist",
+   "Is the sample median"
+  ],
+  "answer_letter": "B",
+  "explanation": "Truncation changes the likelihood; MLE satisfies̄ 𝑋= 𝜇+ 𝜙(𝜇)/Φ(𝜇) (Mills ratio equation)"
+ },
+ "33": {
+  "id": "Q33",
+  "num": 33,
+  "title": "Robust Estimator",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "The sample median is preferred over sample mean when:",
+  "options": [
+   "Distribution is symmetric",
+   "Distribution has heavy tails or outliers",
+   "Sample size is large",
+   "Distribution is normal"
+  ],
+  "answer_letter": "B",
+  "explanation": "For normal distribution, mean is more efficient; median’s advantage is robustness to outliers"
+ },
+ "34": {
+  "id": "Q34",
+  "num": 34,
+  "title": "Unbiased Variance Estimator",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "𝑆2 = 𝑛−1 ∑(𝑋𝑖−̄ 𝑋)2 is unbiased for 𝜎2 because:",
+  "options": [
+   "𝐸[∑(𝑋𝑖−̄ 𝑋)2] = (𝑛−1)𝜎2",
+   "𝐸[∑(𝑋𝑖−̄ 𝑋)2] = 𝑛𝜎2",
+   "̄ 𝑋is independent of 𝑆2 under normality",
+   "Both A and C"
+  ],
+  "answer_letter": "A",
+  "explanation": "The (𝑛−1) denominator corrects for one degree of freedom lost by estimating 𝜇 with̄ 𝑋"
+ },
+ "35": {
+  "id": "Q35",
+  "num": 35,
+  "title": "Jackknife Bias",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "The jackknife bias estimate for̂ 𝜃is:",
+  "options": [
+   "(𝑛−1)(̂𝜃(⋅) −̂ 𝜃)",
+   "𝑛(̂𝜃−̂ 𝜃(⋅))",
+   "̂ 𝜃−̂ 𝜃(⋅)",
+   "(𝑛−1)(̂𝜃−̂ 𝜃(⋅))"
+  ],
+  "answer_letter": "A",
+  "explanation": "̂ 𝜃(⋅) =(1)/(𝑛)∑𝑖̂ 𝜃(𝑖) is mean of leave-one-out estimates; bias= (𝑛−1)(̄̂𝜃(⋅) −̂ 𝜃)"
+ },
+ "36": {
+  "id": "Q36",
+  "num": 36,
+  "title": "Bootstrap Principle",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "Bootstrap estimates sampling distribution of̂ 𝜃by:",
+  "options": [
+   "Analytical approximation using CLT",
+   "Resampling WITH replacement from observed data",
+   "Resampling WITHOUT replacement from observed data",
+   "Generating data from fitted parametric model only"
+  ],
+  "answer_letter": "B",
+  "explanation": "With replacement is key; without replacement is subsampling (different method); parametric bootstrap uses fitted model"
+ },
+ "37": {
+  "id": "Q37",
+  "num": 37,
+  "title": "Delta Method",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "By delta method, asymptotic variance of 𝑔(̄𝑋) is:",
+  "options": [
+   "[𝑔′(𝜇)]2 ⋅𝜎2/𝑛",
+   "𝑔′(𝜇) ⋅𝜎2/𝑛",
+   "[𝑔(𝜇)]2 ⋅𝜎2/𝑛",
+   "[𝑔″(𝜇)]2 ⋅𝜎2/𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "First derivative squared, not second; applies when 𝑔′(𝜇) ≠0"
+ },
+ "38": {
+  "id": "Q38",
+  "num": 38,
+  "title": "Variance Stabilizing",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "Variance stabilizing transformation for Poisson(𝜆) is:",
+  "options": [
+   "√ 𝑋",
+   "log 𝑋",
+   "𝑋2",
+   "1/𝑋"
+  ],
+  "answer_letter": "A",
+  "explanation": "For Poisson, Var(𝑋) = 𝜆= 𝐸[𝑋]; VST satisfies 𝑔′(𝜇) ∝1/√𝜇, giving 𝑔(𝜇) = 2√𝜇; √ 𝑋is the answer"
+ },
+ "39": {
+  "id": "Q39",
+  "num": 39,
+  "title": "Ancillary Example",
+  "difficulty": "HIGH",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "For location family 𝑓(𝑥−𝜃), which is ancillary?",
+  "options": [
+   "Sample mean̄ 𝑋",
+   "Sample range 𝑋(𝑛) −𝑋(1)",
+   "Sample maximum 𝑋(𝑛)",
+   "Sample variance 𝑆2 (when 𝜃is location only)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Range and all spacings are ancillary for location families; 𝑆2 is ancillary only if scale is known"
+ },
+ "40": {
+  "id": "Q40",
+  "num": 40,
+  "title": "Completeness Bernoulli",
+  "difficulty": "MEDIUM",
+  "topic": "Unbiasedness, Consistency, Efficiency, Sufficiency & Completeness — Foundations",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Bernoulli(𝑝), 𝑇= ∑𝑋𝑖is complete because:",
+  "options": [
+   "It is sufficient",
+   "𝐸𝑝[𝑔(𝑇)] = 0 for all 𝑝∈(0, 1) implies 𝑔≡0 (polynomial argument)",
+   "It is the MLE",
+   "It has binomial distribution"
+  ],
+  "answer_letter": "B",
+  "explanation": "Completeness proof: E[g(T)] = Σ_{t=0}^{n} g(t) C(n,t) p^t(1−p)^{n−t} = 0 for all p implies all g(t) = 0."
+ },
+ "41": {
+  "id": "Q41",
+  "num": 41,
+  "title": "CRLB Formula",
+  "difficulty": "MEDIUM",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For unbiased estimator̂ 𝜃, CRLB states:",
+  "options": [
+   "Var(̂𝜃) ≥ 𝑛𝐼(𝜃)",
+   "Var(̂𝜃) ≥ 𝐼(𝜃)",
+   "Var(̂𝜃) ≥ 𝑛 𝐼(𝜃)",
+   "Var(̂𝜃) ≥𝐼(𝜃)"
+  ],
+  "answer_letter": "A",
+  "explanation": "For i.i.d. sample of size 𝑛: CRLB= 1/(𝑛𝐼1(𝜃)) where 𝐼1 is single-observation Fisher info"
+ },
+ "42": {
+  "id": "Q42",
+  "num": 42,
+  "title": "Fisher Info Normal",
+  "difficulty": "MEDIUM",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼𝑁(𝜇, 𝜎2) with 𝜎2 known, 𝐼(𝜇) equals:",
+  "options": [
+   "1/𝜎2",
+   "𝜎2",
+   "2/𝜎4",
+   "1/(2𝜎2)"
+  ],
+  "answer_letter": "A",
+  "explanation": "log 𝑓= −((𝑥−𝜇)2)/(2𝜎2) + 𝐶; 𝜕2 log 𝑓/𝜕𝜇2 = −1/𝜎2; 𝐼(𝜇) = 1/𝜎2"
+ },
+ "43": {
+  "id": "Q43",
+  "num": 43,
+  "title": "Fisher Info Bernoulli",
+  "difficulty": "MEDIUM",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Bernoulli(𝑝), 𝐼(𝑝) equals:",
+  "options": [
+   "𝑝(1 −𝑝)",
+   "1/[𝑝(1 −𝑝)]",
+   "𝑝/(1 −𝑝)",
+   "1/𝑝+ 1/(1 −𝑝)"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝐼(𝑝) = 𝐸[(𝜕log 𝑓/𝜕𝑝)2] = 1/[𝑝(1 −𝑝)]; CRLB for̄ 𝑋is 𝑝(1 −𝑝)/𝑛— verify: Var(̄𝑋) = 𝑝(1 −𝑝)/𝑛✓attains CRLB"
+ },
+ "44": {
+  "id": "Q44",
+  "num": 44,
+  "title": "Fisher Info Poisson",
+  "difficulty": "MEDIUM",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Poisson(𝜆), 𝐼(𝜆) equals:",
+  "options": [
+   "𝜆",
+   "1/𝜆",
+   "𝜆2",
+   "1/𝜆2"
+  ],
+  "answer_letter": "B",
+  "explanation": "log 𝑓= 𝑥log 𝜆−𝜆−log(𝑥!); 𝜕2 log 𝑓/𝜕𝜆2 = −𝑥/𝜆2; 𝐼(𝜆) = 𝐸[𝑋]/𝜆2 = 1/𝜆"
+ },
+ "45": {
+  "id": "Q45",
+  "num": 45,
+  "title": "CRLB Function Parameter",
+  "difficulty": "MEDIUM",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "CRLB for estimating 𝑔(𝜃) (unbiased) is:",
+  "options": [
+   "[𝑔′(𝜃)]2 𝑛𝐼(𝜃)",
+   "(𝑔′(𝜃))/(𝑛𝐼)(𝜃)",
+   "[𝑔(𝜃)]2 𝑛𝐼(𝜃)",
+   "[𝑔′(𝜃)]2 𝐼(𝜃)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Chain rule applies: [𝑔′(𝜃)]2 in numerator; D forgets the 𝑛factor"
+ },
+ "46": {
+  "id": "Q46",
+  "num": 46,
+  "title": "CRLB Attainment Condition",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "CRLB is attained if and only if:",
+  "options": [
+   "𝜕log 𝑓 𝜕𝜃 = 𝐴(𝜃)[𝑇(𝑥) −𝑔(𝜃)] for some functions 𝐴, 𝑔",
+   "The distribution is normal",
+   "The estimator is MLE",
+   "The sample size is large"
+  ],
+  "answer_letter": "A",
+  "explanation": "This is the exact attainment condition; it implies 𝑇(𝑥) is UMVUE for 𝑔(𝜃); only exponential family members typically satisfy this"
+ },
+ "47": {
+  "id": "Q47",
+  "num": 47,
+  "title": "CRLB Exponential",
+  "difficulty": "MEDIUM",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Exp(𝜃) (rate 𝜃), CRLB for̂ 𝜃(unbiased) is:",
+  "options": [
+   "𝜃2/𝑛",
+   "𝜃/𝑛",
+   "1/(𝑛𝜃2)",
+   "𝑛/𝜃2"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐼(𝜃) = 1/𝜃2; CRLB= 𝜃2/𝑛; MLE 1/̄𝑋attains this bound"
+ },
+ "48": {
+  "id": "Q48",
+  "num": 48,
+  "title": "CRLB Uniform DNE",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼𝑈(0, 𝜃), CRLB for 𝜃:",
+  "options": [
+   "Equals 𝜃2/(3𝑛)",
+   "Equals 𝜃2/𝑛",
+   "Does not exist",
+   "Equals 4𝜃2/𝑛"
+  ],
+  "answer_letter": "C",
+  "explanation": "Support (0, 𝜃) depends on 𝜃; regularity condition violated; CRLB framework inapplicable; UMVUE variance is 𝜃2/[𝑛(𝑛+ 2)]"
+ },
+ "49": {
+  "id": "Q49",
+  "num": 49,
+  "title": "Information Inequality Biased",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For biased estimator with bias 𝑏(𝜃), the generalized CRLB is:",
+  "options": [
+   "Var(̂𝜃) ≥([1+𝑏′(𝜃)]2)/(𝑛𝐼)(𝜃)",
+   "Var(̂𝜃) ≥([𝑏′(𝜃)]2)/(𝑛𝐼)(𝜃)",
+   "MSE(̂𝜃) ≥ 𝑛𝐼(𝜃)",
+   "Var(̂𝜃) ≥ 𝑛𝐼(𝜃)"
+  ],
+  "answer_letter": "A",
+  "explanation": "[1 + 𝑏′(𝜃)]2 not [𝑏′(𝜃)]2; when 𝑏(𝜃) = 0 (unbiased), reduces to standard CRLB"
+ },
+ "50": {
+  "id": "Q50",
+  "num": 50,
+  "title": "Bhattacharya Bound",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "Bhattacharya bounds improve upon CRLB by:",
+  "options": [
+   "Using higher-order score functions (derivatives of log-likelihood)",
+   "Using larger sample sizes",
+   "Restricting to exponential families",
+   "Using sufficient statistics"
+  ],
+  "answer_letter": "A",
+  "explanation": "Bhattacharya uses 𝜕𝑘log 𝑓/𝜕𝜃𝑘for 𝑘= 1, 2, …; first-order Bhattacharya = CRLB; higher orders give tighter bounds"
+ },
+ "51": {
+  "id": "Q51",
+  "num": 51,
+  "title": "Bhattacharya Normal Theta Sq",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼𝑁(𝜃, 1), estimating 𝜃2, Bhattacharya bound (2nd order) is:",
+  "options": [
+   "4𝜃2/𝑛",
+   "4𝜃2/𝑛+ 2/𝑛2",
+   "2/𝑛",
+   "4𝜃2/𝑛−2/𝑛2"
+  ],
+  "answer_letter": "B",
+  "explanation": "CRLB gives 4𝜃2/𝑛; 2nd-order Bhattacharya adds 2/𝑛2 term; UMVUĒ 𝑋2 −1/𝑛 has variance 4𝜃2/𝑛+ 2/𝑛2 — attains 2nd-order bound"
+ },
+ "52": {
+  "id": "Q52",
+  "num": 52,
+  "title": "Fisher Info Gamma",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Γ(𝛼, 𝛽) with 𝛼known, 𝐼(𝛽) equals:",
+  "options": [
+   "𝛼/𝛽2",
+   "𝛽2/𝛼",
+   "1/(𝛼𝛽2)",
+   "𝛼2/𝛽2"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐸[𝑋] = 𝛼𝛽, Var(𝑋) = 𝛼𝛽2; 𝐼(𝛽) = 𝛼/𝛽2; CRLB for̂ 𝛽=̄ 𝑋/𝛼is 𝛽2/(𝑛𝛼) ✓"
+ },
+ "53": {
+  "id": "Q53",
+  "num": 53,
+  "title": "CRLB Location Family",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For location family 𝑓(𝑥−𝜃), Fisher information is:",
+  "options": [
+   "𝐼(𝜃) = ∫[(𝑓′(𝑥))/(𝑓)(𝑥) ] 𝑓(𝑥)𝑑𝑥(independent of 𝜃)",
+   "𝐼(𝜃) = 𝜃2 ∫[(𝑓′(𝑥))/(𝑓)(𝑥) ] 𝑓(𝑥)𝑑𝑥",
+   "𝐼(𝜃) depends on 𝜃",
+   "𝐼(𝜃) = 1/𝜎2 always"
+  ],
+  "answer_letter": "A",
+  "explanation": "For location families, Fisher information is constant (does not depend on 𝜃); this is a key property"
+ },
+ "54": {
+  "id": "Q54",
+  "num": 54,
+  "title": "CRLB Scale Family",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For scale family(1)/(𝜃𝑓)(𝑥/𝜃), 𝐼(𝜃) equals:",
+  "options": [
+   "𝜃2 ∫[1 +(𝑥𝑓′(𝑥))/(𝑓)(𝑥) ] 𝑓(𝑥)𝑑𝑥",
+   "𝜃2 always",
+   "𝜃2 ∫[(𝑓′(𝑥))/(𝑓)(𝑥) ] 𝑓(𝑥)𝑑𝑥",
+   "1/𝜃2 times location Fisher information"
+  ],
+  "answer_letter": "A",
+  "explanation": "Score for scale family: 𝜕log 𝑓/𝜕𝜃= −1/𝜃−(𝑥/𝜃2)𝑓′(𝑥/𝜃)/𝑓(𝑥/𝜃); careful substitution needed"
+ },
+ "55": {
+  "id": "Q55",
+  "num": 55,
+  "title": "Efficient Estimator Definition",
+  "difficulty": "MEDIUM",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "An unbiased estimator is efficient if:",
+  "options": [
+   "Its variance equals CRLB",
+   "Its variance is less than all other unbiased estimators",
+   "Both A and B (they are equivalent when CRLB is attained)",
+   "It is consistent"
+  ],
+  "answer_letter": "C",
+  "explanation": "When CRLB is attained, the estimator is UMVUE; A and B are equivalent in this context"
+ },
+ "56": {
+  "id": "Q56",
+  "num": 56,
+  "title": "CRLB Cauchy",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Cauchy(𝜃, 1), 𝐼(𝜃) equals:",
+  "options": [
+   "1/2",
+   "2",
+   "1",
+   "Does not exist"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝑓(𝑥; 𝜃) = 𝜋[1+(𝑥−𝜃)2]; 𝐼(𝜃) = ∫ 4(𝑥−𝜃)2 𝜋2[1+(𝑥−𝜃)2]4 ⋅𝜋[1 + (𝑥−𝜃)2]𝑑𝑥= 1/2; sample mean is inconsistent for Cauchy"
+ },
+ "57": {
+  "id": "Q57",
+  "num": 57,
+  "title": "Information Matrix Bivariate",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑁(𝜇, 𝜎2) with both parameters unknown, Fisher information matrix is:",
+  "options": [
+   "diag(1/𝜎2, 1/(2𝜎4))",
+   "diag(𝑛/𝜎2, 𝑛/(2𝜎4))",
+   "diag(1/𝜎2, 2𝜎4)",
+   "Non-diagonal matrix"
+  ],
+  "answer_letter": "A",
+  "explanation": "Off-diagonal is zero (score functions are uncorrelated); single-observation matrix; multiply by 𝑛for sample"
+ },
+ "58": {
+  "id": "Q58",
+  "num": 58,
+  "title": "CRLB Beta Distribution",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Beta(𝜃, 1), 𝑓(𝑥; 𝜃) = 𝜃𝑥𝜃−1, 𝐼(𝜃) equals:",
+  "options": [
+   "1/𝜃2",
+   "𝜃2",
+   "1/𝜃",
+   "𝜃"
+  ],
+  "answer_letter": "A",
+  "explanation": "log 𝑓= log 𝜃+ (𝜃−1) log 𝑥; 𝜕log 𝑓/𝜕𝜃= 1/𝜃+ log 𝑥; 𝐼(𝜃) = Var(1/𝜃+ log 𝑋) = Var(log 𝑋) = 1/𝜃2 (since −log 𝑋∼Exp(𝜃))"
+ },
+ "59": {
+  "id": "Q59",
+  "num": 59,
+  "title": "CRLB Truncated",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Exp(𝜃) truncated to (0, 𝑐), CRLB:",
+  "options": [
+   "Is same as untruncated: 𝜃2/𝑛",
+   "Is smaller than 𝜃2/𝑛(more information)",
+   "Is larger than 𝜃2/𝑛(less information)",
+   "Does not exist"
+  ],
+  "answer_letter": "B",
+  "explanation": "Truncation adds information (we know 𝑋< 𝑐); Fisher information increases; CRLB decreases"
+ },
+ "60": {
+  "id": "Q60",
+  "num": 60,
+  "title": "Bhattacharya First Order",
+  "difficulty": "MEDIUM",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "The first-order Bhattacharya bound coincides with:",
+  "options": [
+   "CRLB",
+   "Rao-Blackwell bound",
+   "Chapman-Robbins bound",
+   "Hammersley-Chapman-Robbins bound"
+  ],
+  "answer_letter": "A",
+  "explanation": "Bhattacharya hierarchy: 1st order = CRLB; higher orders give tighter bounds; Chapman-Robbins is a different (non-differentiability-requiring) bound"
+ },
+ "61": {
+  "id": "Q61",
+  "num": 61,
+  "title": "Fisher Info Geometric",
+  "difficulty": "MEDIUM",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Geometric(𝑝), 𝑃(𝑋= 𝑘) = (1 −𝑝)𝑘−1𝑝, 𝐼(𝑝) equals:",
+  "options": [
+   "𝑝2(1−𝑝)",
+   "𝑝(1−𝑝)",
+   "𝑝2",
+   "(1−𝑝)2"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐸[𝑋] = 1/𝑝; Var(𝑋) = (1 −𝑝)/𝑝2; 𝐼(𝑝) = 1/[𝑝2(1 −𝑝)]; CRLB for̂ 𝑝= 1/̄𝑋is 𝑝2(1 −𝑝)/𝑛"
+ },
+ "62": {
+  "id": "Q62",
+  "num": 62,
+  "title": "CRLB Negative Binomial",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼NegBin(𝑟, 𝑝) with 𝑟known, 𝐼(𝑝) equals:",
+  "options": [
+   "𝑟 𝑝2(1−𝑝)",
+   "𝑟 𝑝(1−𝑝)",
+   "𝑝2(1−𝑝)",
+   "𝑟2 𝑝2(1−𝑝)"
+  ],
+  "answer_letter": "A",
+  "explanation": "NegBin is exponential family; 𝐼(𝑝) = 𝑟/[𝑝2(1 −𝑝)]; for 𝑟= 1 reduces to geometric case"
+ },
+ "63": {
+  "id": "Q63",
+  "num": 63,
+  "title": "Attainment Exponential Family",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "In exponential family 𝑓(𝑥; 𝜃) = ℎ(𝑥) exp[𝜂(𝜃)𝑇(𝑥) −𝐵(𝜃)], CRLB for 𝐸𝜃[𝑇(𝑋)] is attained by:",
+  "options": [
+   "𝑇(𝑋) itself",
+   "̄ 𝑇=(1)/(𝑛)∑𝑇(𝑋𝑖)",
+   "MLE of 𝐸𝜃[𝑇(𝑋)]",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "In exponential family,̄ 𝑇is UMVUE for 𝐸[𝑇], equals MLE (by invariance), and attains CRLB — all three coincide"
+ },
+ "64": {
+  "id": "Q64",
+  "num": 64,
+  "title": "CRLB Double Exponential",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Laplace(𝜃, 1), 𝑓(𝑥; 𝜃) =(1)/(2𝑒)−|𝑥−𝜃|, 𝐼(𝜃) equals:",
+  "options": [
+   "1",
+   "1/2",
+   "2",
+   "Does not exist"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝜕log 𝑓/𝜕𝜃= sgn(𝑥−𝜃); 𝐼(𝜃) = 𝐸[sgn(𝑋−𝜃)2] = 1; sample median (not mean) is MLE and UMVUE"
+ },
+ "65": {
+  "id": "Q65",
+  "num": 65,
+  "title": "CRLB Weibull",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For Weibull with shape 𝑘known and scale 𝜆: 𝑓(𝑥; 𝜆) =(𝑘)/(𝜆)(𝑥/𝜆)𝑘−1𝑒−(𝑥/𝜆)𝑘, 𝐼(𝜆) equals:",
+  "options": [
+   "𝑘2/𝜆2",
+   "𝑘/𝜆2",
+   "1/𝜆2",
+   "𝑘2/𝜆"
+  ],
+  "answer_letter": "A",
+  "explanation": "Score: 𝜕log 𝑓/𝜕𝜆= −𝑘/𝜆+ 𝑘(𝑥/𝜆)𝑘/𝜆; 𝐼(𝜆) = 𝑘2/𝜆2; CRLB= 𝜆2/(𝑛𝑘2)"
+ },
+ "66": {
+  "id": "Q66",
+  "num": 66,
+  "title": "Information Reparametrization",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "If 𝜙= 𝑔(𝜃) and 𝑔is differentiable, then 𝐼𝜙(𝜙) equals:",
+  "options": [
+   "𝐼𝜃(𝜃)/[𝑔′(𝜃)]2",
+   "𝐼𝜃(𝜃) ⋅[𝑔′(𝜃)]2",
+   "𝐼𝜃(𝜃) ⋅𝑔′(𝜃)",
+   "𝐼𝜃(𝜃)/𝑔′(𝜃)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Fisher information transforms inversely to variance; CRLB for 𝑔(𝜃) is [𝑔′(𝜃)]2/(𝑛𝐼𝜃) which equals 1/(𝑛𝐼𝜙) ✓"
+ },
+ "67": {
+  "id": "Q67",
+  "num": 67,
+  "title": "CRLB Mixture",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For mixture 𝑓(𝑥; 𝜃) = 𝜃𝑓1(𝑥) + (1 −𝜃)𝑓2(𝑥), 𝐼(𝜃) equals:",
+  "options": [
+   "∫ [𝑓1(𝑥)−𝑓2(𝑥)]2 𝜃𝑓1(𝑥)+(1−𝜃)𝑓2(𝑥)𝑑𝑥",
+   "𝜃𝐼1(𝜃) + (1 −𝜃)𝐼2(𝜃)",
+   "𝐼1(𝜃) + 𝐼2(𝜃)",
+   "𝜃2𝐼1(𝜃) + (1 −𝜃)2𝐼2(𝜃)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Score= [𝑓1(𝑥) −𝑓2(𝑥)]/𝑓(𝑥; 𝜃); 𝐼(𝜃) = 𝐸[score2] gives A; B is wrong — mixture Fisher info is NOT weighted average"
+ },
+ "68": {
+  "id": "Q68",
+  "num": 68,
+  "title": "CRLB Censored",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For Type-I right-censored exponential data, Fisher information compared to complete data:",
+  "options": [
+   "Is larger (censoring adds information about censoring mechanism)",
+   "Is smaller (censoring loses information)",
+   "Is the same",
+   "Depends on censoring time"
+  ],
+  "answer_letter": "B",
+  "explanation": "Censoring always loses information; 𝐼censored < 𝐼complete; CRLB is larger for censored data"
+ },
+ "69": {
+  "id": "Q69",
+  "num": 69,
+  "title": "Bhattacharya Poisson",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Poisson(𝜆), estimating 𝑒−2𝜆, CRLB equals:",
+  "options": [
+   "4𝜆𝑒−4𝜆/𝑛",
+   "4𝑒−4𝜆/𝑛",
+   "4𝜆2𝑒−4𝜆/𝑛",
+   "𝑒−4𝜆/𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝑔(𝜆) = 𝑒−2𝜆; 𝑔′(𝜆) = −2𝑒−2𝜆; 𝐼(𝜆) = 1/𝜆; CRLB= [𝑔′(𝜆)]2/(𝑛𝐼(𝜆)) = 4𝑒−4𝜆⋅𝜆/𝑛"
+ },
+ "70": {
+  "id": "Q70",
+  "num": 70,
+  "title": "CRLB Pareto",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For Pareto 𝑓(𝑥; 𝜃) = 𝜃/𝑥𝜃+1, 𝑥> 1, 𝐼(𝜃) equals:",
+  "options": [
+   "1/𝜃2",
+   "𝜃2",
+   "1/𝜃",
+   "𝜃"
+  ],
+  "answer_letter": "A",
+  "explanation": "log 𝑓= log 𝜃−(𝜃+ 1) log 𝑥; 𝜕log 𝑓/𝜕𝜃= 1/𝜃−log 𝑥; 𝐼(𝜃) = Var(log 𝑋) = 1/𝜃2 (since log 𝑋∼Exp(𝜃))"
+ },
+ "71": {
+  "id": "Q71",
+  "num": 71,
+  "title": "CRLB Inverse Gaussian",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For Inverse Gaussian 𝐼𝐺(𝜇, 𝜆) with 𝜆known, 𝐼(𝜇) equals:",
+  "options": [
+   "𝜆/𝜇3",
+   "𝜇3/𝜆",
+   "1/𝜇2",
+   "𝜆2/𝜇3"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐼(𝜇) = 𝜆/𝜇3; CRLB for̂ 𝜇=̄ 𝑋is 𝜇3/(𝑛𝜆); verify: Var(̄𝑋) = 𝜇3/(𝑛𝜆) ✓attains CRLB"
+ },
+ "72": {
+  "id": "Q72",
+  "num": 72,
+  "title": "CRLB Logistic",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Logistic(𝜃, 1), 𝐼(𝜃) equals:",
+  "options": [
+   "1/3",
+   "3",
+   "𝜋2/3",
+   "3/𝜋2"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝑓(𝑥; 𝜃) = 𝑒−(𝑥−𝜃)/[1+𝑒−(𝑥−𝜃)]2; 𝐼(𝜃) = 1/3; CRLB= 3/𝑛; sample mean has variance 𝜋2/(3𝑛) > 3/𝑛— not efficient"
+ },
+ "73": {
+  "id": "Q73",
+  "num": 73,
+  "title": "CRLB Binomial P",
+  "difficulty": "MEDIUM",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼Bin(𝑛, 𝑝) (single observation), 𝐼(𝑝) equals:",
+  "options": [
+   "𝑛/[𝑝(1 −𝑝)]",
+   "1/[𝑝(1 −𝑝)]",
+   "𝑛𝑝(1 −𝑝)",
+   "𝑝(1 −𝑝)/𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "Binomial(𝑛, 𝑝) = sum of 𝑛Bernoulli(𝑝); 𝐼Bin(𝑛,𝑝) = 𝑛⋅𝐼Bern(𝑝) = 𝑛/[𝑝(1 −𝑝)]"
+ },
+ "74": {
+  "id": "Q74",
+  "num": 74,
+  "title": "CRLB Multivariate Normal",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼𝑁𝑝(𝜇, Σ) with Σ known, 𝐼(𝜇) (as matrix) equals:",
+  "options": [
+   "Σ−1",
+   "Σ",
+   "|Σ|−1𝐼𝑝",
+   "tr(Σ−1)𝐼𝑝"
+  ],
+  "answer_letter": "A",
+  "explanation": "Fisher information matrix for location in multivariate normal is Σ−1; CRLB matrix is Σ/𝑛;̄ 𝑋attains it"
+ },
+ "75": {
+  "id": "Q75",
+  "num": 75,
+  "title": "CRLB Curved Exponential",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For curved exponential family (e.g., 𝑁(𝜃, 𝜃2)), CRLB:",
+  "options": [
+   "Is attained by MLE asymptotically",
+   "Is never attained exactly for finite 𝑛",
+   "Does not exist",
+   "Is attained by method of moments"
+  ],
+  "answer_letter": "B",
+  "explanation": "Curved exponential families generally cannot attain CRLB for finite 𝑛; MLE is asymptotically efficient"
+ },
+ "76": {
+  "id": "Q76",
+  "num": 76,
+  "title": "Information Processing Inequality",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "Data processing inequality for Fisher information states:",
+  "options": [
+   "𝐼𝑇(𝜃) ≤𝐼𝑋(𝜃) for any statistic 𝑇= 𝑇(𝑋)",
+   "𝐼𝑇(𝜃) ≥𝐼𝑋(𝜃) for sufficient 𝑇",
+   "𝐼𝑇(𝜃) = 𝐼𝑋(𝜃) always",
+   "𝐼𝑇(𝜃) = 𝐼𝑋(𝜃) if and only if 𝑇is sufficient"
+  ],
+  "answer_letter": "D",
+  "explanation": "A is true in general; D is the equality condition (sufficiency); B is wrong — sufficient statistic preserves, not increases, information"
+ },
+ "77": {
+  "id": "Q77",
+  "num": 77,
+  "title": "CRLB Sequential",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "In sequential sampling with random sample size 𝑁, CRLB:",
+  "options": [
+   "Is 1/(𝐸[𝑁] ⋅𝐼(𝜃))",
+   "Is 1/(𝑁⋅𝐼(𝜃)) with 𝑁fixed",
+   "Does not apply",
+   "Requires Wald’s identity"
+  ],
+  "answer_letter": "A",
+  "explanation": "For sequential procedures, expected Fisher information is 𝐸[𝑁] ⋅𝐼1(𝜃); CRLB uses expected sample size"
+ },
+ "78": {
+  "id": "Q78",
+  "num": 78,
+  "title": "Bhattacharya Normal Variance",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "For 𝑋∼𝑁(0, 𝜎2), estimating 𝜎2, CRLB equals:",
+  "options": [
+   "2𝜎4/𝑛",
+   "𝜎4/𝑛",
+   "4𝜎4/𝑛",
+   "𝜎2/𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐼(𝜎2) = 1/(2𝜎4); CRLB= 2𝜎4/𝑛; 𝑛∑𝑋²_𝑖is UMVUE and attains CRLB (since 𝜇= 0 known)"
+ },
+ "79": {
+  "id": "Q79",
+  "num": 79,
+  "title": "CRLB Attained Examples",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "Which distribution’s MLE does NOT attain CRLB for finite 𝑛?",
+  "options": [
+   "𝑁(𝜇, 𝜎2) with 𝜎2 known, estimating 𝜇",
+   "Poisson(𝜆), estimating 𝜆",
+   "𝑁(𝜇, 𝜎2) with both unknown, estimating 𝜎2",
+   "Bernoulli(𝑝), estimating 𝑝"
+  ],
+  "answer_letter": "C",
+  "explanation": "𝑆2 (with 𝑛−1 denominator) is UMVUE but does NOT attain CRLB; MLÊ 𝜎2 (with 𝑛denominator) is biased; neither attains CRLB"
+ },
+ "80": {
+  "id": "Q80",
+  "num": 80,
+  "title": "CRLB Regularity Summary",
+  "difficulty": "HIGH",
+  "topic": "Cramér–Rao Lower Bound & Fisher Information",
+  "question": "Which condition is NOT required for CRLB?",
+  "options": [
+   "Support of 𝑓(𝑥; 𝜃) independent of 𝜃",
+   "𝑓(𝑥; 𝜃) twice differentiable in 𝜃",
+   "Interchange of differentiation and integration",
+   "Distribution must be from exponential family"
+  ],
+  "answer_letter": "D",
+  "explanation": "CRLB applies to any regular family; exponential family is sufficient for attainment but NOT required for the bound itself"
+ },
+ "81": {
+  "id": "Q81",
+  "num": 81,
+  "title": "Factorization Theorem",
+  "difficulty": "MEDIUM",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "By Fisher-Neyman factorization theorem, 𝑇(𝑋) is sufficient for 𝜃iff:",
+  "options": [
+   "𝑓(𝑥; 𝜃) = 𝑔(𝑇(𝑥); 𝜃) ⋅ℎ(𝑥)",
+   "𝑓(𝑥; 𝜃) = 𝑔(𝑇(𝑥)) ⋅ℎ(𝑥; 𝜃)",
+   "𝑓(𝑥; 𝜃) = 𝑔(𝑥) ⋅ℎ(𝑇(𝑥); 𝜃)",
+   "𝑓(𝑥; 𝜃) = 𝑔(𝑇(𝑥); 𝜃) + ℎ(𝑥)"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝑔depends on 𝑥ONLY through 𝑇(𝑥) and on 𝜃; ℎdepends on 𝑥but NOT on 𝜃; product not sum"
+ },
+ "82": {
+  "id": "Q82",
+  "num": 82,
+  "title": "Sufficient Stat Normal",
+  "difficulty": "MEDIUM",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜇, 𝜎2) with both unknown, minimal sufficient statistic is:",
+  "options": [
+   "(̄𝑋, 𝑆2)",
+   "(̄𝑋, ∑𝑋²_𝑖)",
+   "(∑𝑋𝑖, ∑𝑋²_𝑖)",
+   "All of the above are equivalent"
+  ],
+  "answer_letter": "D",
+  "explanation": "All three are equivalent (one-to-one functions of each other); minimal sufficient statistic is not unique in representation"
+ },
+ "83": {
+  "id": "Q83",
+  "num": 83,
+  "title": "Sufficient Stat Uniform",
+  "difficulty": "MEDIUM",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑈(0, 𝜃), sufficient statistic is:",
+  "options": [
+   "̄ 𝑋",
+   "𝑋(𝑛) (maximum)",
+   "𝑋(1) (minimum)",
+   "∑𝑋𝑖"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝑓(x; 𝜃) = 𝜃−𝑛𝐼(𝑋(𝑛) ≤𝜃); factorization gives 𝑇= 𝑋(𝑛);̄ 𝑋is NOT sufficient here"
+ },
+ "84": {
+  "id": "Q84",
+  "num": 84,
+  "title": "Sufficient Stat Exponential",
+  "difficulty": "MEDIUM",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Exp(𝜃), sufficient statistic is:",
+  "options": [
+   "𝑋(1)",
+   "̄ 𝑋",
+   "∑𝑋𝑖",
+   "Both B and C"
+  ],
+  "answer_letter": "D",
+  "explanation": "̄ 𝑋and ∑𝑋𝑖are one-to-one functions of each other; both are sufficient; 𝑋(1) is NOT sufficient for rate parameter"
+ },
+ "85": {
+  "id": "Q85",
+  "num": 85,
+  "title": "Sufficient Stat Cauchy",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Cauchy(𝜃, 1), sufficient statistic is:",
+  "options": [
+   "̄ 𝑋",
+   "Sample median",
+   "(𝑋(1), 𝑋(2), … , 𝑋(𝑛)) — all order statistics",
+   "𝑋(1) and 𝑋(𝑛)"
+  ],
+  "answer_letter": "C",
+  "explanation": "Cauchy is NOT exponential family; likelihood does not factor to reduce dimension; full order statistics are minimal sufficient"
+ },
+ "86": {
+  "id": "Q86",
+  "num": 86,
+  "title": "Complete Sufficient Uniform",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑈(0, 𝜃), 𝑋(𝑛) is complete sufficient. UMVUE of 𝜃is:",
+  "options": [
+   "𝑋(𝑛)",
+   "(𝑛+1)/(𝑛𝑋)(𝑛)",
+   "2̄𝑋",
+   "𝑛 𝑛+1𝑋(𝑛)"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝐸[𝑋(𝑛)] = 𝑛𝜃 𝑛+1(; unbiased correction:)/(𝑛)+1 𝑛𝑋(𝑛); 2̄𝑋is unbiased but NOT UMVUE (not function of complete sufficient stat)"
+ },
+ "87": {
+  "id": "Q87",
+  "num": 87,
+  "title": "Factorization Beta",
+  "difficulty": "MEDIUM",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Beta(𝜃, 1), 𝑓(𝑥; 𝜃) = 𝜃𝑥𝜃−1, sufficient statistic is:",
+  "options": [
+   "∑𝑋𝑖",
+   "∏𝑋𝑖",
+   "∑log 𝑋𝑖",
+   "Both B and C"
+  ],
+  "answer_letter": "D",
+  "explanation": "log 𝑓= 𝑛log 𝜃+ (𝜃−1) ∑log 𝑥𝑖; 𝑇= ∑log 𝑋𝑖is sufficient; ∏𝑋𝑖= exp(∑log 𝑋𝑖) is equivalent"
+ },
+ "88": {
+  "id": "Q88",
+  "num": 88,
+  "title": "Complete Stat Uniform Both",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑈(𝛼, 𝛽) with both unknown, complete sufficient statistic is:",
+  "options": [
+   "(𝑋(1), 𝑋(𝑛))",
+   "(̄𝑋, 𝑆2)",
+   "𝑋(1) alone",
+   "𝑋(𝑛) alone"
+  ],
+  "answer_letter": "A",
+  "explanation": "Both endpoints needed; (𝑋(1), 𝑋(𝑛)) is complete sufficient for (𝛼, 𝛽); neither alone is sufficient"
+ },
+ "89": {
+  "id": "Q89",
+  "num": 89,
+  "title": "Factorization Shifted Exp",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑓(𝑥; 𝜃) = 𝑒−(𝑥−𝜃), 𝑥> 𝜃, sufficient statistic is:",
+  "options": [
+   "∑𝑋𝑖",
+   "̄ 𝑋",
+   "𝑋(1) (minimum)",
+   "𝑋(𝑛) (maximum)"
+  ],
+  "answer_letter": "C",
+  "explanation": "𝑓(x; 𝜃) = 𝑒−∑(𝑥𝑖−𝜃)𝐼(𝑋(1) > 𝜃) = 𝑒𝑛𝜃𝑒−∑𝑥𝑖𝐼(𝑋(1) > 𝜃); 𝑇= 𝑋(1) is sufficient"
+ },
+ "90": {
+  "id": "Q90",
+  "num": 90,
+  "title": "Completeness Uniform Both",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑈(𝜃, 𝜃+ 1), complete sufficient statistic is:",
+  "options": [
+   "(𝑋(1), 𝑋(𝑛))",
+   "𝑋(𝑛) −𝑋(1) (range)",
+   "̄ 𝑋",
+   "No complete sufficient statistic exists"
+  ],
+  "answer_letter": "A",
+  "explanation": "Range 𝑋(𝑛) −𝑋(1) is ancillary (not sufficient); (𝑋(1), 𝑋(𝑛)) is minimal sufficient and complete"
+ },
+ "91": {
+  "id": "Q91",
+  "num": 91,
+  "title": "Factorization Twoparam",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑁(𝜇, 𝜎2) with both unknown, joint likelihood factors through:",
+  "options": [
+   "(̄𝑋, ∑(𝑋𝑖−̄ 𝑋)2)",
+   "(̄𝑋, 𝑆2) where 𝑆2 uses 𝑛−1",
+   "(∑𝑋𝑖, ∑𝑋²_𝑖)",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "All are equivalent representations of the same sufficient statistic; factorization theorem doesn’t specify unique form"
+ },
+ "92": {
+  "id": "Q92",
+  "num": 92,
+  "title": "Sufficient Not Complete",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "An example of sufficient but NOT complete statistic:",
+  "options": [
+   "̄ 𝑋for 𝑁(𝜇, 1)",
+   "(𝑋(1), 𝑋(𝑛)) for 𝑁(𝜇, 1)",
+   "∑𝑋𝑖for Poisson(𝜆)",
+   "𝑋(𝑛) for 𝑈(0, 𝜃)"
+  ],
+  "answer_letter": "B",
+  "explanation": "(𝑋(1), 𝑋(𝑛)) is sufficient for 𝜇in 𝑁(𝜇, 1) but NOT complete; 𝐸[𝑋(𝑛)+𝑋(1)−2𝜇] = 0 but 𝑋(𝑛) + 𝑋(1) −2𝜇≠0 a.s."
+ },
+ "93": {
+  "id": "Q93",
+  "num": 93,
+  "title": "Basu Theorem Application",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑁(𝜇, 𝜎2) with 𝜎2 known, by Basu’s theorem:",
+  "options": [
+   "̄ 𝑋and 𝑆2 are independent",
+   "̄ 𝑋and sample range are independent",
+   "𝑆2 and̄ 𝑋are independent (sincē 𝑋is complete sufficient and 𝑆2 is ancillary)",
+   "All order statistics are independent of̄ 𝑋"
+  ],
+  "answer_letter": "B",
+  "explanation": "̄ 𝑋is complete sufficient for 𝜇(with 𝜎2 known); range is ancillary for 𝜇; by Basu, they’re independent"
+ },
+ "94": {
+  "id": "Q94",
+  "num": 94,
+  "title": "Factorization Pareto",
+  "difficulty": "MEDIUM",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Pareto(𝜃), 𝑓(𝑥; 𝜃) = 𝜃/𝑥𝜃+1, 𝑥> 1, sufficient statistic is:",
+  "options": [
+   "∑𝑋𝑖",
+   "∏𝑋𝑖",
+   "∑log 𝑋𝑖",
+   "𝑋(1)"
+  ],
+  "answer_letter": "C",
+  "explanation": "log 𝑓= 𝑛log 𝜃−(𝜃+ 1) ∑log 𝑥𝑖; 𝑇= ∑log 𝑋𝑖is sufficient; ∏𝑋𝑖= exp(∑log 𝑋𝑖) equivalent"
+ },
+ "95": {
+  "id": "Q95",
+  "num": 95,
+  "title": "Complete Stat Exponential Family",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑘-parameter exponential family with natural parameters 𝜂1, … , 𝜂𝑘varying freely, the natural sufficient statistic (𝑇1, … , 𝑇𝑘) is:",
+  "options": [
+   "Sufficient only",
+   "Complete sufficient",
+   "Minimal sufficient only",
+   "Complete but not sufficient"
+  ],
+  "answer_letter": "B",
+  "explanation": "Full-rank exponential family: natural sufficient statistic is BOTH complete AND minimal sufficient; “full-rank” = natural parameter space has non-empty interior"
+ },
+ "96": {
+  "id": "Q96",
+  "num": 96,
+  "title": "Factorization Geometric",
+  "difficulty": "MEDIUM",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Geometric(𝑝), sufficient statistic is:",
+  "options": [
+   "𝑋(1)",
+   "∑𝑋𝑖",
+   "̄ 𝑋",
+   "Both B and C"
+  ],
+  "answer_letter": "D",
+  "explanation": "log 𝑓= ∑𝑥𝑖log(1 −𝑝) + 𝑛log 𝑝; 𝑇= ∑𝑋𝑖is sufficient;̄ 𝑋is equivalent"
+ },
+ "97": {
+  "id": "Q97",
+  "num": 97,
+  "title": "Sufficiency Independence",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "If 𝑇is sufficient for 𝜃and 𝑈is independent of 𝑇, then:",
+  "options": [
+   "𝑈is ancillary",
+   "(𝑇, 𝑈) is sufficient for 𝜃",
+   "𝑈contains no information about 𝜃",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "Independence from sufficient statistic implies ancillarity; (𝑇, 𝑈) is trivially sufficient; ancillary statistics carry no 𝜃-information"
+ },
+ "98": {
+  "id": "Q98",
+  "num": 98,
+  "title": "Minimal Sufficient Ratio",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "Lehmann-Scheffé method finds minimal sufficient statistic via:",
+  "options": [
+   "Ratio 𝑓(x; 𝜃)/𝑓(y; 𝜃) constant in 𝜃iff 𝑇(x) = 𝑇(y)",
+   "Maximizing likelihood over 𝜃",
+   "Finding complete statistic",
+   "Rao-Blackwell theorem"
+  ],
+  "answer_letter": "A",
+  "explanation": "The ratio method: 𝑇is minimal sufficient iff the ratio of likelihoods is free of 𝜃 exactly when 𝑇(x) = 𝑇(y)"
+ },
+ "99": {
+  "id": "Q99",
+  "num": 99,
+  "title": "Complete Stat Discrete",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋∼Bin(𝑛, 𝑝) with 𝑛known, 𝑋itself is complete sufficient because:",
+  "options": [
+   "It is the MLE",
+   "𝐸𝑝[𝑔(𝑋)] = ∑ 𝑛 𝑥=0 𝑔(𝑥)((𝑛)/(𝑥))𝑝𝑥(1 −𝑝)𝑛−𝑥= 0 for all 𝑝implies 𝑔≡0",
+   "It is a function of order statistics",
+   "It attains CRLB"
+  ],
+  "answer_letter": "B",
+  "explanation": "Completeness proof uses the fact that a polynomial in 𝑝/(1 −𝑝) that is identically zero must have all coefficients zero"
+ },
+ "100": {
+  "id": "Q100",
+  "num": 100,
+  "title": "Factorization Hypergeometric",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For Hypergeometric(𝑁, 𝑀, 𝑛) with 𝑀unknown, sufficient statistic is:",
+  "options": [
+   "̄ 𝑋",
+   "∑𝑋𝑖(number of successes in sample)",
+   "𝑋(1)",
+   "No reduction possible"
+  ],
+  "answer_letter": "B",
+  "explanation": "Hypergeometric is NOT exponential family but ∑𝑋𝑖is still sufficient; factorization applies directly"
+ },
+ "101": {
+  "id": "Q101",
+  "num": 101,
+  "title": "Sufficiency Transformation",
+  "difficulty": "MEDIUM",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "If 𝑇is sufficient for 𝜃and 𝜙= 𝑔(𝑇) is one-to-one, then:",
+  "options": [
+   "𝜙is also sufficient for 𝜃",
+   "𝜙is sufficient only if 𝑔is monotone",
+   "𝜙is not necessarily sufficient",
+   "𝜙is sufficient only if 𝑔is linear"
+  ],
+  "answer_letter": "A",
+  "explanation": "One-to-one functions of sufficient statistics are sufficient; the factorization still holds through the bijection"
+ },
+ "102": {
+  "id": "Q102",
+  "num": 102,
+  "title": "Complete Stat Location",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For location family 𝑓(𝑥−𝜃) with 𝜃∈ℝ, the order statistics (𝑋(1), … , 𝑋(𝑛)) are:",
+  "options": [
+   "Complete sufficient",
+   "Minimal sufficient but NOT complete",
+   "Sufficient but not minimal",
+   "Neither sufficient nor complete"
+  ],
+  "answer_letter": "B",
+  "explanation": "For location families, order statistics are minimal sufficient but NOT complete; spacings 𝑋(𝑖+1) −𝑋(𝑖) are ancillary, providing non-trivial functions with zero expectation"
+ },
+ "103": {
+  "id": "Q103",
+  "num": 103,
+  "title": "Factorization Multinomial",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For Multinomial(𝑛; 𝑝1, … , 𝑝𝑘) with ∑𝑝𝑖= 1, sufficient statistic is:",
+  "options": [
+   "(𝑛1, … , 𝑛𝑘−1) (cell counts, last determined by constraint)",
+   "(𝑛1, … , 𝑛𝑘)",
+   "𝑛1/𝑛, … , 𝑛𝑘−1/𝑛(proportions)",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "All are equivalent representations; (𝑛1, … , 𝑛𝑘−1) determines 𝑛𝑘= 𝑛−∑ 𝑘−1 𝑖=1 𝑛𝑖"
+ },
+ "104": {
+  "id": "Q104",
+  "num": 104,
+  "title": "Sufficiency Nuisance",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "When 𝜃= (𝜓, 𝜆) with 𝜆nuisance, 𝑇is sufficient for 𝜓in the presence of 𝜆if:",
+  "options": [
+   "𝑇is sufficient for 𝜃= (𝜓, 𝜆) jointly",
+   "Conditional distribution of 𝑋given 𝑇is free of 𝜓(not necessarily 𝜆)",
+   "𝑇is ancillary for 𝜆",
+   "𝑇is complete for 𝜓"
+  ],
+  "answer_letter": "A",
+  "explanation": "Joint sufficiency implies marginal sufficiency; conditional sufficiency (given 𝜆) is a weaker concept"
+ },
+ "105": {
+  "id": "Q105",
+  "num": 105,
+  "title": "Complete Stat Twosample",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For two independent samples 𝑋𝑖∼𝑁(𝜇1, 𝜎2) and 𝑌𝑗∼𝑁(𝜇2, 𝜎2) with common 𝜎2, complete sufficient statistic is:",
+  "options": [
+   "(̄𝑋,̄ 𝑌, 𝑆²_𝑝) where 𝑆²_𝑝is pooled variance",
+   "(̄𝑋,̄ 𝑌, ∑(𝑋𝑖−̄ 𝑋)2 + ∑(𝑌𝑗−̄ 𝑌)2)",
+   "(∑𝑋𝑖, ∑𝑌𝑗, ∑𝑋²_𝑖+ ∑𝑌2 𝑗)",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "All are equivalent; three-dimensional sufficient statistic for three parameters (𝜇1, 𝜇2, 𝜎2)"
+ },
+ "106": {
+  "id": "Q106",
+  "num": 106,
+  "title": "Factorization Inverse Gaussian",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For 𝑋∼𝐼𝐺(𝜇, 𝜆) with 𝜇known, sufficient statistic for 𝜆is:",
+  "options": [
+   "∑𝑋𝑖",
+   "∑(1/𝑋𝑖−1/𝜇)",
+   "∑(𝑋𝑖−𝜇)2/𝑋𝑖",
+   "̄ 𝑋"
+  ],
+  "answer_letter": "C",
+  "explanation": "log 𝑓∝𝜆∑[(𝑥𝑖−𝜇)2/𝑥𝑖]; 𝑇= ∑(𝑋𝑖−𝜇)2/𝑋𝑖is sufficient for 𝜆"
+ },
+ "107": {
+  "id": "Q107",
+  "num": 107,
+  "title": "Completeness Truncated Family",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "For Poisson(𝜆) truncated to {1, 2, 3, …} (zero-truncated), ∑𝑋𝑖is:",
+  "options": [
+   "Complete sufficient",
+   "Sufficient but not complete",
+   "Complete but not sufficient",
+   "Neither"
+  ],
+  "answer_letter": "A",
+  "explanation": "Zero-truncated Poisson is still exponential family (with modified normalizing constant); ∑𝑋𝑖remains complete sufficient"
+ },
+ "108": {
+  "id": "Q108",
+  "num": 108,
+  "title": "Sufficient Stat Regression",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "In simple linear regression 𝑌𝑖= 𝛼+ 𝛽𝑥𝑖+ 𝜖𝑖, 𝜖𝑖∼𝑁(0, 𝜎2), sufficient statistic for (𝛼, 𝛽, 𝜎2) is:",
+  "options": [
+   "(̂𝛼,̂ 𝛽,̂ 𝜎2) — OLS estimates",
+   "(∑𝑌𝑖, ∑𝑥𝑖𝑌𝑖, ∑𝑌²_𝑖)",
+   "(̄𝑌, ∑(𝑥𝑖−̄ 𝑥)𝑌𝑖, RSS)",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "All are equivalent three-dimensional sufficient statistics; OLS estimates are one-toone functions of the natural sufficient statistics"
+ },
+ "109": {
+  "id": "Q109",
+  "num": 109,
+  "title": "Basu Theorem Proof Idea",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "Basu’s theorem proof relies on:",
+  "options": [
+   "Completeness of 𝑇and ancillarity of 𝐴to show 𝑃(𝐴∈𝐵|𝑇= 𝑡) = 𝑃(𝐴∈𝐵)",
+   "Independence of order statistics",
+   "Factorization theorem",
+   "Rao-Blackwell theorem"
+  ],
+  "answer_letter": "A",
+  "explanation": "Key step: 𝐸𝜃[𝑃(𝐴∈𝐵|𝑇) −𝑃𝜃(𝐴∈𝐵)] = 0 for all 𝜃; by completeness, 𝑃(𝐴∈ 𝐵|𝑇) = 𝑃𝜃(𝐴∈𝐵) a.s., giving independence"
+ },
+ "110": {
+  "id": "Q110",
+  "num": 110,
+  "title": "Factorization Logistic Regression",
+  "difficulty": "HIGH",
+  "topic": "Factorization Theorem, Sufficiency & Completeness — Worked Families",
+  "question": "In logistic regression with 𝑃(𝑌𝑖= 1) = 𝑒𝛽𝑥𝑖 1+𝑒𝛽𝑥𝑖, sufficient statistic for 𝛽is:",
+  "options": [
+   "∑𝑌𝑖",
+   "∑𝑥𝑖𝑌𝑖",
+   "(∑𝑌𝑖, ∑𝑥𝑖𝑌𝑖)",
+   "̄ 𝑌"
+  ],
+  "answer_letter": "B",
+  "explanation": "log 𝐿= 𝛽∑𝑥𝑖𝑦𝑖−∑log(1+𝑒𝛽𝑥𝑖); 𝑇= ∑𝑥𝑖𝑌𝑖is sufficient for 𝛽(single parameter)"
+ },
+ "111": {
+  "id": "Q111",
+  "num": 111,
+  "title": "MLE Normal Both",
+  "difficulty": "MEDIUM",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜇, 𝜎2), MLE of 𝜎2 is:",
+  "options": [
+   "𝑆2 = 𝑛−1 ∑(𝑋𝑖−̄ 𝑋)2",
+   "̂ 𝜎2 =(1)/(𝑛)∑(𝑋𝑖−̄ 𝑋)2",
+   "(1)/(𝑛)∑(𝑋𝑖−𝜇)2",
+   "𝑛+1 ∑(𝑋𝑖−̄ 𝑋)2"
+  ],
+  "answer_letter": "B",
+  "explanation": "MLE uses 𝑛denominator (biased); unbiased estimator uses 𝑛−1; C is MLE only when 𝜇is known"
+ },
+ "112": {
+  "id": "Q112",
+  "num": 112,
+  "title": "MLE Uniform",
+  "difficulty": "MEDIUM",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑈(0, 𝜃), MLE of 𝜃is:",
+  "options": [
+   "2̄𝑋",
+   "̄ 𝑋",
+   "𝑋(𝑛)",
+   "(𝑛+1)/(𝑛𝑋)(𝑛)"
+  ],
+  "answer_letter": "C",
+  "explanation": "Likelihood 𝐿(𝜃) = 𝜃−𝑛𝐼(𝜃≥𝑋(𝑛)) is decreasing in 𝜃; minimized at 𝜃= 𝑋(𝑛); D is UMVUE not MLE"
+ },
+ "113": {
+  "id": "Q113",
+  "num": 113,
+  "title": "MLE Shifted Exponential",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑒−(𝑥−𝜃), 𝑥> 𝜃, MLE of 𝜃is:",
+  "options": [
+   "̄ 𝑋−1",
+   "𝑋(1) −1/𝑛",
+   "𝑋(1)",
+   "̄ 𝑋"
+  ],
+  "answer_letter": "C",
+  "explanation": "Likelihood 𝐿(𝜃) = 𝑒−∑(𝑥𝑖−𝜃)𝐼(𝜃≤𝑋(1)) = 𝑒𝑛𝜃𝑒−∑𝑥𝑖𝐼(𝜃≤𝑋(1)); increasing in 𝜃; maximized at 𝜃= 𝑋(1)"
+ },
+ "114": {
+  "id": "Q114",
+  "num": 114,
+  "title": "MLE Cauchy",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Cauchy(𝜃, 1), MLE of 𝜃:",
+  "options": [
+   "Is̄ 𝑋",
+   "Is sample median",
+   "Has no closed form; requires numerical optimization",
+   "Is 𝑋(𝑛/2) (middle order statistic)"
+  ],
+  "answer_letter": "C",
+  "explanation": "Score equation ∑ 2(𝑥𝑖−𝜃) 1+(𝑥𝑖−𝜃)2 = 0 has no closed form; sample median is a good starting point but MLE ≠median exactly"
+ },
+ "115": {
+  "id": "Q115",
+  "num": 115,
+  "title": "MLE Invariance Example",
+  "difficulty": "MEDIUM",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "If̂ 𝜆=̄ 𝑋is MLE of 𝜆for Poisson, MLE of 𝑃(𝑋= 0) = 𝑒−𝜆is:",
+  "options": [
+   "𝑒−̄𝑋",
+   "(1)/(𝑛)∑𝐼(𝑋𝑖= 0)",
+   "𝑒−𝜆evaluated at UMVUE",
+   "1 −̄ 𝑋"
+  ],
+  "answer_letter": "A",
+  "explanation": "By invariance of MLE:̂ 𝑒−𝜆= 𝑒−̂𝜆= 𝑒−̄𝑋; B is unbiased but not MLE; note 𝑒−̄𝑋≠ UMVUE"
+ },
+ "116": {
+  "id": "Q116",
+  "num": 116,
+  "title": "MLE Consistency",
+  "difficulty": "MEDIUM",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Under regularity conditions, MLÊ 𝜃𝑛satisfies:",
+  "options": [
+   "̂ 𝜃𝑛 𝑝 −→𝜃0 (true value)",
+   "̂ 𝜃𝑛 𝑎.𝑠. −−→𝜃0",
+   "̂ 𝜃𝑛is unbiased for all 𝑛",
+   "Both A and B"
+  ],
+  "answer_letter": "A",
+  "explanation": "MLE is consistent (in probability) under regularity; strong consistency (a.s.) requires additional conditions; C is generally false"
+ },
+ "117": {
+  "id": "Q117",
+  "num": 117,
+  "title": "MLE Asymptotic Normality",
+  "difficulty": "MEDIUM",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Under regularity conditions, √𝑛(̂𝜃𝑛−𝜃) 𝑑−→:",
+  "options": [
+   "𝑁(0, 𝐼(𝜃))",
+   "𝑁(0, 1/𝐼(𝜃))",
+   "𝑁(0, 𝐼(𝜃)−1)",
+   "Both B and C (same thing for scalar 𝜃)"
+  ],
+  "answer_letter": "D",
+  "explanation": "For scalar 𝜃: 1/𝐼(𝜃) and 𝐼(𝜃)−1 are identical; for vector 𝜃: 𝐼(𝜃)−1 is the matrix inverse"
+ },
+ "118": {
+  "id": "Q118",
+  "num": 118,
+  "title": "MLE Multimodal",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "When log-likelihood has multiple local maxima, MLE is:",
+  "options": [
+   "The global maximum",
+   "The local maximum closest to MOM estimate",
+   "The average of all local maxima",
+   "Undefined"
+  ],
+  "answer_letter": "A",
+  "explanation": "MLE is defined as the GLOBAL maximum; in practice, numerical methods may find local maxima — this is a computational challenge, not a definitional one"
+ },
+ "119": {
+  "id": "Q119",
+  "num": 119,
+  "title": "MLE Boundary",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜇, 1) with constraint 𝜇≥0, MLE of 𝜇is:",
+  "options": [
+   "̄ 𝑋always",
+   "max(̄𝑋, 0)",
+   "|̄𝑋|",
+   "̄ 𝑋if̄ 𝑋> 0, undefined otherwise"
+  ],
+  "answer_letter": "B",
+  "explanation": "Constrained MLE: if unconstrained MLĒ 𝑋≥0, use it; if̄ 𝑋< 0, boundary value 𝜇= 0 maximizes constrained likelihood"
+ },
+ "120": {
+  "id": "Q120",
+  "num": 120,
+  "title": "MLE Discrete Uniform",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼DiscreteUniform{1, 2, … , 𝑁} with 𝑁unknown, MLE of 𝑁is:",
+  "options": [
+   "2̄𝑋−1",
+   "𝑋(𝑛)",
+   "𝑋(𝑛) + 1",
+   "⌈2̄𝑋⌉"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝐿(𝑁) = 𝑁−𝑛𝐼(𝑁≥𝑋(𝑛)); decreasing in 𝑁; MLE= 𝑋(𝑛) (smallest valid 𝑁); note MLE is biased"
+ },
+ "121": {
+  "id": "Q121",
+  "num": 121,
+  "title": "MLE Mixture EM",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "EM algorithm for MLE in mixture models:",
+  "options": [
+   "E-step: compute expected complete-data log-likelihood; M-step: maximize it",
+   "E-step: maximize; M-step: compute expectation",
+   "Directly maximizes observed-data likelihood",
+   "Requires complete data"
+  ],
+  "answer_letter": "A",
+  "explanation": "EM: E-step computes 𝑄(𝜃|𝜃(𝑡)) = 𝐸[log 𝐿𝑐|observed, 𝜃(𝑡)]; M-step maximizes 𝑄; guaranteed to increase observed likelihood"
+ },
+ "122": {
+  "id": "Q122",
+  "num": 122,
+  "title": "MLE Exponential Family",
+  "difficulty": "MEDIUM",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "In exponential family, MLE satisfies:",
+  "options": [
+   "𝐸̂𝜃[𝑇(𝑋)] =̄ 𝑇(observed sufficient statistic equals expected)",
+   "Score equation: ∑𝜕log 𝑓/𝜕𝜃= 0",
+   "Both A and B",
+   "Neither; MLE requires numerical methods"
+  ],
+  "answer_letter": "C",
+  "explanation": "In exponential family, score equation reduces to moment equation 𝐸𝜃[𝑇] =̄ 𝑇; both characterizations are equivalent"
+ },
+ "123": {
+  "id": "Q123",
+  "num": 123,
+  "title": "MLE Regularity Failure",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "MLE may fail to be consistent when:",
+  "options": [
+   "Number of parameters grows with sample size (Neyman-Scott problem)",
+   "Distribution is normal",
+   "Sample size is large",
+   "Likelihood is unimodal"
+  ],
+  "answer_letter": "A",
+  "explanation": "Neyman-Scott: incidental parameters problem; MLE of variance in panel data with individual fixed effects is inconsistent"
+ },
+ "124": {
+  "id": "Q124",
+  "num": 124,
+  "title": "MLE Poisson Truncated",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For zero-truncated Poisson, MLÊ 𝜆satisfies:",
+  "options": [
+   "̂ 𝜆=̄ 𝑋",
+   "̄ 𝑋=̂ 𝜆/(1 −𝑒−̂𝜆)",
+   "̂ 𝜆=̄ 𝑋−1",
+   "̂ 𝜆=̄ 𝑋(1 −𝑒−̄𝑋)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Truncated mean 𝐸[𝑋|𝑋> 0] = 𝜆/(1 −𝑒−𝜆); setting equal tō 𝑋gives implicit equation; no closed form"
+ },
+ "125": {
+  "id": "Q125",
+  "num": 125,
+  "title": "MLE Gamma Shape",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For Γ(𝛼, 𝛽) with both unknown, MLE of 𝛼satisfies:",
+  "options": [
+   "loĝ 𝛼−𝜓(̂𝛼) = loḡ 𝑋−log 𝑋",
+   "̂ 𝛼=̄ 𝑋/̂𝛽",
+   "̂ 𝛼= 𝑛/ ∑log 𝑋𝑖",
+   "No closed form exists; use Newton-Raphson"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝜓is digamma function; A is the score equation for 𝛼; D is correct in spirit but A specifies the equation; B giveŝ 𝛼in terms of̂ 𝛽"
+ },
+ "126": {
+  "id": "Q126",
+  "num": 126,
+  "title": "MLE Logistic",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For logistic regression, MLE:",
+  "options": [
+   "Has closed form via OLS",
+   "Requires iterative methods (IRLS or Newton-Raphson)",
+   "Is always unique",
+   "Both B and C"
+  ],
+  "answer_letter": "D",
+  "explanation": "Logistic MLE: no closed form; IRLS converges to unique global maximum (loglikelihood is concave); uniqueness requires full rank design matrix"
+ },
+ "127": {
+  "id": "Q127",
+  "num": 127,
+  "title": "MLE Censored Exponential",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For Type-II censored sample (smallest 𝑟out of 𝑛observed) from Exp(𝜃), MLE of 𝜃is:",
+  "options": [
+   "1/X̄_r where X̄_r is mean of r observed",
+   "r/[Σ_{i=1}^{r} X_(i) + (n−r)X_(r)]",
+   "r/Σ_{i=1}^{r} X_(i)",
+   "1/X_(r)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Total time on test = Σ_{i=1}^{r} X_(i) + (n−r)X_(r); MLE = r/(total time on test); C ignores the censored contribution."
+ },
+ "128": {
+  "id": "Q128",
+  "num": 128,
+  "title": "MLE Weibull Shape",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For Weibull(𝑘, 𝜆) with 𝜆known, MLE of 𝑘satisfies:",
+  "options": [
+   "1/k̂ + (1/n)Σlog X_i − (ΣX_i^{k̂} log X_i)/(ΣX_i^{k̂}) = 0",
+   "k̂ = n/Σlog X_i",
+   "k̂ = X̄/λ",
+   "k̂ = 1/log X̄"
+  ],
+  "answer_letter": "A",
+  "explanation": "Score equation for Weibull shape is transcendental; B is MLE for Beta(𝜃, 1) not Weibull; requires numerical solution"
+ },
+ "129": {
+  "id": "Q129",
+  "num": 129,
+  "title": "MLE Dirichlet",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For Dirichlet(𝛼1, … , 𝛼𝑘), MLE of 𝛼𝑗satisfies:",
+  "options": [
+   "𝜓(̂𝛼𝑗) −𝜓(̂𝛼0) = log 𝑋𝑗where 𝛼0 = ∑𝛼𝑗",
+   "̂ 𝛼𝑗=̄ 𝑋𝑗",
+   "̂ 𝛼𝑗= 𝑛̄𝑋𝑗",
+   "No MLE exists"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝜓is digamma; system of equations must be solved simultaneously; B/C are MOM not MLE"
+ },
+ "130": {
+  "id": "Q130",
+  "num": 130,
+  "title": "MLE Nonregular Rate",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑈(𝜃−1/2, 𝜃+ 1/2), MLE of 𝜃:",
+  "options": [
+   "Is̄ 𝑋",
+   "Is any value in [𝑋(𝑛) −1/2, 𝑋(1) + 1/2]",
+   "Is 𝑋(1)+𝑋(𝑛)",
+   "Does not exist"
+  ],
+  "answer_letter": "B",
+  "explanation": "Likelihood is constant for 𝜃∈[𝑋(𝑛)−1/2, 𝑋(1)+1/2]; MLE is NOT unique; 𝑋(1)+𝑋(𝑛) is a natural choice but not the unique MLE"
+ },
+ "131": {
+  "id": "Q131",
+  "num": 131,
+  "title": "MLE Convergence Rate",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Under regularity, MLE converges at rate:",
+  "options": [
+   "𝑛−1/2 (parametric rate)",
+   "𝑛−1",
+   "𝑛−1/3",
+   "(log 𝑛)−1"
+  ],
+  "answer_letter": "A",
+  "explanation": "Parametric MLE:̂ 𝜃−𝜃= 𝑂𝑝(𝑛−1/2); nonparametric rates are slower; 𝑛−1/2 is the hallmark of parametric efficiency"
+ },
+ "132": {
+  "id": "Q132",
+  "num": 132,
+  "title": "MLE Profile Likelihood",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Profile likelihood for 𝜓(with nuisance 𝜆) is:",
+  "options": [
+   "𝐿𝑝(𝜓) = max𝜆𝐿(𝜓, 𝜆)",
+   "𝐿𝑝(𝜓) = ∫𝐿(𝜓, 𝜆)𝑑𝜆",
+   "𝐿𝑝(𝜓) = 𝐿(𝜓,̂ 𝜆) wherê 𝜆is marginal MLE",
+   "𝐿𝑝(𝜓) = 𝐿(𝜓,̂ 𝜆𝜓) wherê 𝜆𝜓= arg max𝜆𝐿(𝜓, 𝜆)"
+  ],
+  "answer_letter": "D",
+  "explanation": "Profile likelihood: maximize over nuisance at each fixed 𝜓; A and D are equivalent; B is marginal likelihood (Bayesian); C uses wronĝ 𝜆"
+ },
+ "133": {
+  "id": "Q133",
+  "num": 133,
+  "title": "MLE Second Order",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Bartlett correction improves likelihood ratio test by:",
+  "options": [
+   "Scaling −2 log Λ by factor 1 + 𝑏/𝑛to achieve 𝜒2 distribution to order 𝑂(𝑛−2)",
+   "Adding 𝑏/𝑛to the test statistic",
+   "Using 𝐹-distribution instead of 𝜒2",
+   "Adjusting degrees of freedom"
+  ],
+  "answer_letter": "A",
+  "explanation": "Bartlett correction: divide −2 log Λ by (1 + 𝑏/𝑛); improves 𝜒2 approximation from 𝑂(𝑛−1) to 𝑂(𝑛−2) error"
+ },
+ "134": {
+  "id": "Q134",
+  "num": 134,
+  "title": "MLE Penalized",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Penalized MLE (e.g., LASSO) maximizes:",
+  "options": [
+   "log 𝐿(𝜃) −𝜆‖𝜃‖1",
+   "log 𝐿(𝜃) + 𝜆‖𝜃‖1",
+   "log 𝐿(𝜃) −𝜆‖𝜃‖²_2",
+   "A only (LASSO uses 𝐿1 penalty)"
+  ],
+  "answer_letter": "A",
+  "explanation": "LASSO: 𝐿1 penalty subtracted; Ridge: 𝐿²_2 penalty subtracted; both are A-type (subtract penalty); D is correct but incomplete"
+ },
+ "135": {
+  "id": "Q135",
+  "num": 135,
+  "title": "MLE Robust",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "M-estimators generalize MLE by solving:",
+  "options": [
+   "∑𝜓(𝑋𝑖; 𝜃) = 0 for some function 𝜓",
+   "∑𝜕log 𝑓/𝜕𝜃= 0 only",
+   "min ∑𝜌(𝑋𝑖; 𝜃) for loss 𝜌",
+   "Both A and C (equivalent formulations)"
+  ],
+  "answer_letter": "D",
+  "explanation": "M-estimators: 𝜓= 𝜕𝜌/𝜕𝜃; MLE is special case with 𝜌= −log 𝑓; Huber Mestimator uses bounded 𝜓"
+ },
+ "136": {
+  "id": "Q136",
+  "num": 136,
+  "title": "MLE Exponential Rate",
+  "difficulty": "MEDIUM",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Exp(𝜆) (rate parametrization), MLE of 𝜆is:",
+  "options": [
+   "̄ 𝑋",
+   "1/̄𝑋",
+   "𝑛/ ∑𝑋𝑖",
+   "Both B and C"
+  ],
+  "answer_letter": "D",
+  "explanation": "1/̄𝑋= 𝑛/ ∑𝑋𝑖— identical; both are correct expressions for MLE of rate 𝜆"
+ },
+ "137": {
+  "id": "Q137",
+  "num": 137,
+  "title": "MLE Beta Both",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋∼Beta(𝛼, 𝛽) with both unknown, MLE satisfies:",
+  "options": [
+   "𝜓(̂𝛼) −𝜓(̂𝛼+̂ 𝛽) = log 𝑋and 𝜓(̂𝛽) −𝜓(̂𝛼+̂ 𝛽) = log(1 −𝑋)",
+   "̂ 𝛼=̄ 𝑋,̂ 𝛽= 1 −̄ 𝑋",
+   "̂ 𝛼/(̂𝛼+̂ 𝛽) =̄ 𝑋",
+   "No MLE exists for Beta with both parameters unknown"
+  ],
+  "answer_letter": "A",
+  "explanation": "System of two digamma equations; C gives one equation (moment condition) but not MLE; requires numerical solution"
+ },
+ "138": {
+  "id": "Q138",
+  "num": 138,
+  "title": "MLE Nonidentifiable",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "MLE fails when model is non-identifiable because:",
+  "options": [
+   "Multiple parameter values give same likelihood; MLE is not unique",
+   "Likelihood is unbounded",
+   "Score equation has no solution",
+   "Fisher information is zero"
+  ],
+  "answer_letter": "A",
+  "explanation": "Non-identifiability: 𝐿(𝜃1) = 𝐿(𝜃2) for 𝜃1 ≠𝜃2; MLE set is not a singleton; Fisher information matrix is singular"
+ },
+ "139": {
+  "id": "Q139",
+  "num": 139,
+  "title": "MLE Separated Data",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "In logistic regression, MLE does not exist when:",
+  "options": [
+   "Sample size is small",
+   "Data is perfectly separated (one predictor perfectly predicts outcome)",
+   "Predictors are correlated",
+   "Response is binary"
+  ],
+  "answer_letter": "B",
+  "explanation": "Perfect separation: likelihood is monotone increasing; MLE →±∞; Firth’s penalized likelihood is a remedy"
+ },
+ "140": {
+  "id": "Q140",
+  "num": 140,
+  "title": "MLE Consistency Proof",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Wald’s proof of MLE consistency uses:",
+  "options": [
+   "Law of large numbers applied to log-likelihood ratio",
+   "Central limit theorem",
+   "Rao-Blackwell theorem",
+   "Factorization theorem"
+  ],
+  "answer_letter": "A",
+  "explanation": "Key: 𝑛(log 𝐿(𝜃))/(𝐿)(𝜃0) 𝑝 −→𝐸𝜃0[log(𝑓(𝑋;𝜃))/(𝑓)(𝑋;𝜃0)] ≤0 by Jensen (Kullback-Leibler divergence ≥0)"
+ },
+ "141": {
+  "id": "Q141",
+  "num": 141,
+  "title": "MLE Poisson Regression",
+  "difficulty": "MEDIUM",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "In Poisson regression with log 𝜇𝑖= x(𝑇)/(𝑖𝛽), score equation for 𝛽is:",
+  "options": [
+   "∑x𝑖(𝑌𝑖−𝜇𝑖) = 0",
+   "∑x𝑖𝑌𝑖= ∑x𝑖𝜇𝑖",
+   "𝑋𝑇(𝑌−𝜇) = 0",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "All three are equivalent forms of the Poisson GLM score equation; IRLS solves this iteratively"
+ },
+ "142": {
+  "id": "Q142",
+  "num": 142,
+  "title": "MLE Negative Binomial",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For NegBin(𝑟, 𝑝) with 𝑟known, MLE of 𝑝is:",
+  "options": [
+   "𝑟/(𝑟+̄ 𝑋)",
+   "̄ 𝑋/(𝑟+̄ 𝑋)",
+   "𝑟/̄𝑋",
+   "1/̄𝑋"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐸[𝑋] = 𝑟(1 −𝑝)/𝑝; solvinḡ 𝑋= 𝑟(1 −̂ 𝑝)/̂𝑝giveŝ 𝑝= 𝑟/(𝑟+̄ 𝑋); B is MLE of 1 −𝑝"
+ },
+ "143": {
+  "id": "Q143",
+  "num": 143,
+  "title": "MLE Zero Inflated",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Zero-inflated Poisson (ZIP) has 𝑃(𝑋= 0) = 𝜋+ (1 −𝜋)𝑒−𝜆. MLE requires:",
+  "options": [
+   "EM algorithm (latent class indicator)",
+   "Direct score equations with closed form",
+   "Method of moments only",
+   "Bayesian methods"
+  ],
+  "answer_letter": "A",
+  "explanation": "ZIP is a mixture model; EM treats class membership as latent; E-step computes posterior probability of structural zero; M-step updates 𝜋and 𝜆"
+ },
+ "144": {
+  "id": "Q144",
+  "num": 144,
+  "title": "MLE Survival Kaplan Meier",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Kaplan-Meier estimator is:",
+  "options": [
+   "MLE of survival function under right censoring (nonparametric)",
+   "MLE of exponential survival function",
+   "Method of moments estimator",
+   "Bayesian estimator"
+  ],
+  "answer_letter": "A",
+  "explanation": "KM is the nonparametric MLE of 𝑆(𝑡); it maximizes the nonparametric likelihood over all step functions; not restricted to parametric family"
+ },
+ "145": {
+  "id": "Q145",
+  "num": 145,
+  "title": "MLE Information Matrix Equality",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Fisher information matrix equality states:",
+  "options": [
+   "−𝐸[𝜕2 log 𝐿/𝜕𝜃𝜕𝜃𝑇] = 𝐸[(𝜕log 𝐿/𝜕𝜃)(𝜕log 𝐿/𝜕𝜃)𝑇]",
+   "𝐸[𝜕log 𝐿/𝜕𝜃] = 0",
+   "Both A and B",
+   "𝐼(𝜃) = Var(𝜕log 𝐿/𝜕𝜃)"
+  ],
+  "answer_letter": "C",
+  "explanation": "B is the score equation property; A is the information matrix equality; D follows from B (since 𝐸[score] = 0, variance = second moment); all three are related"
+ },
+ "146": {
+  "id": "Q146",
+  "num": 146,
+  "title": "MLE Restricted Parameter",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋∼𝑁(𝜃, 1) with 𝜃∈{0, 1} (discrete parameter space), MLE is:",
+  "options": [
+   "̄ 𝑋rounded to nearest integer",
+   "0 if̄ 𝑋< 1/2, 1 if̄ 𝑋≥1/2",
+   "̄ 𝑋always",
+   "0 always (conservative)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Compare 𝐿(0) = 𝑒−𝑛̄𝑋2/2 vs 𝐿(1) = 𝑒−𝑛(̄𝑋−1)2/2; 𝐿(1) > 𝐿(0) iff̄ 𝑋> 1/2"
+ },
+ "147": {
+  "id": "Q147",
+  "num": 147,
+  "title": "MLE Curved Exponential Normal",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜃, 𝜃2) (curved exponential family), MLE of 𝜃is:",
+  "options": [
+   "̄ 𝑋",
+   "𝑆(sample SD)",
+   "Solution tô 𝜃2 +̂ 𝜃̄𝑋−(̄𝑋2 + 𝑆2) = 0 approximately",
+   "√̄𝑋2 + 𝑆2"
+  ],
+  "answer_letter": "C",
+  "explanation": "Score equations for 𝜇= 𝜃and 𝜎2 = 𝜃2 must be combined; leads to quadratic in̂ 𝜃; no simple closed form"
+ },
+ "148": {
+  "id": "Q148",
+  "num": 148,
+  "title": "MLE Poisson UMVUE Comparison",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For Poisson(𝜆), MLE of 𝑒−𝜆is 𝑒−̄𝑋. UMVUE is:",
+  "options": [
+   "𝑒−̄𝑋",
+   "(1 −1/𝑛)∑𝑋𝑖",
+   "𝑒−̄𝑋(1 + 1/(2𝑛)) (bias-corrected)",
+   "(1)/(𝑛)∑𝐼(𝑋𝑖= 0)"
+  ],
+  "answer_letter": "B",
+  "explanation": "UMVUE of 𝑒−𝜆= 𝑃(𝑋= 0): use Rao-Blackwell with 𝑇= ∑𝑋𝑖; 𝐸[𝐼(𝑋1 = 0)|𝑇= 𝑡] = (1 −1/𝑛)𝑡; so UMVUE= (1 −1/𝑛)𝑇"
+ },
+ "149": {
+  "id": "Q149",
+  "num": 149,
+  "title": "MLE Asymptotic Variance",
+  "difficulty": "MEDIUM",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Asymptotic variance of MLÊ 𝜃is:",
+  "options": [
+   "1/(𝑛𝐼(𝜃))",
+   "𝐼(𝜃)/𝑛",
+   "𝑛𝐼(𝜃)",
+   "1/𝐼(𝜃)"
+  ],
+  "answer_letter": "A",
+  "explanation": "√𝑛(̂𝜃−𝜃) 𝑑−→𝑁(0, 1/𝐼(𝜃)); so AsyVar(̂𝜃) = 1/(𝑛𝐼(𝜃)); D is for single observation"
+ },
+ "150": {
+  "id": "Q150",
+  "num": 150,
+  "title": "MLE Score Test",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Rao’s score test statistic is:",
+  "options": [
+   "[𝜕log 𝐿/𝜕𝜃|𝜃=𝜃0]2 𝑛𝐼(𝜃0) 𝑑−→𝜒²_1 under 𝐻0",
+   "−2 log Λ 𝑑−→𝜒²_1",
+   "(̂𝜃−𝜃0)2 1/(𝑛𝐼(̂𝜃)) 𝑑−→𝜒²_1",
+   "All equivalent asymptotically"
+  ],
+  "answer_letter": "D",
+  "explanation": "Wald (C), Score/Rao (A), and LRT (B) are asymptotically equivalent under 𝐻0; they differ in finite samples and under alternatives"
+ },
+ "151": {
+  "id": "Q151",
+  "num": 151,
+  "title": "MLE Exponential Mean",
+  "difficulty": "MEDIUM",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Exp(𝜇) (mean parametrization), MLE of 𝜇is:",
+  "options": [
+   "1/̄𝑋",
+   "̄ 𝑋",
+   "𝑛/ ∑𝑋𝑖",
+   "̄ 𝑋(same as B)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Mean parametrization: 𝑓(𝑥; 𝜇) =(1)/(𝜇𝑒)−𝑥/𝜇; MLE=̄ 𝑋; rate parametrization: MLE= 1/̄𝑋; know which parametrization is used"
+ },
+ "152": {
+  "id": "Q152",
+  "num": 152,
+  "title": "MLE Multivariate Normal",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁𝑝(𝜇, Σ) with both unknown, MLE of Σ is:",
+  "options": [
+   "(1)/(𝑛)∑(𝑋𝑖−̄ 𝑋)(𝑋𝑖−̄ 𝑋)𝑇",
+   "𝑛−1 ∑(𝑋𝑖−̄ 𝑋)(𝑋𝑖−̄ 𝑋)𝑇",
+   "𝑛−𝑝∑(𝑋𝑖−̄ 𝑋)(𝑋𝑖−̄ 𝑋)𝑇",
+   "Sample covariance matrix"
+  ],
+  "answer_letter": "A",
+  "explanation": "MLE uses 𝑛denominator (biased); unbiased estimator uses 𝑛−1; 𝑛−𝑝appears in regression residual variance"
+ },
+ "153": {
+  "id": "Q153",
+  "num": 153,
+  "title": "MLE Dirichlet Multinomial",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "For Dirichlet-Multinomial model, MLE of Dirichlet parameters:",
+  "options": [
+   "Has closed form via method of moments",
+   "Requires solving system of digamma equations iteratively",
+   "Is simply cell proportions",
+   "Does not exist"
+  ],
+  "answer_letter": "B",
+  "explanation": "Same structure as Dirichlet MLE; digamma equations; Minka’s fixed-point iteration is commonly used"
+ },
+ "154": {
+  "id": "Q154",
+  "num": 154,
+  "title": "MLE Nonparametric",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Nonparametric MLE of CDF 𝐹based on i.i.d. sample is:",
+  "options": [
+   "Normal CDF fitted to data",
+   "Empirical CDF̂ 𝐹𝑛(𝑥) =(1)/(𝑛)∑𝐼(𝑋𝑖≤𝑥)",
+   "Kernel density estimate",
+   "Smoothed empirical CDF"
+  ],
+  "answer_letter": "B",
+  "explanation": "NPMLE of CDF is the empirical CDF (Glivenko-Cantelli); it maximizes the nonparametric likelihood ∏𝑓(𝑋𝑖) over all distributions"
+ },
+ "155": {
+  "id": "Q155",
+  "num": 155,
+  "title": "MLE Exponential Family Canonical",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "In canonical exponential family, MLÊ 𝜂of natural parameter satisfies:",
+  "options": [
+   "∇𝐴(̂𝜂) =̄ 𝑇where 𝐴is log-partition function",
+   "̂ 𝜂=̄ 𝑇",
+   "̂ 𝜂minimizes KL divergence from empirical distribution",
+   "Both A and C"
+  ],
+  "answer_letter": "D",
+  "explanation": "∇𝐴(𝜂) = 𝐸𝜂[𝑇(𝑋)]; setting equal tō 𝑇gives MLE; this is equivalent to minimizing KL divergence (maximum entropy principle)"
+ },
+ "156": {
+  "id": "Q156",
+  "num": 156,
+  "title": "MLE Robust Breakdown",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Breakdown point of MLE for normal location parameter is:",
+  "options": [
+   "0 (single outlier can make MLE arbitrarily large)",
+   "1/2 (50% contamination)",
+   "1/𝑛",
+   "1/4"
+  ],
+  "answer_letter": "A",
+  "explanation": "Sample mean (MLE for normal location) has breakdown point 0; one extreme outlier destroys it; median has breakdown point 1/2"
+ },
+ "157": {
+  "id": "Q157",
+  "num": 157,
+  "title": "MLE Conditional",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Conditional MLE (conditioning on sufficient statistic for nuisance) is used to:",
+  "options": [
+   "Eliminate nuisance parameters from likelihood",
+   "Increase efficiency",
+   "Reduce computation",
+   "Handle missing data"
+  ],
+  "answer_letter": "A",
+  "explanation": "Conditional likelihood eliminates nuisance parameters; used in matched casecontrol studies, logistic regression with fixed effects"
+ },
+ "158": {
+  "id": "Q158",
+  "num": 158,
+  "title": "MLE Marginal",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Marginal MLE (integrating out random effects) is used in:",
+  "options": [
+   "Fixed effects models",
+   "Mixed effects models (REML is a variant)",
+   "Nonparametric models",
+   "Saturated models"
+  ],
+  "answer_letter": "B",
+  "explanation": "REML (Restricted MLE) maximizes marginal likelihood after integrating out fixed effects; used for variance component estimation in mixed models"
+ },
+ "159": {
+  "id": "Q159",
+  "num": 159,
+  "title": "MLE Semiparametric",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "In Cox proportional hazards model, partial likelihood MLE:",
+  "options": [
+   "Estimates baseline hazard and regression coefficients jointly",
+   "Estimates regression coefficients without specifying baseline hazard",
+   "Requires parametric baseline hazard",
+   "Is equivalent to full MLE"
+  ],
+  "answer_letter": "B",
+  "explanation": "Cox partial likelihood: baseline hazard cancels; only regression coefficients estimated; semiparametric efficiency theory applies"
+ },
+ "160": {
+  "id": "Q160",
+  "num": 160,
+  "title": "MLE Information Observed",
+  "difficulty": "HIGH",
+  "topic": "Maximum Likelihood Estimation",
+  "question": "Observed Fisher information̂ 𝐼(̂𝜃) = −𝜕2 log 𝐿/𝜕𝜃2|̂𝜃vs expected 𝐼(𝜃):",
+  "options": [
+   "Observed is always larger",
+   "Expected is always larger",
+   "They are asymptotically equivalent; observed often preferred in practice",
+   "They are always equal"
+  ],
+  "answer_letter": "C",
+  "explanation": "Both are consistent for 𝐼(𝜃0); Efron-Hinkley showed observed information is preferred for conditional inference; neither dominates in finite samples"
+ },
+ "161": {
+  "id": "Q161",
+  "num": 161,
+  "title": "Rao Blackwell Statement",
+  "difficulty": "MEDIUM",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "Rao-Blackwell theorem states: if 𝑇0 is unbiased for 𝑔(𝜃) and 𝑆is sufficient, then 𝑇∗= 𝐸[𝑇0|𝑆]:",
+  "options": [
+   "Has smaller or equal variance than 𝑇0",
+   "Is unbiased for 𝑔(𝜃)",
+   "Is a function of 𝑆",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "All three properties hold: unbiasedness (tower property), variance reduction (conditional variance formula), and 𝑇∗is a function of 𝑆by definition"
+ },
+ "162": {
+  "id": "Q162",
+  "num": 162,
+  "title": "Rao Blackwell Example Bernoulli",
+  "difficulty": "MEDIUM",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Bernoulli(𝑝), improve 𝑇0 = 𝑋1 (unbiased for 𝑝) using 𝑆= ∑𝑋𝑖:",
+  "options": [
+   "𝐸[𝑋1| ∑𝑋𝑖= 𝑡] = 𝑡/𝑛",
+   "𝐸[𝑋1| ∑𝑋𝑖= 𝑡] = 𝑡(𝑡−1)/[𝑛(𝑛−1)]",
+   "𝐸[𝑋1| ∑𝑋𝑖= 𝑡] = 𝑡2/𝑛2",
+   "𝐸[𝑋1| ∑𝑋𝑖= 𝑡] = 1/𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝑃(𝑋1 = 1| ∑𝑋𝑖= 𝑡) = ((𝑛−1)/(𝑡)−1)/(𝑛 𝑡) = 𝑡/𝑛; result is̄ 𝑋— the UMVUE"
+ },
+ "163": {
+  "id": "Q163",
+  "num": 163,
+  "title": "UMVUE Poisson Zero",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Poisson(𝜆), UMVUE of 𝑃(𝑋= 0) = 𝑒−𝜆is:",
+  "options": [
+   "𝑒−̄𝑋",
+   "(1 −1/𝑛)∑𝑋𝑖",
+   "(1)/(𝑛)∑𝐼(𝑋𝑖= 0)",
+   "𝑒−∑𝑋𝑖/𝑛"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝐸[𝐼(𝑋1 = 0)|𝑇= 𝑡] where 𝑇= ∑𝑋𝑖∼Poisson(𝑛𝜆): 𝑃(𝑋1 = 0|𝑇= 𝑡) = (1 −1/𝑛)𝑡; so UMVUE= (1 −1/𝑛)𝑇"
+ },
+ "164": {
+  "id": "Q164",
+  "num": 164,
+  "title": "UMVUE Normal Sigma",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜇, 𝜎2) with 𝜇known, UMVUE of 𝜎2 is:",
+  "options": [
+   "(1)/(𝑛)∑(𝑋𝑖−𝜇)2",
+   "𝑛−1 ∑(𝑋𝑖−𝜇)2",
+   "𝑆2 = 𝑛−1 ∑(𝑋𝑖−̄ 𝑋)2",
+   "(1)/(𝑛)∑(𝑋𝑖−̄ 𝑋)2"
+  ],
+  "answer_letter": "A",
+  "explanation": "When 𝜇is KNOWN, ∑(𝑋𝑖−𝜇)2/𝑛is UMVUE (attains CRLB); when 𝜇unknown, UMVUE is 𝑆2 with 𝑛−1 denominator"
+ },
+ "165": {
+  "id": "Q165",
+  "num": 165,
+  "title": "UMVUE Uniform Theta Sq",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑈(0, 𝜃), UMVUE of 𝜃2 is:",
+  "options": [
+   "𝑋²_(𝑛)",
+   "(𝑛+1)(𝑛+2) 𝑛2 𝑋²_(𝑛)",
+   "(𝑛+2)/(𝑛𝑋2) (𝑛)",
+   "4̄𝑋2/3"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝐸[𝑋(𝑘)/((𝑛)] = 𝑛𝜃𝑘) 𝑛+𝑘; for 𝑘= 2: 𝐸[𝑋²_(𝑛] = 𝑛𝜃2) 𝑛+2(; UMVUE= (𝑛+1)(𝑛+2))/(𝑛2) 𝑋²_(𝑛)"
+ },
+ "166": {
+  "id": "Q166",
+  "num": 166,
+  "title": "UMVUE Exponential Function",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Exp(𝜆), UMVUE of 𝜆𝑘is:",
+  "options": [
+   "(1/̄𝑋)𝑘",
+   "𝑛! (𝑛−𝑘)!𝑛𝑘⋅ 1̄ 𝑋𝑘(for 𝑘< 𝑛)",
+   "̄ 𝑋−𝑘",
+   "Γ(𝑛) Γ(𝑛−𝑘) ⋅ (∑𝑋𝑖)𝑘"
+  ],
+  "answer_letter": "D",
+  "explanation": "𝑇= ∑𝑋𝑖∼Γ(𝑛, 1/𝜆); 𝐸[𝑇−𝑘] =(𝜆𝑘Γ(𝑛−𝑘))/(Γ)(𝑛) ; UMVUE of 𝜆𝑘= Γ(𝑛) Γ(𝑛−𝑘)𝑇−𝑘"
+ },
+ "167": {
+  "id": "Q167",
+  "num": 167,
+  "title": "UMVUE Bernoulli P Sq",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Bernoulli(𝑝), UMVUE of 𝑝2 is:",
+  "options": [
+   "̄ 𝑋2",
+   "𝑇(𝑇−1) 𝑛(𝑛−1) where 𝑇= ∑𝑋𝑖",
+   "𝑇2/𝑛2",
+   "̄ 𝑋(̄𝑋−1/𝑛)"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝐸[𝑋1𝑋2|𝑇= 𝑡] = 𝑡(𝑡−1) 𝑛(𝑛−1) ((hypergeometric argument); UMVUE= 𝑇(𝑇−1)/[𝑛(𝑛−)/(1))]; notē 𝑋2 is biased for 𝑝2"
+ },
+ "168": {
+  "id": "Q168",
+  "num": 168,
+  "title": "UMVUE Poisson Lambda Sq",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Poisson(𝜆), UMVUE of 𝜆2 is:",
+  "options": [
+   "̄ 𝑋2",
+   "̄ 𝑋2 −̄ 𝑋/𝑛",
+   "𝑇(𝑇−1)/𝑛2 where 𝑇= ∑𝑋𝑖",
+   "𝑇2/𝑛2"
+  ],
+  "answer_letter": "C",
+  "explanation": "𝐸[𝑇(𝑇−1)] = 𝐸[𝑇2]−𝐸[𝑇] = 𝑛2𝜆2+𝑛𝜆−𝑛𝜆= 𝑛2𝜆2; so UMVUE= 𝑇(𝑇−1)/𝑛2 =̄ 𝑋2 −̄ 𝑋/𝑛; B and C are equivalent"
+ },
+ "169": {
+  "id": "Q169",
+  "num": 169,
+  "title": "Method Of Moments Gamma",
+  "difficulty": "MEDIUM",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋∼Γ(𝛼, 𝛽), MOM estimators using first two moments:",
+  "options": [
+   "̂ 𝛼=̄ 𝑋2/𝑆2,̂ 𝛽= 𝑆2/̄𝑋",
+   "̂ 𝛼=̄ 𝑋/𝑆2,̂ 𝛽= 𝑆2",
+   "̂ 𝛼= 𝑆2/̄𝑋2,̂ 𝛽=̄ 𝑋/𝑆2",
+   "̂ 𝛼=̄ 𝑋,̂ 𝛽= 𝑆2/̄𝑋"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐸[𝑋] = 𝛼𝛽, Var(𝑋) = 𝛼𝛽2; 𝛽= Var/𝐸= 𝑆2/̄𝑋; 𝛼= 𝐸/𝛽=̄ 𝑋2/𝑆2"
+ },
+ "170": {
+  "id": "Q170",
+  "num": 170,
+  "title": "Method Of Moments Beta",
+  "difficulty": "MEDIUM",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋∼Beta(𝛼, 𝛽), MOM estimators:",
+  "options": [
+   "̂ 𝛼=̄ 𝑋[̄𝑋(1 −̄ 𝑋)/𝑆2 −1],̂ 𝛽= (1 −̄ 𝑋)[̄𝑋(1 −̄ 𝑋)/𝑆2 −1]",
+   "̂ 𝛼=̄ 𝑋,̂ 𝛽= 1 −̄ 𝑋",
+   "̂ 𝛼=̄ 𝑋/𝑆2,̂ 𝛽= (1 −̄ 𝑋)/𝑆2",
+   "̂ 𝛼=̄ 𝑋2/𝑆2,̂ 𝛽= (1 −̄ 𝑋)2/𝑆2"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐸[𝑋] = 𝛼/(𝛼+ 𝛽), Var(𝑋) = 𝛼𝛽/[(𝛼+ 𝛽)2(𝛼+ 𝛽+ 1)]; let 𝑚=̄ 𝑋, 𝑣= 𝑆2; 𝛼= 𝑚[𝑚(1 −𝑚)/𝑣−1]"
+ },
+ "171": {
+  "id": "Q171",
+  "num": 171,
+  "title": "Rao Blackwell Improvement",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "Rao-Blackwell improvement is strict (strict inequality in variance) unless:",
+  "options": [
+   "𝑇0 is already a function of 𝑆",
+   "𝑇0 is the MLE",
+   "𝑇0 is the UMVUE",
+   "Both A and C (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "Variance reduction is strict unless 𝑇0 is already a function of 𝑆; if 𝑇0 = ℎ(𝑆), then 𝐸[𝑇0|𝑆] = 𝑇0 and no improvement occurs"
+ },
+ "172": {
+  "id": "Q172",
+  "num": 172,
+  "title": "UMVUE Existence",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "UMVUE exists if and only if:",
+  "options": [
+   "A complete sufficient statistic exists",
+   "An unbiased estimator exists",
+   "Both A and B",
+   "The distribution is from exponential family"
+  ],
+  "answer_letter": "C",
+  "explanation": "Need both: (1) an unbiased estimator must exist, and (2) a complete sufficient statistic must exist; then Lehmann-Scheffé gives unique UMVUE"
+ },
+ "173": {
+  "id": "Q173",
+  "num": 173,
+  "title": "MOM Consistency",
+  "difficulty": "MEDIUM",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "Method of moments estimators are consistent because:",
+  "options": [
+   "They are always unbiased",
+   "Sample moments converge to population moments by LLN",
+   "They attain CRLB",
+   "They are functions of sufficient statistics"
+  ],
+  "answer_letter": "B",
+  "explanation": "LLN:̄ 𝑋(𝑘)/(𝑝) −→𝐸[𝑋𝑘]; continuous mapping theorem: MOM estimators (continuous functions of sample moments) are consistent"
+ },
+ "174": {
+  "id": "Q174",
+  "num": 174,
+  "title": "UMVUE Normal Absolute Deviation",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜇, 𝜎2) with 𝜎2 known, UMVUE of |𝜇|:",
+  "options": [
+   "|̄𝑋|",
+   "|̄𝑋|Φ(|̄𝑋|√𝑛/𝜎) −𝜎𝜙(|̄𝑋|√𝑛/𝜎)/√𝑛(complex expression)",
+   "Does not exist (no unbiased estimator of |𝜇|)",
+   "|̄𝑋| corrected for bias"
+  ],
+  "answer_letter": "B",
+  "explanation": "UMVUE of |𝜇| exists but has complex form involving normal CDF and PDF; |̄𝑋| is biased for |𝜇|; this is a classic hard ISS question"
+ },
+ "175": {
+  "id": "Q175",
+  "num": 175,
+  "title": "UMVUE Shifted Exponential",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑒−(𝑥−𝜃), 𝑥> 𝜃, UMVUE of 𝜃is:",
+  "options": [
+   "𝑋(1)",
+   "𝑋(1) −1/𝑛",
+   "̄ 𝑋−1",
+   "𝑋(1) + 1/𝑛"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝐸[𝑋(1)] = 𝜃+ 1/𝑛; unbiased: 𝑋(1) −1/𝑛; 𝑋(1) is complete sufficient; so 𝑋(1) −1/𝑛 is UMVUE"
+ },
+ "176": {
+  "id": "Q176",
+  "num": 176,
+  "title": "MOM Negative Binomial",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋∼NegBin(𝑟, 𝑝) with 𝑟known, MOM estimator of 𝑝:",
+  "options": [
+   "𝑟/(𝑟+̄ 𝑋)",
+   "̄ 𝑋/(𝑟+̄ 𝑋)",
+   "𝑟/̄𝑋",
+   "1/(1 +̄ 𝑋/𝑟)"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐸[𝑋] = 𝑟(1 −𝑝)/𝑝; solving:̂ 𝑝= 𝑟/(𝑟+̄ 𝑋); same as MLE in this case; D is equivalent to A"
+ },
+ "177": {
+  "id": "Q177",
+  "num": 177,
+  "title": "UMVUE Cauchy",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Cauchy(𝜃, 1), UMVUE of 𝜃:",
+  "options": [
+   "Is the sample median",
+   "Is̄ 𝑋",
+   "Does not exist (no complete sufficient statistic)",
+   "Is the MLE"
+  ],
+  "answer_letter": "C",
+  "explanation": "Cauchy is not exponential family; minimal sufficient statistic is all order statistics; no complete sufficient statistic exists; hence no UMVUE"
+ },
+ "178": {
+  "id": "Q178",
+  "num": 178,
+  "title": "Rao Blackwell Poisson Indicator",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Poisson(𝜆), improve 𝑇0 = 𝐼(𝑋1 = 1) using 𝑇= ∑𝑋𝑖:",
+  "options": [
+   "E[I(X1=1)|T=t] = t(1−1/n)^{t−1}/n",
+   "E[I(X1=1)|T=t] = t/n",
+   "E[I(X1=1)|T=t] = e^{−1/n}(1/n)^t/t! (Poisson conditional)",
+   "E[I(X1=1)|T=t] = C(t,1)(1/n)(1−1/n)^{t−1}"
+  ],
+  "answer_letter": "D",
+  "explanation": "Given T=t, X1 ∼ Bin(t, 1/n); P(X1=1|T=t) = C(t,1)(1/n)(1−1/n)^{t−1} = t(1−1/n)^{t−1}/n; A and D are equivalent."
+ },
+ "179": {
+  "id": "Q179",
+  "num": 179,
+  "title": "UMVUE Uniform Probability",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑈(0, 𝜃), UMVUE of 𝑃(𝑋≤𝑐) = 𝑐/𝜃(for fixed 𝑐< 𝜃) is:",
+  "options": [
+   "𝑐/𝑋(𝑛)",
+   "min(𝑐/𝑋(𝑛), 1)",
+   "𝑐𝑛/[(𝑛+ 1)𝑋(𝑛)]",
+   "𝑛 𝑛+1 ⋅ 𝑐 𝑋(𝑛) if 𝑋(𝑛) > 𝑐, else 1"
+  ],
+  "answer_letter": "D",
+  "explanation": "Need to handle case 𝑋(𝑛) ≤𝑐(then 𝑃(𝑋≤𝑐) = 1 certainly); UMVUE must be bounded in [0, 1]; careful case analysis required"
+ },
+ "180": {
+  "id": "Q180",
+  "num": 180,
+  "title": "MOM Lognormal",
+  "difficulty": "MEDIUM",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋∼LogNormal(𝜇, 𝜎2), MOM estimators using 𝐸[𝑋] = 𝑒𝜇+𝜎2/2 and Var(𝑋) = 𝑒2𝜇+𝜎2(𝑒𝜎2 −1):",
+  "options": [
+   "̂ 𝜎2 = log(1 + 𝑆2/̄𝑋2),̂ 𝜇= loḡ 𝑋−̂ 𝜎2/2",
+   "̂ 𝜇= log 𝑋,̂ 𝜎2 = 𝑆²_log",
+   "̂ 𝜇= loḡ 𝑋,̂ 𝜎2 = 𝑆2/̄𝑋2",
+   "Both A and B (A is MOM, B is MLE)"
+  ],
+  "answer_letter": "D",
+  "explanation": "MOM uses raw moments (A); MLE uses log-transformed data (B); they differ; B is also the UMVUE approach"
+ },
+ "181": {
+  "id": "Q181",
+  "num": 181,
+  "title": "UMVUE Bernoulli Variance",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Bernoulli(𝑝), UMVUE of 𝑝(1 −𝑝) = Var(𝑋) is:",
+  "options": [
+   "̄ 𝑋(1 −̄ 𝑋)",
+   "𝑇(𝑛−𝑇) 𝑛(𝑛−1) where 𝑇= ∑𝑋𝑖",
+   "𝑆2 = 𝑛−1 ∑(𝑋𝑖−̄ 𝑋)2",
+   "Both B and C (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "𝑆2 =(𝑇(𝑛−𝑇))/(𝑛)(𝑛−1) for Bernoulli data; both B and C are the same expression;̄ 𝑋(1 −̄ 𝑋) uses 𝑛denominator (biased)"
+ },
+ "182": {
+  "id": "Q182",
+  "num": 182,
+  "title": "UMVUE Exponential Survival",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Exp(𝜆), UMVUE of 𝑆(𝑡) = 𝑃(𝑋> 𝑡) = 𝑒−𝜆𝑡is:",
+  "options": [
+   "𝑒−𝑡/̄𝑋",
+   "(1 −𝑡/𝑇)𝑛−1𝐼(𝑇> 𝑡) where 𝑇= ∑𝑋𝑖",
+   "𝑒−𝑡̂𝜆wherê 𝜆= 1/̄𝑋",
+   "(1)/(𝑛)∑𝐼(𝑋𝑖> 𝑡)"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝐸[𝐼(𝑋1 > 𝑡)|𝑇= ∑𝑋𝑖]: given 𝑇, 𝑋1/𝑇∼Beta(1, 𝑛−1); 𝑃(𝑋1 > 𝑡|𝑇) = (1 −𝑡/𝑇)𝑛−1𝐼(𝑇> 𝑡)"
+ },
+ "183": {
+  "id": "Q183",
+  "num": 183,
+  "title": "MOM Weibull",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For Weibull(𝑘, 𝜆) with both unknown, MOM requires:",
+  "options": [
+   "Solving two equations involving gamma functions: 𝐸[𝑋] = 𝜆Γ(1 + 1/𝑘), 𝐸[𝑋2] = 𝜆2Γ(1 + 2/𝑘)",
+   "̂ 𝑘=̄ 𝑋/𝑆,̂ 𝜆=̄ 𝑋",
+   "̂ 𝑘= 1/log 𝑋,̂ 𝜆= 𝑒̄𝑋",
+   "Closed form exists:̂ 𝑘= √ 6𝑆/(𝜋̄𝑋)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Weibull MOM: two equations with gamma functions; ratio 𝐸[𝑋2]/(𝐸[𝑋])2 = Γ(1+ 2/𝑘)/[Γ(1 + 1/𝑘)]2 depends only on 𝑘; solve numerically"
+ },
+ "184": {
+  "id": "Q184",
+  "num": 184,
+  "title": "UMVUE Normal Sigma Unknown Mu",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜇, 𝜎2) with both unknown, UMVUE of 𝜎is:",
+  "options": [
+   "𝑆= √ 𝑆2",
+   "𝑆/𝑐4 where 𝑐4 = √2/(𝑛−1) ⋅Γ(𝑛/2)/Γ((𝑛−1)/2)",
+   "𝑆⋅√(𝑛−1)/2 ⋅Γ((𝑛−1)/2)/Γ(𝑛/2)",
+   "Both B and C (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "𝐸[𝑆] = 𝜎𝑐4; UMVUE of 𝜎is 𝑆/𝑐4; 𝑐4 < 1 so UMVUE> 𝑆; for large 𝑛, 𝑐4 ≈1"
+ },
+ "185": {
+  "id": "Q185",
+  "num": 185,
+  "title": "Rao Blackwell Geometric",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Geometric(𝑝), improve 𝑇0 = 𝐼(𝑋1 = 1) using 𝑆= ∑𝑋𝑖:",
+  "options": [
+   "𝐸[𝐼(𝑋1 = 1)|𝑆= 𝑠] = ((𝑠−1)/(𝑛)−1)/(𝑠 𝑛) (negative hypergeometric)",
+   "𝐸[𝐼(𝑋1 = 1)|𝑆= 𝑠] = 𝑝",
+   "𝐸[𝐼(𝑋1 = 1)|𝑆= 𝑠] = 𝑛/𝑠",
+   "𝐸[𝐼(𝑋1 = 1)|𝑆= 𝑠] = (𝑛−1)/(𝑠−1)"
+  ],
+  "answer_letter": "C",
+  "explanation": "Given ∑𝑋𝑖= 𝑠, by symmetry 𝑃(𝑋1 = 1|𝑆= 𝑠) = 𝑃(𝑋𝑗= 1|𝑆= 𝑠) for all 𝑗; sums to 𝑛⋅𝑃(𝑋1 = 1|𝑆= 𝑠); careful computation gives 𝑛/𝑠"
+ },
+ "186": {
+  "id": "Q186",
+  "num": 186,
+  "title": "UMVUE Pareto",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Pareto(𝜃), 𝑓(𝑥; 𝜃) = 𝜃/𝑥𝜃+1, 𝑥> 1, UMVUE of 𝜃is:",
+  "options": [
+   "−𝑛/ ∑log 𝑋𝑖",
+   "−(𝑛−1)/ ∑log 𝑋𝑖",
+   "𝑛/ ∑log 𝑋𝑖",
+   "(𝑛+ 1)/ ∑log 𝑋𝑖"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝑇= ∑log 𝑋𝑖; −log 𝑋𝑖∼Exp(𝜃); 𝑇∼Γ(𝑛, 1/𝜃); 𝐸[1/𝑇] = 𝜃/(𝑛−1); UMVUE of 𝜃: 𝐸[−(𝑛−1)/𝑇] = 𝜃✓"
+ },
+ "187": {
+  "id": "Q187",
+  "num": 187,
+  "title": "MOM Inverse Gaussian",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋∼𝐼𝐺(𝜇, 𝜆), MOM estimators:",
+  "options": [
+   "̂ 𝜇=̄ 𝑋,̂ 𝜆=̄ 𝑋3/𝑆2",
+   "̂ 𝜇=̄ 𝑋,̂ 𝜆=̄ 𝑋2/𝑆2",
+   "̂ 𝜇=̄ 𝑋,̂ 𝜆= 𝑆2/̄𝑋",
+   "̂ 𝜇= 1/̄𝑋,̂ 𝜆=̄ 𝑋2/𝑆2"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐸[𝑋] = 𝜇, Var(𝑋) = 𝜇3/𝜆;̂ 𝜇=̄ 𝑋;̂ 𝜆=̂ 𝜇3/𝑆2 =̄ 𝑋3/𝑆2"
+ },
+ "188": {
+  "id": "Q188",
+  "num": 188,
+  "title": "UMVUE Hypergeometric",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For Hypergeometric(𝑁, 𝑀, 𝑛) with 𝑁known, UMVUE of 𝑀/𝑁(population proportion) is:",
+  "options": [
+   "𝑋/𝑛(sample proportion)",
+   "𝑋/𝑁",
+   "(𝑋/𝑛) ⋅𝑁/(𝑁−1)",
+   "𝑋/𝑛is already UMVUE"
+  ],
+  "answer_letter": "D",
+  "explanation": "𝑋/𝑛is unbiased for 𝑀/𝑁and is a function of the complete sufficient statistic 𝑋; hence it is UMVUE"
+ },
+ "189": {
+  "id": "Q189",
+  "num": 189,
+  "title": "MOM Truncated Normal",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑁(𝜇, 1) truncated to (0, ∞), MOM estimator of 𝜇satisfies:",
+  "options": [
+   "̄ 𝑋= 𝜇+ 𝜙(𝜇)/Φ(𝜇) (Mills ratio equation)",
+   "̂ 𝜇=̄ 𝑋",
+   "̂ 𝜇=̄ 𝑋−1",
+   "̂ 𝜇=̄ 𝑋⋅Φ(̄𝑋)"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐸[𝑋|𝑋> 0] = 𝜇+ 𝜙(𝜇)/Φ(𝜇); setting equal tō 𝑋gives implicit equation; same as MLE equation for truncated normal"
+ },
+ "190": {
+  "id": "Q190",
+  "num": 190,
+  "title": "UMVUE Double Exponential",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Laplace(𝜃, 1), UMVUE of 𝜃:",
+  "options": [
+   "Is sample median",
+   "Is̄ 𝑋",
+   "Does not exist (no complete sufficient statistic)",
+   "Is a weighted average of order statistics"
+  ],
+  "answer_letter": "C",
+  "explanation": "Laplace is a location family; order statistics are minimal sufficient but NOT complete; no UMVUE exists; sample median is best equivariant"
+ },
+ "191": {
+  "id": "Q191",
+  "num": 191,
+  "title": "Rao Blackwell Normal",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜇, 𝜎2) with 𝜎2 known, improve 𝑇0 = 𝑋²_1 −𝜎2 (unbiased for 𝜇2) using 𝑆=̄ 𝑋:",
+  "options": [
+   "̄ 𝑋2 −𝜎2/𝑛",
+   "̄ 𝑋2 −𝜎2",
+   "̄ 𝑋2",
+   "̄ 𝑋2 + 𝜎2/𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "E[X1²−σ²|X̄] = E[X1²|X̄]−σ²; E[X1²|X̄] = X̄² + σ²(n−1)/n; so result = X̄² + σ²(n−1)/n − σ² = X̄² − σ²/n ✓"
+ },
+ "192": {
+  "id": "Q192",
+  "num": 192,
+  "title": "UMVUE Binomial Probability",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Bin(𝑚, 𝑝) with 𝑚known, UMVUE of 𝑃(𝑋= 𝑘) = ((𝑚)/(𝑘))𝑝𝑘(1 −𝑝)𝑚−𝑘is:",
+  "options": [
+   "((𝑚)/(𝑘))̂𝑝𝑘(1 −̂ 𝑝)𝑚−𝑘wherê 𝑝=̄ 𝑋/𝑚",
+   "((𝑛𝑚−𝑇)/(𝑚)−𝑘)(𝑇 𝑘)/((𝑛𝑚)/(𝑚)) where 𝑇= ∑𝑋𝑖",
+   "((𝑚)/(𝑘))(𝑛𝑚−𝑚 𝑇−𝑘) (𝑛𝑚 𝑇) where 𝑇= ∑𝑋𝑖",
+   "Does not exist in closed form"
+  ],
+  "answer_letter": "C",
+  "explanation": "Hypergeometric-type conditional probability; 𝐸[𝐼(𝑋1 = 𝑘)|𝑇= ∑𝑋𝑖] computed via hypergeometric distribution; C is the correct form"
+ },
+ "193": {
+  "id": "Q193",
+  "num": 193,
+  "title": "MOM Generalized Pareto",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For Generalized Pareto 𝐺𝑃(𝜉, 𝜎), MOM estimators:",
+  "options": [
+   "̂ 𝜉= 1 −̄ 𝑋2/(2𝑆2),̂ 𝜎=̄ 𝑋(1 −̂ 𝜉) (Hosking-Wallis)",
+   "̂ 𝜉=̄ 𝑋/𝑆,̂ 𝜎= 𝑆",
+   "̂ 𝜉= 𝑆/̄𝑋−1,̂ 𝜎=̄ 𝑋",
+   "̂ 𝜉= 1/2 −̄ 𝑋2/𝑆2,̂ 𝜎=̄ 𝑋(1 +̂ 𝜉)"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐸[𝑋] = 𝜎/(1 −𝜉), Var(𝑋) = 𝜎2/[(1 −𝜉)2(1 −2𝜉)]; solving gives Hosking-Wallis MOM; valid only for 𝜉< 1/2"
+ },
+ "194": {
+  "id": "Q194",
+  "num": 194,
+  "title": "UMVUE Geometric Probability",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Geometric(𝑝), UMVUE of 𝑝is:",
+  "options": [
+   "1/̄𝑋",
+   "(𝑛−1)/(∑𝑋𝑖−1)",
+   "𝑛/ ∑𝑋𝑖",
+   "1/(̄𝑋−1)"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝑇= ∑𝑋𝑖∼NegBin(𝑛, 𝑝); 𝐸[𝑇] = 𝑛/𝑝; unbiased estimator: 𝑛/𝑇is NOT exactly unbiased; correct UMVUE: (𝑛−1)/(𝑇−1) since 𝐸[(𝑛−1)/(𝑇−1)] = 𝑝for NegBin"
+ },
+ "195": {
+  "id": "Q195",
+  "num": 195,
+  "title": "Rao Blackwell Uniform",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑈(0, 𝜃), improve 𝑇0 = 2𝑋1 (unbiased for 𝜃) using 𝑆= 𝑋(𝑛):",
+  "options": [
+   "𝐸[2𝑋1|𝑋(𝑛) = 𝑡] =(𝑛+1)/(𝑛𝑡)",
+   "𝐸[2𝑋1|𝑋(𝑛) = 𝑡] = 𝑡",
+   "𝐸[2𝑋1|𝑋(𝑛) = 𝑡] = 2𝑡 𝑛+1",
+   "𝐸[2𝑋1|𝑋(𝑛) = 𝑡] =((𝑛+1)𝑡)/(𝑛)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Given 𝑋(𝑛) = 𝑡: 𝐸[𝑋1|𝑋(𝑛) = 𝑡] =(1)/(𝑛𝑡)+ 𝑛−1 𝑛⋅(𝑡)/(2) = 𝑡(𝑛+1) 2𝑛 ; so 𝐸[2𝑋1|𝑋(𝑛) = 𝑡] =((𝑛+1)𝑡)/(𝑛) ✓"
+ },
+ "196": {
+  "id": "Q196",
+  "num": 196,
+  "title": "MOM Compound Poisson",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For compound Poisson where 𝑁∼Poisson(𝜆) and 𝑌= ∑ 𝑁 𝑖=1 𝑋𝑖with 𝑋𝑖∼Exp(𝜇), MOM for (𝜆, 𝜇):",
+  "options": [
+   "𝐸[𝑌] = 𝜆/𝜇, Var(𝑌) = 2𝜆/𝜇2 (use 𝐸[𝑌] = 𝜆𝐸[𝑋], Var(𝑌) = 𝜆𝐸[𝑋2])",
+   "̂ 𝜆=̄ 𝑌̂ 𝜇,̂ 𝜇=̄ 𝑌/𝑆2 solve simultaneously",
+   "̂ 𝜇= 2̄𝑌/𝑆2,̂ 𝜆=̄ 𝑌̂ 𝜇",
+   "̂ 𝜇= √2̄𝑌/𝑆2,̂ 𝜆=̄ 𝑌̂ 𝜇"
+  ],
+  "answer_letter": "C",
+  "explanation": "𝐸[𝑌] = 𝜆/𝜇, Var(𝑌) = 𝜆𝐸[𝑋2] = 𝜆⋅2/𝜇2; ratio: Var/𝐸= 2/𝜇;̂ 𝜇= 2̄𝑌/𝑆2; then 𝜆=̄ 𝑌̂ 𝜇"
+ },
+ "197": {
+  "id": "Q197",
+  "num": 197,
+  "title": "UMVUE Normal Quantile",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜇, 𝜎2) with 𝜎2 known, UMVUE of 𝜉𝑝= 𝜇+ 𝑧𝑝𝜎(the 𝑝-th quantile) is:",
+  "options": [
+   "̄ 𝑋+ 𝑧𝑝𝜎",
+   "̄ 𝑋+ 𝑧𝑝𝜎/√𝑛",
+   "̄ 𝑋+ 𝑧𝑝𝑆",
+   "̄ 𝑋+ 𝑧𝑝𝜎√1 + 1/𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "̄ 𝑋is UMVUE of 𝜇; 𝑧𝑝𝜎is a constant; UMVUE of 𝜇+ 𝑧𝑝𝜎is̄ 𝑋+ 𝑧𝑝𝜎; note 𝜎is KNOWN here"
+ },
+ "198": {
+  "id": "Q198",
+  "num": 198,
+  "title": "MOM Mixture Normal",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For mixture 𝜋𝑁(𝜇1, 𝜎2) + (1 −𝜋)𝑁(𝜇2, 𝜎2) with 𝜎2 known, MOM requires:",
+  "options": [
+   "At least 3 moment equations for 3 unknowns (𝜋, 𝜇1, 𝜇2)",
+   "2 moment equations",
+   "EM algorithm (MOM not applicable)",
+   "Only first moment equation"
+  ],
+  "answer_letter": "A",
+  "explanation": "3 unknown parameters need 3 equations; use 𝐸[𝑋], 𝐸[𝑋2], 𝐸[𝑋3]; mixture MOM can have multiple solutions — EM preferred"
+ },
+ "199": {
+  "id": "Q199",
+  "num": 199,
+  "title": "UMVUE Negative Binomial",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For 𝑋1, … , 𝑋𝑛∼NegBin(𝑟, 𝑝) with 𝑟known, UMVUE of 𝑝is:",
+  "options": [
+   "𝑛𝑟/ ∑𝑋𝑖",
+   "𝑛𝑟/(∑𝑋𝑖+ 𝑛𝑟)",
+   "(𝑛𝑟−1)/(∑𝑋𝑖+ 𝑛𝑟−1)",
+   "𝑟/(̄𝑋+ 𝑟)"
+  ],
+  "answer_letter": "C",
+  "explanation": "𝑇= ∑𝑋𝑖∼NegBin(𝑛𝑟, 𝑝); UMVUE of 𝑝: 𝐸[(𝑛𝑟−1)/(𝑇+𝑛𝑟−1)] = 𝑝(analogous to geometric case); careful with exact formula"
+ },
+ "200": {
+  "id": "Q200",
+  "num": 200,
+  "title": "MOM Generalized Extreme Value",
+  "difficulty": "HIGH",
+  "topic": "Rao–Blackwell, UMVUE & Method of Moments",
+  "question": "For GEV(𝜇, 𝜎, 𝜉), MOM estimators:",
+  "options": [
+   "Exist in closed form for all 𝜉",
+   "Exist only for 𝜉< 1/3 (finite third moment required)",
+   "Require 𝜉< 1/2 (finite variance)",
+   "Are always less efficient than MLE"
+  ],
+  "answer_letter": "B",
+  "explanation": "GEV moments: 𝐸[𝑋] exists for 𝜉< 1; Var(𝑋) for 𝜉< 1/2; third moment for 𝜉< 1/3; MOM using first 3 moments requires 𝜉< 1/3"
+ },
+ "201": {
+  "id": "Q201",
+  "num": 201,
+  "title": "CI Normal Mean",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "100(1 −𝛼)% CI for 𝜇when 𝜎2 known is:",
+  "options": [
+   "̄ 𝑋± 𝑧𝛼/2𝜎/√𝑛",
+   "̄ 𝑋± 𝑧𝛼/2𝜎",
+   "̄ 𝑋± 𝑡𝛼/2,𝑛−1𝑆/√𝑛",
+   "̄ 𝑋± 𝑧𝛼/2𝑆/√𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "Known 𝜎: use 𝑧𝛼/2; unknown 𝜎: use 𝑡𝑛−1; never mix 𝑧with 𝑆or 𝑡with 𝜎"
+ },
+ "202": {
+  "id": "Q202",
+  "num": 202,
+  "title": "CI Normal Variance",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "100(1 −𝛼)% CI for 𝜎2 is:",
+  "options": [
+   "[((𝑛−1)𝑆2)/(𝜒2) 𝛼/2,𝑛−1(,)/((𝑛−1)𝑆2) 𝜒2 1−𝛼/2,𝑛−1 ]",
+   "[((𝑛−1)𝑆2)/(𝜒2) 1−𝛼/2,𝑛−1(, (𝑛−1)𝑆2)/(𝜒2) 𝛼/2,𝑛−1 ]",
+   "[𝑆2 ± 𝑧𝛼/2√2𝜎4/𝑛]",
+   "[(𝑛𝑆2)/(𝜒2) 𝛼/2,𝑛(,)/(𝑛𝑆2) 𝜒2 1−𝛼/2,𝑛]"
+  ],
+  "answer_letter": "B",
+  "explanation": "𝜒2 CI: smaller 𝜒2 value in denominator gives LARGER bound; lower bound uses LARGER 𝜒2 quantile; (𝑛−1) df not 𝑛"
+ },
+ "203": {
+  "id": "Q203",
+  "num": 203,
+  "title": "CI Proportion",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "Wald CI for proportion 𝑝is:",
+  "options": [
+   "̂ 𝑝± 𝑧𝛼/2√̂𝑝(1 −̂ 𝑝)/𝑛",
+   "̂ 𝑝± 𝑧𝛼/2√𝑝(1 −𝑝)/𝑛",
+   "̂ 𝑝± 𝑡𝛼/2,𝑛−1√̂𝑝(1 −̂ 𝑝)/𝑛",
+   "̂ 𝑝± 𝑧𝛼/2/√𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "Wald uses estimated̂ 𝑝in SE; Wilson CI is preferred for small 𝑛; B uses true 𝑝 (unknown); never use 𝑡for proportions"
+ },
+ "204": {
+  "id": "Q204",
+  "num": 204,
+  "title": "CI Shortest",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "For symmetric unimodal distributions, shortest CI is:",
+  "options": [
+   "Equal-tails CI",
+   "Highest density region (HDR)",
+   "One-sided CI",
+   "Depends on sample size"
+  ],
+  "answer_letter": "B",
+  "explanation": "For symmetric distributions, equal-tails = HDR; for skewed (e.g., 𝜒2), HDR is shorter than equal-tails; equal-tails is NOT always shortest"
+ },
+ "205": {
+  "id": "Q205",
+  "num": 205,
+  "title": "CI Pivotal Quantity",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "A pivotal quantity 𝑄(𝑋, 𝜃) has distribution:",
+  "options": [
+   "That depends on 𝜃",
+   "That does not depend on 𝜃",
+   "That is always normal",
+   "That is always 𝜒2"
+  ],
+  "answer_letter": "B",
+  "explanation": "Pivot: distribution free of 𝜃; examples: (̄𝑋−𝜇)/(𝜎/√𝑛) ∼𝑁(0, 1); (𝑛−1)𝑆2/𝜎2 ∼ 𝜒²_𝑛−1"
+ },
+ "206": {
+  "id": "Q206",
+  "num": 206,
+  "title": "CI Exponential",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Exp(𝜆), exact CI for 𝜆uses pivot:",
+  "options": [
+   "2𝜆∑𝑋𝑖∼𝜒²_2𝑛",
+   "𝜆∑𝑋𝑖∼𝜒²_𝑛",
+   "√𝑛(̄𝑋−1/𝜆) ∼𝑁(0, 1/𝜆2)",
+   "𝑛𝜆̄𝑋∼𝜒²_𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "2𝜆𝑋𝑖∼𝜒²_2; sum of 𝑛independent 𝜒²_2 is 𝜒²_2𝑛; CI: [𝜒²_1−𝛼/2,2𝑛/(2 ∑𝑋𝑖), 𝜒²_𝛼/2,2𝑛/(2 ∑𝑋𝑖)]"
+ },
+ "207": {
+  "id": "Q207",
+  "num": 207,
+  "title": "CI Uniform",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑈(0, 𝜃), exact one-sided CI for 𝜃based on 𝑋(𝑛) is:",
+  "options": [
+   "[𝑋(𝑛), 𝑋(𝑛) ⋅𝛼−1/𝑛]",
+   "[𝑋(𝑛), 𝑋(𝑛) ⋅𝛼1/𝑛]",
+   "[𝑋(𝑛) ⋅𝛼1/𝑛, ∞)",
+   "[𝑋(𝑛)/𝛼1/𝑛, ∞)"
+  ],
+  "answer_letter": "A",
+  "explanation": "U = X_(n)/θ ∼ Beta(n,1); P(U ≥ α^{1/n}) = 1−α; so P(θ ≤ X_(n)/α^{1/n}) = 1−α; one-sided CI: [X_(n), X_(n)·α^{−1/n}]."
+ },
+ "208": {
+  "id": "Q208",
+  "num": 208,
+  "title": "CI Fiducial",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Fiducial interval (Fisher) differs from confidence interval in that:",
+  "options": [
+   "It treats 𝜃as random given observed data",
+   "It has different coverage probability",
+   "It requires prior distribution",
+   "It is always shorter"
+  ],
+  "answer_letter": "A",
+  "explanation": "Fiducial: treats parameter as having distribution induced by data (without prior); numerically equals CI for location families; philosophically different from frequentist CI"
+ },
+ "209": {
+  "id": "Q209",
+  "num": 209,
+  "title": "CI Bayesian Credible",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "A 95% Bayesian credible interval differs from 95% frequentist CI in that:",
+  "options": [
+   "𝑃(𝜃∈CI|𝑋) = 0.95 (posterior probability)",
+   "𝑃(𝜃∈CI) = 0.95 (prior probability)",
+   "Coverage is 95% in repeated sampling",
+   "It is always wider"
+  ],
+  "answer_letter": "A",
+  "explanation": "Bayesian: posterior probability statement about 𝜃; frequentist: coverage in repeated sampling; C is the frequentist interpretation; A is Bayesian"
+ },
+ "210": {
+  "id": "Q210",
+  "num": 210,
+  "title": "CI Wilson Proportion",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Wilson CI for proportion 𝑝is centered at:",
+  "options": [
+   "̂ 𝑝",
+   "𝑝+𝑧2 𝛼/2/(2𝑛) 1+𝑧2 𝛼/2/𝑛 (adjusted center)",
+   "𝑝(true proportion)",
+   "1/2"
+  ],
+  "answer_letter": "B",
+  "explanation": "Wilson CI: add 𝑧2/(2𝑛) pseudo-observations; center shifts toward 1/2; better coverage than Wald for small 𝑛or extreme 𝑝"
+ },
+ "211": {
+  "id": "Q211",
+  "num": 211,
+  "title": "CI Prediction Interval",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "Prediction interval for future observation 𝑋𝑛+1 ∼𝑁(𝜇, 𝜎2) with 𝜎2 known is:",
+  "options": [
+   "̄ 𝑋± 𝑧𝛼/2𝜎√1 + 1/𝑛",
+   "̄ 𝑋± 𝑧𝛼/2𝜎/√𝑛",
+   "̄ 𝑋± 𝑧𝛼/2𝜎",
+   "̄ 𝑋± 𝑡𝛼/2,𝑛−1𝑆√1 + 1/𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "Prediction interval wider than CI: 𝑋𝑛+1 −̄ 𝑋∼𝑁(0, 𝜎2(1 + 1/𝑛)); D is correct when 𝜎unknown; A when 𝜎known"
+ },
+ "212": {
+  "id": "Q212",
+  "num": 212,
+  "title": "CI Tolerance Interval",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "A tolerance interval [𝐿, 𝑈] with content 𝑝and confidence 1 −𝛼means:",
+  "options": [
+   "𝑃(𝑃(𝐿≤𝑋≤𝑈) ≥𝑝) ≥1 −𝛼",
+   "𝑃(𝐿≤𝑋≤𝑈) = 𝑝",
+   "𝑃(𝐿≤𝜇≤𝑈) = 1 −𝛼",
+   "𝑃(𝐿≤𝑋𝑛+1 ≤𝑈) = 𝑝"
+  ],
+  "answer_letter": "A",
+  "explanation": "Tolerance interval: probabilistic statement about coverage of future population; B is exact (not achievable for continuous distributions); C is CI for mean; D is prediction interval"
+ },
+ "213": {
+  "id": "Q213",
+  "num": 213,
+  "title": "CI Bootstrap Percentile",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "Bootstrap percentile CI uses:",
+  "options": [
+   "[̂𝜃(∗)/((𝛼/2),̂ 𝜃∗) (1−𝛼/2)] — quantiles of bootstrap distribution",
+   "[2̂𝜃−̂ 𝜃(∗)/((1−𝛼/2), 2̂𝜃−̂ 𝜃∗) (𝛼/2)] — reflected",
+   "̂ 𝜃± 𝑧𝛼/2SEboot",
+   "̂ 𝜃± 𝑡𝛼/2,𝑛−1SEboot"
+  ],
+  "answer_letter": "A",
+  "explanation": "Percentile method: A; Basic/Reverse percentile: B; Normal bootstrap: C; BCa (bias-corrected accelerated) is most accurate"
+ },
+ "214": {
+  "id": "Q214",
+  "num": 214,
+  "title": "CI Bootstrap BCa",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "BCa bootstrap CI corrects for:",
+  "options": [
+   "Bias and skewness of bootstrap distribution",
+   "Only bias",
+   "Only skewness",
+   "Non-normality of original data"
+  ],
+  "answer_letter": "A",
+  "explanation": "BCa = Bias-Corrected and accelerated; bias correction̂ 𝑧0 and acceleration̂ 𝑎both applied; most accurate bootstrap CI method"
+ },
+ "215": {
+  "id": "Q215",
+  "num": 215,
+  "title": "CI Jackknife SE",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "Jackknife standard error estimate is:",
+  "options": [
+   "√(𝑛−1)/(𝑛)∑(̂𝜃(𝑖) −̂ 𝜃(⋅))2",
+   "√(1)/(𝑛)∑(̂𝜃(𝑖) −̂ 𝜃(⋅))2",
+   "√(𝑛−1)/(𝑛2) ∑(̂𝜃(𝑖) −̂ 𝜃(⋅))2",
+   "√(𝑛−1)/(𝑛)∑(̂𝜃(𝑖) −̂ 𝜃)2"
+  ],
+  "answer_letter": "A",
+  "explanation": "Jackknife SE= √(𝑛−1)/(𝑛)∑ 𝑛 𝑖=1(̂𝜃(𝑖) −̂ 𝜃(⋅))2; the (𝑛−1)/𝑛factor (not 1/𝑛) is crucial"
+ },
+ "216": {
+  "id": "Q216",
+  "num": 216,
+  "title": "CI Optimum Unbiased",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Optimum confidence interval (shortest unbiased) for 𝜇in 𝑁(𝜇, 𝜎2) with 𝜎2 unknown is:",
+  "options": [
+   "Equal-tails 𝑡-interval",
+   "One-sided 𝑡-interval",
+   "𝑧-interval using 𝑆",
+   "Shortest 𝑡-interval (not equal-tails)"
+  ],
+  "answer_letter": "A",
+  "explanation": "For 𝑡-distribution (symmetric), equal-tails interval IS the shortest unbiased interval; for asymmetric distributions (e.g., 𝜒2), equal-tails is NOT shortest"
+ },
+ "217": {
+  "id": "Q217",
+  "num": 217,
+  "title": "CI Ratio Two Means",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "CI for ratio 𝜇1/𝜇2 of two normal means uses:",
+  "options": [
+   "Fieller’s theorem",
+   "Delta method approximation",
+   "Log transformation then back-transform",
+   "All of the above are valid approaches"
+  ],
+  "answer_letter": "D",
+  "explanation": "Fieller’s theorem gives exact CI; delta method gives approximate CI; log transformation is another approximation; all are used in practice"
+ },
+ "218": {
+  "id": "Q218",
+  "num": 218,
+  "title": "CI Nonparametric Median",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Distribution-free CI for population median uses:",
+  "options": [
+   "Order statistics 𝑋(𝑟) and 𝑋(𝑠) with coverage from binomial distribution",
+   "̄ 𝑋± 𝑧𝛼/2𝑆/√𝑛",
+   "Sample median ±𝑧𝛼/2 ⋅𝜋/(2𝑛) (asymptotic)",
+   "Bootstrap only"
+  ],
+  "answer_letter": "A",
+  "explanation": "Exact nonparametric CI for median: [𝑋(𝑟), 𝑋(𝑠)] where 𝑟, 𝑠chosen so 𝑃(𝑟≤ Bin(𝑛, 1/2) ≤𝑠−1) ≥1 −𝛼; C is asymptotic approximation"
+ },
+ "219": {
+  "id": "Q219",
+  "num": 219,
+  "title": "CI Simultaneous Bonferroni",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "Bonferroni simultaneous CIs for 𝑘parameters at family-wise level 1 −𝛼use individual level:",
+  "options": [
+   "1 −𝛼/𝑘",
+   "1 −𝛼/2",
+   "1 −𝑘𝛼",
+   "(1 −𝛼)1/𝑘"
+  ],
+  "answer_letter": "A",
+  "explanation": "Bonferroni: use 𝛼/𝑘per interval; D is Šidák correction (exact for independent tests); both are conservative"
+ },
+ "220": {
+  "id": "Q220",
+  "num": 220,
+  "title": "CI Bootstrap Double",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Double bootstrap (bootstrap-t) CI:",
+  "options": [
+   "Uses bootstrap to estimate the distribution of (̂𝜃−𝜃)/̂𝑆𝐸",
+   "Applies bootstrap twice to reduce bias",
+   "Uses 𝑡-distribution with bootstrap SE",
+   "Is equivalent to BCa"
+  ],
+  "answer_letter": "A",
+  "explanation": "Bootstrap-t: estimate distribution of studentized statistic via nested bootstrap; computationally expensive but second-order accurate; different from BCa"
+ },
+ "221": {
+  "id": "Q221",
+  "num": 221,
+  "title": "CI Profile Likelihood",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Profile likelihood CI for 𝜓is:",
+  "options": [
+   "{𝜓∶−2[ℓ𝑝(𝜓) −ℓ𝑝(̂𝜓)] ≤𝜒²_𝛼,1}",
+   "̂ 𝜓± 𝑧𝛼/2/√𝑛𝐼(̂𝜓)",
+   "{𝜓∶ℓ𝑝(𝜓) ≥ℓ𝑝(̂𝜓) −𝑧²_𝛼/2/2}",
+   "Both A and C (equivalent since 𝜒²_𝛼,1 = 𝑧2 𝛼/2)"
+  ],
+  "answer_letter": "D",
+  "explanation": "𝜒²_0.05,1 = 3.841 = 1.962; A and C are equivalent; profile likelihood CI is secondorder accurate unlike Wald CI"
+ },
+ "222": {
+  "id": "Q222",
+  "num": 222,
+  "title": "CI Exponential One Sided",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "One-sided 95% upper CI for 𝜆in Exp(𝜆) based on 𝑛observations:",
+  "options": [
+   "𝜆≤𝜒²_0.05,2𝑛/(2 ∑𝑋𝑖)",
+   "𝜆≤𝜒²_0.95,2𝑛/(2 ∑𝑋𝑖)",
+   "𝜆≤𝑧0.05/(̄𝑋√𝑛)",
+   "𝜆≤𝜒²_0.05,2𝑛/ ∑𝑋𝑖"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝑃(2𝜆∑𝑋𝑖≤𝜒²_0.05,2𝑛) = 0.05; upper CI: 𝜆≤𝜒²_0.05,2𝑛/(2 ∑𝑋𝑖); note 𝜒²_0.05 is LOWER tail quantile giving UPPER bound for 𝜆"
+ },
+ "223": {
+  "id": "Q223",
+  "num": 223,
+  "title": "CI Poisson Exact",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Exact CI for Poisson rate 𝜆based on observed count 𝑥is:",
+  "options": [
+   "[𝜒²_𝛼/2,2𝑥/(2𝑛), 𝜒2 1−𝛼/2,2(𝑥+1)/(2𝑛)]",
+   "[̄𝑋± 𝑧𝛼/2√̄𝑋/𝑛]",
+   "[𝑥/𝑛± 𝑧𝛼/2 √𝑥/𝑛]",
+   "[𝜒²_1−𝛼/2,2𝑥/(2𝑛), 𝜒2 𝛼/2,2(𝑥+1)/(2𝑛)]"
+  ],
+  "answer_letter": "A",
+  "explanation": "Exact Poisson CI: lower= 𝜒²_𝛼/2,2𝑥/2 (for rate per unit), upper= 𝜒²_1−𝛼/2,2(𝑥+1)/2; divide by 𝑛for rate; careful with which tail goes where"
+ },
+ "224": {
+  "id": "Q224",
+  "num": 224,
+  "title": "CI Correlation",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Fisher’s 𝑧-transformation CI for correlation 𝜌:",
+  "options": [
+   "tanh(tanh−1(̂𝜌) ± 𝑧𝛼/2/ √ 𝑛−3)",
+   "̂ 𝜌± 𝑧𝛼/2√(1 −̂ 𝜌2)2/(𝑛−1)",
+   "̂ 𝜌± 𝑧𝛼/2/√𝑛",
+   "̂ 𝜌± 𝑡𝛼/2,𝑛−2√(1 −̂ 𝜌2)/(𝑛−2)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Fisher 𝑧: 𝑧= tanh−1(̂𝜌) =(1)/(2) log 1+̂𝜌 1−̂𝜌; 𝑧∼𝑁(tanh−1(𝜌), 1/(𝑛−3)); back-transform via tanh"
+ },
+ "225": {
+  "id": "Q225",
+  "num": 225,
+  "title": "CI Difference Proportions",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "CI for 𝑝1 −𝑝2 (two independent proportions):",
+  "options": [
+   "(̂𝑝1 −̂ 𝑝2) ± 𝑧𝛼/2√̂𝑝1(1 −̂ 𝑝1)/𝑛1 +̂ 𝑝2(1 −̂ 𝑝2)/𝑛2",
+   "(̂𝑝1 −̂ 𝑝2) ± 𝑧𝛼/2√̂𝑝(1 −̂ 𝑝)(1/𝑛1 + 1/𝑛2) wherê 𝑝is pooled",
+   "A for CI; B for hypothesis test",
+   "Both A and B are valid CIs"
+  ],
+  "answer_letter": "C",
+  "explanation": "For CI: use unpooled SE (A); for hypothesis test 𝐻0 ∶𝑝1 = 𝑝2: use pooled SE (B); common exam trap to mix them"
+ },
+ "226": {
+  "id": "Q226",
+  "num": 226,
+  "title": "CI Regression Slope",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "CI for slope 𝛽in simple linear regression:",
+  "options": [
+   "̂ 𝛽± 𝑡𝛼/2,𝑛−2 ⋅𝑆/√𝑆𝑥𝑥where 𝑆𝑥𝑥= ∑(𝑥𝑖−̄ 𝑥)2",
+   "̂ 𝛽± 𝑡𝛼/2,𝑛−1 ⋅𝑆/√𝑆𝑥𝑥",
+   "̂ 𝛽± 𝑧𝛼/2 ⋅𝜎/√𝑆𝑥𝑥",
+   "̂ 𝛽± 𝑡𝛼/2,𝑛−2 ⋅𝑆̂𝛽where 𝑆(2̂)/(𝛽)= 𝑆2/𝑆𝑥𝑥"
+  ],
+  "answer_letter": "D",
+  "explanation": "A and D are equivalent; 𝑛−2 df (not 𝑛−1); 𝑆2 = RSS/(𝑛−2); C uses known 𝜎"
+ },
+ "227": {
+  "id": "Q227",
+  "num": 227,
+  "title": "CI Bootstrap Parametric",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Parametric bootstrap CI:",
+  "options": [
+   "Resamples from fitted parametric model 𝑓(𝑥;̂ 𝜃)",
+   "Resamples from empirical distribution",
+   "Uses analytical formula with bootstrap SE",
+   "Is equivalent to nonparametric bootstrap"
+  ],
+  "answer_letter": "A",
+  "explanation": "Parametric bootstrap: simulate from 𝑓(𝑥;̂ 𝜃); nonparametric: resample from data; they differ when model is misspecified"
+ },
+ "228": {
+  "id": "Q228",
+  "num": 228,
+  "title": "CI Jackknife Bias Corrected",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Jackknife bias-corrected estimator is:",
+  "options": [
+   "𝑛̂𝜃−(𝑛−1)̂𝜃(⋅)",
+   "̂ 𝜃−(𝑛−1)(̂𝜃(⋅) −̂ 𝜃)",
+   "̂ 𝜃+̂ biasjack where bias= (𝑛−1)(̂𝜃(⋅) −̂ 𝜃)",
+   "All of the above (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "Jackknife bias estimate= (𝑛−1)(̂𝜃(⋅) −̂ 𝜃); bias-corrected=̂ 𝜃−̂ bias =̂ 𝜃−(𝑛− 1)(̂𝜃(⋅) −̂ 𝜃) = 𝑛̂𝜃−(𝑛−1)̂𝜃(⋅); all equivalent"
+ },
+ "229": {
+  "id": "Q229",
+  "num": 229,
+  "title": "CI Subsampling",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Subsampling CI differs from bootstrap in that:",
+  "options": [
+   "It samples WITHOUT replacement (subsets of size 𝑏< 𝑛)",
+   "It requires correct specification of convergence rate",
+   "It is valid under weaker conditions than bootstrap",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "Subsampling: without replacement, size 𝑏→∞with 𝑏/𝑛→0; valid even when bootstrap fails (e.g., for maximum of i.i.d. uniform); requires knowing rate"
+ },
+ "230": {
+  "id": "Q230",
+  "num": 230,
+  "title": "CI Simultaneous Scheffe",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Scheffé simultaneous CI for all linear contrasts 𝑐𝑇𝛽in regression:",
+  "options": [
+   "̂ 𝑐𝑇̂ 𝛽± √𝑝⋅𝐹𝛼,𝑝,𝑛−𝑝⋅SE",
+   "̂ 𝑐𝑇̂ 𝛽± 𝑡𝛼/2,𝑛−𝑝⋅SE",
+   "̂ 𝑐𝑇̂ 𝛽± 𝑧𝛼/2 ⋅SE",
+   "̂ 𝑐𝑇̂ 𝛽± √𝐹𝛼,1,𝑛−𝑝⋅SE"
+  ],
+  "answer_letter": "A",
+  "explanation": "Scheffé: √𝑝⋅𝐹critical value covers ALL contrasts simultaneously; Bonferroni covers only pre-specified contrasts; 𝑝= number of parameters"
+ },
+ "231": {
+  "id": "Q231",
+  "num": 231,
+  "title": "CI Nonparametric Bootstrap Validity",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Bootstrap CI is NOT valid when:",
+  "options": [
+   "Distribution has heavy tails",
+   "Statistic is the sample maximum from 𝑈(0, 𝜃)",
+   "Sample size is small",
+   "Distribution is skewed"
+  ],
+  "answer_letter": "B",
+  "explanation": "Bootstrap fails for non-regular statistics like sample maximum (convergence rate 𝑛−1 not 𝑛−1/2); subsampling or 𝑚-out-of-𝑛bootstrap needed"
+ },
+ "232": {
+  "id": "Q232",
+  "num": 232,
+  "title": "CI Likelihood Ratio",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Likelihood ratio CI has the property of being:",
+  "options": [
+   "Transformation invariant (equivariant under reparametrization)",
+   "Always equal to Wald CI",
+   "Always shorter than Wald CI",
+   "Exact for all distributions"
+  ],
+  "answer_letter": "A",
+  "explanation": "LR CI is transformation invariant (key advantage over Wald); Wald CI is NOT invariant; LR CI is generally more accurate than Wald in finite samples"
+ },
+ "233": {
+  "id": "Q233",
+  "num": 233,
+  "title": "CI Bootstrap Iterations",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "For bootstrap CI, recommended number of bootstrap replications 𝐵:",
+  "options": [
+   "𝐵= 100 is always sufficient",
+   "𝐵≥1000 for percentile CI; 𝐵≥2000 for BCa",
+   "𝐵= 𝑛(same as sample size)",
+   "𝐵= ∞(theoretical limit)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Practical guidelines: 𝐵= 1000 for SE and percentile; 𝐵= 2000-5000 for BCa; more replications reduce Monte Carlo error in CI endpoints"
+ },
+ "234": {
+  "id": "Q234",
+  "num": 234,
+  "title": "CI Exact Binomial",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Clopper-Pearson exact CI for 𝑝based on 𝑥successes in 𝑛trials:",
+  "options": [
+   "[𝐵𝛼/2;𝑥,𝑛−𝑥+1, 𝐵1−𝛼/2;𝑥+1,𝑛−𝑥] where 𝐵is Beta quantile",
+   "[̂𝑝± 𝑧𝛼/2√̂𝑝(1 −̂ 𝑝)/𝑛]",
+   "[𝐹𝛼/2,2𝑥,2(𝑛−𝑥+1) ⋅𝑥/(𝑛−𝑥+ 1 + 𝐹⋅𝑥), …]",
+   "Both A and C (equivalent via Beta-F relationship)"
+  ],
+  "answer_letter": "D",
+  "explanation": "Clopper-Pearson uses Beta distribution; equivalent F-distribution form also exists; both are exact (conservative); B is Wald (approximate)"
+ },
+ "235": {
+  "id": "Q235",
+  "num": 235,
+  "title": "CI Regression Prediction",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "Prediction interval for new response 𝑌0 at 𝑥0 in regression:",
+  "options": [
+   "̂ 𝑌0 ± 𝑡𝛼/2,𝑛−2𝑆√1 + 1/𝑛+ (𝑥0 −̄ 𝑥)2/𝑆𝑥𝑥",
+   "̂ 𝑌0 ± 𝑡𝛼/2,𝑛−2𝑆√1/𝑛+ (𝑥0 −̄ 𝑥)2/𝑆𝑥𝑥",
+   "̂ 𝑌0 ± 𝑡𝛼/2,𝑛−2𝑆/√𝑛",
+   "̂ 𝑌0 ± 𝑧𝛼/2𝜎√1 + 1/𝑛+ (𝑥0 −̄ 𝑥)2/𝑆𝑥𝑥"
+  ],
+  "answer_letter": "A",
+  "explanation": "Prediction interval: extra 1 under square root (for new observation variance); B is CI for mean response; A is wider than B"
+ },
+ "236": {
+  "id": "Q236",
+  "num": 236,
+  "title": "CI Variance Ratio",
+  "difficulty": "MEDIUM",
+  "topic": "Confidence Intervals",
+  "question": "CI for 𝜎²_1/𝜎2 2 (two independent normal samples):",
+  "options": [
+   "[𝑆²_1/(𝑆2 2 ⋅𝐹𝛼/2,𝑛1−1,𝑛2−1), 𝑆²_1 ⋅𝐹𝛼/2,𝑛2−1,𝑛1−1/𝑆2 2]",
+   "[𝑆²_1/𝑆2 2 ± 𝑧𝛼/2√2/(𝑛1 −1) + 2/(𝑛2 −1)]",
+   "[(𝑆²_1/𝑆2 2)/𝐹1−𝛼/2,𝑛1−1,𝑛2−1, (𝑆²_1/𝑆2 2) ⋅𝐹1−𝛼/2,𝑛2−1,𝑛1−1]",
+   "Both A and C (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "𝐹1−𝛼/2,𝑚,𝑛= 1/𝐹𝛼/2,𝑛,𝑚; both forms are equivalent; note df order reversal in the reciprocal"
+ },
+ "237": {
+  "id": "Q237",
+  "num": 237,
+  "title": "CI Bootstrap Studentized",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Studentized bootstrap (bootstrap-t) CI is:",
+  "options": [
+   "Second-order accurate (error 𝑂(𝑛−1))",
+   "First-order accurate (error 𝑂(𝑛−1/2))",
+   "Exact",
+   "Less accurate than percentile bootstrap"
+  ],
+  "answer_letter": "A",
+  "explanation": "Bootstrap-t is second-order accurate; percentile and basic bootstrap are first-order; BCa is also second-order; studentized bootstrap requires nested bootstrap for SE"
+ },
+ "238": {
+  "id": "Q238",
+  "num": 238,
+  "title": "CI Jackknife Failure",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Jackknife fails (is inconsistent) for:",
+  "options": [
+   "Sample mean",
+   "Sample median (non-smooth functional)",
+   "Sample variance",
+   "Regression coefficients"
+  ],
+  "answer_letter": "B",
+  "explanation": "Jackknife fails for non-smooth statistics like sample median, sample quantiles; bootstrap is preferred; jackknife works for smooth functionals"
+ },
+ "239": {
+  "id": "Q239",
+  "num": 239,
+  "title": "CI Simultaneous Tukey",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Tukey’s HSD simultaneous CI for pairwise differences 𝜇𝑖−𝜇𝑗in one-way ANOVA uses:",
+  "options": [
+   "Studentized range distribution 𝑞𝛼,𝑘,𝑁−𝑘",
+   "𝑡-distribution with Bonferroni correction",
+   "𝐹-distribution",
+   "Normal distribution"
+  ],
+  "answer_letter": "A",
+  "explanation": "Tukey uses studentized range (maximum of pairwise 𝑡-statistics); exact for balanced designs; Bonferroni is conservative; Tukey is less conservative"
+ },
+ "240": {
+  "id": "Q240",
+  "num": 240,
+  "title": "CI Bootstrap Bias Correction",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Bootstrap bias estimate for̂ 𝜃is:",
+  "options": [
+   "̄̂ 𝜃 ∗ −̂ 𝜃wherē̂ 𝜃 ∗ is mean of bootstrap estimates",
+   "̂ 𝜃−̄̂ 𝜃 ∗",
+   "𝐸[̂𝜃] −𝜃",
+   "̄̂ 𝜃 ∗ −𝜃"
+  ],
+  "answer_letter": "A",
+  "explanation": "Bootstrap bias= 𝐸∗[̂𝜃∗]−̂𝜃=̄̂ 𝜃 ∗ −̂𝜃; bias-corrected estimate= 2̂𝜃−̄̂𝜃 ∗ ; B has wrong sign"
+ },
+ "241": {
+  "id": "Q241",
+  "num": 241,
+  "title": "CI Fiducial Location",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "For location family 𝑓(𝑥−𝜃), fiducial distribution of 𝜃given̄ 𝑋=̄ 𝑥is:",
+  "options": [
+   "𝑓(̄𝑥−𝜃) ⋅√𝑛(scaled)",
+   "Posterior with flat prior",
+   "Both A and B (coincide for location families)",
+   "Normal distribution always"
+  ],
+  "answer_letter": "C",
+  "explanation": "For location families, fiducial = posterior with flat (improper) prior = confidence distribution; all three coincide — key result"
+ },
+ "242": {
+  "id": "Q242",
+  "num": 242,
+  "title": "CI Tolerance Normal",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "For 𝑁(𝜇, 𝜎2) with both unknown, tolerance interval covering at least proportion 𝑝with confidence 1 −𝛼:",
+  "options": [
+   "̄ 𝑋± 𝑘(𝑛, 𝑝, 𝛼)𝑆where 𝑘is tolerance factor from tables",
+   "̄ 𝑋± 𝑧𝑝𝑆",
+   "̄ 𝑋± 𝑧𝑝𝜎",
+   "̄ 𝑋± 𝑧𝑝/2𝑆√1 + 1/𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "Tolerance factor 𝑘accounts for estimation of both 𝜇and 𝜎; 𝑘> 𝑧𝑝always; 𝑘→𝑧𝑝 as 𝑛→∞; B undercovers"
+ },
+ "243": {
+  "id": "Q243",
+  "num": 243,
+  "title": "CI Bootstrap Smoothed",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Smoothed bootstrap adds noise to resampled values to:",
+  "options": [
+   "Improve CI coverage for discrete distributions",
+   "Reduce computation time",
+   "Handle missing data",
+   "Increase bias"
+  ],
+  "answer_letter": "A",
+  "explanation": "Smoothed bootstrap: add small random noise (bandwidth ℎ) to discrete resamples; treats discrete data as continuous; improves coverage for discrete statistics"
+ },
+ "244": {
+  "id": "Q244",
+  "num": 244,
+  "title": "CI Confidence Distribution",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "A confidence distribution 𝐶(𝜃) satisfies:",
+  "options": [
+   "𝐶(𝜃0) ∼𝑈(0, 1) under 𝐻0 ∶𝜃= 𝜃0",
+   "𝑃(𝜃∈[𝐶−1(𝛼/2), 𝐶−1(1 −𝛼/2)]) = 1 −𝛼",
+   "It is a proper probability distribution over 𝜃",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "Confidence distribution unifies CI, 𝑝-values, and point estimates; 𝐶(𝜃0) is the 𝑝-value for 𝐻0 ∶𝜃≤𝜃0; modern framework"
+ },
+ "245": {
+  "id": "Q245",
+  "num": 245,
+  "title": "CI Bootstrap Accelerated",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "The acceleration constant̂ 𝑎in BCa bootstrap measures:",
+  "options": [
+   "Rate of change of SE with respect to 𝜃",
+   "Skewness of bootstrap distribution",
+   "Bias of̂ 𝜃",
+   "Sample size effect"
+  ],
+  "answer_letter": "A",
+  "explanation": "̂ 𝑎= ∑(̂𝜃(⋅)−̂𝜃(𝑖))3 6[∑(̂𝜃(⋅)−̂𝜃(𝑖))2]3/2 (jackknife-based); measures how SE changes with 𝜃(influence function skewness)"
+ },
+ "246": {
+  "id": "Q246",
+  "num": 246,
+  "title": "CI Regression Simultaneous",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Working-Hotelling simultaneous CI band for regression line 𝐸[𝑌|𝑥] = 𝛼+ 𝛽𝑥:",
+  "options": [
+   "̂ 𝑌(𝑥) ± √2𝐹𝛼,2,𝑛−2 ⋅𝑆√1/𝑛+ (𝑥−̄ 𝑥)2/𝑆𝑥𝑥",
+   "̂ 𝑌(𝑥) ± 𝑡𝛼/2,𝑛−2 ⋅𝑆√1/𝑛+ (𝑥−̄ 𝑥)2/𝑆𝑥𝑥",
+   "̂ 𝑌(𝑥) ± 𝑧𝛼/2 ⋅𝑆√1/𝑛+ (𝑥−̄ 𝑥)2/𝑆𝑥𝑥",
+   "̂ 𝑌(𝑥) ± 𝐹𝛼,2,𝑛−2 ⋅𝑆√1/𝑛+ (𝑥−̄ 𝑥)2/𝑆𝑥𝑥"
+  ],
+  "answer_letter": "A",
+  "explanation": "Working-Hotelling: √ 2𝐹critical value for ALL 𝑥simultaneously; B is pointwise CI; √2𝐹0.05,2,𝑛−2 > 𝑡0.025,𝑛−2 so band is wider"
+ },
+ "247": {
+  "id": "Q247",
+  "num": 247,
+  "title": "CI Bootstrap Monte Carlo Error",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Monte Carlo error in bootstrap CI endpoint̂ 𝜃(∗)/((𝛼) is approximately:)",
+  "options": [
+   "√𝛼(1 −𝛼)/𝐵⋅̂ 𝜎∗wherê 𝜎∗is bootstrap SD",
+   "1/ √ 𝐵",
+   "𝛼/ √ 𝐵",
+   "̂ 𝜎∗/ √ 𝐵"
+  ],
+  "answer_letter": "A",
+  "explanation": "SE of sample quantile: √𝑝(1 −𝑝)/𝐵/𝑓(𝜉𝑝); for bootstrap distribution, 𝑓(𝜉𝑝) ≈ 1/̂𝜎∗; so SE≈̂ 𝜎∗√𝛼(1 −𝛼)/𝐵"
+ },
+ "248": {
+  "id": "Q248",
+  "num": 248,
+  "title": "CI Empirical Likelihood",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Empirical likelihood CI (Owen) is:",
+  "options": [
+   "Nonparametric, transformation invariant, Bartlett correctable",
+   "Requires parametric model",
+   "Always wider than bootstrap CI",
+   "Equivalent to bootstrap percentile CI"
+  ],
+  "answer_letter": "A",
+  "explanation": "Empirical likelihood: nonparametric analog of likelihood ratio CI; shares properties of parametric LR CI (transformation invariance, Bartlett correction); Wilks theorem holds"
+ },
+ "249": {
+  "id": "Q249",
+  "num": 249,
+  "title": "CI Shortest Chi Square",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Shortest CI for 𝜎2 (not equal-tails) requires finding 𝜒²_𝐿, 𝜒2 𝑈satisfying:",
+  "options": [
+   "𝜒²_1−𝛼/2,𝑛−1 −𝜒2 𝛼/2,𝑛−1 minimized subject to coverage 1 −𝛼",
+   "1/𝜒²_𝐿−1/𝜒2 𝑈minimized subject to 𝑃(𝜒²_𝐿≤𝜒2 𝑛−1 ≤𝜒²_𝑈) = 1 −𝛼",
+   "Equal tail probabilities",
+   "𝜒²_𝑈/𝜒2 𝐿minimized"
+  ],
+  "answer_letter": "B",
+  "explanation": "CI for 𝜎2: length∝1/𝜒²_𝐿−1/𝜒2 𝑈; minimize this subject to coverage; NOT equaltails; equal-tails is standard but not shortest"
+ },
+ "250": {
+  "id": "Q250",
+  "num": 250,
+  "title": "CI Bootstrap Double Coverage",
+  "difficulty": "HIGH",
+  "topic": "Confidence Intervals",
+  "question": "Double bootstrap corrects coverage error of bootstrap CI from:",
+  "options": [
+   "𝑂(𝑛−1/2) to 𝑂(𝑛−1)",
+   "𝑂(𝑛−1) to 𝑂(𝑛−3/2)",
+   "𝑂(1) to 𝑂(𝑛−1/2)",
+   "Exact to approximate"
+  ],
+  "answer_letter": "A",
+  "explanation": "Single bootstrap CI: coverage error 𝑂(𝑛−1/2); double bootstrap: 𝑂(𝑛−1); studentized bootstrap also achieves 𝑂(𝑛−1); computationally expensive"
+ },
+ "251": {
+  "id": "Q251",
+  "num": 251,
+  "title": "NP Lemma Statement",
+  "difficulty": "MEDIUM",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "Neyman-Pearson lemma: Most powerful test of size 𝛼for 𝐻0 ∶𝜃= 𝜃0 vs 𝐻1 ∶𝜃= 𝜃1 rejects when:",
+  "options": [
+   "Λ = 𝑓(𝑥; 𝜃1)/𝑓(𝑥; 𝜃0) > 𝑘where 𝑘chosen so 𝑃𝐻0(Λ > 𝑘) = 𝛼",
+   "Λ = 𝑓(𝑥; 𝜃0)/𝑓(𝑥; 𝜃1) > 𝑘",
+   "̄ 𝑋> 𝑘always",
+   "𝑝-value < 𝛼"
+  ],
+  "answer_letter": "A",
+  "explanation": "Ratio is 𝑓1/𝑓0 (alternative over null); reject for LARGE ratio; B has ratio inverted; k determined by size constraint"
+ },
+ "252": {
+  "id": "Q252",
+  "num": 252,
+  "title": "UMP Exponential Family",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For one-parameter exponential family with monotone likelihood ratio in 𝑇(𝑥), UMP test of 𝐻0 ∶𝜃≤𝜃0 vs 𝐻1 ∶𝜃> 𝜃0:",
+  "options": [
+   "Rejects for large 𝑇(𝑥)",
+   "Rejects for small 𝑇(𝑥)",
+   "Rejects for |𝑇(𝑥)| > 𝑘",
+   "Depends on direction of monotonicity"
+  ],
+  "answer_letter": "D",
+  "explanation": "If LR is increasing in 𝑇: reject for large 𝑇; if decreasing: reject for small 𝑇; must check direction"
+ },
+ "253": {
+  "id": "Q253",
+  "num": 253,
+  "title": "UMP Existence Two Sided",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "UMP test for two-sided 𝐻1 ∶𝜃≠𝜃0 against one-sided 𝐻0 ∶𝜃= 𝜃0:",
+  "options": [
+   "Always exists for exponential families",
+   "Generally does NOT exist",
+   "Exists only for normal distribution",
+   "Exists when distribution is symmetric"
+  ],
+  "answer_letter": "B",
+  "explanation": "UMP for two-sided alternatives generally fails; the test that is MP against 𝜃1 > 𝜃0 differs from MP against 𝜃1 < 𝜃0; UMPU tests exist instead"
+ },
+ "254": {
+  "id": "Q254",
+  "num": 254,
+  "title": "NP Lemma Normal Mean",
+  "difficulty": "MEDIUM",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜇, 𝜎2) with 𝜎2 known, MP test of 𝐻0 ∶𝜇= 𝜇0 vs 𝐻1 ∶𝜇= 𝜇1 > 𝜇0:",
+  "options": [
+   "Reject if̄ 𝑋> 𝑐where 𝑐= 𝜇0 + 𝑧𝛼𝜎/√𝑛",
+   "Reject if̄ 𝑋< 𝑐",
+   "Reject if |̄𝑋−𝜇0| > 𝑐",
+   "Reject if̄ 𝑋> 𝜇1"
+  ],
+  "answer_letter": "A",
+  "explanation": "LR= exp[𝑛(𝜇1 −𝜇0)̄𝑋/𝜎2 −const]; increasing in̄ 𝑋(since 𝜇1 > 𝜇0); reject for large 𝑋; 𝑐from size constraint"
+ },
+ "255": {
+  "id": "Q255",
+  "num": 255,
+  "title": "Power Function Definition",
+  "difficulty": "MEDIUM",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "Power function 𝛽(𝜃) of a test is:",
+  "options": [
+   "𝑃𝜃(reject 𝐻0) for all 𝜃",
+   "𝑃𝜃(accept 𝐻0) for 𝜃∈𝐻1",
+   "1 −𝑃(Type II error) only under 𝐻1",
+   "𝑃(Type I error) under 𝐻0"
+  ],
+  "answer_letter": "A",
+  "explanation": "Power function defined for ALL 𝜃; under 𝐻0: 𝛽(𝜃) = 𝛼(size); under 𝐻1: 𝛽(𝜃) = power; C is incomplete"
+ },
+ "256": {
+  "id": "Q256",
+  "num": 256,
+  "title": "Critical Region Types",
+  "difficulty": "MEDIUM",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For testing 𝐻0 ∶𝜇= 𝜇0 vs 𝐻1 ∶𝜇≠𝜇0 (normal, 𝜎known), critical region is:",
+  "options": [
+   "{|̄𝑋−𝜇0| > 𝑧𝛼/2𝜎/√𝑛}",
+   "{̄𝑋> 𝜇0 + 𝑧𝛼𝜎/√𝑛}",
+   "{̄𝑋< 𝜇0 −𝑧𝛼𝜎/√𝑛}",
+   "{(̄𝑋−𝜇0)2 > 𝑧²_𝛼𝜎2/𝑛}"
+  ],
+  "answer_letter": "A",
+  "explanation": "Two-sided test: A and D are equivalent; B is one-sided right; C is one-sided left; for two-sided, use 𝑧𝛼/2 not 𝑧𝛼"
+ },
+ "257": {
+  "id": "Q257",
+  "num": 257,
+  "title": "Similar Region",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "A critical region 𝐶is similar of size 𝛼if:",
+  "options": [
+   "𝑃𝜃(𝑋∈𝐶) = 𝛼for all 𝜃∈𝐻0",
+   "𝑃𝜃(𝑋∈𝐶) ≤𝛼for all 𝜃∈𝐻0",
+   "𝑃𝜃(𝑋∈𝐶) = 𝛼for all 𝜃",
+   "𝑃𝜃(𝑋∈𝐶) ≥𝛼for all 𝜃∈𝐻1"
+  ],
+  "answer_letter": "A",
+  "explanation": "Similar region: EXACTLY 𝛼for all 𝜃∈𝐻0 (not just ≤𝛼); level 𝛼test has ≤𝛼; similar tests are useful for composite 𝐻0"
+ },
+ "258": {
+  "id": "Q258",
+  "num": 258,
+  "title": "Unbiased Test",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "A test is unbiased if:",
+  "options": [
+   "𝛽(𝜃) ≥𝛼for all 𝜃∈𝐻1 and 𝛽(𝜃) ≤𝛼for all 𝜃∈𝐻0",
+   "𝛽(𝜃) = 𝛼for all 𝜃",
+   "Power equals size",
+   "Type I error equals Type II error"
+  ],
+  "answer_letter": "A",
+  "explanation": "Unbiased: power under 𝐻1 is at least as large as size; ensures test is not “worse than random”; B is similar test; D is unrelated"
+ },
+ "259": {
+  "id": "Q259",
+  "num": 259,
+  "title": "Randomized Test",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "A randomized test with critical function 𝜙(𝑥) means:",
+  "options": [
+   "Reject with probability 𝜙(𝑥) ∈[0, 1]",
+   "Randomly choose between two tests",
+   "Use random sample size",
+   "Randomly permute data"
+  ],
+  "answer_letter": "A",
+  "explanation": "Randomized test: 𝜙(𝑥) = 𝑃(reject|𝑋= 𝑥); needed to achieve exact size 𝛼for discrete distributions; 𝜙(𝑥) ∈{0, 1} for non-randomized"
+ },
+ "260": {
+  "id": "Q260",
+  "num": 260,
+  "title": "NP Lemma Poisson",
+  "difficulty": "MEDIUM",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋∼Poisson(𝜆), MP test of 𝐻0 ∶𝜆= 𝜆0 vs 𝐻1 ∶𝜆= 𝜆1 > 𝜆0:",
+  "options": [
+   "Reject for large 𝑋(i.e., 𝑋≥𝑐)",
+   "Reject for small 𝑋",
+   "Reject for |𝑋−𝜆0| > 𝑐",
+   "Reject for 𝑋= 0"
+  ],
+  "answer_letter": "A",
+  "explanation": "LR= (𝜆1/𝜆0)𝑥𝑒−(𝜆1−𝜆0); increasing in 𝑥(since 𝜆1 > 𝜆0); reject for large 𝑋; randomization at boundary for exact size"
+ },
+ "261": {
+  "id": "Q261",
+  "num": 261,
+  "title": "UMP Normal Variance",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋1, … , 𝑋𝑛∼𝑁(𝜇, 𝜎2) with 𝜇known, UMP test of 𝐻0 ∶𝜎2 ≤𝜎²_0 vs 𝐻1 ∶𝜎2 > 𝜎²_0:",
+  "options": [
+   "Reject for large ∑(𝑋𝑖−𝜇)2",
+   "Reject for small ∑(𝑋𝑖−𝜇)2",
+   "Reject for large |̄𝑋−𝜇|",
+   "UMP does not exist"
+  ],
+  "answer_letter": "A",
+  "explanation": "∑(𝑋𝑖−𝜇)2/𝜎2 ∼𝜒²_𝑛; MLR in ∑(𝑋𝑖−𝜇)2; reject for large values; 𝜇known is crucial"
+ },
+ "262": {
+  "id": "Q262",
+  "num": 262,
+  "title": "Power Calculation Normal",
+  "difficulty": "MEDIUM",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝐻0 ∶𝜇= 0 vs 𝐻1 ∶𝜇= 𝛿> 0 with 𝜎known, power of 𝑧-test at level 𝛼is:",
+  "options": [
+   "Φ(−𝑧𝛼+ 𝛿√𝑛/𝜎)",
+   "Φ(𝑧𝛼−𝛿√𝑛/𝜎)",
+   "1 −Φ(𝑧𝛼−𝛿√𝑛/𝜎)",
+   "Both A and C (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "Power= 𝑃(̄𝑋> 𝑧𝛼𝜎/√𝑛|𝜇= 𝛿) = 𝑃(𝑍> 𝑧𝛼−𝛿√𝑛/𝜎) = 1 −Φ(𝑧𝛼−𝛿√𝑛/𝜎) = Φ(𝛿√𝑛/𝜎−𝑧𝛼); A and C equivalent"
+ },
+ "263": {
+  "id": "Q263",
+  "num": 263,
+  "title": "NP Lemma Exponential",
+  "difficulty": "MEDIUM",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Exp(𝜃), MP test of 𝐻0 ∶𝜃= 𝜃0 vs 𝐻1 ∶𝜃= 𝜃1 < 𝜃0 (smaller rate = larger mean):",
+  "options": [
+   "Reject for large ∑𝑋𝑖",
+   "Reject for small ∑𝑋𝑖",
+   "Reject for largē 𝑋",
+   "Both A and C (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "LR= (𝜃1/𝜃0)𝑛exp[−(𝜃1 −𝜃0) ∑𝑥𝑖]; since 𝜃1 < 𝜃0: −(𝜃1 −𝜃0) > 0; LR increasing in ∑𝑥𝑖; reject for large ∑𝑋𝑖"
+ },
+ "264": {
+  "id": "Q264",
+  "num": 264,
+  "title": "UMP One Sided Composite",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝐻0 ∶𝜃≤𝜃0 vs 𝐻1 ∶𝜃> 𝜃0 in exponential family with MLR in 𝑇(𝑥):",
+  "options": [
+   "UMP test rejects for 𝑇(𝑥) > 𝑐where 𝑐satisfies sup𝜃≤𝜃0 𝑃𝜃(𝑇> 𝑐) = 𝛼",
+   "UMP test rejects for 𝑇(𝑥) < 𝑐",
+   "UMP does not exist for composite 𝐻0",
+   "UMP rejects for |𝑇(𝑥)| > 𝑐"
+  ],
+  "answer_letter": "A",
+  "explanation": "MLR property: test that is MP for each simple 𝜃1 > 𝜃0 is the same test; this common test is UMP; size achieved at 𝜃= 𝜃0 (boundary)"
+ },
+ "265": {
+  "id": "Q265",
+  "num": 265,
+  "title": "Neyman Pearson Randomized",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "When 𝑃𝐻0(Λ > 𝑘) = 𝛼1 < 𝛼< 𝛼2 = 𝑃𝐻0(Λ ≥𝑘), the NP test randomizes at Λ = 𝑘with probability:",
+  "options": [
+   "𝛾= (𝛼−𝛼1)/(𝛼2 −𝛼1)",
+   "𝛾= 𝛼/𝛼2",
+   "𝛾= (𝛼2 −𝛼)/(𝛼2 −𝛼1)",
+   "𝛾= 𝛼"
+  ],
+  "answer_letter": "A",
+  "explanation": "Randomization probability 𝛾chosen so total size= 𝛼1 + 𝛾(𝛼2 −𝛼1) = 𝛼; solving gives A; needed for discrete distributions"
+ },
+ "266": {
+  "id": "Q266",
+  "num": 266,
+  "title": "Power Function Monotone",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For UMP test in exponential family with MLR, power function 𝛽(𝜃) is:",
+  "options": [
+   "Monotone increasing in 𝜃(for one-sided 𝐻1 ∶𝜃> 𝜃0)",
+   "Monotone decreasing",
+   "Non-monotone (U-shaped)",
+   "Constant"
+  ],
+  "answer_letter": "A",
+  "explanation": "MLR implies monotone power function; this is the key property that makes the test UMP; power increases as 𝜃moves further into 𝐻1"
+ },
+ "267": {
+  "id": "Q267",
+  "num": 267,
+  "title": "Most Powerful Level",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "A test is most powerful of level 𝛼(not size 𝛼) if:",
+  "options": [
+   "sup𝜃∈𝐻0 𝛽(𝜃) ≤𝛼and power is maximized",
+   "𝛽(𝜃0) = 𝛼exactly",
+   "Power equals 1 −𝛽for all 𝜃∈𝐻1",
+   "It minimizes Type II error"
+  ],
+  "answer_letter": "A",
+  "explanation": "Level 𝛼: size ≤𝛼(inequality); size 𝛼: size = 𝛼(equality); MP of level 𝛼may have size < 𝛼(conservative)"
+ },
+ "268": {
+  "id": "Q268",
+  "num": 268,
+  "title": "NP Lemma Uniform",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋∼𝑈(0, 𝜃), testing 𝐻0 ∶𝜃= 1 vs 𝐻1 ∶𝜃= 2, MP test:",
+  "options": [
+   "Rejects if 𝑋> 𝑐for some 𝑐∈(0, 1)",
+   "Rejects if 𝑋< 𝑐",
+   "Rejects if 𝑋> 1 (impossible under 𝐻0)",
+   "Always rejects (since 𝐻1 support contains 𝐻0 support)"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝑓(𝑥; 2)/𝑓(𝑥; 1) = 1/2 for 𝑥∈(0, 1) and ∞for 𝑥∈(1, 2); always reject if 𝑋> 1; for 𝑋≤1, LR= 1/2 (constant); randomize to achieve exact size 𝛼"
+ },
+ "269": {
+  "id": "Q269",
+  "num": 269,
+  "title": "UMP Bernoulli",
+  "difficulty": "MEDIUM",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Bernoulli(𝑝), UMP test of 𝐻0 ∶𝑝≤𝑝0 vs 𝐻1 ∶𝑝> 𝑝0:",
+  "options": [
+   "Reject for large ∑𝑋𝑖",
+   "Reject for small ∑𝑋𝑖",
+   "Reject for | ∑𝑋𝑖−𝑛𝑝0| > 𝑐",
+   "UMP does not exist"
+  ],
+  "answer_letter": "A",
+  "explanation": "Bernoulli is exponential family with MLR in ∑𝑋𝑖; UMP rejects for large ∑𝑋𝑖; critical value from Bin(𝑛, 𝑝0) distribution"
+ },
+ "270": {
+  "id": "Q270",
+  "num": 270,
+  "title": "Power Envelope",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "The power envelope is:",
+  "options": [
+   "Maximum achievable power at each 𝜃∈𝐻1 over all level-𝛼tests",
+   "Power of the UMP test",
+   "Power of the likelihood ratio test",
+   "Both A and B when UMP exists"
+  ],
+  "answer_letter": "D",
+  "explanation": "Power envelope = upper bound on power; when UMP exists, it achieves the envelope; when UMP doesn’t exist, no single test achieves the envelope everywhere"
+ },
+ "271": {
+  "id": "Q271",
+  "num": 271,
+  "title": "NP Lemma Composite H1",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "NP lemma directly applies to:",
+  "options": [
+   "Simple 𝐻0 vs simple 𝐻1 only",
+   "Simple 𝐻0 vs composite 𝐻1",
+   "Composite 𝐻0 vs composite 𝐻1",
+   "Any hypothesis testing problem"
+  ],
+  "answer_letter": "A",
+  "explanation": "NP lemma: both hypotheses must be simple (point hypotheses); extension to composite uses UMP theory (MLR, exponential family); LRT handles general composite"
+ },
+ "272": {
+  "id": "Q272",
+  "num": 272,
+  "title": "Similar Test Construction",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For composite 𝐻0 ∶𝜃∈Θ0, similar tests of size 𝛼are constructed using:",
+  "options": [
+   "Neyman structure: 𝐸𝜃[𝜙(𝑋)|𝑇(𝑋)] = 𝛼for sufficient statistic 𝑇under 𝐻0",
+   "Rao-Blackwell theorem",
+   "Likelihood ratio",
+   "Bootstrap"
+  ],
+  "answer_letter": "A",
+  "explanation": "Neyman structure: conditional on sufficient statistic for nuisance parameter, test has constant conditional size 𝛼; this gives similar tests"
+ },
+ "273": {
+  "id": "Q273",
+  "num": 273,
+  "title": "UMP Unbiased Two Sided",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "UMPU test for 𝐻0 ∶𝜃= 𝜃0 vs 𝐻1 ∶𝜃≠𝜃0 in exponential family:",
+  "options": [
+   "Rejects for 𝑇< 𝑐1 or 𝑇> 𝑐2 with 𝑐1, 𝑐2 chosen for size and unbiasedness",
+   "Rejects for |𝑇−𝜃0| > 𝑐",
+   "Is the same as the two-sided 𝑧-test always",
+   "Does not exist"
+  ],
+  "answer_letter": "A",
+  "explanation": "UMPU: two critical values 𝑐1 < 𝑐2; conditions: 𝐸𝜃0[𝜙] = 𝛼(size) and 𝐸𝜃0[𝑇𝜙] = 𝛼𝐸𝜃0[𝑇] (unbiasedness); for normal, reduces to equal-tails 𝑧-test"
+ },
+ "274": {
+  "id": "Q274",
+  "num": 274,
+  "title": "Power Sample Size",
+  "difficulty": "MEDIUM",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "To achieve power 1 −𝛽at 𝜇= 𝜇1 for one-sided 𝑧-test at level 𝛼, required 𝑛is:",
+  "options": [
+   "𝑛= 𝜎2(𝑧𝛼+ 𝑧𝛽)2/(𝜇1 −𝜇0)2",
+   "𝑛= 𝜎2(𝑧𝛼−𝑧𝛽)2/(𝜇1 −𝜇0)2",
+   "𝑛= 𝜎2𝑧²_𝛼/(𝜇1 −𝜇0)2",
+   "𝑛= 𝜎2(𝑧𝛼/2 + 𝑧𝛽)2/(𝜇1 −𝜇0)2"
+  ],
+  "answer_letter": "A",
+  "explanation": "Power= Φ(𝛿√𝑛/𝜎−𝑧𝛼) = 1 −𝛽; so 𝛿√𝑛/𝜎= 𝑧𝛼+ 𝑧𝛽; squaring: A; D uses 𝑧𝛼/2 (two-sided)"
+ },
+ "275": {
+  "id": "Q275",
+  "num": 275,
+  "title": "NP Lemma Sufficient Stat",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "When sufficient statistic 𝑇exists, NP lemma critical region can be expressed in terms of 𝑇because:",
+  "options": [
+   "Likelihood ratio is a function of 𝑇only",
+   "𝑇has minimum variance",
+   "𝑇is complete",
+   "𝑇is ancillary"
+  ],
+  "answer_letter": "A",
+  "explanation": "By factorization theorem, 𝑓(x; 𝜃) = 𝑔(𝑇; 𝜃)ℎ(x); LR= 𝑔(𝑇; 𝜃1)/𝑔(𝑇; 𝜃0); depends on x only through 𝑇"
+ },
+ "276": {
+  "id": "Q276",
+  "num": 276,
+  "title": "Power Function Beta Distribution",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋∼Beta(𝜃, 1), testing 𝐻0 ∶𝜃= 1 vs 𝐻1 ∶𝜃= 2, power of MP test at level 𝛼:",
+  "options": [
+   "1 −(1 −𝛼)2",
+   "𝛼2",
+   "2𝛼−𝛼2",
+   "1 −𝛼2"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝑓(𝑥; 𝜃) = 𝜃𝑥𝜃−1; LR= 2𝑥/1 = 2𝑥; reject for large 𝑥; 𝑃(𝑋> 𝑐|𝜃= 1) = 1 −𝑐= 𝛼; 𝑐= 1 −𝛼; power= 𝑃(𝑋> 1 −𝛼|𝜃= 2) = 1 −(1 −𝛼)2"
+ },
+ "277": {
+  "id": "Q277",
+  "num": 277,
+  "title": "UMP Scale Family",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For scale family(1)/(𝜃𝑓)(𝑥/𝜃) with 𝑓log-concave, UMP test of 𝐻0 ∶𝜃≤𝜃0 vs 𝐻1 ∶𝜃> 𝜃0:",
+  "options": [
+   "Rejects for large ∑𝑋𝑖(if 𝑓is exponential)",
+   "Rejects for large 𝑋(𝑛) (if 𝑓is uniform)",
+   "Depends on specific 𝑓",
+   "Does not exist in general"
+  ],
+  "answer_letter": "C",
+  "explanation": "Sufficient statistic and rejection region depend on the specific scale family; exponential: ∑𝑋𝑖; uniform: 𝑋(𝑛); no universal answer"
+ },
+ "278": {
+  "id": "Q278",
+  "num": 278,
+  "title": "Critical Region Composite",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For composite 𝐻0 ∶𝜇≥𝜇0 vs 𝐻1 ∶𝜇< 𝜇0 (normal, 𝜎known), level-𝛼test:",
+  "options": [
+   "Rejects for̄ 𝑋< 𝜇0 −𝑧𝛼𝜎/√𝑛",
+   "Rejects for̄ 𝑋> 𝜇0 + 𝑧𝛼𝜎/√𝑛",
+   "Rejects for |̄𝑋−𝜇0| > 𝑧𝛼/2𝜎/√𝑛",
+   "Rejects for̄ 𝑋< 𝜇0 −𝑧𝛼/2𝜎/√𝑛"
+  ],
+  "answer_letter": "A",
+  "explanation": "One-sided left test; size achieved at 𝜇= 𝜇0 (boundary of 𝐻0); use 𝑧𝛼not 𝑧𝛼/2; B is right-sided; C is two-sided"
+ },
+ "279": {
+  "id": "Q279",
+  "num": 279,
+  "title": "Power Function Continuity",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "Power function 𝛽(𝜃) of a test based on continuous data is:",
+  "options": [
+   "Always continuous in 𝜃",
+   "Continuous only for exponential families",
+   "May be discontinuous for discrete distributions",
+   "Always differentiable"
+  ],
+  "answer_letter": "A",
+  "explanation": "For continuous data, power function is continuous (and often differentiable) in 𝜃; for discrete data, power function may have jumps; A is correct for continuous case"
+ },
+ "280": {
+  "id": "Q280",
+  "num": 280,
+  "title": "NP Lemma Multiparameter",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For multiparameter family, NP lemma:",
+  "options": [
+   "Applies directly to simple vs simple hypotheses",
+   "Does not apply",
+   "Requires sufficient statistic",
+   "Gives UMP test always"
+  ],
+  "answer_letter": "A",
+  "explanation": "NP lemma applies to any simple vs simple hypothesis regardless of dimension; the LR test is MP; extension to composite is harder in multiparameter case"
+ },
+ "281": {
+  "id": "Q281",
+  "num": 281,
+  "title": "UMP Exponential Rate",
+  "difficulty": "MEDIUM",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Exp(𝜃) (rate), UMP test of 𝐻0 ∶𝜃= 𝜃0 vs 𝐻1 ∶𝜃> 𝜃0:",
+  "options": [
+   "Reject for small ∑𝑋𝑖(large rate = small mean)",
+   "Reject for large ∑𝑋𝑖",
+   "Reject for largē 𝑋",
+   "UMP does not exist"
+  ],
+  "answer_letter": "A",
+  "explanation": "Large rate 𝜃means small mean 1/𝜃; LR increasing in −∑𝑋𝑖(or decreasing in ∑𝑋𝑖); reject for SMALL ∑𝑋𝑖; common sign error"
+ },
+ "282": {
+  "id": "Q282",
+  "num": 282,
+  "title": "Power Function Normal Two Sided",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "Power function of two-sided 𝑧-test for 𝐻0 ∶𝜇= 0 vs 𝐻1 ∶𝜇≠0:",
+  "options": [
+   "𝛽(𝜇) = Φ(−𝑧𝛼/2 −𝜇√𝑛/𝜎) + 1 −Φ(𝑧𝛼/2 −𝜇√𝑛/𝜎)",
+   "𝛽(𝜇) = Φ(𝜇√𝑛/𝜎−𝑧𝛼/2)",
+   "𝛽(𝜇) = 1 −Φ(𝑧𝛼/2 −𝜇√𝑛/𝜎)",
+   "𝛽(𝜇) = 2Φ(𝜇√𝑛/𝜎−𝑧𝛼/2) −1"
+  ],
+  "answer_letter": "A",
+  "explanation": "Two-sided: power = P(reject left) + P(reject right); for 𝜇> 0: left tail negligible; A is exact; B and C are one-sided approximations"
+ },
+ "283": {
+  "id": "Q283",
+  "num": 283,
+  "title": "Similar Region Exponential Family",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "In exponential family 𝑓(𝑥; 𝜃, 𝜆) = ℎ(𝑥) exp[𝜂1(𝜃)𝑇1 + 𝜂2(𝜆)𝑇2 −𝐵], similar test for 𝐻0 ∶𝜃= 𝜃0 (nuisance 𝜆) conditions on:",
+  "options": [
+   "𝑇2 (sufficient for 𝜆)",
+   "𝑇1 (sufficient for 𝜃)",
+   "(𝑇1, 𝑇2) jointly",
+   "Neither"
+  ],
+  "answer_letter": "A",
+  "explanation": "Condition on sufficient statistic for nuisance parameter 𝜆; conditional distribution of 𝑇1|𝑇2 is free of 𝜆; gives similar test"
+ },
+ "284": {
+  "id": "Q284",
+  "num": 284,
+  "title": "UMP Double Exponential",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Laplace(𝜃, 1), UMP test of 𝐻0 ∶𝜃= 0 vs 𝐻1 ∶𝜃> 0:",
+  "options": [
+   "Rejects for large ∑𝑋𝑖",
+   "Rejects for large ∑|𝑋𝑖|",
+   "Rejects for large sample median",
+   "UMP does not exist"
+  ],
+  "answer_letter": "D",
+  "explanation": "Laplace is NOT exponential family (absolute value in exponent); no MLR in simple statistic; UMP does not exist; sign test or Wilcoxon are used"
+ },
+ "285": {
+  "id": "Q285",
+  "num": 285,
+  "title": "Power Function Beta Calculation",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋∼Bin(10, 𝑝), test 𝐻0 ∶𝑝= 0.5 vs 𝐻1 ∶𝑝> 0.5, reject if 𝑋≥8. Power at 𝑝= 0.7:",
+  "options": [
+   "P(X≥8|p=0.7) = C(10,8)(0.7)^8(0.3)^2 + C(10,9)(0.7)^9(0.3) + C(10,10)(0.7)^10",
+   "P(X≥8|p=0.5)",
+   "1 − P(X≤7|p=0.7)",
+   "Both A and C (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "Power at 𝑝= 0.7: compute under 𝐻1; A and C are equivalent expressions; B is the size (under 𝐻0)"
+ },
+ "286": {
+  "id": "Q286",
+  "num": 286,
+  "title": "NP Lemma Gamma",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Γ(𝛼, 𝜃) with 𝛼known, MP test of 𝐻0 ∶𝜃= 𝜃0 vs 𝐻1 ∶𝜃= 𝜃1 < 𝜃0:",
+  "options": [
+   "Reject for large ∑𝑋𝑖",
+   "Reject for small ∑𝑋𝑖",
+   "Reject for largē 𝑋",
+   "Both A and C (equivalent)"
+  ],
+  "answer_letter": "B",
+  "explanation": "Γ(𝛼, 𝜃) with scale 𝜃: 𝑓∝𝜃−𝑛𝛼exp(−∑𝑥𝑖/𝜃); LR= (𝜃0/𝜃1)𝑛𝛼exp[−∑𝑥𝑖(1/𝜃1 − 1/𝜃0)]; since 𝜃1 < 𝜃0: 1/𝜃1 > 1/𝜃0; LR decreasing in ∑𝑥𝑖; reject for SMALL ∑𝑋𝑖"
+ },
+ "287": {
+  "id": "Q287",
+  "num": 287,
+  "title": "UMP Normal Mean Variance Unknown",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑁(𝜇, 𝜎2) with 𝜎2 unknown, UMP test of 𝐻0 ∶𝜇≤𝜇0 vs 𝐻1 ∶𝜇> 𝜇0:",
+  "options": [
+   "Rejects for large 𝑡= (̄𝑋−𝜇0)/(𝑆/√𝑛)",
+   "Rejects for largē 𝑋",
+   "UMP does not exist (nuisance 𝜎2)",
+   "Rejects for largē 𝑋/𝑆"
+  ],
+  "answer_letter": "A",
+  "explanation": "With nuisance 𝜎2, UMP doesn’t exist in general; BUT the 𝑡-test is UMPU (uniformly most powerful unbiased); A is UMPU, not UMP; C is technically correct for UMP"
+ },
+ "288": {
+  "id": "Q288",
+  "num": 288,
+  "title": "Power Function Increasing",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For one-sided test in exponential family, power function is strictly increasing because:",
+  "options": [
+   "MLR property implies power is monotone in 𝜃",
+   "Sufficient statistic is complete",
+   "MLE is consistent",
+   "CRLB is attained"
+  ],
+  "answer_letter": "A",
+  "explanation": "MLR ⇒monotone power function; this is the fundamental connection between MLR and UMP tests; completeness is separate"
+ },
+ "289": {
+  "id": "Q289",
+  "num": 289,
+  "title": "NP Lemma Composite Reduction",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For composite 𝐻1 ∶𝜃> 𝜃0 in exponential family, UMP test is found by:",
+  "options": [
+   "Applying NP lemma to each simple 𝐻1 ∶𝜃= 𝜃1 and noting the MP test is the same for all 𝜃1 > 𝜃0",
+   "Maximizing power at 𝜃1 = 𝜃0 + 1",
+   "Using LRT",
+   "Rao-Blackwell theorem"
+  ],
+  "answer_letter": "A",
+  "explanation": "Key insight: MLR ensures the NP critical region (reject for large 𝑇) is the same for ALL 𝜃1 > 𝜃0; this common test is UMP"
+ },
+ "290": {
+  "id": "Q290",
+  "num": 290,
+  "title": "Critical Region Randomized Discrete",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋∼Bin(5, 𝑝), testing 𝐻0 ∶𝑝= 0.5 at level 𝛼= 0.05, exact size requires:",
+  "options": [
+   "Randomization at boundary since 𝑃(𝑋≥5|𝑝= 0.5) = 1/32 < 0.05 < 𝑃(𝑋≥4|𝑝= 0.5) = 6/32",
+   "Reject if 𝑋≥5 (size= 1/32 < 0.05, conservative)",
+   "Reject if 𝑋≥4 (size= 6/32 > 0.05, liberal)",
+   "Use normal approximation"
+  ],
+  "answer_letter": "A",
+  "explanation": "Exact size 0.05 requires randomization: reject if 𝑋= 5; reject with prob 𝛾if 𝑋= 4; 𝛾= (0.05 −1/32)/(6/32 −1/32) = (0.05 −0.03125)/0.15625"
+ },
+ "291": {
+  "id": "Q291",
+  "num": 291,
+  "title": "UMP Negative Binomial",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋1, … , 𝑋𝑛∼NegBin(𝑟, 𝑝) with 𝑟known, UMP test of 𝐻0 ∶𝑝≥𝑝0 vs 𝐻1 ∶𝑝< 𝑝0:",
+  "options": [
+   "Reject for large ∑𝑋𝑖",
+   "Reject for small ∑𝑋𝑖",
+   "Reject for largē 𝑋",
+   "Both A and C (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "NegBin: 𝐸[𝑋] = 𝑟(1−𝑝)/𝑝; smaller 𝑝means larger mean; LR in ∑𝑋𝑖; for 𝑝1 < 𝑝0: reject for large ∑𝑋𝑖; A and C equivalent"
+ },
+ "292": {
+  "id": "Q292",
+  "num": 292,
+  "title": "Power Function Envelope Calculation",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "Power envelope at 𝜃1 for testing 𝐻0 ∶𝜃= 𝜃0 at level 𝛼is:",
+  "options": [
+   "Power of NP MP test at 𝜃1",
+   "1 −𝛽where 𝛽is Type II error of best test",
+   "suplevel-𝛼tests 𝛽(𝜃1)",
+   "All of the above (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "All three definitions are equivalent; NP lemma gives the test achieving the envelope; power envelope is the theoretical maximum"
+ },
+ "293": {
+  "id": "Q293",
+  "num": 293,
+  "title": "Similar Region Normal",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑁(𝜇, 𝜎2) with both unknown, similar test of 𝐻0 ∶𝜇= 𝜇0 conditions on:",
+  "options": [
+   "𝑆2 (sufficient for 𝜎2 under 𝐻0)",
+   "̄ 𝑋",
+   "∑𝑋²_𝑖",
+   "𝑋(1)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Under 𝐻0 ∶𝜇= 𝜇0, 𝑆2 is sufficient for 𝜎2; conditioning on 𝑆2 gives 𝑡-statistic with 𝑡𝑛−1 distribution free of 𝜎2; this gives the 𝑡-test as UMPU"
+ },
+ "294": {
+  "id": "Q294",
+  "num": 294,
+  "title": "UMP Pareto",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋1, … , 𝑋𝑛∼Pareto(𝜃), 𝑓(𝑥; 𝜃) = 𝜃/𝑥𝜃+1, 𝑥> 1, UMP test of 𝐻0 ∶𝜃≤𝜃0 vs 𝐻1 ∶𝜃> 𝜃0:",
+  "options": [
+   "Reject for large ∑log 𝑋𝑖",
+   "Reject for small ∑log 𝑋𝑖",
+   "Reject for large ∏𝑋𝑖",
+   "Both B and C (equivalent since log ∏= ∑log)"
+  ],
+  "answer_letter": "B",
+  "explanation": "∑log 𝑋𝑖∼Γ(𝑛, 1/𝜃); larger 𝜃means smaller ∑log 𝑋𝑖; MLR in −∑log 𝑋𝑖; reject for small ∑log 𝑋𝑖(= large −∑log 𝑋𝑖)"
+ },
+ "295": {
+  "id": "Q295",
+  "num": 295,
+  "title": "Power Function Beta Distribution General",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For 𝑋∼Beta(𝜃, 1), UMP test of 𝐻0 ∶𝜃≤1 vs 𝐻1 ∶𝜃> 1 rejects for:",
+  "options": [
+   "Large ∑log 𝑋𝑖(less negative, closer to 0)",
+   "Small ∑log 𝑋𝑖(more negative)",
+   "Large ∑𝑋𝑖",
+   "Large 𝑋(𝑛)"
+  ],
+  "answer_letter": "A",
+  "explanation": "log 𝑋𝑖< 0 for 𝑋𝑖∈(0, 1); −log 𝑋𝑖∼Exp(𝜃); large 𝜃means small 𝐸[−log 𝑋𝑖] = 1/𝜃; so large 𝜃means ∑log 𝑋𝑖closer to 0 (less negative); reject for large (less negative) ∑log 𝑋𝑖"
+ },
+ "296": {
+  "id": "Q296",
+  "num": 296,
+  "title": "NP Lemma Location Family",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For location family 𝑓(𝑥−𝜃) with 𝑓symmetric and log-concave, MP test of 𝐻0 ∶𝜃= 0 vs 𝐻1 ∶𝜃= 𝛿> 0:",
+  "options": [
+   "Rejects for large ∑𝑋𝑖(if 𝑓is normal)",
+   "Rejects for large ∑sgn(𝑋𝑖) (if 𝑓is Laplace)",
+   "Depends on specific 𝑓",
+   "Always rejects for largē 𝑋"
+  ],
+  "answer_letter": "C",
+  "explanation": "MP test depends on 𝑓; normal: reject for largē 𝑋; Laplace: reject for large ∑sgn(𝑋𝑖) (sign test); Cauchy: complex; D is wrong in general"
+ },
+ "297": {
+  "id": "Q297",
+  "num": 297,
+  "title": "UMP Hypergeometric",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For Hypergeometric(𝑁, 𝑀, 𝑛) with 𝑁, 𝑛known, UMP test of 𝐻0 ∶𝑀≤𝑀0 vs 𝐻1 ∶𝑀> 𝑀0:",
+  "options": [
+   "Reject for large 𝑋(number of successes in sample)",
+   "Reject for small 𝑋",
+   "UMP does not exist (not exponential family)",
+   "Reject for 𝑋> 𝑀0𝑛/𝑁"
+  ],
+  "answer_letter": "A",
+  "explanation": "Hypergeometric has MLR in 𝑋; UMP exists and rejects for large 𝑋; not exponential family but MLR still holds"
+ },
+ "298": {
+  "id": "Q298",
+  "num": 298,
+  "title": "Power Function Composite H0",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "For composite 𝐻0 ∶𝜃∈[0, 1] vs 𝐻1 ∶𝜃> 1, size of test is:",
+  "options": [
+   "sup𝜃∈[0,1] 𝛽(𝜃)",
+   "𝛽(0)",
+   "𝛽(1)",
+   "inf𝜃∈[0,1] 𝛽(𝜃)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Size = supremum of power function over 𝐻0; for monotone power function, supremum achieved at boundary 𝜃= 1; so A= 𝛽(1) in this case"
+ },
+ "299": {
+  "id": "Q299",
+  "num": 299,
+  "title": "NP Lemma Sufficient Reduction",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "If 𝑇is sufficient and NP critical region is {𝑥∶Λ(𝑥) > 𝑘}, then equivalently:",
+  "options": [
+   "{𝑥∶𝑔(𝑇(𝑥)) > 𝑘′} for some function 𝑔and constant 𝑘′",
+   "{𝑥∶𝑇(𝑥) > 𝑘′} always",
+   "{𝑥∶̄ 𝑋> 𝑘′} always",
+   "The critical region cannot be simplified"
+  ],
+  "answer_letter": "A",
+  "explanation": "LR is a function of 𝑇(by factorization); so critical region is a function of 𝑇; B is true only if LR is monotone in 𝑇; A is the general statement"
+ },
+ "310": {
+  "id": "Q310",
+  "num": 310,
+  "title": "UMP Summary",
+  "difficulty": "HIGH",
+  "topic": "Neyman–Pearson Lemma, UMP Tests & Power Functions",
+  "question": "UMP test exists for 𝐻0 ∶𝜃= 𝜃0 vs 𝐻1 ∶𝜃≠𝜃0 (two-sided) when:",
+  "options": [
+   "Distribution is normal",
+   "Distribution has MLR",
+   "Never (for two-sided alternatives in general)",
+   "Distribution is from exponential family"
+  ],
+  "answer_letter": "C",
+  "explanation": "UMP for two-sided alternatives generally does NOT exist; UMPU exists for exponential families; this is a fundamental limitation of UMP theory"
+ },
+ "311": {
+  "id": "Q311",
+  "num": 311,
+  "title": "LRT Definition",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Likelihood ratio test statistic Λ is:",
+  "options": [
+   "Λ = sup𝜃∈Θ0 𝐿(𝜃)/ sup𝜃∈Θ 𝐿(𝜃)",
+   "Λ = sup𝜃∈Θ 𝐿(𝜃)/ sup𝜃∈Θ0 𝐿(𝜃)",
+   "Λ = 𝐿(̂𝜃0)/𝐿(̂𝜃) wherê 𝜃0 is restricted MLE",
+   "Both A and C (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "Λ ∈[0, 1]; reject for SMALL Λ (equivalently large −2 log Λ); B is ≥1 always; A and C are equivalent"
+ },
+ "312": {
+  "id": "Q312",
+  "num": 312,
+  "title": "LRT Wilks Theorem",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Under 𝐻0 and regularity conditions, −2 log Λ 𝑑−→:",
+  "options": [
+   "𝜒²_𝑟where 𝑟= dim(Θ) −dim(Θ0)",
+   "𝜒²_𝑛",
+   "𝐹𝑟,𝑛−𝑟",
+   "𝑁(0, 1)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Wilks’ theorem: 𝑟= number of restrictions (difference in parameter dimensions); for testing 𝑘parameters: 𝑟= 𝑘; requires regularity conditions"
+ },
+ "313": {
+  "id": "Q313",
+  "num": 313,
+  "title": "LRT Normal Mean Variance",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For 𝑁(𝜇, 𝜎2) with both unknown, LRT of 𝐻0 ∶𝜇= 𝜇0 vs 𝐻1 ∶𝜇≠𝜇0:",
+  "options": [
+   "Reduces to 𝑡-test: reject for large |𝑡| = |̄𝑋−𝜇0|/(𝑆/√𝑛)",
+   "Reduces to 𝑧-test",
+   "Reduces to 𝜒2 test",
+   "Has no closed form"
+  ],
+  "answer_letter": "A",
+  "explanation": "LRT statistic: −2 log Λ = 𝑛log[1 + 𝑡2/(𝑛−1)] which is monotone in |𝑡|; LRT is equivalent to 𝑡-test; 𝑟= 1 df"
+ },
+ "314": {
+  "id": "Q314",
+  "num": 314,
+  "title": "SPRT Definition",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Wald’s SPRT continues sampling while:",
+  "options": [
+   "𝐵< Λ𝑚< 𝐴where Λ𝑚= ∏ 𝑚 𝑖=1 𝑓(𝑋𝑖; 𝜃1)/𝑓(𝑋𝑖; 𝜃0)",
+   "Λ𝑚> 𝐴",
+   "Λ𝑚< 𝐵",
+   "𝑚< 𝑛0 (fixed sample size)"
+  ],
+  "answer_letter": "A",
+  "explanation": "SPRT: continue if 𝐵< Λ𝑚< 𝐴; stop and reject 𝐻0 if Λ𝑚≥𝐴; stop and accept 𝐻0 if Λ𝑚≤𝐵"
+ },
+ "315": {
+  "id": "Q315",
+  "num": 315,
+  "title": "SPRT Boundaries",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Wald’s approximate SPRT boundaries are:",
+  "options": [
+   "𝐴≈(1 −𝛽)/𝛼, 𝐵≈𝛽/(1 −𝛼)",
+   "𝐴≈(1 −𝛼)/𝛽, 𝐵≈𝛼/(1 −𝛽)",
+   "𝐴= 1/𝛼, 𝐵= 𝛽",
+   "𝐴= 1 −𝛽, 𝐵= 𝛼"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐴= (1 −𝛽)/𝛼(upper boundary for rejecting 𝐻0); 𝐵= 𝛽/(1 −𝛼) (lower boundary for accepting 𝐻0); these are approximate (ignore overshoot)"
+ },
+ "316": {
+  "id": "Q316",
+  "num": 316,
+  "title": "SPRT Normal",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For 𝑋𝑖∼𝑁(𝜃, 1), SPRT of 𝐻0 ∶𝜃= 0 vs 𝐻1 ∶𝜃= 𝛿, log-LR after 𝑚observations:",
+  "options": [
+   "𝛿∑ 𝑚 𝑖=1 𝑋𝑖−𝑚𝛿2/2",
+   "𝛿∑ 𝑚 𝑖=1 𝑋𝑖",
+   "𝛿̄𝑋𝑚−𝛿2/2",
+   "∑ 𝑚 𝑖=1 𝑋²_𝑖"
+  ],
+  "answer_letter": "A",
+  "explanation": "log Λ𝑚= ∑[log 𝑓(𝑋𝑖; 𝛿) −log 𝑓(𝑋𝑖; 0)] = 𝛿∑𝑋𝑖−𝑚𝛿2/2; linear in ∑𝑋𝑖; SPRT reduces to boundary on ∑𝑋𝑖"
+ },
+ "317": {
+  "id": "Q317",
+  "num": 317,
+  "title": "OC Function Definition",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Operating Characteristic (OC) function 𝐿(𝜃) of SPRT is:",
+  "options": [
+   "𝑃𝜃(accept 𝐻0)",
+   "𝑃𝜃(reject 𝐻0)",
+   "𝐸𝜃[𝑁] (expected sample size)",
+   "Power function"
+  ],
+  "answer_letter": "A",
+  "explanation": "OC function = probability of accepting 𝐻0; 𝐿(𝜃0) = 1 −𝛼; 𝐿(𝜃1) = 𝛽; power function= 1 −𝐿(𝜃); C is ASN function"
+ },
+ "318": {
+  "id": "Q318",
+  "num": 318,
+  "title": "ASN Function",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "ASN (Average Sample Number) function 𝐸𝜃[𝑁] for SPRT satisfies Wald’s identity:",
+  "options": [
+   "𝐸𝜃[𝑁] ≈𝐿(𝜃) log(𝐵/𝐴)+(1−𝐿(𝜃)) log(𝐴/𝐵) 𝐸𝜃[log 𝑓(𝑋;𝜃1)/𝑓(𝑋;𝜃0)] (Wald’s approximation)",
+   "𝐸𝜃[𝑁] = 𝑛(fixed)",
+   "𝐸𝜃[𝑁] = 1/𝛼",
+   "𝐸𝜃[𝑁] = log(𝐴/𝐵)/𝐸𝜃[log Λ1]"
+  ],
+  "answer_letter": "A",
+  "explanation": "Wald’s approximation for ASN uses OC function 𝐿(𝜃) and expected log-LR per observation; D is a special case; exact formula involves overshoot correction"
+ },
+ "319": {
+  "id": "Q319",
+  "num": 319,
+  "title": "SPRT Optimality",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Wald-Wolfowitz theorem states SPRT is optimal in that:",
+  "options": [
+   "Among all tests with error probabilities ≤𝛼and ≤𝛽, SPRT minimizes 𝐸𝜃0[𝑁] and 𝐸𝜃1[𝑁] simultaneously",
+   "SPRT minimizes maximum expected sample size",
+   "SPRT is UMP among sequential tests",
+   "SPRT minimizes total error probability"
+  ],
+  "answer_letter": "A",
+  "explanation": "Wald-Wolfowitz: SPRT minimizes ASN at BOTH 𝜃0 and 𝜃1 simultaneously; no other test with same error bounds can have smaller ASN at either point"
+ },
+ "320": {
+  "id": "Q320",
+  "num": 320,
+  "title": "LRT Composite Both",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "LRT for 𝐻0 ∶𝜃∈Θ0 vs 𝐻1 ∶𝜃∈Θ1 = Θ ∖Θ0:",
+  "options": [
+   "Λ = supΘ0 𝐿/ supΘ 𝐿; reject for small Λ",
+   "Λ = supΘ1 𝐿/ supΘ0 𝐿; reject for large Λ",
+   "Λ = 𝐿(̂𝜃0)/𝐿(̂𝜃); reject for small Λ",
+   "Both A and C (equivalent)"
+  ],
+  "answer_letter": "D",
+  "explanation": "A and C are equivalent; supΘ 𝐿= max(supΘ0 𝐿, supΘ1 𝐿); when̂ 𝜃∉Θ0, supΘ 𝐿= 𝐿(̂𝜃); reject for small Λ (large −2 log Λ)"
+ },
+ "321": {
+  "id": "Q321",
+  "num": 321,
+  "title": "Decision Theory Loss",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "In decision theory, risk function 𝑅(𝜃, 𝑑) is:",
+  "options": [
+   "𝐸𝜃[𝐿(𝜃, 𝑑(𝑋))] — expected loss",
+   "𝐿(𝜃, 𝑑(𝑋)) — loss function",
+   "sup𝜃𝐿(𝜃, 𝑑(𝑋))",
+   "𝑃𝜃(wrong decision)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Risk = expected loss; loss function is random (depends on 𝑋); risk is its expectation; D is risk for 0-1 loss only"
+ },
+ "322": {
+  "id": "Q322",
+  "num": 322,
+  "title": "Decision Theory Admissibility",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Estimator 𝑑1 dominates 𝑑2 if:",
+  "options": [
+   "𝑅(𝜃, 𝑑1) ≤𝑅(𝜃, 𝑑2) for all 𝜃with strict inequality for some 𝜃",
+   "𝑅(𝜃, 𝑑1) < 𝑅(𝜃, 𝑑2) for all 𝜃",
+   "𝑅(𝜃, 𝑑1) ≤𝑅(𝜃, 𝑑2) for all 𝜃",
+   "sup𝜃𝑅(𝜃, 𝑑1) < sup𝜃𝑅(𝜃, 𝑑2)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Dominance: ≤everywhere AND < somewhere; B is too strong (strict everywhere); C allows equality everywhere (no dominance); D is minimax comparison"
+ },
+ "323": {
+  "id": "Q323",
+  "num": 323,
+  "title": "Minimax Estimator",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Minimax estimator minimizes:",
+  "options": [
+   "sup𝜃𝑅(𝜃, 𝑑) — worst-case risk",
+   "∫𝑅(𝜃, 𝑑)𝜋(𝜃)𝑑𝜃— Bayes risk",
+   "𝑅(𝜃0, 𝑑) at a specific 𝜃0",
+   "𝐸𝜃[𝑑(𝑋)] — expected estimate"
+  ],
+  "answer_letter": "A",
+  "explanation": "Minimax: minimize maximum risk; Bayes: minimize average risk (B); minimax estimator is often Bayes w.r.t. least favorable prior"
+ },
+ "324": {
+  "id": "Q324",
+  "num": 324,
+  "title": "Bayes Estimator",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Bayes estimator under squared error loss is:",
+  "options": [
+   "Posterior mean 𝐸[𝜃|𝑋]",
+   "Posterior median",
+   "Posterior mode (MAP)",
+   "Prior mean"
+  ],
+  "answer_letter": "A",
+  "explanation": "Squared error: posterior mean; absolute error: posterior median; 0-1 loss: posterior mode; these are fundamental results"
+ },
+ "325": {
+  "id": "Q325",
+  "num": 325,
+  "title": "SPRT Poisson",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For 𝑋𝑖∼Poisson(𝜆), SPRT of 𝐻0 ∶𝜆= 𝜆0 vs 𝐻1 ∶𝜆= 𝜆1 > 𝜆0, log-LR:",
+  "options": [
+   "∑𝑋𝑖log(𝜆1/𝜆0) −𝑚(𝜆1 −𝜆0)",
+   "∑𝑋𝑖log(𝜆1/𝜆0)",
+   "𝑚(𝜆1 −𝜆0)",
+   "̄ 𝑋log(𝜆1/𝜆0)"
+  ],
+  "answer_letter": "A",
+  "explanation": "log Λ𝑚= ∑[𝑥𝑖log(𝜆1/𝜆0) −(𝜆1 −𝜆0)] = ∑𝑋𝑖log(𝜆1/𝜆0) −𝑚(𝜆1 −𝜆0); linear in ∑𝑋𝑖; SPRT boundary on ∑𝑋𝑖"
+ },
+ "326": {
+  "id": "Q326",
+  "num": 326,
+  "title": "LRT Independence",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "LRT for independence in 𝑟× 𝑐contingency table: −2 log Λ 𝑑−→𝜒²_(𝑟−1(𝑐−1) because:)",
+  "options": [
+   "dim(Θ) = 𝑟𝑐−1, dim(Θ0) = (𝑟−1) + (𝑐−1); 𝑟= (𝑟𝑐−1) −(𝑟+ 𝑐−2) = (𝑟−1)(𝑐−1)",
+   "Degrees of freedom= 𝑟𝑐",
+   "Degrees of freedom= 𝑟+ 𝑐−2",
+   "Wilks theorem gives 𝜒²_1 always"
+  ],
+  "answer_letter": "A",
+  "explanation": "Saturated model: 𝑟𝑐−1 free parameters; independence model: (𝑟−1) + (𝑐−1) free parameters; difference= (𝑟−1)(𝑐−1); this is the df for 𝜒2"
+ },
+ "327": {
+  "id": "Q327",
+  "num": 327,
+  "title": "Decision Theory Bayes Risk",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Bayes risk of estimator 𝑑w.r.t. prior 𝜋is:",
+  "options": [
+   "𝑟(𝜋, 𝑑) = ∫𝑅(𝜃, 𝑑)𝜋(𝜃)𝑑𝜃= 𝐸𝜋[𝑅(𝜃, 𝑑)]",
+   "𝑟(𝜋, 𝑑) = sup𝜃𝑅(𝜃, 𝑑)",
+   "𝑟(𝜋, 𝑑) = 𝑅(𝜃0, 𝑑) at prior mean",
+   "𝑟(𝜋, 𝑑) = 𝐸[𝐿(𝜃, 𝑑(𝑋))] over joint distribution"
+  ],
+  "answer_letter": "D",
+  "explanation": "A and D are equivalent (both are expectation of loss over joint distribution of (𝜃, 𝑋)); B is minimax risk; Bayes estimator minimizes A=D"
+ },
+ "328": {
+  "id": "Q328",
+  "num": 328,
+  "title": "SPRT Exponential",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For 𝑋𝑖∼Exp(𝜃) (rate), SPRT of 𝐻0 ∶𝜃= 𝜃0 vs 𝐻1 ∶𝜃= 𝜃1 > 𝜃0, SPRT boundary on ∑𝑋𝑖:",
+  "options": [
+   "Accept 𝐻0 if ∑𝑋𝑖> 𝑏, reject if ∑𝑋𝑖< 𝑎(for some 𝑎< 𝑏)",
+   "Accept 𝐻0 if ∑𝑋𝑖< 𝑎, reject if ∑𝑋𝑖> 𝑏",
+   "Reject for large ∑𝑋𝑖",
+   "Reject for small̄ 𝑋"
+  ],
+  "answer_letter": "A",
+  "explanation": "Large 𝜃(rate) means small mean; log-LR= 𝑛log(𝜃1/𝜃0)−(𝜃1−𝜃0) ∑𝑋𝑖; decreasing in ∑𝑋𝑖; large ∑𝑋𝑖favors 𝐻0 (small rate); accept 𝐻0 for large ∑𝑋𝑖"
+ },
+ "329": {
+  "id": "Q329",
+  "num": 329,
+  "title": "LRT Normal Variance",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "LRT for 𝐻0 ∶𝜎2 = 𝜎²_0 vs 𝐻1 ∶𝜎2 ≠𝜎²_0 (normal, 𝜇unknown):",
+  "options": [
+   "Reduces to 𝜒2 test: reject for large or small (𝑛−1)𝑆2/𝜎²_0",
+   "Reduces to 𝐹-test",
+   "Reduces to 𝑧-test",
+   "Has no closed form"
+  ],
+  "answer_letter": "A",
+  "explanation": "LRT statistic: −2 log Λ = 𝑛[log(̂𝜎2/𝜎²_0) + 𝜎2 0(/̂𝜎2 −1] which is monotone function of)/((𝑛−1)𝑆2/𝜎2) 0; equivalent to 𝜒2 test"
+ },
+ "330": {
+  "id": "Q330",
+  "num": 330,
+  "title": "OC Function SPRT Normal",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For SPRT of 𝐻0 ∶𝜃= 0 vs 𝐻1 ∶𝜃= 𝛿with 𝑋𝑖∼𝑁(𝜃, 1), OC function 𝐿(𝜃) satisfies:",
+  "options": [
+   "𝐿(𝜃) = 𝐴ℎ(𝜃)−1 𝐴ℎ(𝜃)−𝐵ℎ(𝜃) where ℎ(𝜃) solves 𝐸𝜃[𝑒ℎlog Λ1] = 1",
+   "𝐿(𝜃) = 1 −Φ(𝜃√𝑛)",
+   "𝐿(𝜃) = Φ(−𝜃√𝑛)",
+   "𝐿(𝜃) = 𝛽for all 𝜃∈𝐻1"
+  ],
+  "answer_letter": "A",
+  "explanation": "Wald’s OC approximation uses moment generating function of log-LR; ℎ(𝜃) is the non-trivial root of 𝐸𝜃[Λ(ℎ)/(1)] = 1; complex but standard formula"
+ },
+ "331": {
+  "id": "Q331",
+  "num": 331,
+  "title": "Decision Theory Complete Class",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Complete class theorem states:",
+  "options": [
+   "Every admissible estimator is Bayes (or limit of Bayes)",
+   "Every Bayes estimator is admissible",
+   "Both A and B",
+   "Admissible estimators form a complete class"
+  ],
+  "answer_letter": "C",
+  "explanation": "B: Bayes estimators with proper priors are admissible; A: admissible estimators are Bayes (or generalized Bayes); together they characterize admissibility via Bayes"
+ },
+ "332": {
+  "id": "Q332",
+  "num": 332,
+  "title": "LRT Regression",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "LRT for 𝐻0 ∶𝛽1 = … = 𝛽𝑘= 0 in multiple regression (normal errors):",
+  "options": [
+   "Reduces to 𝐹-test: 𝐹= (RSS0 −RSS1)/(𝑘̂𝜎2)",
+   "Reduces to 𝑡-test",
+   "Reduces to 𝜒²_𝑘test",
+   "Has no closed form"
+  ],
+  "answer_letter": "A",
+  "explanation": "LRT= −2 log Λ = 𝑛log(RSS0/RSS1); for normal errors, this is monotone in 𝐹- statistic; LRT and 𝐹-test are equivalent"
+ },
+ "333": {
+  "id": "Q333",
+  "num": 333,
+  "title": "SPRT Bernoulli",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For 𝑋𝑖∼Bernoulli(𝑝), SPRT of 𝐻0 ∶𝑝= 𝑝0 vs 𝐻1 ∶𝑝= 𝑝1 > 𝑝0, log-LR:",
+  "options": [
+   "ΣX_i log[p1(1−p0)/(p0(1−p1))] + m·log[(1−p1)/(1−p0)]",
+   "ΣX_i log(p1/p0)",
+   "m·log[(1−p1)/(1−p0)]",
+   "X̄·log(p1/p0) + log[(1−p1)/(1−p0)]"
+  ],
+  "answer_letter": "A",
+  "explanation": "log Λ_m = Σx_i log(p1/p0) + Σ(1−x_i)log[(1−p1)/(1−p0)] = Σx_i log[p1(1−p0)/(p0(1−p1))] + m·log[(1−p1)/(1−p0)]; linear in ΣX_i."
+ },
+ "334": {
+  "id": "Q334",
+  "num": 334,
+  "title": "Minimax Normal Mean",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For 𝑋∼𝑁(𝜃, 1), minimax estimator of 𝜃under squared error loss is:",
+  "options": [
+   "̄ 𝑋(sample mean)",
+   "0 (constant)",
+   "̄ 𝑋(since it is admissible and has constant risk)",
+   "James-Stein estimator"
+  ],
+  "answer_letter": "C",
+  "explanation": "For 𝑝= 1:̄ 𝑋is minimax (constant risk = 1/𝑛, admissible); for 𝑝≥3: James-Stein dominates̄ 𝑋in MSE but̄ 𝑋is still minimax; D is wrong for 𝑝= 1"
+ },
+ "335": {
+  "id": "Q335",
+  "num": 335,
+  "title": "LRT Goodness Of Fit",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "LRT for goodness of fit (multinomial): 𝐺2 = −2 log Λ = 2 ∑𝑂𝑖log(𝑂𝑖/𝐸𝑖) 𝑑−→:",
+  "options": [
+   "𝜒²_𝑘−1−𝑝where 𝑘= cells, 𝑝= estimated parameters",
+   "𝜒²_𝑘",
+   "𝜒²_𝑘−1",
+   "𝐹𝑘−1,𝑛−𝑘"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝐺2 (log-likelihood ratio) and Pearson 𝜒2 are asymptotically equivalent; df= 𝑘−1−𝑝 (subtract 1 for total constraint and 𝑝for estimated parameters)"
+ },
+ "336": {
+  "id": "Q336",
+  "num": 336,
+  "title": "Decision Theory Minimax Bayes",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Minimax estimator equals Bayes estimator w.r.t. least favorable prior 𝜋∗when:",
+  "options": [
+   "Bayes risk equals minimax risk: 𝑟(𝜋∗, 𝑑∗) = sup𝜃𝑅(𝜃, 𝑑∗)",
+   "Prior is uniform",
+   "Loss function is squared error",
+   "Sample size is large"
+  ],
+  "answer_letter": "A",
+  "explanation": "Least favorable prior: prior that maximizes Bayes risk; if Bayes estimator has constant risk, it is minimax; key connection between Bayes and minimax"
+ },
+ "337": {
+  "id": "Q337",
+  "num": 337,
+  "title": "SPRT ASN Comparison",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "SPRT has smaller ASN than fixed sample test because:",
+  "options": [
+   "It stops early when evidence is strong (in either direction)",
+   "It uses more information per observation",
+   "It has smaller error probabilities",
+   "It uses sufficient statistics"
+  ],
+  "answer_letter": "A",
+  "explanation": "SPRT’s efficiency comes from early stopping; when data strongly favors one hypothesis, no need to continue; fixed sample test always uses 𝑛observations"
+ },
+ "338": {
+  "id": "Q338",
+  "num": 338,
+  "title": "LRT Exponential Family",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For exponential family, LRT of 𝐻0 ∶𝜂= 𝜂0 vs 𝐻1 ∶𝜂≠𝜂0:",
+  "options": [
+   "−2 log Λ = 2𝑛[𝐵(̂𝜂) −𝐵(𝜂0) −(̂𝜂−𝜂0)∇𝐵(𝜂0)] where 𝐵is log-partition",
+   "−2 log Λ = 𝑛(̂𝜂−𝜂0)2𝐼(𝜂0)",
+   "−2 log Λ = 2 ∑log 𝑓(𝑋𝑖;̂ 𝜂)/𝑓(𝑋𝑖; 𝜂0)",
+   "All equivalent asymptotically"
+  ],
+  "answer_letter": "D",
+  "explanation": "All three are asymptotically equivalent (Wald, LRT, Score); A is exact LRT; B is Wald; they differ in finite samples"
+ },
+ "339": {
+  "id": "Q339",
+  "num": 339,
+  "title": "Decision Theory Regret",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Regret of decision 𝑑at 𝜃is:",
+  "options": [
+   "𝑅(𝜃, 𝑑) −inf𝑑′ 𝑅(𝜃, 𝑑′) — excess risk over best possible",
+   "𝑅(𝜃, 𝑑) — total risk",
+   "sup𝜃𝑅(𝜃, 𝑑) −𝑅(𝜃, 𝑑)",
+   "𝐸[𝐿(𝜃, 𝑑(𝑋))]"
+  ],
+  "answer_letter": "A",
+  "explanation": "Regret = how much worse than oracle (who knows 𝜃); minimax regret minimizes worst-case regret; different from minimax risk"
+ },
+ "340": {
+  "id": "Q340",
+  "num": 340,
+  "title": "LRT Two Sample Normal",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "LRT for 𝐻0 ∶𝜇1 = 𝜇2 (two independent normal samples, equal 𝜎2 unknown):",
+  "options": [
+   "Reduces to two-sample 𝑡-test",
+   "Reduces to 𝐹-test",
+   "Reduces to 𝑧-test",
+   "Has no closed form"
+  ],
+  "answer_letter": "A",
+  "explanation": "LRT statistic is monotone in 𝑡2; equivalent to two-sample 𝑡-test with pooled variance; 𝑟= 1 df for Wilks"
+ },
+ "341": {
+  "id": "Q341",
+  "num": 341,
+  "title": "SPRT Geometric",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For 𝑋𝑖∼Geometric(𝑝), SPRT of 𝐻0 ∶𝑝= 𝑝0 vs 𝐻1 ∶𝑝= 𝑝1 < 𝑝0, log-LR:",
+  "options": [
+   "ΣX_i log[(1−p1)/(1−p0)] + m·log(p1/p0)",
+   "ΣX_i log(p1/p0)",
+   "m·log(p1/p0)",
+   "X̄·log[(1−p1)/(1−p0)]"
+  ],
+  "answer_letter": "A",
+  "explanation": "log f(x;p) = log p + (x−1)log(1−p); log Λ_m = m·log(p1/p0) + Σ(X_i−1)log[(1−p1)/(1−p0)] = ΣX_i log[(1−p1)/(1−p0)] + m·log(p1/p0)."
+ },
+ "342": {
+  "id": "Q342",
+  "num": 342,
+  "title": "Decision Theory Stein Admissibility",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "James-Stein estimator̂ 𝜃𝐽𝑆= (1 − 𝑝−2 𝑛‖̄𝑋‖2 )̄𝑋for 𝑝≥3:",
+  "options": [
+   "Dominates̄ 𝑋in total MSE but is inadmissible itself",
+   "Is admissible",
+   "Dominates̄ 𝑋and is admissible",
+   "Is minimax"
+  ],
+  "answer_letter": "A",
+  "explanation": "James–Stein dominates X̄ for p≥3 (Stein's paradox); but JS itself is inadmissible — the positive-part JS estimator θ̂_JS+ = max(0, 1−(p−2)/(n‖X̄‖²))X̄ dominates JS."
+ },
+ "343": {
+  "id": "Q343",
+  "num": 343,
+  "title": "LRT Homogeneity",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "LRT for homogeneity of 𝑘binomial proportions 𝐻0 ∶𝑝1 = … = 𝑝𝑘:",
+  "options": [
+   "𝐺2 = 2 ∑𝑖,𝑗𝑂𝑖𝑗log(𝑂𝑖𝑗/𝐸𝑖𝑗) 𝑑−→𝜒²_𝑘−1",
+   "𝐺2 𝑑−→𝜒²_𝑘",
+   "𝐺2 𝑑−→𝜒²_2𝑘−2",
+   "𝐺2 𝑑−→𝐹𝑘−1,𝑛−𝑘"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝑘proportions, 1 constraint (common 𝑝): 𝑟= 𝑘−1 df; same as Pearson 𝜒2 for 2×𝑘 table"
+ },
+ "344": {
+  "id": "Q344",
+  "num": 344,
+  "title": "SPRT Truncated",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Truncated SPRT (with maximum sample size 𝑛max):",
+  "options": [
+   "Stops at 𝑛max and makes decision based on accumulated evidence",
+   "Is equivalent to fixed sample test",
+   "Has same error probabilities as SPRT",
+   "Is always more efficient than SPRT"
+  ],
+  "answer_letter": "A",
+  "explanation": "Truncated SPRT: if boundaries not crossed by 𝑛max, make decision at 𝑛max; error probabilities change slightly; practical compromise between SPRT and fixed sample"
+ },
+ "345": {
+  "id": "Q345",
+  "num": 345,
+  "title": "Decision Theory Posterior Risk",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Posterior expected loss (posterior risk) of decision 𝑑given 𝑋= 𝑥is:",
+  "options": [
+   "𝜌(𝜋, 𝑑|𝑥) = ∫𝐿(𝜃, 𝑑)𝜋(𝜃|𝑥)𝑑𝜃",
+   "𝜌(𝜋, 𝑑|𝑥) = ∫𝐿(𝜃, 𝑑)𝜋(𝜃)𝑑𝜃",
+   "𝜌(𝜋, 𝑑|𝑥) = 𝑅(𝜃, 𝑑)",
+   "𝜌(𝜋, 𝑑|𝑥) = 𝐸[𝐿(𝜃, 𝑑)|𝑋= 𝑥]"
+  ],
+  "answer_letter": "D",
+  "explanation": "A and D are equivalent (posterior expectation of loss); B uses prior not posterior; Bayes estimator minimizes posterior risk for each 𝑥"
+ },
+ "346": {
+  "id": "Q346",
+  "num": 346,
+  "title": "LRT Nested Models",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For nested models 𝑀0 ⊂𝑀1, LRT statistic −2 log Λ:",
+  "options": [
+   "Is always non-negative",
+   "Equals 2[ℓ(̂𝜃1) −ℓ(̂𝜃0)] where ℓis log-likelihood",
+   "Has 𝜒2 distribution under 𝑀0",
+   "All of the above"
+  ],
+  "answer_letter": "D",
+  "explanation": "All three: A (log-likelihood increases with more parameters); B (definition); C (Wilks theorem); all hold under regularity"
+ },
+ "347": {
+  "id": "Q347",
+  "num": 347,
+  "title": "SPRT Composite",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For composite hypotheses 𝐻0 ∶𝜃≤𝜃0 vs 𝐻1 ∶𝜃≥𝜃1 (𝜃0 < 𝜃1), SPRT:",
+  "options": [
+   "Uses Λ𝑚= ∏𝑓(𝑋𝑖; 𝜃1)/𝑓(𝑋𝑖; 𝜃0) (simple vs simple at boundaries)",
+   "Uses generalized likelihood ratio",
+   "Does not exist",
+   "Uses MLE at each stage"
+  ],
+  "answer_letter": "A",
+  "explanation": "For composite hypotheses with indifference zone (𝜃0, 𝜃1), SPRT uses simple hypotheses at boundaries; error probabilities guaranteed for all 𝜃≤𝜃0 and 𝜃≥𝜃1"
+ },
+ "348": {
+  "id": "Q348",
+  "num": 348,
+  "title": "Decision Theory Invariant",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Invariant decision rules under group 𝐺of transformations satisfy:",
+  "options": [
+   "𝑑(𝑔𝑥) = 𝑔′𝑑(𝜃) for all 𝑔∈𝐺(equivariance)",
+   "𝑑(𝑔𝑥) = 𝑑(𝑥) for all 𝑔∈𝐺",
+   "Risk is constant over orbits of 𝐺",
+   "Both A and C"
+  ],
+  "answer_letter": "D",
+  "explanation": "Equivariant estimators have constant risk over orbits; best equivariant estimator minimizes risk within equivariant class; Pitman estimator is best location equivariant"
+ },
+ "349": {
+  "id": "Q349",
+  "num": 349,
+  "title": "LRT Bartlett Correction",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Bartlett correction for LRT improves 𝜒2 approximation by:",
+  "options": [
+   "Dividing −2 log Λ by 1 + 𝑏/𝑛where 𝑏is Bartlett factor",
+   "Adding 𝑏/𝑛to −2 log Λ",
+   "Using 𝜒²_𝑟+1 instead of 𝜒²_𝑟",
+   "Multiplying by 𝑛/(𝑛−𝑟)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Bartlett: (−2 log Λ)/(1 + 𝑏/𝑛) ∼𝜒²_𝑟to order 𝑂(𝑛−2); improves from 𝑂(𝑛−1) error; 𝑏computed from cumulants of log-likelihood"
+ },
+ "350": {
+  "id": "Q350",
+  "num": 350,
+  "title": "SPRT Efficiency",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "SPRT efficiency relative to fixed sample test (same error probabilities) is measured by:",
+  "options": [
+   "𝑛/𝐸𝜃[𝑁] — ratio of fixed to expected sequential sample size",
+   "𝐸𝜃[𝑁]/𝑛",
+   "𝛼/𝛽",
+   "Power ratio"
+  ],
+  "answer_letter": "A",
+  "explanation": "Efficiency> 1 means SPRT uses fewer observations on average; for normal testing, SPRT efficiency≈50% savings at 𝐻0 and 𝐻1; efficiency< 1 would mean SPRT is worse"
+ },
+ "351": {
+  "id": "Q351",
+  "num": 351,
+  "title": "Decision Theory Loss Functions",
+  "difficulty": "MEDIUM",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Under 0-1 loss 𝐿(𝜃, 𝑑) = 𝐼(𝜃≠𝑑), Bayes estimator is:",
+  "options": [
+   "Posterior mode (MAP)",
+   "Posterior mean",
+   "Posterior median",
+   "Prior mode"
+  ],
+  "answer_letter": "A",
+  "explanation": "0-1 loss: minimize 𝑃(𝜃≠𝑑|𝑋) = 1 −𝑃(𝜃= 𝑑|𝑋); maximize 𝑃(𝜃= 𝑑|𝑋); this is the posterior mode; for continuous 𝜃, 0-1 loss requires careful definition"
+ },
+ "352": {
+  "id": "Q352",
+  "num": 352,
+  "title": "LRT Multivariate Normal",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "LRT for 𝐻0 ∶𝜇= 𝜇0 in 𝑁𝑝(𝜇, Σ) with Σ known:",
+  "options": [
+   "−2 log Λ = 𝑛(̄𝑋−𝜇0)𝑇Σ−1(̄𝑋−𝜇0) ∼𝜒²_𝑝",
+   "−2 log Λ = (̄𝑋−𝜇0)𝑇Σ−1(̄𝑋−𝜇0) ∼𝜒²_𝑝",
+   "−2 log Λ ∼𝐹𝑝,𝑛−𝑝",
+   "−2 log Λ = 𝑛(̄𝑋−𝜇0)𝑇𝑆−1(̄𝑋−𝜇0) ∼𝜒²_𝑝"
+  ],
+  "answer_letter": "A",
+  "explanation": "𝑛(̄𝑋−𝜇0)𝑇Σ−1(̄𝑋−𝜇0) = 𝑇2 (Hotelling’s 𝑇2 when Σ known); ∼𝜒²_𝑝; D uses 𝑆 (unknown Σ case) giving 𝑇2 ∼(𝑝(𝑛−1))/(𝑛)−𝑝𝐹𝑝,𝑛−𝑝"
+ },
+ "353": {
+  "id": "Q353",
+  "num": 353,
+  "title": "SPRT Normal Variance",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For 𝑋𝑖∼𝑁(0, 𝜎2), SPRT of 𝐻0 ∶𝜎2 = 𝜎²_0 vs 𝐻1 ∶𝜎2 = 𝜎²_1 > 𝜎2 0, log-LR:",
+  "options": [
+   "(m/2)log(σ²_0/σ²_1) + (ΣX_i²)(1/σ²_0 − 1/σ²_1)",
+   "ΣX_i²(1/σ²_0 − 1/σ²_1)",
+   "m·log(σ1/σ0)",
+   "ΣX_i²/σ²"
+  ],
+  "answer_letter": "A",
+  "explanation": "log Λ_m = Σ[log f(X_i;σ²_1) − log f(X_i;σ²_0)] = (m/2)log(σ²_0/σ²_1) + (ΣX_i²)(σ−²_0 − σ−²_1); linear in ΣX_i²."
+ },
+ "354": {
+  "id": "Q354",
+  "num": 354,
+  "title": "Decision Theory Shrinkage",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Shrinkage estimators are preferred in high dimensions because:",
+  "options": [
+   "They reduce total MSE by trading bias for variance reduction",
+   "They are always unbiased",
+   "They attain CRLB",
+   "They are minimax"
+  ],
+  "answer_letter": "A",
+  "explanation": "Shrinkage: introduce bias but reduce variance; total MSE decreases; Stein paradox shows this is beneficial for 𝑝≥3; D: James-Stein is minimax but not all shrinkage estimators are"
+ },
+ "355": {
+  "id": "Q355",
+  "num": 355,
+  "title": "LRT Poisson Regression",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "LRT for 𝐻0 ∶𝛽= 0 in Poisson regression log 𝜇𝑖= 𝛼+ 𝛽𝑥𝑖:",
+  "options": [
+   "−2 log Λ = 2[ℓ(̂𝛼,̂ 𝛽) −ℓ(̂𝛼0, 0)] 𝑑−→𝜒²_1",
+   "−2 log Λ 𝑑−→𝜒²_2",
+   "−2 log Λ 𝑑−→𝐹1,𝑛−2",
+   "−2 log Λ 𝑑−→𝑁(0, 1)"
+  ],
+  "answer_letter": "A",
+  "explanation": "One restriction (𝛽= 0): 𝑟= 1 df; Wilks theorem applies; 𝜒²_1; equivalent to Wald test (̂𝛽/SE)2 asymptotically"
+ },
+ "356": {
+  "id": "Q356",
+  "num": 356,
+  "title": "SPRT Stopping Time",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "SPRT stopping time 𝑁satisfies:",
+  "options": [
+   "𝐸𝜃[𝑁] < ∞for all 𝜃under regularity conditions",
+   "𝑁= 𝑛0 always (fixed)",
+   "𝑁→∞as 𝛼, 𝛽→0",
+   "Both A and C"
+  ],
+  "answer_letter": "D",
+  "explanation": "A: SPRT terminates with probability 1 (Wald); C: as error bounds tighten, more observations needed; both are true"
+ },
+ "357": {
+  "id": "Q357",
+  "num": 357,
+  "title": "Decision Theory Empirical Bayes",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Empirical Bayes estimates hyperparameters of prior by:",
+  "options": [
+   "Maximizing marginal likelihood 𝑚(𝑥|𝜆) = ∫𝑓(𝑥|𝜃)𝜋(𝜃|𝜆)𝑑𝜃",
+   "Using flat prior",
+   "Cross-validation",
+   "Bootstrap"
+  ],
+  "answer_letter": "A",
+  "explanation": "Empirical Bayes: estimate 𝜆from data (marginal likelihood or method of moments); then use posterior with estimated prior; James-Stein is an empirical Bayes estimator"
+ },
+ "358": {
+  "id": "Q358",
+  "num": 358,
+  "title": "LRT Survival",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Log-rank test for comparing two survival curves is:",
+  "options": [
+   "Asymptotically equivalent to LRT under proportional hazards",
+   "Exact LRT for exponential survival",
+   "Equivalent to 𝑡-test on survival times",
+   "Equivalent to Wilcoxon test"
+  ],
+  "answer_letter": "A",
+  "explanation": "Log-rank test is score test (not LRT) under Cox model; asymptotically equivalent to LRT; exact LRT for exponential gives different statistic; D: Wilcoxon is different weighting"
+ },
+ "359": {
+  "id": "Q359",
+  "num": 359,
+  "title": "SPRT Curtailed",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Curtailed sampling (stop when outcome is determined) differs from SPRT in that:",
+  "options": [
+   "Curtailment stops when final decision is certain regardless of remaining observations",
+   "Curtailment uses likelihood ratio boundaries",
+   "Curtailment is optimal",
+   "Curtailment and SPRT are equivalent"
+  ],
+  "answer_letter": "A",
+  "explanation": "Curtailment: stop when remaining observations cannot change decision; used in clinical trials; SPRT uses probabilistic boundaries; different stopping rules"
+ },
+ "360": {
+  "id": "Q360",
+  "num": 360,
+  "title": "Decision Theory Posterior Odds",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "Posterior odds ratio for 𝐻1 vs 𝐻0 is:",
+  "options": [
+   "𝑃(𝐻1|𝑋) 𝑃(𝐻0|𝑋) =(𝑃(𝑋|𝐻1))/(𝑃)(𝑋|𝐻0) ⋅𝑃(𝐻1) 𝑃(𝐻0) (Bayes factor × prior odds)",
+   "𝑃(𝑋|𝐻1)/𝑃(𝑋|𝐻0) (Bayes factor only)",
+   "𝑃(𝐻1|𝑋) alone",
+   "1 −𝑝-value"
+  ],
+  "answer_letter": "A",
+  "explanation": "Posterior odds = Bayes factor × prior odds; Bayes factor alone (B) ignores prior; 𝑝-value is frequentist (D); A is the complete Bayesian update"
+ },
+ "361": {
+  "id": "Q361",
+  "num": 361,
+  "title": "LRT Curved Exponential",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For curved exponential family (e.g., 𝑁(𝜃, 𝜃2)), Wilks theorem:",
+  "options": [
+   "Still holds: −2 log Λ 𝑑−→𝜒²_𝑟",
+   "Fails completely",
+   "Holds with modified df",
+   "Requires larger sample size"
+  ],
+  "answer_letter": "A",
+  "explanation": "Wilks theorem holds for curved exponential families under regularity; 𝑟= number of restrictions; the curvature affects finite-sample performance but not asymptotic distribution"
+ },
+ "362": {
+  "id": "Q362",
+  "num": 362,
+  "title": "SPRT Multihypothesis",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For testing among 𝑘> 2 hypotheses sequentially, SPRT generalizes to:",
+  "options": [
+   "Sequential probability ratio test with 𝑘(𝑘−1)/2 pairwise boundaries",
+   "Simultaneous SPRT (Armitage)",
+   "Repeated significance testing",
+   "Group sequential design"
+  ],
+  "answer_letter": "B",
+  "explanation": "Armitage’s simultaneous SPRT: continue until one hypothesis is accepted; boundaries involve all 𝑘hypotheses; more complex than pairwise"
+ },
+ "363": {
+  "id": "Q363",
+  "num": 363,
+  "title": "Decision Theory Complete Class Normal",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "For normal location problem with squared error loss, complete class consists of:",
+  "options": [
+   "All Bayes estimators w.r.t. normal priors and their limits",
+   "Only the sample mean",
+   "All linear estimators",
+   "All unbiased estimators"
+  ],
+  "answer_letter": "A",
+  "explanation": "For normal location, complete class = Bayes estimators w.r.t. normal priors (conjugate family) and limits; includes James-Stein type estimators; B is too restrictive"
+ },
+ "364": {
+  "id": "Q364",
+  "num": 364,
+  "title": "LRT Boundary",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "When true parameter is on boundary of 𝐻0 (e.g., 𝐻0 ∶𝜃≥0, true 𝜃= 0), −2 log Λ 𝑑−→:",
+  "options": [
+   "(1)/(2𝜒2) 0 +(1)/(2𝜒2) 1 (mixture)",
+   "𝜒²_1",
+   "𝜒²_0 (degenerate at 0)",
+   "𝑁(0, 1)"
+  ],
+  "answer_letter": "A",
+  "explanation": "Boundary case: −2 log Λ is 0 with prob 1/2 (when̂ 𝜃< 0, constrained MLE= 0) and 𝜒²_1 with prob 1/2; mixture distribution"
+ },
+ "365": {
+  "id": "Q365",
+  "num": 365,
+  "title": "SPRT Power One",
+  "difficulty": "HIGH",
+  "topic": "Likelihood Ratio Tests, SPRT & Decision Theory",
+  "question": "SPRT has power one property: for any 𝜃≠𝜃0:",
+  "options": [
+   "𝑃𝜃(SPRT eventually terminates) = 1",
+   "𝑃𝜃(reject 𝐻0) →1 as 𝑛→∞",
+   "Both A and B",
+   "Neither (SPRT may not terminate)"
+  ],
+  "answer_letter": "C",
+  "explanation": "SPRT terminates with probability 1 (A); and is consistent (B); both follow from Wald’s fundamental identity and the strong law of large numbers applied to the log-likelihood ratio (incomplete in source — trap explanation cuts off here)"
+ }
+}

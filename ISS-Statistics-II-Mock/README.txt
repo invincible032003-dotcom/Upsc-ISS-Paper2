@@ -25,6 +25,21 @@ HOW TO OPEN IT
 3. That's it. No install, no internet connection, no server, no Python,
    no Node.js required. Works entirely from the local file.
 
+PDF STUDY GUIDES (offline, in the PDFs/ folder)
+--------------------------------------------------
+Two print-ready PDFs, generated entirely offline from this same question
+bank, for reading or printing without opening the app:
+
+- Forecast-Linear-Models.pdf - every Linear Models forecast question,
+  organised by topic, with all 4 options, the correct answer highlighted,
+  and the Exam Shortcut shown openly beneath each question.
+- Forecast-Statistical-Inference.pdf - the same, for the combined
+  Estimation and Hypothesis Testing forecast bank.
+
+Both carry the same "FORECAST / AI-GENERATED" notice as the app and are
+meant as a portable answer-key companion to the Forecast Sectional Mocks
+below, not a substitute for practising in the app itself.
+
 MAIN MODES
 ----------
 - Full Year Mocks: one authentic full-length mock per year (2018-2026),
@@ -49,16 +64,24 @@ MAIN MODES
 - My Bookmarks: bookmark any question during an exam or review and
   revisit it later.
 
-- Forecast Sectional Mocks: 75 AI-generated, examiner-style forecast
-  questions for the next paper - 25 each for Linear Models, Estimation
-  and Hypothesis Testing - built from a topic-weightage analysis of all
-  nine years of PYQs. Every forecast question carries a bright
-  "FORECAST / AI-GENERATED - NOT AN AUTHENTIC PYQ" banner and is kept
-  in a completely separate question bank from the 720 real PYQs above -
-  it is never mixed into a year, sectional, topic, or custom mock, and
-  never counted in the main Analytics (which stays scoped to your real-
-  PYQ performance). These mocks always run in Learning Mode, so the
-  Exam Shortcut appears immediately after you answer each question.
+- Forecast Sectional Mocks: 661 AI-generated, examiner-style forecast
+  questions for the next paper, organised into 25-question sets across
+  three sections - Linear Models (11 sets), Estimation (11 sets) and
+  Hypothesis Testing (6 sets). Set 1 of each section is a hand-authored
+  starter set; every further set is drawn from a large evidence-based
+  pattern-mining analysis of the 2018-2026 papers (archetype frequency,
+  recycling intervals, due-date forecasting) or from a dedicated
+  Statistical Inference practice bank covering estimation theory,
+  sufficiency, CRLB, MLE/UMVUE, confidence intervals, Neyman-Pearson/UMP
+  testing, LRT, SPRT and decision theory. Pick a section from the home
+  screen to see all of its sets, or start the whole section as one mock.
+  Every forecast question carries a bright "FORECAST / AI-GENERATED -
+  NOT AN AUTHENTIC PYQ" banner and is kept in a completely separate
+  question bank from the 720 real PYQs above - it is never mixed into a
+  year, sectional, topic, or custom mock, and never counted in the main
+  Analytics (which stays scoped to your real-PYQ performance). These
+  mocks always run in Learning Mode, so the Exam Shortcut appears
+  immediately after you answer each question.
 
 - Analytics: accuracy broken down by unit, topic and question type,
   your weakest topics, a "Practice My Weak Areas" button, and a trend

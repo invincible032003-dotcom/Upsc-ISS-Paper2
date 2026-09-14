@@ -809,9 +809,21 @@ function buildBookmarkMock(mode){
   var qs = ids.map(function(id){ return BY_ID[id]; }).filter(Boolean);
   return makeMock("My Bookmarks ("+qs.length+")", mode||"learning", qs, null);
 }
-function buildForecastMock(section){
-  var qs = ALL_FORECAST_Q.filter(function(q){ return q.section===section; });
-  return makeMock("Forecast: "+section, "learning", qs, null);
+function forecastSetsFor(section){
+  var sets = {};
+  ALL_FORECAST_Q.forEach(function(q){
+    if(q.section!==section) return;
+    if(!sets[q.set]) sets[q.set] = 0;
+    sets[q.set]++;
+  });
+  return Object.keys(sets).map(Number).sort(function(a,b){return a-b;}).map(function(s){
+    return {set:s, count:sets[s]};
+  });
+}
+function buildForecastMock(section, setNo){
+  var qs = ALL_FORECAST_Q.filter(function(q){ return q.section===section && (setNo==null || q.set===setNo); });
+  var label = setNo==null ? ("Forecast: "+section) : ("Forecast: "+section+" - Set "+setNo);
+  return makeMock(label, "learning", qs, null);
 }
 function computeGlobalAnalytics(){
   var stats = lsGet("stats", {});
@@ -864,6 +876,7 @@ function render(){
     case "home": html = viewHome(); break;
     case "setupYear": html = viewSetupYear(); break;
     case "setupSectional": html = viewSetupSectional(); break;
+    case "setupForecastSection": html = viewSetupForecastSection(); break;
     case "setupTopic": html = viewSetupTopic(); break;
     case "setupSubtopic": html = viewSetupTopic(true); break;
     case "setupCustom": html = viewSetupCustom(); break;
@@ -916,11 +929,12 @@ function viewHome(){
   + '<div class="section-title">Sectional Mocks</div>'
   + '<div class="grid cols-3">'+sectionalRow+'</div>'
   + '<div class="section-title">Forecast Sectional Mocks <span class="badge badge-ai" style="margin-left:6px;">AI-GENERATED &middot; NOT AUTHENTIC PYQs</span></div>'
-  + '<div class="card" style="margin-bottom:16px;"><p class="muted" style="margin:0 0 12px;">75 examiner-style forecast questions built from the 2018-2026 topic-weightage analysis - 25 per section. Every question is clearly labeled and kept completely separate from the authentic-PYQ mocks above.</p>'
+  + '<div class="card" style="margin-bottom:16px;"><p class="muted" style="margin:0 0 12px;">'+ALL_FORECAST_Q.length+' examiner-style forecast questions built from an evidence-based 2018-2026 pattern analysis, organised into 25-question sets per section. Every question is clearly labeled and kept completely separate from the authentic-PYQ mocks above.</p>'
   +   '<div class="grid cols-3">'
   +     FORECAST_SECTIONS.map(function(s){
-          var cnt = ALL_FORECAST_Q.filter(function(q){return q.section===s;}).length;
-          return '<button class="tile" data-action="start-forecast" data-section="'+encodeURIComponent(s)+'"><div class="tile-title">'+s+'</div><div class="tile-sub">'+cnt+' forecast questions &middot; shortcut shown after each answer</div></button>';
+          var sets = forecastSetsFor(s);
+          var cnt = sets.reduce(function(a,b){return a+b.count;},0);
+          return '<button class="tile" data-action="pick-forecast-section" data-section="'+encodeURIComponent(s)+'"><div class="tile-title">'+s+'</div><div class="tile-sub">'+cnt+' questions &middot; '+sets.length+' sets of 25 &middot; shortcut shown after each answer</div></button>';
         }).join("")
   +   '</div></div>'
   + '<div class="section-title">More ways to practice</div>'
@@ -970,6 +984,23 @@ function viewSetupSectional(){
     + '</div>'
     + '<div class="btn-row"><button class="btn btn-primary" data-action="start-sectional" data-unit="'+encodeURIComponent(unit)+'">Start Mock</button></div>'
     + '</div>';
+}
+
+function viewSetupForecastSection(){
+  var section = App.setupCtx && App.setupCtx.section;
+  var sets = forecastSetsFor(section);
+  var totalCount = sets.reduce(function(a,b){return a+b.count;},0);
+  var tiles = sets.map(function(s){
+    return '<button class="tile" data-action="start-forecast" data-section="'+encodeURIComponent(section)+'" data-set="'+s.set+'">'
+      + '<div class="tile-title">Set '+s.set+(s.set===1?" (starter)":"")+'</div>'
+      + '<div class="tile-sub">'+s.count+' questions &middot; Learning Mode</div></button>';
+  }).join("");
+  return backBar() + '<div class="card" style="margin-bottom:16px;">'
+    + '<h2>Forecast: '+section+' <span class="badge badge-ai" style="margin-left:6px;">AI-GENERATED</span></h2>'
+    + '<p class="muted">'+totalCount+' forecast questions across '+sets.length+' sets of 25. Pick any set below - each runs in Learning Mode with the Exam Shortcut shown right after you answer.</p>'
+    + '<div class="btn-row"><button class="btn btn-primary" data-action="start-forecast" data-section="'+encodeURIComponent(section)+'">Start All '+totalCount+' as One Mock</button></div>'
+    + '</div>'
+    + '<div class="grid cols-4">'+tiles+'</div>';
 }
 
 function viewSetupTopic(subtopicMode){
@@ -1082,7 +1113,7 @@ function viewExam(){
   var locked = isLearning && answered!==undefined;
 
   var metaBadges = q.isForecast
-    ? badge(q.section, "badge-ai") + badge(q.topic) + badge(q.subtopic) + badge(q.questionType)
+    ? badge(q.section, "badge-ai") + badge(q.topic) + (q.subtopic && q.subtopic!==q.topic ? badge(q.subtopic) : "") + badge(q.questionType)
     : badge(q.year+" Q"+q.questionNumber) + badge(unitShort(q.unit), unitBadgeClass(q.unit)) + badge(q.topic) + badge(q.questionType);
   var forecastBanner = q.isForecast ? '<div class="forecast-banner">🔮 '+escapeHtmlPlain(q.provenanceLabel||"FORECAST / AI-GENERATED")+'</div>' : "";
 
@@ -1107,6 +1138,8 @@ function viewExam(){
   var feedbackHtml = "";
   if(isLearning && locked){
     var isCorrect = answered===q.correctAnswer;
+    var hasTips = q.tipsTricks && q.tipsTricks.length;
+    var hasSolution = q.solution && q.solution.length;
     feedbackHtml = '<div class="feedback-panel">';
     feedbackHtml += '<div class="feedback-banner '+(isCorrect?"correct":"incorrect")+'">'
       + (isCorrect ? "✓ Correct" : "✗ Incorrect - correct answer is "+"ABCD"[q.correctAnswer])
@@ -1116,14 +1149,14 @@ function viewExam(){
     } else {
       feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Exam Shortcut</button></div>';
     }
-    if(stage>=2){
-      feedbackHtml += '<div class="reveal-block"><h4>Tips &amp; Tricks</h4><ul>'+(q.tipsTricks||[]).map(function(t){return "<li>"+renderQuestionText(t)+"</li>";}).join("")+'</ul></div>';
-    } else if(stage>=1){
+    if(hasTips && stage>=2){
+      feedbackHtml += '<div class="reveal-block"><h4>Tips &amp; Tricks</h4><ul>'+q.tipsTricks.map(function(t){return "<li>"+renderQuestionText(t)+"</li>";}).join("")+'</ul></div>';
+    } else if(hasTips && stage>=1){
       feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Tips &amp; Tricks</button></div>';
     }
-    if(stage>=3){
-      feedbackHtml += '<div class="reveal-block"><h4>Step-by-Step Solution</h4><ol>'+(q.solution||[]).map(function(s){return "<li>"+renderQuestionText(s.text)+"</li>";}).join("")+'</ol></div>';
-    } else if(stage>=2){
+    if(hasSolution && stage>=3){
+      feedbackHtml += '<div class="reveal-block"><h4>Step-by-Step Solution</h4><ol>'+q.solution.map(function(s){return "<li>"+renderQuestionText(s.text)+"</li>";}).join("")+'</ol></div>';
+    } else if(hasSolution && (stage>=2 || (stage>=1 && !hasTips))){
       feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Step-by-Step Solution</button></div>';
     }
     if(q.sourceAmbiguityNote){
@@ -1256,7 +1289,7 @@ function reviewCard(q, i, m){
   }).join("");
   var status = a===undefined ? '<span class="badge">Unanswered</span>' : (a===q.correctAnswer ? '<span class="badge" style="background:var(--success-bg);color:var(--success);border-color:#bfe9cf;">Correct</span>' : '<span class="badge" style="background:var(--danger-bg);color:var(--danger);border-color:#f2c6c2;">Incorrect</span>');
   var reviewMetaBadges = q.isForecast
-    ? badge(q.section, "badge-ai") + badge(q.topic) + badge(q.subtopic) + status
+    ? badge(q.section, "badge-ai") + badge(q.topic) + (q.subtopic && q.subtopic!==q.topic ? badge(q.subtopic) : "") + status
     : badge(q.year+" Q"+q.questionNumber)+badge(unitShort(q.unit), unitBadgeClass(q.unit))+badge(q.subtopic)+status;
   var reviewForecastBanner = q.isForecast ? '<div class="forecast-banner">🔮 '+escapeHtmlPlain(q.provenanceLabel||"FORECAST / AI-GENERATED")+'</div>' : "";
   return '<div class="card qcard">'
@@ -1269,8 +1302,8 @@ function reviewCard(q, i, m){
     + '<div class="options">'+optionsHtml+'</div>'
     + '<div class="feedback-panel">'
     +   '<div class="reveal-block"><h4>Exam Shortcut <span class="ai-note">AI-derived explanation</span></h4>'+renderQuestionText(q.examShortcut||"Not available.")+'</div>'
-    +   '<div class="reveal-block"><h4>Tips &amp; Tricks</h4><ul>'+(q.tipsTricks||[]).map(function(t){return "<li>"+renderQuestionText(t)+"</li>";}).join("")+'</ul></div>'
-    +   '<div class="reveal-block"><h4>Step-by-Step Solution</h4><ol>'+(q.solution||[]).map(function(s){return "<li>"+renderQuestionText(s.text)+"</li>";}).join("")+'</ol></div>'
+    +   ((q.tipsTricks && q.tipsTricks.length) ? '<div class="reveal-block"><h4>Tips &amp; Tricks</h4><ul>'+q.tipsTricks.map(function(t){return "<li>"+renderQuestionText(t)+"</li>";}).join("")+'</ul></div>' : "")
+    +   ((q.solution && q.solution.length) ? '<div class="reveal-block"><h4>Step-by-Step Solution</h4><ol>'+q.solution.map(function(s){return "<li>"+renderQuestionText(s.text)+"</li>";}).join("")+'</ol></div>' : "")
     +   (q.sourceAmbiguityNote ? '<div class="source-note"><b>Source note:</b> '+renderQuestionText(q.sourceAmbiguityNote)+'</div>' : "")
     + '</div>'
     + '</div>';
@@ -1448,9 +1481,12 @@ document.addEventListener("click", function(e){
       startMock(kind==="mistakes" ? buildMistakeMock(md2) : buildBookmarkMock(md2));
       break;
     }
+    case "pick-forecast-section": App.setupCtx = {section: decodeURIComponent(t.getAttribute("data-section"))}; App.view="setupForecastSection"; render(); break;
     case "start-forecast": {
       var section = decodeURIComponent(t.getAttribute("data-section"));
-      startMock(buildForecastMock(section));
+      var setAttr = t.getAttribute("data-set");
+      var setNo = setAttr ? Number(setAttr) : null;
+      startMock(buildForecastMock(section, setNo));
       break;
     }
     case "start-weak": {

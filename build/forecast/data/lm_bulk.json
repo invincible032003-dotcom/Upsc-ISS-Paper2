@@ -1,0 +1,3236 @@
+{
+ "F1.1": {
+  "id": "F1.1",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Consider the Gauss–Markov model 𝐸(𝑌1) = 𝛽1 + 𝛽2 + 𝛽3, 𝐸(𝑌2) = 𝛽1 −𝛽3, 𝐸(𝑌3) = 2𝛽1 + 𝛽2, with uncorrelated 𝑌𝑖having common variance 𝜎2. The function 𝜆1𝛽1 + 𝜆2𝛽2 + 𝜆3𝛽3 is estimable if and only if",
+  "options": [
+   "𝜆1 + 𝜆2 = 2𝜆3",
+   "𝜆1 + 𝜆3 = 2𝜆2",
+   "𝜆2 + 𝜆3 = 2𝜆1",
+   "𝜆1 + 𝜆2 + 𝜆3 = 0"
+  ],
+  "answer_letter": "b",
+  "explanation": "Row 3 = row 1 + row 2, so the row space is spanned by (1, 1, 1) and (1, 0, −1); 𝜆= (𝑎+ 𝑏, 𝑎, 𝑎−𝑏) gives 𝜆1 + 𝜆3 = 2𝜆2."
+ },
+ "F1.2": {
+  "id": "F1.2",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Let 𝑌1, 𝑌2, 𝑌3 be uncorrelated with common variance and 𝐸(𝑌1) = 𝜃1 + 𝜃2, 𝐸(𝑌2) = 𝜃2 + 𝜃3, 𝐸(𝑌3) = 𝜃1 + 2𝜃2 + 𝜃3. For estimability of 𝑙1𝜃1 + 𝑙2𝜃2 + 𝑙3𝜃3, consider the following conditions: 1. 𝑙1 = 𝑙2 + 𝑙3 2. 𝑙2 = 𝑙1 + 𝑙3 3. 𝑙3 = 𝑙1 + 𝑙2 Which of the above condition(s) is/are correct?",
+  "options": [
+   "1 only",
+   "2 only",
+   "3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "b",
+  "explanation": "Row 3 = row 1 + row 2; row space spanned by (1, 1, 0), (0, 1, 1), so 𝜆= (𝑎, 𝑎+ 𝑏, 𝑏), i.e., 𝑙2 = 𝑙1 + 𝑙3."
+ },
+ "F1.3": {
+  "id": "F1.3",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "For the one-way classification model 𝑦𝑖𝑗= 𝜇+ 𝜏𝑖+ 𝑒𝑖𝑗, 𝑖= 1, 2, 3; 𝑗= 1, 2, …, 𝑛𝑖, which one of the following parametric functions is estimable?",
+  "options": [
+   "𝜇",
+   "𝜏1",
+   "𝜏1 −𝜏3",
+   "𝜏1 + 𝜏2 + 𝜏3"
+  ],
+  "answer_letter": "c",
+  "explanation": "Estimable iff coefficient of 𝜇equals sum of 𝜏-coefficients; only 𝜏1 −𝜏3 (a contrast) satisfies 0 = 1 −1."
+ },
+ "F1.4": {
+  "id": "F1.4",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "In the model 𝑦𝑖𝑗= 𝜇+ 𝜏𝑖+ 𝑒𝑖𝑗, 𝑖= 1, 2, 3, 4; 𝑗= 1, 2, …, 𝑛𝑖, which one of the following is not estimable?",
+  "options": [
+   "𝜇+ 𝜏1",
+   "𝜏1 −𝜏2",
+   "𝜇+(1)/(4)(𝜏1 + 𝜏2 + 𝜏3 + 𝜏4)",
+   "𝜏1 + 𝜏2"
+  ],
+  "answer_letter": "d",
+  "explanation": "𝜏1 + 𝜏2 needs 𝜇-coefficient = 2; it is 0. Items (a), (b), (c) all satisfy 𝜆0 = ∑𝑖𝜆𝑖."
+ },
+ "F1.5": {
+  "id": "F1.5",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Consider the two-way additive model 𝑦𝑖𝑗= 𝜇+ 𝛼𝑖+ 𝛽𝑗+ 𝜖𝑖𝑗, 𝑖= 1, 2; 𝑗= 1, 2. For which one of the following choices of 𝜆′ is the function 𝜆′𝜃, where 𝜃′ = (𝜇, 𝛼1, 𝛼2, 𝛽1, 𝛽2), not estimable?",
+  "options": [
+   "(1, 1, 0, 0, 1)",
+   "(0, 1, −1, 0, 0)",
+   "(0, 0, 0, 1, 1)",
+   "(1, 0, 1, 1, 0)"
+  ],
+  "answer_letter": "c",
+  "explanation": "Rule: 𝜆0 = ∑𝑖𝑎𝑖= ∑𝑗𝑏𝑗. For (0, 0, 0, 1, 1): ∑𝑏𝑗= 2 ≠0, so 𝛽1 + 𝛽2 is not estimable."
+ },
+ "F1.6": {
+  "id": "F1.6",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Consider the model 𝐸(𝑌𝑖𝑗) = 𝛼𝑖+ 𝛽𝑗; 𝑖= 1, 2, 3; 𝑗= 1, 2, where the 𝑌𝑖𝑗are uncorrelated with common variance. The function 𝑙1𝛼1 + 𝑙2𝛼2 + 𝑙3𝛼3 + 𝑚1𝛽1 + 𝑚2𝛽2 is estimable if and only if",
+  "options": [
+   "𝑙1 + 𝑙2 + 𝑙3 = 𝑚1 + 𝑚2",
+   "𝑙1 + 𝑙2 + 𝑙3 + 𝑚1 + 𝑚2 = 0",
+   "𝑙1 = 𝑙2 = 𝑙3",
+   "𝑙1 + 𝑙2 + 𝑙3 + 𝑚1 + 𝑚2 = 1"
+  ],
+  "answer_letter": "a",
+  "explanation": "Each row of 𝑋has 𝛼-coefficients summing to 1 and 𝛽-coefficients summing to 1; the row space is exactly {(𝑙, 𝑚) ∶∑𝑙𝑖= ∑𝑚𝑗}."
+ },
+ "F1.7": {
+  "id": "F1.7",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "In the linear model Y = X𝛽+ 𝜖, consider the following statements: 1. If X has full column rank, then every linear parametric function is estimable. 2. A function 𝜆′𝛽is estimable if and only if 𝜆′ = c′X for some vector c. Which of the above statements is/are correct?",
+  "options": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer_letter": "c",
+  "explanation": "Both are standard characterizations: full column rank ⇒all LPFs estimable; 𝜆′𝛽 estimable ⟺𝜆∈𝒞(X′)."
+ },
+ "F1.8": {
+  "id": "F1.8",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "In a Gauss–Markov model with 𝑛= 10 observations, 𝑝= 6 parameters and rank(X) = 4, the maximum number of linearly independent estimable parametric functions is",
+  "options": [
+   "4",
+   "6",
+   "10",
+   "2"
+  ],
+  "answer_letter": "a",
+  "explanation": "The number of linearly independent estimable functions equals rank(X) = 4."
+ },
+ "F1.9": {
+  "id": "F1.9",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "For the model Y = X𝛽+ 𝜖with X of order 𝑛× 𝑝and rank 𝑟, consider the following statements: I. The set of all vectors 𝜆for which 𝜆′𝛽is estimable is a vector subspace of ℝ𝑝. II. The dimension of this subspace is 𝑛−𝑟. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "a",
+  "explanation": "The estimable 𝜆’s form the row space of X, a subspace of dimension 𝑟(not 𝑛−𝑟)."
+ },
+ "F1.10": {
+  "id": "F1.10",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Let 𝐸(𝑌1) = 𝛽1 −𝛽2, 𝐸(𝑌2) = 𝛽2 −𝛽3, 𝐸(𝑌3) = 𝛽3 −𝛽1, the 𝑌𝑖being uncorrelated with common variance. Then 𝜆1𝛽1 + 𝜆2𝛽2 + 𝜆3𝛽3 is estimable if and only if",
+  "options": [
+   "𝜆1 + 𝜆2 + 𝜆3 = 0",
+   "𝜆1 + 𝜆2 + 𝜆3 = 1",
+   "𝜆1 = 𝜆2 = 𝜆3",
+   "𝜆1 −𝜆2 + 𝜆3 = 0"
+  ],
+  "answer_letter": "a",
+  "explanation": "Rows sum to zero: row space = {𝜆∶∑𝜆𝑖= 0} (rank 2), i.e., exactly the contrasts."
+ },
+ "F1.11": {
+  "id": "F1.11",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "For the model 𝑦𝑖𝑗= 𝜇+ 𝜏𝑖+ 𝜖𝑖𝑗, 𝑖= 1, 2; 𝑗= 1, 2, 3, consider the following statements: 1. 𝜇+ 𝜏2 is estimable. 2. 𝜏1 −𝜏2 is estimable. 3. 𝜇is estimable. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "a",
+  "explanation": "𝜇+ 𝜏2 = 𝐸(𝑦2𝑗) and 𝜏1 −𝜏2 are estimable; 𝜇alone is not (1 ≠1 + 0 rule fails: 𝜆0 = 1, ∑𝜆𝑖= 0)."
+ },
+ "F1.12": {
+  "id": "F1.12",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Consider a two-way classification with one observation per cell: 𝑦𝑖𝑗= 𝜇+ 𝛼𝑖+ 𝛽𝑗+ 𝑒𝑖𝑗; 𝑖= 1, …, 𝑝; 𝑗= 1, …, 𝑞. Which one of the following is estimable?",
+  "options": [
+   "𝜇",
+   "𝛼𝑖",
+   "𝛽𝑗−𝛽𝑗′, 𝑗≠𝑗′",
+   "𝛼1 + 𝛽1"
+  ],
+  "answer_letter": "c",
+  "explanation": "Only contrasts among the 𝛼’s or among the 𝛽’s (and cell expectations) are estimable; 𝜇, 𝛼𝑖, 𝛼1 + 𝛽1 all fail the row-space condition."
+ },
+ "F1.13": {
+  "id": "F1.13",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Let 𝐸(𝑌1) = 𝛽1 + 2𝛽2, 𝐸(𝑌2) = 2𝛽1 + 4𝛽2, 𝐸(𝑌3) = 3𝛽1 + 6𝛽2, the 𝑌𝑖being uncorrelated with common variance. Which one of the following is estimable?",
+  "options": [
+   "𝛽1",
+   "𝛽2",
+   "𝛽1 + 2𝛽2",
+   "2𝛽1 + 𝛽2"
+  ],
+  "answer_letter": "c",
+  "explanation": "rank(X) = 1; row space = multiples of (1, 2), so only multiples of 𝛽1 + 2𝛽2 are estimable."
+ },
+ "F1.14": {
+  "id": "F1.14",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Let 𝜆′𝛽be estimable in the model Y = X𝛽+ 𝜖, where X is 𝑛× 𝑝of rank 𝑘< 𝑝. Let̂ 𝛽be any solution of the normal equations X′X̂𝛽= X′Y and let 𝑟be any solution of X′X𝑟= 𝜆. Consider the following statements: I. 𝜆′̂𝛽= 𝑟′X′Y for every sucĥ 𝛽and 𝑟. II. The common value is invariant to the choice of̂ 𝛽and 𝑟. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝜆′̂𝛽= (𝑋′𝑋𝑟)′̂𝛽= 𝑟′𝑋′𝑋̂𝛽= 𝑟′𝑋′𝑌; estimability makes the value invariant to both choices."
+ },
+ "F1.15": {
+  "id": "F1.15",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Consider the following statements: I. If 𝜆′𝛽and 𝜇′𝛽are estimable, then 𝑎𝜆′𝛽+ 𝑏𝜇′𝛽is estimable for all real 𝑎, 𝑏. II. If 𝜆′𝛽is not estimable, then no linear function of the observations is unbiased for it. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Estimable functions form a linear space (I); non-estimability means no linear unbiased estimator exists, by definition (II)."
+ },
+ "F1.16": {
+  "id": "F1.16",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "In the Gauss–Markov model Y = X𝛽+ 𝜖with X of order 𝑛× 𝑝and rank(X) = 𝑟< 𝑝, consider the following statements: I. Each individual component 𝛽𝑗of 𝛽is estimable. II. Each 𝐸(𝑌𝑖), 𝑖= 1, …, 𝑛, is an estimable parametric function. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "b",
+  "explanation": "With r < p not all β_j are estimable; but E(Y_i) = x_i'β is always estimable (Y_i itself is unbiased for it)."
+ },
+ "F1.17": {
+  "id": "F1.17",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Let 𝐸(𝑌1) = 2𝛽1 + 𝛽2, 𝐸(𝑌2) = 𝛽1 + 𝛽2, 𝐸(𝑌3) = 3𝛽1 + 2𝛽2, with the usual uncorrelated, equalvariance assumptions. Then",
+  "options": [
+   "only multiples of 𝛽1 −𝛽2 are estimable",
+   "only multiples of 𝛽1 + 𝛽2 are estimable",
+   "every linear function 𝜆1𝛽1 + 𝜆2𝛽2 is estimable",
+   "no linear function is estimable"
+  ],
+  "answer_letter": "c",
+  "explanation": "rank(X) = 2 = 𝑝(rows 1 and 2 are independent), i.e., full column rank, so all linear functions are estimable — estimability depends on column rank, not on 𝑛."
+ },
+ "F1.18": {
+  "id": "F1.18",
+  "section": 1,
+  "topic": "Estimable Functions and Estimability Conditions",
+  "question": "Consider the model with four uncorrelated observations 𝐸(𝑌1) = 𝛽1 + 𝛽2 + 2𝛽3, 𝐸(𝑌2) = 𝛽1 + 𝛽3, 𝐸(𝑌3) = 2𝛽1 + 𝛽2 + 3𝛽3, 𝐸(𝑌4) = 𝛽2 + 𝛽3. Then 𝜆1𝛽1 + 𝜆2𝛽2 + 𝜆3𝛽3 is estimable if and only if",
+  "options": [
+   "𝜆3 = 𝜆1 + 𝜆2",
+   "𝜆1 = 𝜆2 + 𝜆3",
+   "𝜆2 = 𝜆1 + 𝜆3",
+   "𝜆1 + 𝜆2 + 𝜆3 = 0"
+  ],
+  "answer_letter": "a",
+  "explanation": "Rows 3 = 1 + 2 and 4 = 1 −2; row space spanned by (1, 1, 2), (1, 0, 1): 𝜆= (𝑎+ 𝑏, 𝑎, 2𝑎+ 𝑏), so 𝜆3 = 𝜆1 + 𝜆2."
+ },
+ "F2.1": {
+  "id": "F2.1",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Let 𝑌1, 𝑌2, 𝑌3 be uncorrelated with common variance 𝜎2 and 𝐸(𝑌1) = 𝛽1, 𝐸(𝑌2) = 𝛽2, 𝐸(𝑌3) = 𝛽1 + 𝛽2. The BLUE of 𝛽1 is",
+  "options": [
+   "𝑌1",
+   "(2𝑌1 −𝑌2 + 𝑌3)/(3)",
+   "(𝑌1 + 𝑌3)/(2)",
+   "(2𝑌1 + 𝑌2 −𝑌3)/(3)"
+  ],
+  "answer_letter": "b",
+  "explanation": "X'X = [[2,1],[1,2]], X'y = (y1+y3, y2+y3)'; β̂1 = (1/3)[2(y1+y3) - (y2+y3)] = (2y1-y2+y3)/3."
+ },
+ "F2.2": {
+  "id": "F2.2",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "In the model of F2.1, the BLUE of 𝛽1 −𝛽2 is",
+  "options": [
+   "𝑌1 −𝑌2",
+   "(𝑌1 −𝑌2 + 𝑌3)/(3)",
+   "(2(𝑌1 −𝑌2))/(3)",
+   "𝑌3 −𝑌2"
+  ],
+  "answer_letter": "a",
+  "explanation": "̂ 𝛽1 −̂ 𝛽2 =(1)/(3)(3𝑦1 −3𝑦2) = 𝑦1 −𝑦2; elegant cancellation of the 𝑦3 terms."
+ },
+ "F2.3": {
+  "id": "F2.3",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Let 𝐸(𝑌1) = 𝜃, 𝐸(𝑌2) = 2𝜃, 𝐸(𝑌3) = 𝜃, with uncorrelated observations of common variance 𝜎2. The least-squares estimator of 𝜃and its variance are",
+  "options": [
+   "(𝑌1 + 𝑌2 + 𝑌3)/(4),(𝜎2)/(4)",
+   "(𝑌1 + 2𝑌2 + 𝑌3)/(6),(𝜎2)/(6)",
+   "(𝑌1 + 2𝑌2 + 𝑌3)/(4),(𝜎2)/(6)",
+   "(𝑌1 + 𝑌2 + 𝑌3)/(3),(𝜎2)/(3)"
+  ],
+  "answer_letter": "b",
+  "explanation": "θ̂ = Σx_i y_i / Σx_i² with x=(1,2,1): (y1+2y2+y3)/6; V = σ²/6."
+ },
+ "F2.4": {
+  "id": "F2.4",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Consider 𝑦𝑖= 𝛽0 + 𝛽1𝑥𝑖+ 𝑒𝑖, 𝑖= 1, 2, 3, with 𝑥1 = −1, 𝑥2 = 0, 𝑥3 = 1 and the usual assumptions. The best linear unbiased estimates of (𝛽0, 𝛽1) are",
+  "options": [
+   "(̄𝑦,(𝑦3 −𝑦1)/(2))",
+   "((𝑦2 −𝑦1)/(2), 𝑦3 −𝑦1)",
+   "(̄𝑦,(𝑦2 −𝑦1)/(2))",
+   "((𝑦1 + 𝑦3)/(2),̄ 𝑦)"
+  ],
+  "answer_letter": "a",
+  "explanation": "̄ 𝑥= 0, sô 𝛽0 =̄ 𝑦and̂ 𝛽1 = 𝑆𝑥𝑦/𝑆𝑥𝑥= (𝑦3 −𝑦1)/2."
+ },
+ "F2.5": {
+  "id": "F2.5",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "In the setting of F2.4, consider the following statements: I. Cov(̂𝛽0,̂ 𝛽1) = 0. II. 𝑉(̂𝛽1) =(𝜎2)/(2) . Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "̄ 𝑥= 0 ⇒Cov = 0; 𝑉(̂𝛽1) = 𝜎2/𝑆𝑥𝑥= 𝜎2/2."
+ },
+ "F2.6": {
+  "id": "F2.6",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Let X_i, Y_i, Z_i, i = 1, 2, 3, be nine independent observations with common variance σ² and E(X_i) = θ1+θ2, E(Y_i) = θ1, E(Z_i) = θ2−θ1. Write X = ΣX_i, Y = ΣY_i, Z = ΣZ_i (sums over i = 1 to 3). The BLUE of θ1 is",
+  "options": [
+   "(1/9)[X+Y−Z]",
+   "(1/6)[X+Y−Z]",
+   "(1/9)[X−Y+Z]",
+   "(1/6)[X+Z]"
+  ],
+  "answer_letter": "a",
+  "explanation": "𝑋′𝑋= diag(9, 6) (columns orthogonal), 𝑋′𝑦= (𝑋+ 𝑌−𝑍, 𝑋+ 𝑍)′, sô 𝜃1 = (𝑋+ 𝑌−𝑍)/9."
+ },
+ "F2.7": {
+  "id": "F2.7",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "In the setting of F2.6, the BLUE of θ2 and its variance are",
+  "options": [
+   "(1/6)[X+Z], σ²/6",
+   "(1/9)[X+Z], σ²/9",
+   "(1/6)[X−Z], σ²/6",
+   "(1/9)[X+Y+Z], σ²/9"
+  ],
+  "answer_letter": "a",
+  "explanation": "̂ 𝜃2 = (𝑋+ 𝑍)/6, 𝑉(̂𝜃2) = 𝜎2/6 from (𝑋′𝑋)−1 = diag(1/9, 1/6)."
+ },
+ "F2.8": {
+  "id": "F2.8",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Consider the model 𝑌1 = 𝐴+𝐵+𝐶+𝐷+𝑒1, 𝑌2 = 𝐴−𝐵+𝐶−𝐷+𝑒2, 𝑌3 = 𝐴+𝐵−𝐶−𝐷+𝑒3, 𝑌4 = 𝐴−𝐵−𝐶+𝐷+𝑒4. If this model is written as 𝑌= 𝑋𝛽+ 𝑒, then (𝑋′𝑋)−1 equals",
+  "options": [
+   "(1/2)I4",
+   "(1/3)I4",
+   "(1/4)I4",
+   "4I4"
+  ],
+  "answer_letter": "c",
+  "explanation": "The four ±1 columns are mutually orthogonal, so 𝑋′𝑋= 4𝐼4 and (𝑋′𝑋)−1 = 𝐼4/4."
+ },
+ "F2.9": {
+  "id": "F2.9",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "In the model of F2.8, the least-squares estimator of 𝐵is",
+  "options": [
+   "(𝑌1 −𝑌2 + 𝑌3 −𝑌4)/(4)",
+   "(𝑌1 + 𝑌2 −𝑌3 −𝑌4)/(4)",
+   "(𝑌1 −𝑌2 −𝑌3 + 𝑌4)/(4)",
+   "(𝑌1 + 𝑌2 + 𝑌3 + 𝑌4)/(4)"
+  ],
+  "answer_letter": "a",
+  "explanation": "Column of 𝐵is (1, −1, 1, −1)′;̂ 𝐵=(1)/(4)(𝑌1 −𝑌2 + 𝑌3 −𝑌4)."
+ },
+ "F2.10": {
+  "id": "F2.10",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Let 𝑌𝑖= 𝑖𝛽+ 𝑢𝑖, 𝑖= 1, 2, 3, 4, where the 𝑢𝑖are independent with 𝐸(𝑢𝑖) = 0 and 𝑉(𝑢𝑖) = 𝑖𝜎2. The best linear unbiased estimator of 𝛽is",
+  "options": [
+   "(1)/(30)(𝑌1 + 2𝑌2 + 3𝑌3 + 4𝑌4)",
+   "(1)/(10)(𝑌1 + 𝑌2 + 𝑌3 + 𝑌4)",
+   "(1)/(4)(𝑌1 + 𝑌2 + 𝑌3 + 𝑌4)",
+   "(1)/(10)(𝑌1 + 2𝑌2 + 3𝑌3 + 4𝑌4)"
+  ],
+  "answer_letter": "b",
+  "explanation": "Weighted LS: β̂ = Σ(x_i y_i/v_i) / Σ(x_i²/v_i) = Σy_i/Σi = (Y1+⋯+Y4)/10."
+ },
+ "F2.11": {
+  "id": "F2.11",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Let 𝑌𝑖= 𝑖𝛽+ 𝑢𝑖, 𝑖= 1, 2, 3, with independent 𝑢𝑖, 𝐸(𝑢𝑖) = 0, 𝑉(𝑢𝑖) = 𝑖2𝜎2. The BLUE of 𝛽and its variance are",
+  "options": [
+   "(6𝑌1 + 3𝑌2 + 2𝑌3)/(18),(𝜎2)/(3)",
+   "(𝑌1 + 2𝑌2 + 3𝑌3)/(14),(𝜎2)/(14)",
+   "(𝑌1 + 𝑌2 + 𝑌3)/(6),(𝜎2)/(6)",
+   "(6𝑌1 + 3𝑌2 + 2𝑌3)/(11),(𝜎2)/(11)"
+  ],
+  "answer_letter": "a",
+  "explanation": "Weights 1/i²: β̂ = (1/3)Σ(Y_i/i) = (6Y1+3Y2+2Y3)/18; V = σ²/Σ(x_i²/v_i) = σ²/3."
+ },
+ "F2.12": {
+  "id": "F2.12",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Two treatments are applied to 𝑛1 = 4 and 𝑛2 = 6 experimental units respectively, all observations being uncorrelated with common variance 𝜎2, and 𝐸(𝑦1𝑗) = 𝜇1, 𝐸(𝑦2𝑗) = 𝜇2. The variance of the BLUE of 𝜇1 −𝜇2 is",
+  "options": [
+   "(𝜎2)/(10)",
+   "(5𝜎2)/(12)",
+   "(𝜎2)/(24)",
+   "(2𝜎2)/(5)"
+  ],
+  "answer_letter": "b",
+  "explanation": "𝑉(̄𝑦1 −̄ 𝑦2) = 𝜎2(1/4 + 1/6) = 5𝜎2/12."
+ },
+ "F2.13": {
+  "id": "F2.13",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Let 𝐸(𝑌1) = 𝛽1 + 𝛽2, 𝐸(𝑌2) = 𝛽1 −𝛽2, 𝐸(𝑌3) = 𝛽1 + 2𝛽2, with uncorrelated observations of common variance 𝜎2. The BLUE of 𝛽1 is",
+  "options": [
+   "(𝑌1 + 𝑌2 + 𝑌3)/(3)",
+   "(2𝑌1 + 4𝑌2 + 𝑌3)/(7)",
+   "(4𝑌1 + 2𝑌2 + 𝑌3)/(7)",
+   "(𝑌1 + 𝑌2)/(2)"
+  ],
+  "answer_letter": "b",
+  "explanation": "X'X = [[3,2],[2,6]]; β̂1 = (1/14)[6Σy_i - 2(y1-y2+2y3)] = (2y1+4y2+y3)/7; check unbiasedness: E = (2+4+1)β1/7 = β1."
+ },
+ "F2.14": {
+  "id": "F2.14",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Let 𝐸(𝑌1) = 𝛽1, 𝐸(𝑌2) = 𝛽1 + 𝛽2, 𝐸(𝑌3) = 𝛽1 + 𝛽2 + 𝛽3, the 𝑌𝑖being uncorrelated with common variance 𝜎2. Consider the following statements: I. The residual sum of squares of the least-squares fit is identically zero. II. 𝜎2 cannot be unbiasedly estimated from the least-squares residuals. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝑛= 𝑝= 3 with full rank: the fit is exact, RSS = 0 with 𝑛−𝑟= 0 degrees of freedom, so no unbiased residual-based estimator of 𝜎2 exists."
+ },
+ "F2.15": {
+  "id": "F2.15",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Consider 𝑌𝑖= 𝜇+ (−1)𝑖𝛿+ 𝑢𝑖, 𝑖= 1, 2, …, 2𝑛, with independent errors, 𝐸(𝑢𝑖) = 0, 𝑉(𝑢𝑖) = 𝜎2. The least-squares estimators are: I.̂ 𝜇=(1)/(2𝑛)∑ 2𝑛 𝑖=1 𝑌𝑖 II.̂ 𝛿=(1)/(2𝑛)[∑ 𝑛 𝑖=1 𝑌2𝑖(−∑)/(𝑛) 𝑖=1 𝑌2𝑖−1] Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "The two columns (all ones; alternating ±1) are orthogonal with squared lengths 2𝑛, giving exactly the stated estimators."
+ },
+ "F2.16": {
+  "id": "F2.16",
+  "section": 2,
+  "topic": "BLUEs and Least-Squares Computation in Small Models",
+  "question": "Let 𝜆′𝛽be estimable and̂ 𝛽any solution of the normal equations. Consider the following statements: I. 𝜆′̂𝛽is the best linear unbiased estimator of 𝜆′𝛽. II. 𝜆′̂𝛽takes the same value for every solution̂ 𝛽of the normal equations. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Gauss–Markov theorem plus invariance of 𝜆′̂𝛽for estimable 𝜆′𝛽."
+ },
+ "F3.1": {
+  "id": "F3.1",
+  "section": 3,
+  "topic": "Orthogonality: When Are BLUEs Uncorrelated?",
+  "question": "Let 𝐸(𝑦1) = 2𝛽1 + 𝛽2, 𝐸(𝑦2) = 𝛽1 −𝛽2, 𝐸(𝑦3) = 𝛽1 + 𝛼𝛽2, with uncorrelated observations of constant variance. The value of 𝛼for which the BLUEs of 𝛽1 and 𝛽2 are uncorrelated is",
+  "options": [
+   "−1",
+   "+1",
+   "0",
+   "+2"
+  ],
+  "answer_letter": "a",
+  "explanation": "Columns (2, 1, 1) and (1, −1, 𝛼): 2 −1 + 𝛼= 0 ⇒𝛼= −1."
+ },
+ "F3.2": {
+  "id": "F3.2",
+  "section": 3,
+  "topic": "Orthogonality: When Are BLUEs Uncorrelated?",
+  "question": "Let 𝐸(𝑦1) = 𝛽1 + 2𝛽2, 𝐸(𝑦2) = 2𝛽1 + 𝛽2, 𝐸(𝑦3) = 𝛽1 + 𝛼𝛽2, with the usual assumptions. The least-squares estimators of 𝛽1 and 𝛽2 are uncorrelated when 𝛼equals",
+  "options": [
+   "−2",
+   "−4",
+   "+4",
+   "0"
+  ],
+  "answer_letter": "b",
+  "explanation": "(1, 2, 1) ⋅(2, 1, 𝛼) = 2 + 2 + 𝛼= 0 ⇒𝛼= −4."
+ },
+ "F3.3": {
+  "id": "F3.3",
+  "section": 3,
+  "topic": "Orthogonality: When Are BLUEs Uncorrelated?",
+  "question": "Let 𝐸(𝑦1) = 𝛽1 + 𝛽2, 𝐸(𝑦2) = 2𝛽1 + 𝛼𝛽2, 𝐸(𝑦3) = 𝛽1 −𝛽2, with uncorrelated equal-variance observations. The BLUEs of 𝛽1 and 𝛽2 are uncorrelated when 𝛼equals",
+  "options": [
+   "−1",
+   "+1",
+   "0",
+   "+2"
+  ],
+  "answer_letter": "c",
+  "explanation": "(1, 2, 1) ⋅(1, 𝛼, −1) = 1 + 2𝛼−1 = 2𝛼= 0 ⇒𝛼= 0."
+ },
+ "F3.4": {
+  "id": "F3.4",
+  "section": 3,
+  "topic": "Orthogonality: When Are BLUEs Uncorrelated?",
+  "question": "Let 𝐸(𝑦𝑖) = 𝛽1 + 𝑐𝑖𝛽2, 𝑖= 1, 2, 3, 4, with 𝑐1 = 1, 𝑐2 = −1, 𝑐3 = 1, 𝑐4 = 𝛼, under the usual assumptions. The value of 𝛼makinĝ 𝛽1 and̂ 𝛽2 uncorrelated is",
+  "options": [
+   "−1",
+   "0",
+   "+1",
+   "−3"
+  ],
+  "answer_letter": "a",
+  "explanation": "(1, 1, 1, 1) ⋅(1, −1, 1, 𝛼) = 1 + 𝛼= 0 ⇒𝛼= −1."
+ },
+ "F3.5": {
+  "id": "F3.5",
+  "section": 3,
+  "topic": "Orthogonality: When Are BLUEs Uncorrelated?",
+  "question": "For a full-rank model with two parameters, consider the following statements: I. Cov(̂𝛽1,̂ 𝛽2) = 0 if and only if the two columns of 𝑋are orthogonal. II. If 𝑋′𝑋is diagonal, then (𝑋′𝑋)−1 is diagonal. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "For 2 × 2 matrices the off-diagonal of the inverse vanishes exactly when the offdiagonal of 𝑋′𝑋(the column inner product) vanishes; II is immediate."
+ },
+ "F3.6": {
+  "id": "F3.6",
+  "section": 3,
+  "topic": "Orthogonality: When Are BLUEs Uncorrelated?",
+  "question": "In the simple linear regression model 𝑦𝑖= 𝛽0 + 𝛽1𝑥𝑖+ 𝑒𝑖with the usual assumptions,̂ 𝛽0 and̂ 𝛽1 are uncorrelated if and only if",
+  "options": [
+   "∑𝑥²_𝑖= 0",
+   "̄ 𝑥= 0",
+   "̄ 𝑦= 0",
+   "𝑛is even"
+  ],
+  "answer_letter": "b",
+  "explanation": "Cov(̂𝛽0,̂ 𝛽1) = −̄𝑥𝜎2/𝑆𝑥𝑥, zero iff̄ 𝑥= 0."
+ },
+ "F3.7": {
+  "id": "F3.7",
+  "section": 3,
+  "topic": "Orthogonality: When Are BLUEs Uncorrelated?",
+  "question": "Independent observations follow 𝑦𝑖= 𝛽0 + 𝛽1𝑥𝑖+ 𝑢𝑖, 𝑖= 1, …, 10, with error variance 𝜎2 = 2. Given ∑𝑥𝑖= 50 and ∑𝑥²_𝑖= 290, the covariance between the least-squares estimators of 𝛽0 and 𝛽1 is",
+  "options": [
+   "0",
+   "−0.25",
+   "0.25",
+   "−0.125"
+  ],
+  "answer_letter": "b",
+  "explanation": "̄ 𝑥= 5, 𝑆𝑥𝑥= 290 −10(25) = 40; Cov = −̄𝑥𝜎2/𝑆𝑥𝑥= −5(2)/40 = −0.25."
+ },
+ "F3.8": {
+  "id": "F3.8",
+  "section": 3,
+  "topic": "Orthogonality: When Are BLUEs Uncorrelated?",
+  "question": "If the inner product of every pair of distinct columns of the design matrix 𝑋equals zero, the design is called",
+  "options": [
+   "an incomplete block design",
+   "a non-orthogonal design",
+   "an orthogonal design",
+   "a saturated design"
+  ],
+  "answer_letter": "c",
+  "explanation": "Definition of an orthogonal design (2025 Q53 archetype)."
+ },
+ "F3.9": {
+  "id": "F3.9",
+  "section": 3,
+  "topic": "Orthogonality: When Are BLUEs Uncorrelated?",
+  "question": "For an orthogonal design (as in F3.8) with columns 𝑐1, …, 𝑐𝑝, consider the following statements: I.̂ 𝛽𝑗= 𝑐(′)/(𝑗y)/(𝑐′ 𝑗𝑐𝑗), and it is unchanged if any other factor is dropped from the model. II. 𝑉(̂𝛽𝑗) = 𝜎2/(𝑐(′)/(𝑗𝑐𝑗)). Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Diagonal 𝑋′𝑋decouples the normal equations; both statements are the standard consequences."
+ },
+ "F3.10": {
+  "id": "F3.10",
+  "section": 3,
+  "topic": "Orthogonality: When Are BLUEs Uncorrelated?",
+  "question": "Let 𝐸(𝑦1) = 𝛽1 +𝛽2, 𝐸(𝑦2) = 𝛽1 −𝛽2, 𝐸(𝑦3) = 𝛼𝛽1, with uncorrelated equal-variance observations. The BLUEs of 𝛽1 and 𝛽2 are uncorrelated",
+  "options": [
+   "only when 𝛼= 0",
+   "only when 𝛼= 1",
+   "only when 𝛼= −1",
+   "for every value of 𝛼"
+  ],
+  "answer_letter": "d",
+  "explanation": "(1, 1, 𝛼) ⋅(1, −1, 0) = 0 identically — the columns are orthogonal for every 𝛼."
+ },
+ "F4.1": {
+  "id": "F4.1",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "Let Y1, Y2, Y3, Y4 be uncorrelated with common variance σ², E(Y1) = E(Y2) = β1+β2+β3, E(Y3) = E(Y4) = β1−β2. Define e1 = √(1/2)(Y1−Y2) and e2 = √(1/2)(Y3−Y4). An unbiased estimator of σ² is",
+  "options": [
+   "(1/2)(e1² − e2²)",
+   "(1/2)(e1² + e2²)",
+   "e1² + e2²",
+   "(1/4)(e1² + e2²)"
+  ],
+  "answer_letter": "b",
+  "explanation": "e1, e2 have mean 0, variance σ², so E(e1²+e2²) = 2σ² (2019 Q4 / 2026 Q54 archetype)."
+ },
+ "F4.2": {
+  "id": "F4.2",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "Let Y1, …, Y6 be uncorrelated with common variance σ² and E(Y_{2i−1}) = E(Y_{2i}) = μ_i, i = 1, 2, 3. With e_i = √(1/2)(Y_{2i−1} − Y_{2i}), an unbiased estimator of σ² is",
+  "options": [
+   "(e1²+e2²+e3²)/6",
+   "(e1²+e2²+e3²)/2",
+   "(e1²+e2²+e3²)/3",
+   "e1²+e2²+e3²"
+  ],
+  "answer_letter": "c",
+  "explanation": "Three error contrasts, each with E(e_i²) = σ²: divide the sum by 3."
+ },
+ "F4.3": {
+  "id": "F4.3",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "In the model of F4.1, the number of degrees of freedom available for estimating 𝜎2 is",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "answer_letter": "b",
+  "explanation": "𝑛= 4, mean structure has rank 2 (rows (1, 1, 1) and (1, −1, 0)), so 𝑛−𝑟= 2."
+ },
+ "F4.4": {
+  "id": "F4.4",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "For 4 observations from the model 𝑦𝑖= 𝛽0 + 𝛽1𝑥𝑖+ 𝑒𝑖it is observed that ∑𝑥𝑖= 0, ∑𝑦𝑖= 8, ∑𝑥𝑖𝑦𝑖= 10, ∑𝑥²_𝑖= 20, Σy_i² = 23. The estimated error variance is",
+  "options": [
+   "0.5",
+   "2.0",
+   "1.0",
+   "0.667"
+  ],
+  "answer_letter": "c",
+  "explanation": "̂ 𝛽1 = 10/20 = 0.5; 𝑆𝑦𝑦= 23 −4(22) = 7; RSS = 7 −0.5(10) = 2;̂ 𝜎2 = 2/(4 −2) = 1."
+ },
+ "F4.5": {
+  "id": "F4.5",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "In a one-way classification with 𝑘= 3 groups and 𝑁= 15 observations in all, the within-group sum of squares is 48. The unbiased estimate of the error variance 𝜎2 is",
+  "options": [
+   "3.2",
+   "4",
+   "16",
+   "3.43"
+  ],
+  "answer_letter": "b",
+  "explanation": "MSE = SSW/(𝑁−𝑘) = 48/12 = 4."
+ },
+ "F4.6": {
+  "id": "F4.6",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "In a Gauss–Markov model with 𝑛= 12 observations and rank(X) = 4, the expected value of the residual sum of squares is",
+  "options": [
+   "12𝜎2",
+   "4𝜎2",
+   "8𝜎2",
+   "11𝜎2"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝐸(RSS) = (𝑛−𝑟)𝜎2 = 8𝜎2."
+ },
+ "F4.7": {
+  "id": "F4.7",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "Under the normal Gauss–Markov model of full rank 𝑝, consider the following statements: I. The maximum likelihood estimator of 𝜎2 is RSS/𝑛, which is biased. II. RSS/(𝑛−𝑝) is unbiased for 𝜎2. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Classical results for the normal linear model."
+ },
+ "F4.8": {
+  "id": "F4.8",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "For a linear model fit, y′y = 30 and̂ 𝛽′X′y = 22, with 𝑛−𝑟= 4. The unbiased estimate of 𝜎2 is",
+  "options": [
+   "8",
+   "2",
+   "5.5",
+   "7.5"
+  ],
+  "answer_letter": "b",
+  "explanation": "RSS = y′y −̂ 𝛽′X′y = 8;̂ 𝜎2 = 8/4 = 2."
+ },
+ "F4.9": {
+  "id": "F4.9",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "Let 𝐸(𝑦1) = 𝛽1, 𝐸(𝑦2) = 𝛽2, 𝐸(𝑦3) = 𝛽1 + 𝛽2 with uncorrelated equal-variance observations. The residual sum of squares of the least-squares fit is",
+  "options": [
+   "(1)/(3)(𝑦1 + 𝑦2 −𝑦3)2",
+   "(1)/(2)(𝑦1 + 𝑦2 −𝑦3)2",
+   "(1)/(3)(𝑦1 −𝑦2 + 𝑦3)2",
+   "(1)/(3)(𝑦1 + 𝑦2 + 𝑦3)2"
+  ],
+  "answer_letter": "a",
+  "explanation": "All three residuals equal ±(𝑦1 + 𝑦2 −𝑦3)/3, giving RSS = (𝑦1 + 𝑦2 −𝑦3)2/3 (2022 Q30 archetype)."
+ },
+ "F4.10": {
+  "id": "F4.10",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "In the full-rank model Y = X𝛽+ 𝜖with 𝑝parameters, which one of the following is an unbiased estimator of 𝜎2?",
+  "options": [
+   "((Y −X̂𝛽)′(Y −X̂𝛽))/(𝑛)",
+   "((Y −X̂𝛽)′(Y −X̂𝛽))/(𝑛)−1",
+   "((Y −X̂𝛽)′(Y −X̂𝛽))/(𝑛)−𝑝",
+   "((Y −X̂𝛽)′(Y −X̂𝛽))/(𝑝)"
+  ],
+  "answer_letter": "c",
+  "explanation": "RSS has 𝑛−𝑝degrees of freedom in the full-rank case."
+ },
+ "F4.11": {
+  "id": "F4.11",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "Under normality, with 𝑛−𝑟= 8 error degrees of freedom, the variance of the unbiased estimator 𝜎2 = RSS/8 is",
+  "options": [
+   "(𝜎4)/(4)",
+   "(𝜎4)/(8)",
+   "(𝜎4)/(16)",
+   "2𝜎4"
+  ],
+  "answer_letter": "a",
+  "explanation": "RSS/σ² ∼ χ²₈, so V(σ̂²) = 2σ⁴/8 = σ⁴/4."
+ },
+ "F4.12": {
+  "id": "F4.12",
+  "section": 4,
+  "topic": "Estimation of Error Variance",
+  "question": "In a one-way fixed-effects ANOVA, consider the following statements: I. The error mean square MSE is unbiased for 𝜎2 whether or not 𝐻0 is true, and without assuming normality. II. The treatment mean square MST is unbiased for 𝜎2 only when all treatment effects are equal. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝐸(MSE) = 𝜎2 always; 𝐸(MST) = 𝜎2+ positive term unless all effects coincide."
+ },
+ "F5.1": {
+  "id": "F5.1",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "A matrix 𝐺is called a generalized inverse of 𝐴if",
+  "options": [
+   "𝐺𝐴𝐺= 𝐺",
+   "𝐴𝐺𝐴= 𝐴",
+   "𝐴𝐺= 𝐺𝐴",
+   "𝐺𝐴= 𝐼"
+  ],
+  "answer_letter": "b",
+  "explanation": "Defining property; (a) alone defines an outer inverse, both together a reflexive inverse."
+ },
+ "F5.2": {
+  "id": "F5.2",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Let 𝐴be a matrix of order 5 × 8. Then any generalized inverse of 𝐴is of order",
+  "options": [
+   "5 × 8",
+   "5 × 5",
+   "8 × 5",
+   "8 × 8"
+  ],
+  "answer_letter": "c",
+  "explanation": "A_(m×n) ⇒ A⁻_(n×m): conformability of AA⁻A."
+ },
+ "F5.3": {
+  "id": "F5.3",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Consider the following statements: I. Every matrix (of any order, any rank) possesses at least one generalized inverse. II. The generalized inverse of 𝐴is unique if and only if 𝐴is square and non-singular, in which case 𝐴−= 𝐴−1. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Existence always holds; uniqueness exactly in the non-singular case."
+ },
+ "F5.4": {
+  "id": "F5.4",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Consider the following statements in respect of a symmetric matrix 𝐴: I. A generalized inverse of 𝐴is not necessarily symmetric. II. A symmetric generalized inverse of 𝐴can always be found. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "The verbatim 2021 Q7 / 2023 Q63 / 2024 Q51 fact pair: both statements are true."
+ },
+ "F5.5": {
+  "id": "F5.5",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Consider the following four conditions on a matrix 𝐺relative to 𝐴: 1. 𝐴𝐺𝐴= 𝐴; 2. 𝐺𝐴𝐺= 𝐺; 3. (𝐴𝐺)′ = 𝐴𝐺; 4. (𝐺𝐴)′ = 𝐺𝐴. How many of these conditions must 𝐺satisfy in order to be the Moore–Penrose inverse of 𝐴?",
+  "options": [
+   "Only condition 1",
+   "Conditions 1 and 2 only",
+   "Conditions 1, 2 and 3 only",
+   "All four conditions"
+  ],
+  "answer_letter": "d",
+  "explanation": "Moore–Penrose requires all four Penrose conditions; any 𝐺with all four is unique."
+ },
+ "F5.6": {
+  "id": "F5.6",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Consider the following statements: I. The Moore–Penrose inverse of any matrix exists and is unique. II. A matrix of less than full rank has infinitely many generalized inverses. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "MP inverse: existence and uniqueness are classical; rank-deficient matrices admit infinitely many 𝑔-inverses."
+ },
+ "F5.7": {
+  "id": "F5.7",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "If 𝐴−is any generalized inverse of 𝐴and 𝐻= 𝐴−𝐴, consider the following statements: 1. 𝐻is idempotent. 2. 𝐴𝐻= 𝐴. 3. rank(𝐴) = rank(𝐻) = trace(𝐻). Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "𝐻2 = 𝐴−(𝐴𝐴−𝐴) = 𝐴−𝐴= 𝐻; 𝐴𝐻= 𝐴𝐴−𝐴= 𝐴; idempotency gives rank = trace = rank(𝐴)."
+ },
+ "F5.8": {
+  "id": "F5.8",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Let 𝐴be an 𝑛× 𝑝matrix of rank 𝑟and 𝐴−any generalized inverse of 𝐴. Consider the following statements: I. trace(𝐴𝐴−) = trace(𝐴−𝐴). II. trace(𝐴𝐴−) = 𝑟. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Both traces equal rank(𝐴) = 𝑟since 𝐴𝐴−and 𝐴−𝐴are idempotent with rank 𝑟."
+ },
+ "F5.9": {
+  "id": "F5.9",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Consider the following statements: I. rank(𝐴−) ≥rank(𝐴) for every generalized inverse 𝐴−of 𝐴. II. rank(𝐴−) = rank(𝐴) if and only if 𝐴−is a reflexive generalized inverse (i.e., 𝐴−𝐴𝐴−= 𝐴−). Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Standard rank inequality; equality characterizes reflexive inverses (2026 Q53 archetype)."
+ },
+ "F5.10": {
+  "id": "F5.10",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Consider the following statements: I. If 𝐴−is a generalized inverse of 𝐴, then (𝐴−)′ is a generalized inverse of 𝐴′. II. If 𝐴is symmetric and 𝐴−is a generalized inverse of 𝐴, then (𝐴−)′ is also a generalized inverse of 𝐴. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝐴′(𝐴−)′𝐴′ = (𝐴𝐴−𝐴)′ = 𝐴′; for symmetric 𝐴replace 𝐴′ by 𝐴."
+ },
+ "F5.11": {
+  "id": "F5.11",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Let A = [[1,1,2],[2,1,3],[3,2,5]] and let A⁻ denote a generalized inverse of A. Consider the following statements: I. rank(A) = 2. II. trace(A⁻A) = 2. III. trace(A) = 7. IV. A⁻ is unique. How many of the statements given above are correct?",
+  "options": [
+   "Only one statement",
+   "Only two statements",
+   "Only three statements",
+   "All four statements"
+  ],
+  "answer_letter": "c",
+  "explanation": "Row 3 = row 1 + row 2 so rank 2; trace(𝐴−𝐴) = rank = 2; trace(𝐴) = 1+1+5 = 7; a rank-deficient 𝐴has infinitely many 𝐴−— I, II, III correct."
+ },
+ "F5.12": {
+  "id": "F5.12",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Let A = [[1,1],[1,1]]. Which one of the following is not a generalized inverse of A?",
+  "options": [
+   "[[1,0],[0,0]]",
+   "[[0,0],[0,1]]",
+   "[[1/4,1/4],[1/4,1/4]]",
+   "[[1,0],[0,1]]"
+  ],
+  "answer_letter": "d",
+  "explanation": "For 𝐴= 𝐽2, 𝐴𝑋𝐴= (∑𝑖𝑗𝑥𝑖𝑗)𝐴, so 𝑋is a 𝑔-inverse iff its entries sum to 1; the identity’s entries sum to 2."
+ },
+ "F5.13": {
+  "id": "F5.13",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "For the matrices A = [[1,1],[0,1]], B = [[1,−1],[0,1]], consider the following statements: I. ABA = A. II. BA is an idempotent matrix. III. rank(A) ≠ rank(BA). IV. rank(BA) = trace(BA). How many of the statements given above are correct?",
+  "options": [
+   "Only one statement",
+   "Only two statements",
+   "Only three statements",
+   "All four statements"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝐵= 𝐴−1, so 𝐴𝐵𝐴= 𝐴, 𝐵𝐴= 𝐼(idempotent), ranks equal (III false), and rank(𝐵𝐴) = trace(𝐵𝐴) = 2."
+ },
+ "F5.14": {
+  "id": "F5.14",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Let 𝐷= diag(3, 0, 2). Which one of the following is not a generalized inverse of 𝐷?",
+  "options": [
+   "diag(1/3, 0, 1/2)",
+   "diag(1/3, 7, 1/2)",
+   "diag(1/3, −4, 1/2)",
+   "diag(1/3, 0, 2)"
+  ],
+  "answer_letter": "d",
+  "explanation": "Need 𝑑𝑖𝑖𝑥𝑖𝑖𝑑𝑖𝑖= 𝑑𝑖𝑖: 𝑥33 must be(1)/(2), while the (2, 2) entry is free because 𝑑22 = 0."
+ },
+ "F5.15": {
+  "id": "F5.15",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "The Moore–Penrose inverse of the column vector 𝑎= (1, 2, 2)′ is",
+  "options": [
+   "(1, 2, 2)",
+   "(1)/(9)(1, 2, 2)",
+   "(1)/(3)(1, 2, 2)′",
+   "(1)/(5)(1, 2, 2)"
+  ],
+  "answer_letter": "b",
+  "explanation": "𝑎+ = 𝑎′/(𝑎′𝑎) = (1, 2, 2)/9; check 𝑎𝑎+𝑎= 𝑎."
+ },
+ "F5.16": {
+  "id": "F5.16",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "If the system of equations 𝐴𝑥= 𝑐has at least one solution, consider the following statements: I. rank(𝐴) = rank(𝐴, 𝑐). II. 𝐴𝐴−𝑐= 𝑐for every generalized inverse 𝐴−of 𝐴. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Consistency ⟺augmented rank condition ⟺𝐴𝐴−𝑐= 𝑐(2024 Q53 archetype)."
+ },
+ "F5.17": {
+  "id": "F5.17",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "If 𝐴𝑥= 𝑐is consistent and 𝐴−is any generalized inverse of 𝐴, the general solution is",
+  "options": [
+   "𝑥= 𝐴−𝑐only",
+   "𝑥= 𝐴−𝑐+ (𝐼−𝐴−𝐴)𝑧, 𝑧arbitrary",
+   "𝑥= 𝐴−𝑐+ 𝐴−𝐴𝑧, 𝑧arbitrary",
+   "𝑥= (𝐼−𝐴−𝐴)𝑐"
+  ],
+  "answer_letter": "b",
+  "explanation": "Particular solution plus the general null-space element (𝐼−𝐴−𝐴)𝑧."
+ },
+ "F5.18": {
+  "id": "F5.18",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Let 𝐴be a matrix with 7 columns and rank 4, and let 𝑦be a non-null vector such that 𝐴𝑥= 𝑦is consistent. The number of linearly independent solutions of 𝐴𝑥= 𝑦is",
+  "options": [
+   "3",
+   "4",
+   "5",
+   "7"
+  ],
+  "answer_letter": "b",
+  "explanation": "For consistent 𝐴𝑥= 𝑦, 𝑦≠0: maximum number of linearly independent solutions is 𝑛−𝑟+ 1 = 7 −4 + 1 = 4 (2026 Q51 archetype)."
+ },
+ "F5.19": {
+  "id": "F5.19",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "In the linear model Y = X𝛽+ 𝜖, let 𝐺be any generalized inverse of X′X. Consider the following statements: I. X𝐺X′ is invariant to the choice of 𝐺. II. X𝐺X′ is symmetric only when 𝐺is symmetric. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "a",
+  "explanation": "X𝐺X′ is the orthogonal projector on 𝒞(X) for every 𝐺; hence invariant and automatically symmetric — II is false."
+ },
+ "F5.20": {
+  "id": "F5.20",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Let 𝑃= X(X′X)−X′ with rank(X) = 𝑟. Consider the following statements: 1. 𝑃is idempotent. 2. 𝑃X = X. 3. trace(𝑃) = 𝑟. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "𝑃is the projector on 𝒞(X): idempotent, reproduces X, trace = rank = 𝑟."
+ },
+ "F5.21": {
+  "id": "F5.21",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Let 𝑀= 𝐼−𝐴−𝐴for a generalized inverse 𝐴−of 𝐴. Consider the following statements: 1. 𝐴𝑀= 0. 2. 𝑀is idempotent. 3. Every solution of the homogeneous system 𝐴𝑥= 0 can be written as 𝑀𝑧for some 𝑧. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "𝐴𝑀= 𝐴−𝐴𝐴−𝐴= 0; 𝑀2 = 𝑀using (𝐴−𝐴)2 = 𝐴−𝐴; the null space of 𝐴is exactly the column space of 𝑀."
+ },
+ "F5.22": {
+  "id": "F5.22",
+  "section": 5,
+  "topic": "Generalized Inverse and Allied Matrix Theory",
+  "question": "Consider the following statements: I. If 𝐴is an idempotent matrix, then rank(𝐴) = trace(𝐴). II. Given any matrix 𝐴, there exists a matrix 𝐴−with 𝐴𝐴−𝐴= 𝐴and trace(𝐴−𝐴) = rank(𝐴). Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Idempotent ⇒eigenvalues 0/1 ⇒rank = trace; and trace(𝐴−𝐴) = rank(𝐴) holds for every 𝑔-inverse (2025 Q55 archetype)."
+ },
+ "F6.1": {
+  "id": "F6.1",
+  "section": 6,
+  "topic": "Normal Equations and Their Solution",
+  "question": "For the model Y = X𝛽+ 𝑒with 𝐸(𝑒) = 0, 𝑉(𝑒) = 𝜎2𝐼, the least-squares normal equations are",
+  "options": [
+   "X′X̂𝛽= X′Y",
+   "XX′̂𝛽= XY",
+   "X′Ŷ𝛽= X′X",
+   "X̂𝛽= Y"
+  ],
+  "answer_letter": "a",
+  "explanation": "Minimize (Y−X𝛽)′(Y−X𝛽): differentiate to get X′X̂𝛽= X′Y (2022 Q2 archetype)."
+ },
+ "F6.2": {
+  "id": "F6.2",
+  "section": 6,
+  "topic": "Normal Equations and Their Solution",
+  "question": "Consider the following statements: I. The normal equations X′X̂𝛽= X′Y are consistent for every observed Y, whatever the rank of X. II. The observational equations Y = X𝛽are consistent for every observed Y. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "a",
+  "explanation": "NE are always consistent since X′Y ∈𝒞(X′X); Y = X𝛽is consistent only when Y ∈𝒞(X) (2025 Q57 key: II only there; here the statements are swapped)."
+ },
+ "F6.3": {
+  "id": "F6.3",
+  "section": 6,
+  "topic": "Normal Equations and Their Solution",
+  "question": "If (X′X)−is any generalized inverse of X′X, the general solution of the normal equations iŝ 𝛽=",
+  "options": [
+   "(X′X)−X′Y only",
+   "(X′X)−X′Y + [𝐼−(X′X)−X′X]𝑧, 𝑧arbitrary",
+   "(X′X)−X′Y + (X′X)−X′X𝑧, 𝑧arbitrary",
+   "X′Y + [𝐼−(X′X)]𝑧, 𝑧arbitrary"
+  ],
+  "answer_letter": "b",
+  "explanation": "Particular solution plus general solution of the homogeneous system."
+ },
+ "F6.4": {
+  "id": "F6.4",
+  "section": 6,
+  "topic": "Normal Equations and Their Solution",
+  "question": "In the model Y = X𝛽+𝜖with X of order 𝑛×𝑝and rank(X) = 𝑟, consider the following statements: I. The normal equations have a unique solution if and only if 𝑟= 𝑝. II. If 𝑟< 𝑝, the normal equations have infinitely many solutions. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "rank(X′X) = 𝑟: unique iff non-singular iff 𝑟= 𝑝; otherwise an affine family of solutions."
+ },
+ "F6.5": {
+  "id": "F6.5",
+  "section": 6,
+  "topic": "Normal Equations and Their Solution",
+  "question": "Let̂ 𝛽1 and̂ 𝛽2 be two different solutions of the normal equations. Consider the following statements: I. X̂𝛽1 = X̂𝛽2. II. 𝜆′̂𝛽1 = 𝜆′̂𝛽2 for every estimable function 𝜆′𝛽. III.β̂1'X'Y = β̂2'X'Y, so the residual sum of squares is the same for both solutions. Which of the above statements are correct?",
+  "options": [
+   "I and II only",
+   "II and III only",
+   "I and III only",
+   "I, II and III"
+  ],
+  "answer_letter": "d",
+  "explanation": "X̂𝛽is the (unique) projection of Y on 𝒞(X); estimable 𝜆′ = 𝑎′X gives 𝜆′̂𝛽= 𝑎′X̂𝛽; SSE = Y′Y −̂ 𝛽′X′Y is invariant."
+ },
+ "F6.6": {
+  "id": "F6.6",
+  "section": 6,
+  "topic": "Normal Equations and Their Solution",
+  "question": "Let 𝜆′𝛽be estimable in Y = X𝛽+ 𝜖, where X is 𝑛× 𝑝of rank 𝑘< 𝑝≤𝑛. Let̂ 𝛽be any solution of X′X̂𝛽= X′Y and 𝑟any solution of X′X𝑟= 𝜆. Consider the following statements: I. 𝜆′̂𝛽= 𝑟′X′Y for anŷ 𝛽and any 𝑟. II. Both 𝜆′̂𝛽and 𝑟′X′Y are invariant to the choices of̂ 𝛽and 𝑟. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "2026 Q59 archetype: 𝜆′̂𝛽= 𝑟′X′X̂𝛽= 𝑟′X′Y, and estimability makes both invariant."
+ },
+ "F6.7": {
+  "id": "F6.7",
+  "section": 6,
+  "topic": "Normal Equations and Their Solution",
+  "question": "Consider the following statements: I. The column spaces satisfy 𝒞(X′X) = 𝒞(X′), which is why X′Y always lies in 𝒞(X′X). II. rank(X′X) = rank(X). Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝒞(X′X) = 𝒞(X′) and equal ranks are the two standard lemmas behind consistency of the NE."
+ },
+ "F6.8": {
+  "id": "F6.8",
+  "section": 6,
+  "topic": "Normal Equations and Their Solution",
+  "question": "If̂ 𝛽is any solution of the normal equations, the residual sum of squares equals",
+  "options": [
+   "Y′Y −̂ 𝛽′X′Y",
+   "Y′Y +̂ 𝛽′X′Y",
+   "̂ 𝛽′X′Y −Y′Y",
+   "Y′Y −̂ 𝛽′X′X̂𝛽−̂ 𝛽′X′Y"
+  ],
+  "answer_letter": "a",
+  "explanation": "SSE = Y′Y −̂ 𝛽′X′Y; the cross term collapses by the NE (2022 Q30 flavour)."
+ },
+ "F6.9": {
+  "id": "F6.9",
+  "section": 6,
+  "topic": "Normal Equations and Their Solution",
+  "question": "For the one-way model 𝑦𝑖𝑗= 𝜇+ 𝜏𝑖+ 𝑒𝑖𝑗, 𝑖= 1, 2; 𝑗= 1, 2, with group means̄ 𝑦1.,̄ 𝑦2. and grand mean̄ 𝑦.., consider the following two candidate vectors (̂𝜇,̂ 𝜏1,̂ 𝜏2): I. (0,̄ 𝑦1.,̄ 𝑦2.) II. (̄𝑦..,̄ 𝑦1. −̄ 𝑦..,̄ 𝑦2. −̄ 𝑦..) Which of them solve the normal equations?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Both satisfŷ 𝜇+̂ 𝜏𝑖=̄ 𝑦𝑖., hence both solve the NE — two different 𝑔-inverse choices; fitted values agree."
+ },
+ "F6.10": {
+  "id": "F6.10",
+  "section": 6,
+  "topic": "Normal Equations and Their Solution",
+  "question": "In a less-than-full-rank Gauss–Markov model, consider the following statements: I.̂ 𝛽is not unique, yet the fitted vector̂ Y = X̂𝛽is unique. II. 𝐸(̂𝛽) = 𝛽for every solution̂ 𝛽= (X′X)−X′Y of the normal equations. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "a",
+  "explanation": "̂ Y = 𝑃Y is the unique projection of Y on 𝒞(X); but 𝐸(̂𝛽) = (X′X)−X′X𝛽≠𝛽in general when rank(X) < 𝑝, so II fails — only estimable functions 𝜆′̂𝛽are unbiased."
+ },
+ "F7.1": {
+  "id": "F7.1",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "In the full-rank model Y = X𝛽+ 𝜖, let 𝐻= X(X′X)−1X′. Consider the following statements: 1. 𝐻is symmetric. 2. 𝐻is idempotent. 3. 𝐻X = X. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "𝐻′ = 𝐻, 𝐻2 = 𝐻, 𝐻X = X: the three defining projector facts."
+ },
+ "F7.2": {
+  "id": "F7.2",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "If X is 𝑛× 𝑝of full column rank 𝑝, then rank(𝐻) and trace(𝐻) are respectively",
+  "options": [
+   "𝑛and 𝑛",
+   "𝑝and 𝑝",
+   "𝑝and 𝑛−𝑝",
+   "𝑛−𝑝and 𝑝"
+  ],
+  "answer_letter": "b",
+  "explanation": "Idempotent: rank = trace = trace[(X′X)−1X′X] = 𝑝(2019 Q2(a))."
+ },
+ "F7.3": {
+  "id": "F7.3",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "For a model containing an intercept (a column of ones), the leverages ℎ𝑖𝑖satisfy",
+  "options": [
+   "0 ≤ℎ𝑖𝑖≤(1)/(𝑛)",
+   "(1)/(𝑛)≤ℎ𝑖𝑖≤1 and ∑𝑖ℎ𝑖𝑖= 𝑝",
+   "−1 ≤ℎ𝑖𝑖≤1 and ∑𝑖ℎ𝑖𝑖= 𝑛−𝑝",
+   "ℎ𝑖𝑖=(𝑝)/(𝑛for) every 𝑖"
+  ],
+  "answer_letter": "b",
+  "explanation": "With intercept ℎ𝑖𝑖≥1/𝑛; always ℎ𝑖𝑖≤1; ∑ℎ𝑖𝑖= trace(𝐻) = 𝑝."
+ },
+ "F7.4": {
+  "id": "F7.4",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "Witĥ Y = 𝐻Y and e = Y −̂ Y, and 𝑉(𝜖) = 𝜎2𝐼, consider the following statements: 1. 𝑉(̂Y) = 𝜎2𝐻. 2. 𝑉(e) = 𝜎2(𝐼−𝐻). 3. Cov(̂Y, e) = 0. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "𝑉(𝐻Y) = 𝜎2𝐻𝐻′ = 𝜎2𝐻; 𝑉((𝐼−𝐻)Y) = 𝜎2(𝐼−𝐻); Cov = 𝜎2𝐻(𝐼−𝐻) = 0 (2019 Q21 archetype)."
+ },
+ "F7.5": {
+  "id": "F7.5",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "Let y ∼𝑁(X𝛽, 𝜎2𝐼) with X of full column rank 𝑝, and 𝐻= (ℎ𝑖𝑗). Which one of the following is not correct?",
+  "options": [
+   "rank(𝐻) = 𝑝",
+   "𝑉(̂Y) = 𝜎2𝐻",
+   "Cov(e,̂ Y) = 0",
+   "Cov(𝑒𝑖, 𝑒𝑗) = 𝜎2ℎ𝑖𝑗for 𝑖≠𝑗"
+  ],
+  "answer_letter": "d",
+  "explanation": "For 𝑖≠𝑗, Cov(𝑒𝑖, 𝑒𝑗) = −𝜎2ℎ𝑖𝑗— the sign trap that decided 2019 Q2."
+ },
+ "F7.6": {
+  "id": "F7.6",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "Consider the following statements: I. Cov(Y,̂ Y) = 𝜎2𝐻. II. 𝑉(e) = 𝑉(Y) −𝑉(̂Y). Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Cov(Y, 𝐻Y) = 𝜎2𝐻; and 𝜎2(𝐼−𝐻) = 𝜎2𝐼−𝜎2𝐻— the corrected version of 2019 Q21 statement 1 (which wrote + instead of −and was false)."
+ },
+ "F7.7": {
+  "id": "F7.7",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "Consider the following statements about the residual vector e = (𝐼−𝐻)Y: 1. e = (𝐼−𝐻)𝜖, so 𝐸(e) = 0. 2. X′e = 0: the residuals are orthogonal to every column of X. 3.̂ Y′e = 0. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "(𝐼−𝐻)X = 0 kills the systematic part; orthogonality to 𝒞(X) includeŝ Y = X̂𝛽."
+ },
+ "F7.8": {
+  "id": "F7.8",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "Consider the following statements: I. The residuals always sum to zero, whatever the design matrix. II. If the model contains an intercept term, then ∑𝑖𝑒𝑖= 0. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "b",
+  "explanation": "∑𝑒𝑖= 1′e = 0 requires 1 ∈𝒞(X); without an intercept it can fail."
+ },
+ "F7.9": {
+  "id": "F7.9",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "Consider the following statements about 𝐼−𝐻: I. 𝐼−𝐻is symmetric and idempotent with rank(𝐼−𝐻) = 𝑛−𝑝. II. Every eigenvalue of 𝐻is either 0 or 1. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝐼−𝐻projects on the error space of dimension 𝑛−𝑝; projector eigenvalues are 0/1."
+ },
+ "F7.10": {
+  "id": "F7.10",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "The variance of the 𝑖-th residual is",
+  "options": [
+   "𝜎2",
+   "𝜎2ℎ𝑖𝑖",
+   "𝜎2(1 −ℎ𝑖𝑖)",
+   "𝜎2(1 + ℎ𝑖𝑖)"
+  ],
+  "answer_letter": "c",
+  "explanation": "Diagonal of 𝜎2(𝐼−𝐻); the basis of studentized residuals."
+ },
+ "F7.11": {
+  "id": "F7.11",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "A model with an intercept and 3 regressors is fitted to 𝑛= 20 observations. The average leverage ℎ=(1)/(𝑛)∑𝑖ℎ𝑖𝑖equals",
+  "options": [
+   "0.15",
+   "0.20",
+   "0.25",
+   "0.80"
+  ],
+  "answer_letter": "b",
+  "explanation": "𝑝= 4 columns, ∑ℎ𝑖𝑖= 4,̄ ℎ= 4/20 = 0.2."
+ },
+ "F7.12": {
+  "id": "F7.12",
+  "section": 7,
+  "topic": "Hat Matrix, Fitted Values and Residuals",
+  "question": "Consider the following statements: I. 𝐻e = 0. II. 𝐻̂Y =̂ Y. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝐻(𝐼−𝐻) = 0 and 𝐻2 = 𝐻: fitted values are already in 𝒞(X)."
+ },
+ "F8.1": {
+  "id": "F8.1",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "In the simple linear regression model 𝑦𝑖= 𝛽0 + 𝛽1𝑥𝑖+ 𝜖𝑖, 𝑖= 1, …, 𝑛, with 𝐸(𝜖𝑖) = 0, 𝑉(𝜖𝑖) = 𝜎2, Cov(𝜖𝑖, 𝜖𝑗) = 0, and 𝑆𝑥𝑥= ∑𝑖(𝑥𝑖−̄ 𝑥)2, 𝑉(̂𝛽1) equals",
+  "options": [
+   "(𝜎2)/(𝑆𝑥𝑥)",
+   "(𝑛𝜎2)/(𝑆𝑥𝑥)",
+   "(𝜎2)/(𝑛)",
+   "𝜎2𝑆𝑥𝑥"
+  ],
+  "answer_letter": "a",
+  "explanation": "The 2023 Q60 formula: 𝑉(̂𝛽1) = 𝜎2/𝑆𝑥𝑥."
+ },
+ "F8.2": {
+  "id": "F8.2",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "In the model of F8.1, 𝑉(̂𝛽0) equals",
+  "options": [
+   "(𝜎2)/(𝑆𝑥𝑥)",
+   "(𝜎2)/(𝑛)",
+   "𝜎2 ((1)/(𝑛)+̄ 𝑥2 𝑆𝑥𝑥)",
+   "𝜎2 ((1)/(𝑛)−̄ 𝑥2 𝑆𝑥𝑥)"
+  ],
+  "answer_letter": "c",
+  "explanation": "The 2023 Q58 formula: V(β̂0) = σ²(1/n + x̄²/Sxx)."
+ },
+ "F8.3": {
+  "id": "F8.3",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "In the model of F8.1, Cov(̂𝛽0,̂ 𝛽1) equals",
+  "options": [
+   "̄(𝑥𝜎2)/(𝑆𝑥𝑥)",
+   "−̄(𝑥𝜎2)/(𝑆𝑥𝑥)",
+   "0 always",
+   "𝜎2 𝑛𝑆𝑥𝑥"
+  ],
+  "answer_letter": "b",
+  "explanation": "The 2023 Q59 formula: Cov(̂𝛽0,̂ 𝛽1) = −̄𝑥𝜎2/𝑆𝑥𝑥."
+ },
+ "F8.4": {
+  "id": "F8.4",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "Independent observations follow 𝑦𝑖= 𝛽0 + 𝛽1𝑥𝑖+ 𝑢𝑖, 𝑖= 1, …, 8, with error variance 𝜎2 = 2. If ∑𝑥𝑖= 40 and ∑𝑥²_𝑖= 240, then Cov(̂𝛽0,̂ 𝛽1) equals",
+  "options": [
+   "0",
+   "−0.25",
+   "0.25",
+   "−2.5"
+  ],
+  "answer_letter": "b",
+  "explanation": "̄ 𝑥= 5, 𝑆𝑥𝑥= 240 −8(25) = 40, so −̄𝑥𝜎2/𝑆𝑥𝑥= −5(2)/40 = −0.25 (2018 Q9 archetype, which gave −0.5)."
+ },
+ "F8.5": {
+  "id": "F8.5",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "Cov(̂𝛽0,̂ 𝛽1) = 0 in simple linear regression if and only if",
+  "options": [
+   "̄ 𝑥= 0",
+   "̄ 𝑦= 0",
+   "𝜎2 = 1",
+   "𝑛is even"
+  ],
+  "answer_letter": "a",
+  "explanation": "Cov = −̄𝑥𝜎2/𝑆𝑥𝑥= 0 ⟺̄ 𝑥= 0."
+ },
+ "F8.6": {
+  "id": "F8.6",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "The variance of the estimated mean responsê 𝑦0 =̂ 𝛽0 +̂ 𝛽1𝑥0 at 𝑥= 𝑥0 is 𝜎2 [ (1)/(𝑛)+ (𝑥0 −̄ 𝑥)2 𝑆𝑥𝑥 ], which is minimized when",
+  "options": [
+   "𝑥0 = 0",
+   "𝑥0 =̄ 𝑥",
+   "𝑥0 is as large as possible",
+   "𝑥0 =̄ 𝑦"
+  ],
+  "answer_letter": "b",
+  "explanation": "Prediction is most precise at the centre of the design."
+ },
+ "F8.7": {
+  "id": "F8.7",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "Consider the following statements: I. The correlation between̂ 𝛽0 and̂ 𝛽1 has sign opposite to that of̄ 𝑥. II. Centring the regressor (𝑥𝑖↦𝑥𝑖−̄ 𝑥) makeŝ 𝛽0 and̂ 𝛽1 uncorrelated. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Corr ∝−̄𝑥; centring gives̄ 𝑥= 0, an orthogonal design (links to S3)."
+ },
+ "F8.8": {
+  "id": "F8.8",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "For 𝑛= 5 observations with ∑𝑥𝑖= 0, ∑𝑥²_𝑖= 10 and 𝜎2 = 2, the pair (𝑉(̂𝛽0), 𝑉(̂𝛽1)) equals",
+  "options": [
+   "(0.4, 0.2)",
+   "(0.2, 0.4)",
+   "(0.4, 0.4)",
+   "(2, 10)"
+  ],
+  "answer_letter": "a",
+  "explanation": "𝑉(̂𝛽0) = 𝜎2/𝑛= 0.4 (sincē 𝑥= 0), 𝑉(̂𝛽1) = 2/10 = 0.2."
+ },
+ "F8.9": {
+  "id": "F8.9",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "If every regressor value is doubled (𝑥𝑖↦2𝑥𝑖) while the responses are unchanged, consider the following statements: I. The new slope estimator is half the old one. II. The variance of the new slope estimator is one-fourth of the old one. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝑥↦𝑐𝑥:̂ 𝛽1 ↦̂ 𝛽1/𝑐and 𝑉= 𝜎2/(𝑐2𝑆𝑥𝑥): with 𝑐= 2, half and one-fourth."
+ },
+ "F8.10": {
+  "id": "F8.10",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "Other things being equal, 𝑉(̂𝛽1) decreases when",
+  "options": [
+   "the 𝑥𝑖are chosen closer tō 𝑥",
+   "the spread 𝑆𝑥𝑥of the regressor values increases",
+   "𝜎2 increases",
+   "the responses 𝑦𝑖are centred about̄ 𝑦"
+  ],
+  "answer_letter": "b",
+  "explanation": "𝑉(̂𝛽1) = 𝜎2/𝑆𝑥𝑥: spreading the design points inflates 𝑆𝑥𝑥and shrinks the variance; (a) and (c) inflate it, (d) changes nothing."
+ },
+ "F8.11": {
+  "id": "F8.11",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "In the full-rank model Y = X𝛽+ 𝜖, 𝑉(𝜖) = 𝜎2𝐼, consider the following statements: I. 𝑉(̂𝛽) = 𝜎2(X′X)−1. II. Cov(𝜆′̂𝛽, 𝜇′̂𝛽) = 𝜎2𝜆′(X′X)−1𝜇. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Both are the standard full-rank dispersion facts (2019 Q25 archetype)."
+ },
+ "F8.12": {
+  "id": "F8.12",
+  "section": 8,
+  "topic": "Variances and Covariances of Least-Squares Estimators",
+  "question": "Let 𝜆′𝛽be estimable in a (possibly less-than-full-rank) Gauss–Markov model. Consider the following statements: I. 𝑉(𝜆′̂𝛽) = 𝜎2𝜆′(X′X)−𝜆. II. The value 𝜆′(X′X)−𝜆is the same for every generalized inverse (X′X)−. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "For estimable 𝜆′𝛽, 𝜆∈𝒞(X′X) makes the quadratic form invariant; it is the BLUE’s variance."
+ },
+ "F9.1": {
+  "id": "F9.1",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "In the model Y = X𝛽+ 𝜖with 𝐸(𝜖) = 0 and 𝑉(𝜖) = 𝜎2𝑉, 𝑉known and positive definite, the generalized least-squares (Aitken) estimator of 𝛽is",
+  "options": [
+   "(X′X)−1X′Y",
+   "(X′𝑉−1X)−1X′𝑉−1Y",
+   "(X′𝑉X)−1X′𝑉Y",
+   "𝑉−1(X′X)−1X′Y"
+  ],
+  "answer_letter": "b",
+  "explanation": "Aitken estimator: transform by 𝑉−1/2 and apply OLS."
+ },
+ "F9.2": {
+  "id": "F9.2",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "The correlated model 𝐸(Y) = X𝛽, 𝐷(Y) = 𝜎2𝐺with |𝐺| ≠0 is reduced to a standard Gauss– Markov model by the transformation",
+  "options": [
+   "Z = 𝐺1/2Y",
+   "Z = 𝐺−1/2Y",
+   "Z = 𝐺−1Y",
+   "Z = Y −𝐺Y"
+  ],
+  "answer_letter": "b",
+  "explanation": "𝐷(𝐺−1/2Y) = 𝜎2𝐺−1/2𝐺𝐺−1/2 = 𝜎2𝐼(2025 Q58 verbatim archetype)."
+ },
+ "F9.3": {
+  "id": "F9.3",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "When 𝑉(𝜖) = 𝜎2𝑉with 𝑉≠𝐼, consider the following statements about the ordinary least-squares estimator̂ 𝛽𝑂𝐿𝑆= (X′X)−1X′Y: I.̂ 𝛽𝑂𝐿𝑆remains unbiased for 𝛽. II.̂ 𝛽𝑂𝐿𝑆remains the best linear unbiased estimator of 𝛽in general. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "a",
+  "explanation": "Unbiasedness needs only 𝐸(𝜖) = 0; efficiency is lost — GLS is BLUE."
+ },
+ "F9.4": {
+  "id": "F9.4",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "Aitken’s theorem states that under 𝐸(𝜖) = 0, 𝑉(𝜖) = 𝜎2𝑉with 𝑉known positive definite, the BLUE of an estimable 𝜆′𝛽is obtained from",
+  "options": [
+   "ordinary least squares applied to Y",
+   "generalized least squares, i.e., minimizing (Y −X𝛽)′𝑉−1(Y −X𝛽)",
+   "minimizing (Y −X𝛽)′𝑉(Y −X𝛽)",
+   "maximum likelihood, which requires normality"
+  ],
+  "answer_letter": "b",
+  "explanation": "Weight by the inverse dispersion; no normality needed."
+ },
+ "F9.5": {
+  "id": "F9.5",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "Let 𝑦1, 𝑦2, 𝑦3 be independent with common mean 𝜇and variances 𝑉(𝑦𝑖) = 𝜎2/𝑤𝑖, where (𝑤1, 𝑤2, 𝑤3) = (1, 2, 3). The BLUE of 𝜇is",
+  "options": [
+   "(𝑦1 + 𝑦2 + 𝑦3)/(3)",
+   "(𝑦1 + 2𝑦2 + 3𝑦3)/(6)",
+   "(3𝑦1 + 2𝑦2 + 𝑦3)/(6)",
+   "(𝑦1 + 4𝑦2 + 9𝑦3)/(14)"
+  ],
+  "answer_letter": "b",
+  "explanation": "̂ 𝜇= ∑𝑤𝑖𝑦𝑖/ ∑𝑤𝑖= (𝑦1 + 2𝑦2 + 3𝑦3)/6 (2025 Q63 archetype in weighted-mean form)."
+ },
+ "F9.6": {
+  "id": "F9.6",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "In the setting of F9.5, the variance of the BLUE of 𝜇is",
+  "options": [
+   "(𝜎2)/(3)",
+   "(𝜎2)/(6)",
+   "(𝜎2)/(14)",
+   "(11𝜎2)/(36)"
+  ],
+  "answer_letter": "b",
+  "explanation": "𝑉(̂𝜇) = 𝜎2/ ∑𝑤𝑖= 𝜎2/6 (2025 Q64 archetype)."
+ },
+ "F9.7": {
+  "id": "F9.7",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "Consider the following statements: I. If 𝑉= 𝐼, the GLS estimator reduces to the OLS estimator. II. OLS and GLS coincide whenever 𝒞(𝑉X) ⊆𝒞(X). Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝑉= 𝐼is trivial; the general coincidence condition is 𝒞(𝑉X) ⊆𝒞(X) (equivalently 𝑉X = X𝑄)."
+ },
+ "F9.8": {
+  "id": "F9.8",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "Let 𝑦1, …, 𝑦𝑛be equicorrelated: 𝑉(𝑦𝑖) = 𝜎2, Corr(𝑦𝑖, 𝑦𝑗) = 𝜌for 𝑖≠𝑗. For the dispersion matrix to be positive definite, 𝜌must satisfy",
+  "options": [
+   "−1 < ρ < 1",
+   "0 ≤ ρ < 1",
+   "−1/(n−1) < ρ < 1",
+   "−1/n < ρ < 1/n"
+  ],
+  "answer_letter": "c",
+  "explanation": "Eigenvalues of (1−𝜌)𝐼+𝜌𝐽are 1+(𝑛−1)𝜌and 1−𝜌: both positive iff −1/(𝑛−1) < 𝜌< 1."
+ },
+ "F9.9": {
+  "id": "F9.9",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "In the equicorrelated model of F9.8 with common mean 𝐸(𝑦𝑖) = 𝜇, consider the following statements: I.̄ 𝑦is the BLUE of 𝜇. II. 𝑉(̄𝑦) =(𝜎2)/(𝑛)[1 + (𝑛−1)𝜌]. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝑉1 = [1 + (𝑛−1)𝜌]1 ∈𝒞(X), so OLS = GLS and̄ 𝑦stays BLUE; its variance carries the correlation inflation factor."
+ },
+ "F9.10": {
+  "id": "F9.10",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "With heteroscedastic independent errors, 𝑉(𝑦𝑖) = 𝜎2/𝑤𝑖, weighted least squares chooses 𝛽to minimize",
+  "options": [
+   "Σ_i(y_i − x_i'β)²",
+   "Σ_i w_i(y_i − x_i'β)²",
+   "Σ_i(y_i − x_i'β)²/w_i",
+   "Σ_i w_i²(y_i − x_i'β)²"
+  ],
+  "answer_letter": "b",
+  "explanation": "Weights are inverse variances: minimize Σw_i(y_i - x_i'β)²."
+ },
+ "F9.11": {
+  "id": "F9.11",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "Consider the following statements: I. 𝑉(̂𝛽𝐺𝐿𝑆) = 𝜎2(X′𝑉−1X)−1. II. 𝑉(̂𝛽𝑂𝐿𝑆) −𝑉(̂𝛽𝐺𝐿𝑆) is non-negative definite. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Standard GLS dispersion and the Gauss–Markov efficiency ordering."
+ },
+ "F9.12": {
+  "id": "F9.12",
+  "section": 9,
+  "topic": "Estimation with Correlated Observations: GLS, WLS, Aitken",
+  "question": "Five equicorrelated observations have 𝜎2 = 10 and 𝜌= 0.2, with common mean 𝜇. Then 𝑉(̄𝑦) equals",
+  "options": [
+   "2.0",
+   "3.6",
+   "5.0",
+   "1.8"
+  ],
+  "answer_letter": "b",
+  "explanation": "(10)/(5) [1 + 4(0.2)] = 2 × 1.8 = 3.6."
+ },
+ "F10.1": {
+  "id": "F10.1",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "Consider the following statements about the Gauss–Markov theorem: I. It requires the errors to be normally distributed. II. It requires only 𝐸(𝜖) = 0 and 𝑉(𝜖) = 𝜎2𝐼(zero-mean, homoscedastic, uncorrelated errors). Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "b",
+  "explanation": "No normality anywhere in Gauss–Markov: second-moment assumptions only."
+ },
+ "F10.2": {
+  "id": "F10.2",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "The Gauss–Markov theorem asserts that for any estimable function 𝜆′𝛽, the least-squares estimator 𝜆′̂𝛽",
+  "options": [
+   "has minimum variance among all unbiased estimators",
+   "has minimum variance in the class of linear unbiased estimators of 𝜆′𝛽",
+   "has minimum mean squared error among all linear estimators",
+   "is unbiased only under normality"
+  ],
+  "answer_letter": "b",
+  "explanation": "“Best” = minimum variance within the linear unbiased class; nothing is claimed about non-linear or biased competitors."
+ },
+ "F10.3": {
+  "id": "F10.3",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "For the full-rank model y = X𝛽+ u, 𝐸(u) = 0, 𝑉(u) = 𝜎2𝐼,̂ 𝛽= (X′X)−1X′y, which of the following statements are correct? 1. 𝑉(̂𝛽) = 𝜎2(X′X)−1. 2.̂ 𝛽is the BLUE of 𝛽. 3. The residual mean square is an unbiased estimator of 𝜎2. Select the correct answer using the code given below.",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "2019 Q25 archetype: all three are correct."
+ },
+ "F10.4": {
+  "id": "F10.4",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "Consider the following statements: I. Even when the normal equations have infinitely many solutionŝ 𝛽, the least-squares estimator of an estimable function is unique. II. The BLUE of an estimable function is unique. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "𝜆′̂𝛽is invariant across NE solutions and is the (a.s. unique) BLUE."
+ },
+ "F10.5": {
+  "id": "F10.5",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "In the model 𝑦𝑖= 𝛼+ 𝛽𝑥𝑖+ 𝑢𝑖, both 𝑥and 𝑦are measured in metres. If all measurements are converted to centimetres (both variables multiplied by 100), then",
+  "options": [
+   "̂ 𝛼changes but̂ 𝛽does not change",
+   "̂ 𝛽changes but̂ 𝛼does not change",
+   "botĥ 𝛼and̂ 𝛽change",
+   "neither̂ 𝛼nor̂ 𝛽changes"
+  ],
+  "answer_letter": "a",
+  "explanation": "2019 Q26 archetype: common rescaling 𝑦, 𝑥↦𝑐𝑦, 𝑐𝑥leaveŝ 𝛽= 𝑆𝑥𝑦/𝑆𝑥𝑥unchanged but multiplieŝ 𝛼=̄ 𝑦−̂ 𝛽̄𝑥by 𝑐."
+ },
+ "F10.6": {
+  "id": "F10.6",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "Models I: 𝑦= 𝛽0 + 𝛽1𝑥and II: 𝑦= 𝛽0 + 𝛽1𝑥+ 𝛽2𝑥2 are fitted by least squares to the same data, with residual sums of squares 𝑃and 𝑄respectively. Consider the following statements: I. 𝑃≥𝑄. II. It can happen that 𝑄= 0 but 𝑃> 0. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "2019 Q3 = 2026 Q57: enlarging the model never increases SSE; a quadratic can interpolate data that a line cannot."
+ },
+ "F10.7": {
+  "id": "F10.7",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "For the same data set, Student-I fitŝ 𝑌𝑖=̂ 𝛼0 +̂ 𝛼1𝑋𝑖(𝑌on 𝑋) and Student-II fitŝ 𝑋𝑖=̂ 𝛽0 +̂ 𝛽1𝑌𝑖 (𝑋on 𝑌) by ordinary least squares. Which one of the following is a possible value of (̂𝛼1,̂ 𝛽1)?",
+  "options": [
+   "(0.8, 1.2)",
+   "(0.9, 1.25)",
+   "(−0.6, 0.8)",
+   "(1.5, 0.9)"
+  ],
+  "answer_letter": "a",
+  "explanation": "Need same sign and product ≤1: (0.8)(1.2) = 0.96 ≤1; (b) gives 1.125 > 1, (c) mixes signs, (d) gives 1.35 > 1 (2026 Q58 archetype)."
+ },
+ "F10.8": {
+  "id": "F10.8",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "Consider the following statements about the two OLS slopes of F10.7: I.̂ 𝛼1̂𝛽1 = 𝑟2, the squared sample correlation coefficient. II. The two slopes always have the same sign. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "α̂1 β̂1 = (Sxy/Sxx)·(Sxy/Syy) = r² ≤ 1, and both slopes carry the sign of Sxy."
+ },
+ "F10.9": {
+  "id": "F10.9",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "Consider the following statements: I. Under perfect (exact) multicollinearity, (X′X)−1 does not exist. II. The problem of (near) multicollinearity can be mitigated by increasing the sample size or collecting additional data. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "2018 Q3/Q4 archetypes: exact collinearity kills the inverse; more data can break near-collinearity."
+ },
+ "F10.10": {
+  "id": "F10.10",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "Consider the following statements: I. The method of least squares is an algebraic (mathematical) fitting method requiring no distributional assumptions. II. Under normal errors, the least-squares estimator of 𝛽coincides with the maximum likelihood estimator. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Least squares is distribution-free algebra (the 2018 Q3 trap: it is not a “statistical” method); under normality LSE = MLE for 𝛽."
+ },
+ "F10.11": {
+  "id": "F10.11",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "For the Gauss–Markov model 𝐸(𝑦𝑖) = 𝛼𝑖1𝛽1 + ⋯+ 𝛼𝑖𝑝𝛽𝑝, 𝑉(𝑦𝑖) = 𝜎2, cov(𝑦𝑖, 𝑦𝑗) = 0, consider the following statements: 1. If the 𝑝columns 𝛼1, …, 𝛼𝑝are linearly independent (𝑝≤𝑛), the model is of full rank. 2. If all the 𝛽’s are fixed constants, the model is a fixed-effects (Model I) model. Which of the above statements is/are correct?",
+  "options": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer_letter": "c",
+  "explanation": "2019 Q30 verbatim archetype: both definitions are correct."
+ },
+ "F10.12": {
+  "id": "F10.12",
+  "section": 10,
+  "topic": "The Gauss–Markov Theorem and Properties of LSEs",
+  "question": "Consider the following statements: I. Unbiasedness of̂ 𝛽(full-rank case) requires only 𝐸(𝜖) = 0. II. Unbiasedness of̂ 𝜎2 = SSE/(𝑛−𝑝) for 𝜎2 requires normality of the errors. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "a",
+  "explanation": "𝐸(SSE) = (𝑛−𝑝)𝜎2 follows from trace algebra alone — no normality needed; normality is needed only for the 𝜒2 distribution of SSE."
+ },
+ "F11.1": {
+  "id": "F11.1",
+  "section": 11,
+  "topic": "Error Space and Estimation Space",
+  "question": "In the Gauss–Markov model Y𝑛×1 = X𝑛×𝑘𝛽+ 𝜖with rank(X) = 𝑟< 𝑘, the set {𝑙∈ℝ𝑛∶𝐸(𝑙′Y) = 0 for all 𝛽} is",
+  "options": [
+   "not a subspace of ℝ𝑛",
+   "a subspace of dimension 𝑘−𝑟",
+   "a subspace of dimension 𝑛−𝑘",
+   "a subspace of dimension 𝑛−𝑟"
+  ],
+  "answer_letter": "d",
+  "explanation": "𝐸(𝑙′Y) = 𝑙′X𝛽≡0 ⟺X′𝑙= 0: the null space of X′ has dimension 𝑛−𝑟(2026 Q60 verbatim archetype)."
+ },
+ "F11.2": {
+  "id": "F11.2",
+  "section": 11,
+  "topic": "Error Space and Estimation Space",
+  "question": "Consider the following statements: 1. The estimation space is the column space 𝒞(X), of dimension 𝑟. 2. The error space is the orthogonal complement 𝒞(X)⟂, of dimension 𝑛−𝑟. 3. Every vector of the error space is orthogonal to every vector of the estimation space. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "The two spaces are orthogonal complements with dimensions 𝑟and 𝑛−𝑟."
+ },
+ "F11.3": {
+  "id": "F11.3",
+  "section": 11,
+  "topic": "Error Space and Estimation Space",
+  "question": "A linear function 𝑙′Y is the BLUE of its own expectation if and only if",
+  "options": [
+   "𝑙lies in the error space",
+   "𝑙lies in the estimation space 𝒞(X)",
+   "𝑙′𝑙= 1",
+   "𝑙has all components equal"
+  ],
+  "answer_letter": "b",
+  "explanation": "BLUEs are exactly the linear functions with coefficient vector in 𝒞(X)."
+ },
+ "F11.4": {
+  "id": "F11.4",
+  "section": 11,
+  "topic": "Error Space and Estimation Space",
+  "question": "Consider the following statements about error functions (linear functions 𝑧′Y with 𝑧in the error space): I. 𝐸(𝑧′Y) = 0 identically in 𝛽. II. Error functions are the raw material for estimating 𝜎2. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Zero expectation for all 𝛽; squares of error functions estimate 𝜎2 (S4 archetype machinery)."
+ },
+ "F11.5": {
+  "id": "F11.5",
+  "section": 11,
+  "topic": "Error Space and Estimation Space",
+  "question": "A Gauss–Markov model has 𝑛= 7 observations and rank(X) = 3. The dimensions of the estimation space and the error space are respectively",
+  "options": [
+   "3 and 4",
+   "4 and 3",
+   "3 and 7",
+   "7 and 3"
+  ],
+  "answer_letter": "a",
+  "explanation": "Dimensions 𝑟= 3 and 𝑛−𝑟= 4."
+ },
+ "F11.6": {
+  "id": "F11.6",
+  "section": 11,
+  "topic": "Error Space and Estimation Space",
+  "question": "Every vector 𝑎∈ℝ𝑛decomposes uniquely as 𝑎= 𝑎1 + 𝑎2 with 𝑎1 ∈𝒞(X) and 𝑎2 ∈𝒞(X)⟂. The BLUE of 𝐸(𝑎′Y) is then",
+  "options": [
+   "𝑎(′)/(2Y)",
+   "𝑎(′)/(1Y)",
+   "𝑎′Y",
+   "(𝑎1 −𝑎2)′Y"
+  ],
+  "answer_letter": "b",
+  "explanation": "Project a onto C(X): E(a'Y) = E(a1'Y) and a1'Y is BLUE with smaller variance (‖a1‖ ≤ ‖a‖)."
+ },
+ "F11.7": {
+  "id": "F11.7",
+  "section": 11,
+  "topic": "Error Space and Estimation Space",
+  "question": "If 𝑙∈𝒞(X) and 𝑧is in the error space, then under 𝑉(𝜖) = 𝜎2𝐼, Cov(𝑙′Y, 𝑧′Y) equals",
+  "options": [
+   "𝜎2",
+   "𝜎2𝑙′𝑧= 0",
+   "𝜎2(𝑙′𝑙)(𝑧′𝑧)",
+   "cannot be determined"
+  ],
+  "answer_letter": "b",
+  "explanation": "Cov = 𝜎2𝑙′𝑧and orthogonality gives 𝑙′𝑧= 0."
+ },
+ "F11.8": {
+  "id": "F11.8",
+  "section": 11,
+  "topic": "Error Space and Estimation Space",
+  "question": "Consider the following characterization: a linear unbiased estimator 𝑙′Y of 𝜆′𝛽is the BLUE if and only if",
+  "options": [
+   "it is uncorrelated with every error function",
+   "it is correlated with every error function",
+   "its variance is 𝜎2",
+   "𝑙is a unit vector"
+  ],
+  "answer_letter": "a",
+  "explanation": "The classical characterization: zero covariance with every zero-expectation linear function."
+ },
+ "F11.9": {
+  "id": "F11.9",
+  "section": 11,
+  "topic": "Error Space and Estimation Space",
+  "question": "With 𝑛observations and rank(X) = 𝑟, consider the following statements: I. The maximum number of linearly independent error functions is 𝑛−𝑟. II. The maximum number of linearly independent BLUEs (equivalently, of linearly independent estimable functions) is 𝑟. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Bases of the two orthogonal complements."
+ },
+ "F11.10": {
+  "id": "F11.10",
+  "section": 11,
+  "topic": "Error Space and Estimation Space",
+  "question": "Consider the following statements: 1. The fitted vector̂ Y lies in the estimation space. 2. The residual vector e lies in the error space. 3.̂ Y′e = 0. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "̂ Y = 𝑃Y ∈𝒞(X), e = (𝐼−𝑃)Y ⟂𝒞(X)."
+ },
+ "F12.1": {
+  "id": "F12.1",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "Let 𝑌∼𝑁𝑛(𝜇, Σ) with Σ positive definite. Then 𝐸(𝑌′𝐴𝑌) equals",
+  "options": [
+   "trace(𝐴Σ) + 𝜇′𝐴𝜇",
+   "trace(𝐴Σ)",
+   "𝜇′𝐴𝜇",
+   "trace(𝐴) + 𝜇′Σ𝜇"
+  ],
+  "answer_letter": "a",
+  "explanation": "The fundamental expectation identity for quadratic forms."
+ },
+ "F12.2": {
+  "id": "F12.2",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "Let 𝑌∼𝑁3(0, 𝐼3) and 𝐴= diag(1, 1, 0). Then Var(𝑌′𝐴𝑌) equals",
+  "options": [
+   "1",
+   "2",
+   "4",
+   "6"
+  ],
+  "answer_letter": "c",
+  "explanation": "For 𝑁(0, 𝐼): Var(𝑌′𝐴𝑌) = 2 trace(𝐴2) = 2(2) = 4 (2023 Q53 archetype, which had trace(𝐴2) = 1, answer 2)."
+ },
+ "F12.3": {
+  "id": "F12.3",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "Let 𝑌∼𝑁3(𝜇, 𝐼3) with 𝜇= (1, 2, 1)′. Then 𝐸(𝑌′𝑌) equals",
+  "options": [
+   "3",
+   "6",
+   "9",
+   "12"
+  ],
+  "answer_letter": "c",
+  "explanation": "trace(𝐼3) + 𝜇′𝜇= 3 + (1 + 4 + 1) = 9."
+ },
+ "F12.4": {
+  "id": "F12.4",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "Let 𝑌∼𝑁3(𝜇, Σ) with 𝜇′ = (2, −1, 3) and Σ = diag(4, 1, 9). Then 𝑌′Σ−1𝑌follows a non-central chi-square distribution with 3 degrees of freedom and non-centrality parameter 𝜆= 𝜇′Σ−1𝜇equal to",
+  "options": [
+   "3",
+   "6",
+   "1.5",
+   "14"
+  ],
+  "answer_letter": "a",
+  "explanation": "λ = 4/4 + 1/1 + 9/9 = 3 (2023 Q51 archetype with the λ = μ'Σ⁻¹μ convention stated explicitly)."
+ },
+ "F12.5": {
+  "id": "F12.5",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "Let 𝑌∼𝑁𝑛(0, Σ). Consider the following statements: I. 𝑌′𝐴𝑌∼𝜒2 if and only if 𝐴Σ is idempotent. II. When it holds, the degrees of freedom equal rank(𝐴). Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "The classical 𝜒2 criterion for quadratic forms."
+ },
+ "F12.6": {
+  "id": "F12.6",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "Let 𝑌∼𝑁𝑛(𝜇, 𝜎2𝐼). The quadratic forms 𝑌′𝐴𝑌and 𝑌′𝐵𝑌are independently distributed if and only if",
+  "options": [
+   "𝐴+ 𝐵= 𝐼",
+   "𝐴𝐵= 0",
+   "trace(𝐴𝐵) = 1",
+   "𝐴and 𝐵are both singular"
+  ],
+  "answer_letter": "b",
+  "explanation": "Craig’s theorem (sufficient version used at exam level): 𝐴𝐵= 0."
+ },
+ "F12.7": {
+  "id": "F12.7",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "Under the normal full-rank model, consider the following statements: I.̂ 𝛽and SSE are independently distributed. II. This follows because (X′X)−1X′ ⋅(𝐼−𝐻) = 0. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Linear form and quadratic form are independent since the product of their matrices vanishes: X′(𝐼−𝐻) = 0."
+ },
+ "F12.8": {
+  "id": "F12.8",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "(Cochran’s theorem) Let 𝑌∼𝑁𝑛(0, 𝐼) and 𝑌′𝑌= 𝑄1 + ⋯+ 𝑄𝑘where each 𝑄𝑗= 𝑌′𝐴𝑗𝑌has rank(𝐴𝑗) = 𝑛𝑗. Then 𝑄1, …, 𝑄𝑘are independent 𝜒²_𝑛𝑗variables if and only if",
+  "options": [
+   "∑𝑗𝑛𝑗= 𝑛",
+   "∑𝑗𝑛𝑗= 𝑛2",
+   "each 𝑛𝑗= 1",
+   "𝑘= 2"
+  ],
+  "answer_letter": "a",
+  "explanation": "Rank additivity ∑𝑛𝑗= 𝑛is exactly Cochran’s condition."
+ },
+ "F12.9": {
+  "id": "F12.9",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "Let RSS be the unconditional residual sum of squares and RSS1 the residual sum of squares under m independent estimable restrictions l_i'β = ζ_i (rank of X is r). Under normality, consider the following statements: 1. When the restrictions are true, (RSS1 − RSS)/σ² ∼ χ²_m. 2. RSS1/RSS ∼ F_{m, n−r}. 3. RSS1 − RSS and RSS are independently distributed. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "1 and 3 only",
+   "2 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "b",
+  "explanation": "2019 Q22 archetype, corrected: the F ratio is [(RSS1-RSS)/m] / [RSS/(n-r)], not RSS1/RSS; 1 and 3 hold."
+ },
+ "F12.10": {
+  "id": "F12.10",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "Under the normal Gauss–Markov model with rank(X) = r and estimable λ'β, the statistic (λ'β̂ − λ'β) / √(σ̂² λ'(X'X)⁻λ), with σ̂² = SSE/(n−r), follows",
+  "options": [
+   "𝑁(0, 1)",
+   "𝑡𝑛−𝑟",
+   "𝑡𝑛",
+   "𝜒²_𝑛−𝑟"
+  ],
+  "answer_letter": "b",
+  "explanation": "Normal numerator over independent √𝜒2𝑛−𝑟/(𝑛−𝑟)."
+ },
+ "F12.11": {
+  "id": "F12.11",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "Under normality, consider the following statements: I.̂ Y and e are jointly normal and uncorrelated, hence independent. II. For jointly normal vectors, zero covariance implies independence. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Cov(̂Y, e) = 0 plus joint normality."
+ },
+ "F12.12": {
+  "id": "F12.12",
+  "section": 12,
+  "topic": "Distribution Theory and Quadratic Forms",
+  "question": "In the normal full-rank model, the exact distribution of̂ 𝛽is",
+  "options": [
+   "𝑁(𝛽, 𝜎2(X′X)−1)",
+   "𝑁(𝛽, 𝜎2𝐼)",
+   "𝑡𝑛−𝑝",
+   "𝑁(0, 𝜎2(X′X)−1)"
+  ],
+  "answer_letter": "a",
+  "explanation": "Linear transform of a normal vector; mean 𝛽, dispersion 𝜎2(X′X)−1."
+ },
+ "F13.1": {
+  "id": "F13.1",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "For the one-way model 𝑦𝑖𝑗= 𝜇+𝛼𝑖+𝑒𝑖𝑗, 𝑖= 1, …, 𝑘; 𝑗= 1, …, 𝑛𝑖, consider the following statements: I. The design matrix has 𝑘+ 1 columns but rank 𝑘. II. 𝜇+ 𝛼𝑖and every contrast ∑𝑖𝑐𝑖𝛼𝑖(∑𝑖𝑐𝑖= 0) are estimable, but 𝜇alone is not. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Column of ones = sum of the indicator columns: rank 𝑘; the estimable functions are spanned by the cell means 𝜇+ 𝛼𝑖."
+ },
+ "F13.2": {
+  "id": "F13.2",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "Six treatments are each replicated 4 times in a completely randomized experiment. The degrees of freedom for treatments and error are respectively",
+  "options": [
+   "5 and 18",
+   "6 and 18",
+   "5 and 23",
+   "6 and 17"
+  ],
+  "answer_letter": "a",
+  "explanation": "𝑘−1 = 5, 𝑁−𝑘= 24 −6 = 18 (2021 Q8 archetype: there 30 −5 = 25)."
+ },
+ "F13.3": {
+  "id": "F13.3",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "In one-way ANOVA with 𝑘groups and 𝑛observations in all, consider the following statements: I. The test statistic is 𝐹= MST/MSE. II. Under 𝐻0 ∶𝛼1 = ⋯= 𝛼𝑘, 𝐹∼𝐹𝑘−1, 𝑛−𝑘. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Definition of the variance-ratio test (2022 Q6 archetype)."
+ },
+ "F13.4": {
+  "id": "F13.4",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "In the balanced fixed-effects one-way model (𝑛𝑖= 𝑛, ∑𝑖𝛼𝑖= 0), 𝐸(MST) equals",
+  "options": [
+   "σ² always",
+   "σ² + nΣα_i²/(k−1)",
+   "σ² + nσ²_α",
+   "σ²/n"
+  ],
+  "answer_letter": "b",
+  "explanation": "Fixed effects: E(MST) = σ² + nΣα_i²/(k-1); (c) is the random-effects line — the classic confusion pair."
+ },
+ "F13.5": {
+  "id": "F13.5",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "For the cell-means model 𝐸(𝑌𝑖𝑗) = 𝜇𝑖, var(𝑌𝑖𝑗) = 𝜎2, 𝑗= 1, …, 𝑛𝑖, 𝑖= 1, …, 𝑝, consider the following statements: 1. Every linear parametric function ∑𝑖𝑐𝑖𝜇𝑖is estimable. 2.̂ 𝜇𝑖=̄ 𝑌𝑖. = 𝑛𝑖∑𝑗𝑌𝑖𝑗. Which of the above statements is/are correct?",
+  "options": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer_letter": "c",
+  "explanation": "2018 Q13 verbatim archetype: full-rank cell-means model, so everything is estimable and group means are the LSEs."
+ },
+ "F13.6": {
+  "id": "F13.6",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "Weights of fish are sampled from three lakes and a one-way ANOVA is performed. The null hypothesis of the analysis is",
+  "options": [
+   "H0: μ1 = μ2 = μ3 (= μ)",
+   "H0: μ1 = μ2 = μ3 = 0",
+   "H0: at least one pair of lakes has equal mean weights",
+   "H0: σ²_1 = σ²_2 = σ²_3"
+  ],
+  "answer_letter": "a",
+  "explanation": "Equality of means, not variances, and not “= 0” (2020 Q41 archetype)."
+ },
+ "F13.7": {
+  "id": "F13.7",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "If the computed 𝐹exceeds the critical value at the chosen level, the correct conclusion of the one-way ANOVA is that",
+  "options": [
+   "all the population means are different from one another",
+   "exactly two of the population means differ",
+   "at least one population mean differs from the others",
+   "the population variances are unequal"
+  ],
+  "answer_letter": "c",
+  "explanation": "Rejection says at least one differs — never “all differ” (2020 Q42 archetype)."
+ },
+ "F13.8": {
+  "id": "F13.8",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "In a one-way layout with 𝑘= 3 groups and 𝑁= 15 observations in all, the total sum of squares is 400 and the between-groups (treatment) sum of squares is 160. The value of the 𝐹statistic is",
+  "options": [
+   "2",
+   "4",
+   "8",
+   "20"
+  ],
+  "answer_letter": "b",
+  "explanation": "SSE = 240; F = (160/2)/(240/12) = 80/20 = 4."
+ },
+ "F13.9": {
+  "id": "F13.9",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "Consider the following statements about the side condition ∑𝑖𝑛𝑖𝛼𝑖= 0 (or ∑𝑖𝛼𝑖= 0) in the one-way model: I. It is an identifiability constraint that selects one particular solution of the normal equations. II. Imposing it changes the class of estimable functions. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "a",
+  "explanation": "Constraints pick a solution; estimability is a property of the model, not of the constraint."
+ },
+ "F13.10": {
+  "id": "F13.10",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "With 𝑘groups and 𝑛total observations, the one-way ANOVA identity partitions the total degrees of freedom as",
+  "options": [
+   "𝑛−1 = (𝑘−1) + (𝑛−𝑘)",
+   "𝑛= (𝑘) + (𝑛−𝑘)",
+   "𝑛−1 = 𝑘+ (𝑛−𝑘−1)",
+   "𝑛+ 1 = (𝑘+ 1) + (𝑛−𝑘)"
+  ],
+  "answer_letter": "a",
+  "explanation": "TSS df = 𝑛−1 splits into 𝑘−1 and 𝑛−𝑘."
+ },
+ "F13.11": {
+  "id": "F13.11",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "For a contrast 𝜓= ∑𝑖𝑐𝑖𝜇𝑖(∑𝑖𝑐𝑖= 0) estimated bŷ 𝜓= ∑𝑖𝑐𝑖̄𝑦𝑖., consider the following statements: I. 𝐸(̂𝜓) = 𝜓. II. 𝑉(̂𝜓) = 𝜎2 ∑𝑖𝑐²_𝑖/𝑛𝑖. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Unbiasedness is immediate; independence across groups gives the variance formula (the Scheffé/Tukey denominators of S16)."
+ },
+ "F13.12": {
+  "id": "F13.12",
+  "section": 13,
+  "topic": "One-Way Classification",
+  "question": "Consider the following statements about MSE in one-way ANOVA: I. MSE is the pooled within-group sample variance Σ_i(n_i−1)s_i² / Σ_i(n_i−1). II. E(MSE) = σ² whether or not H0 is true. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "MSE pools the within-group variances and is unbiased regardless of the hypothesis."
+ },
+ "F14.1": {
+  "id": "F14.1",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "For a two-way classification with one observation per cell, factor A at 4 levels and factor B at 6 levels, the degrees of freedom for error are",
+  "options": [
+   "24",
+   "23",
+   "15",
+   "18"
+  ],
+  "answer_letter": "c",
+  "explanation": "(𝑝−1)(𝑞−1) = 3 × 5 = 15 (2023 Q61 archetype)."
+ },
+ "F14.2": {
+  "id": "F14.2",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "For a two-way classification with factor A at 3 levels, factor B at 4 levels and 5 observations per cell, the degrees of freedom for error are",
+  "options": [
+   "60",
+   "48",
+   "59",
+   "44"
+  ],
+  "answer_letter": "b",
+  "explanation": "𝑝𝑞(𝑚−1) = 12 × 4 = 48 (2025 Q51 / 2022 Q7 archetype: there 5 ⋅6 ⋅3 = 90)."
+ },
+ "F14.3": {
+  "id": "F14.3",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "For a two-way ANOVA with 5 rows, 3 columns and 2 observations per cell, the degrees of freedom for interaction and error are respectively",
+  "options": [
+   "8 and 15",
+   "15 and 8",
+   "8 and 14",
+   "10 and 15"
+  ],
+  "answer_letter": "a",
+  "explanation": "Interaction (5 −1)(3 −1) = 8; error 𝑝𝑞(𝑚−1) = 15 × 1 = 15 (2018 Q6 archetype: there 15 and 48)."
+ },
+ "F14.4": {
+  "id": "F14.4",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "In the model 𝑦𝑖𝑗𝑘= 𝜇+ 𝛼𝑖+ 𝛽𝑗+ 𝛾𝑖𝑗+ 𝑒𝑖𝑗𝑘with 𝑖= 1, …, 𝑝; 𝑗= 1, …, 𝑞; 𝑘= 1, …, 𝑟, and 𝑝= 3, 𝑞= 4, the total number of parameters (excluding 𝜎2) is",
+  "options": [
+   "12",
+   "8",
+   "19",
+   "20"
+  ],
+  "answer_letter": "d",
+  "explanation": "1 + 𝑝+ 𝑞+ 𝑝𝑞= 1 + 3 + 4 + 12 = 20 (2018 Q15 archetype)."
+ },
+ "F14.5": {
+  "id": "F14.5",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "For the additive two-way model 𝑦𝑖𝑗= 𝜇+𝛼𝑖+𝛽𝑗+𝑒𝑖𝑗(one observation per cell), the design matrix has 1 + 𝑝+ 𝑞columns. Its rank is",
+  "options": [
+   "1 + 𝑝+ 𝑞",
+   "𝑝+ 𝑞",
+   "𝑝+ 𝑞−1",
+   "𝑝𝑞"
+  ],
+  "answer_letter": "c",
+  "explanation": "Two linear dependencies among the 1 + 𝑝+ 𝑞columns: rank 𝑝+ 𝑞−1."
+ },
+ "F14.6": {
+  "id": "F14.6",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "In the two-way model 𝑦𝑖𝑗= 𝜇+ 𝛼𝑖+ 𝛽𝑗+ 𝑒𝑖𝑗, 𝑖= 1, …, 𝑝; 𝑗= 1, …, 𝑞, which one of the following is estimable?",
+  "options": [
+   "𝛼𝑖",
+   "𝛽𝑗",
+   "𝛼𝑖−𝛼𝑢(𝑖≠𝑢)",
+   "𝛼1 + 𝛼2"
+  ],
+  "answer_letter": "c",
+  "explanation": "2021 Q9 verbatim archetype: only differences of like effects (and cell expectations) are estimable."
+ },
+ "F14.7": {
+  "id": "F14.7",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "With one observation per cell in a two-way layout, consider the following statements: I. The interaction cannot be tested by the usual ANOVA because it is completely confounded with error. II. Tukey’s one-degree-of-freedom test for non-additivity can nevertheless be used to detect a multiplicative interaction. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "One observation per cell leaves no pure replicate error; Tukey’s 1-df test rescues a specific form of non-additivity."
+ },
+ "F14.8": {
+  "id": "F14.8",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "In a two-way classification with one observation per cell, factor A at 4 levels and factor B at 6 levels, TSS = 120, SSA = 40 and SSB = 50. The mean square for error is",
+  "options": [
+   "2",
+   "3",
+   "30",
+   "1.5"
+  ],
+  "answer_letter": "a",
+  "explanation": "SSE = 120 −40 −50 = 30 on (4 −1)(6 −1) = 15 df: MSE = 2."
+ },
+ "F14.9": {
+  "id": "F14.9",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "In the fixed-effects two-way model with 𝑚> 1 observations per cell, consider the following statements: I. Each of 𝐻0𝐴, 𝐻0𝐵and 𝐻0(𝐴𝐵) is tested against MSE. II. The interaction hypothesis should be examined before interpreting the main-effect tests. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "With replication all three ratios use MSE (fixed effects); interaction first is the standard protocol."
+ },
+ "F14.10": {
+  "id": "F14.10",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "Four methods are compared using six analysts, each analyst producing one observation under each method (two-way layout, one observation per cell). Given TSS = 150, SS(Analysts) = 30 and SS(Methods) = 84, the mean square error is",
+  "options": [
+   "36",
+   "2.4",
+   "3.0",
+   "15"
+  ],
+  "answer_letter": "b",
+  "explanation": "SSE = 150 −30 −84 = 36 on 5 × 3 = 15 df: MSE = 2.4 (2023 Q52 archetype: there 13.73/8 = 1.72)."
+ },
+ "F14.11": {
+  "id": "F14.11",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "For a 2 × 2 layout with 2 observations per cell, the degrees of freedom for A, B, interaction, error and total are respectively",
+  "options": [
+   "1, 1, 1, 4, 7",
+   "1, 1, 2, 3, 7",
+   "1, 1, 1, 3, 6",
+   "2, 2, 1, 2, 7"
+  ],
+  "answer_letter": "a",
+  "explanation": "1, 1, 1, error 𝑎𝑏(𝑚−1) = 4, total 𝑎𝑏𝑚−1 = 7."
+ },
+ "F14.12": {
+  "id": "F14.12",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "Three teaching methods are tested with four instructors and 2 students per method–instructor cell. The degrees of freedom for methods, instructors, interaction and error are respectively",
+  "options": [
+   "2, 3, 6, 12",
+   "3, 4, 12, 24",
+   "2, 3, 5, 13",
+   "2, 3, 6, 13"
+  ],
+  "answer_letter": "a",
+  "explanation": "(3 −1), (4 −1), (2)(3), 12 ⋅1 = 12 (2020 Q45 archetype)."
+ },
+ "F14.13": {
+  "id": "F14.13",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "A randomized block design with 𝑏= 5 blocks and 𝑣= 4 treatments is analysed as a two-way classification with one observation per cell. The error degrees of freedom are",
+  "options": [
+   "20",
+   "19",
+   "12",
+   "16"
+  ],
+  "answer_letter": "c",
+  "explanation": "(𝑏−1)(𝑣−1) = 4 × 3 = 12."
+ },
+ "F14.14": {
+  "id": "F14.14",
+  "section": 14,
+  "topic": "Two-Way Classification: Models, Estimability, Degrees of Freedom",
+  "question": "In the fixed-effects two-way model with one observation per cell, consider the following statements: I. 𝐸(MSE) = 𝜎2 provided the additive model is correct. II. If interaction is actually present, MSE is inflated and the F tests for main effects lose power. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Additivity is exactly what frees the (𝑝−1)(𝑞−1) cell for error; violated additivity biases MSE upward."
+ },
+ "F15.1": {
+  "id": "F15.1",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "Following Eisenhart’s classification, the linear models with all effects fixed, all effects random, and some fixed with some random are called respectively",
+  "options": [
+   "Model I, Model II and Model III (mixed model)",
+   "Model III, Model II and Model I",
+   "Model II, Model I and Model III",
+   "Model I, Model III and Model II"
+  ],
+  "answer_letter": "a",
+  "explanation": "Eisenhart’s Model I (fixed), Model II (random), Model III (mixed)."
+ },
+ "F15.2": {
+  "id": "F15.2",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "A factor should be treated as random when",
+  "options": [
+   "its levels are the only levels of interest",
+   "its levels can be regarded as a random sample from a population of levels, and inference is sought for that population",
+   "it has exactly two levels",
+   "its levels are quantitative"
+  ],
+  "answer_letter": "b",
+  "explanation": "Random = sampled levels + inference to the population of levels (the 2025 Q54 principle)."
+ },
+ "F15.3": {
+  "id": "F15.3",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "In an RBD with 𝑣treatments and 𝑏blocks, the blocks used are regarded as a sample from a large population of blocks, while the treatments are the specific ones under study. The appropriate two-way model is",
+  "options": [
+   "a fixed-effects model for both factors",
+   "a random-effects model for both factors",
+   "a mixed model: treatments fixed, blocks random",
+   "a mixed model: treatments random, blocks fixed"
+  ],
+  "answer_letter": "c",
+  "explanation": "2025 Q54 verbatim archetype: sampled blocks random, studied treatments fixed."
+ },
+ "F15.4": {
+  "id": "F15.4",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "In the balanced one-way random-effects model 𝑦𝑖𝑗= 𝜇+ 𝑎𝑖+ 𝑒𝑖𝑗, 𝑎𝑖∼(0, 𝜎²_𝑎), 𝑒𝑖𝑗∼(0, 𝜎2), all independent, 𝑗= 1, …, 𝑛, consider the following statements: I. 𝐸(MSBetween) = 𝜎2 + 𝑛𝜎²_𝑎. II. 𝐸(MSWithin) = 𝜎2. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "The two EMS lines that generate the F test and the variance-component estimator."
+ },
+ "F15.5": {
+  "id": "F15.5",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "In the model of F15.4 with 𝑛= 6 observations per class, MSBetween = 50 and MSWithin = 20. The ANOVA estimator of 𝜎²_𝑎is",
+  "options": [
+   "30",
+   "6",
+   "5",
+   "3.5"
+  ],
+  "answer_letter": "c",
+  "explanation": "σ̂²_a = (MSB - MSW)/n = (50-20)/6 = 5."
+ },
+ "F15.6": {
+  "id": "F15.6",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "Continuing F15.5 (sô 𝜎²_𝑎= 5,̂ 𝜎2 = 20), the estimated intraclass correlation coefficient is",
+  "options": [
+   "0.25",
+   "0.20",
+   "0.80",
+   "0.05"
+  ],
+  "answer_letter": "b",
+  "explanation": "ρ̂ = σ̂²_a/(σ̂²_a + σ̂²) = 5/25 = 0.2."
+ },
+ "F15.7": {
+  "id": "F15.7",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "In the one-way random-effects model, consider the following statements: 1. 𝑉(𝑦𝑖𝑗) = 𝜎²_𝑎+ 𝜎2. 2. Cov(𝑦𝑖𝑗, 𝑦𝑖𝑗′) = 𝜎²_𝑎for 𝑗≠𝑗′ (same class). 3. Observations from different classes are uncorrelated. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "The random effect induces the intraclass covariance structure; classes are independent."
+ },
+ "F15.8": {
+  "id": "F15.8",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "In the balanced two-way random-effects model with m observations per cell (A at p levels, B at q levels), consider the following statements: I. MSE is the appropriate denominator for testing H0(A×B): σ²_ab = 0. II. MSE is the appropriate denominator for testing H0A: σ²_a = 0. III. MS(AB) is the appropriate denominator for testing H0A: σ²_a = 0 and H0B: σ²_b = 0. Which of the statements given above are correct?",
+  "options": [
+   "I and III only",
+   "I and II only",
+   "II and III only",
+   "I, II and III"
+  ],
+  "answer_letter": "a",
+  "explanation": "E(MSA) = σ² + mσ²_ab + qmσ²_a and E(MS(AB)) = σ² + mσ²_ab: main effects are tested against MS(AB), interaction against MSE (2024 Q59 archetype, keyed I only there because only its statement I was true)."
+ },
+ "F15.9": {
+  "id": "F15.9",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "In the balanced two-way random-effects model with 𝑚observations per cell, the ANOVA estimator of 𝜎²_𝑏is",
+  "options": [
+   "(MSB −MS(AB))/(𝑝𝑚)",
+   "(MSB −MSE)/(𝑞𝑚)",
+   "(MSB −MS(AB))/(𝑞𝑚)",
+   "(MSA −MSB)/(𝑝𝑞)"
+  ],
+  "answer_letter": "a",
+  "explanation": "Match EMS lines: E(MSB) - E(MS(AB)) = pmσ²_b (2022 Q8 mirror image)."
+ },
+ "F15.10": {
+  "id": "F15.10",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "In the balanced two-way mixed model (A fixed, B random) with interaction and 𝑚observations per cell, the fixed factor A is tested by the ratio",
+  "options": [
+   "MSA/MSE",
+   "MSA/MS(AB)",
+   "MSA/MSB",
+   "MS(AB)/MSA"
+  ],
+  "answer_letter": "b",
+  "explanation": "E(MSA) contains mσ²_ab; the interaction mean square is the correct error term for the fixed factor in the mixed model."
+ },
+ "F15.11": {
+  "id": "F15.11",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "Consider the following statements: I. In the fixed-effects one-way model the null hypothesis is 𝐻0 ∶𝛼1 = ⋯= 𝛼𝑘(equivalently all 𝛼𝑖= 0 under the usual constraint). II. In the random-effects one-way model the corresponding null hypothesis is 𝐻0 ∶𝜎²_𝑎= 0. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Same F statistic, different hypotheses — the conceptual heart of Model I vs. Model II."
+ },
+ "F15.12": {
+  "id": "F15.12",
+  "section": 15,
+  "topic": "Fixed, Random and Mixed Effects Models",
+  "question": "Consider the following statements about ANOVA (method-of-moments) estimators of variance components: I. They can take negative values (e.g., when MSBetween < MSWithin). II. The usual practical convention is to truncate a negative estimate to zero. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Method-of-moments estimators are not constrained to the parameter space; truncation at 0 is standard."
+ },
+ "F16.1": {
+  "id": "F16.1",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "Tukey’s honestly-significant-difference (HSD) procedure is based on the distribution of",
+  "options": [
+   "Snedecor’s 𝐹",
+   "the studentized range statistic 𝑞",
+   "Student’s 𝑡",
+   "the sample correlation coefficient"
+  ],
+  "answer_letter": "b",
+  "explanation": "HSD = studentized range; this single fact separates it from Scheffé (𝐹-based) (2018 Q11/2021 Q6 family)."
+ },
+ "F16.2": {
+  "id": "F16.2",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "Consider the following statements: 1. Scheffé’s test of multiple comparisons tests all simple and complex contrasts. 2. Scheffé’s procedure is derived from the 𝐹distribution. 3. Tukey’s test of multiple comparisons reduces the Type-I error of the family of pairwise tests. Which of the above statements are correct?",
+  "options": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer_letter": "d",
+  "explanation": "All three: Scheffé covers every contrast via the 𝐹distribution; Tukey controls the familywise Type-I error (the 2018 Q11 key, with the false Bartlett statement removed)."
+ },
+ "F16.3": {
+  "id": "F16.3",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "Among Scheffé, Tukey, Student–Newman–Keuls and Duncan, when applied to all pairwise comparisons, the most conservative procedure (widest critical differences) is generally",
+  "options": [
+   "Duncan",
+   "Student–Newman–Keuls",
+   "Tukey",
+   "Scheffé"
+  ],
+  "answer_letter": "d",
+  "explanation": "For pairwise work Scheffé is widest (it pays for all contrasts); Duncan is the most liberal."
+ },
+ "F16.4": {
+  "id": "F16.4",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "In the Student–Newman–Keuls (SNK) procedure, the critical value used for comparing two ordered means depends on",
+  "options": [
+   "only the total number of treatments 𝑘",
+   "the number of means spanned (the “stretch” 𝑝) between the two ordered means",
+   "only the error degrees of freedom",
+   "the value of the grand mean"
+  ],
+  "answer_letter": "b",
+  "explanation": "Stepwise range test: 𝑞𝛼;𝑝,𝜈with 𝑝the stretch of the two ordered means (2021 Q6 statement 2)."
+ },
+ "F16.5": {
+  "id": "F16.5",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "Consider the following statements about Duncan’s multiple range test: I. It uses protection level (1 −𝛼)𝑝−1 for a stretch of 𝑝means, so its critical values are smaller than those of SNK. II. It is more liberal (declares significance more readily) than Tukey’s HSD. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Duncan’s shrinking protection level makes it the high-power, low-protection member of the family."
+ },
+ "F16.6": {
+  "id": "F16.6",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "Three machines have mean outputs̄ 𝑦𝐴= 45,̄ 𝑦𝐵= 52,̄ 𝑦𝐶= 40, and the critical difference at the 5% level is 6.5. Which one of the following is correct?",
+  "options": [
+   "Only machines A and B differ significantly",
+   "Only machines B and C differ significantly",
+   "Machine B differs significantly from both A and C, while A and C do not differ",
+   "No two machines differ significantly"
+  ],
+  "answer_letter": "c",
+  "explanation": "|𝐴−𝐵| = 7 > 6.5, |𝐵−𝐶| = 12 > 6.5, |𝐴−𝐶| = 5 < 6.5 (2025 Q52 archetype: there only B vs. C crossed 5.62)."
+ },
+ "F16.7": {
+  "id": "F16.7",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "Consider the following statements: I. For simple pairwise differences, Tukey’s intervals are narrower than Scheffé’s. II. For complex contrasts involving several means, Scheffé’s method is the appropriate choice. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "The standard division of labour between the two procedures."
+ },
+ "F16.8": {
+  "id": "F16.8",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "Consider the following statements about Scheffé’s procedure: I. If the overall ANOVA 𝐹test is significant at level 𝛼, at least one contrast is declared significant by Scheffé’s criterion at the same level. II. If the overall 𝐹test is not significant, no contrast can be Scheffé-significant. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Scheffé is exactly compatible with the overall 𝐹test in both directions."
+ },
+ "F16.9": {
+  "id": "F16.9",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "With 𝑘= 5 treatments, consider the following statements: I. There are 10 pairwise comparisons in all. II. Performing 10 separate 𝑡-tests each at level 0.05 inflates the familywise Type-I error well beyond 0.05. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "C(5,2) = 10; familywise error ≈ 1 - (0.95)^10 ≈ 0.40 (2018 Q12 statement 1)."
+ },
+ "F16.10": {
+  "id": "F16.10",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "Consider the following statements: I. Tukey’s HSD in its classical form requires equal sample sizes in all groups. II. The Tukey–Kramer modification extends the procedure to unequal sample sizes. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Equal 𝑛in the classical form; Tukey–Kramer handles unbalanced data."
+ },
+ "F16.11": {
+  "id": "F16.11",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "With 𝑘treatments, 𝑛observations per treatment and error degrees of freedom 𝜈, Tukey’s honestly significant difference is",
+  "options": [
+   "𝑞𝛼;𝑘,𝜈√(MSE)/(𝑛)",
+   "q_{α;k,ν} (MSE/n)",
+   "𝑡𝛼/2;𝜈√2(MSE)/(𝑛)",
+   "√(𝑘−1)𝐹𝛼;𝑘−1,𝜈"
+  ],
+  "answer_letter": "a",
+  "explanation": "𝑞already studentizes the range of 𝑘means, so the SE uses MSE/𝑛, not 2MSE/𝑛."
+ },
+ "F16.12": {
+  "id": "F16.12",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "For a contrast̂ 𝜓= ∑𝑖𝑐𝑖̄𝑦𝑖. with standard error 𝑠̂𝜓= √MSE ∑𝑖𝑐²_𝑖/𝑛𝑖, Scheffé’s method declares 𝜓≠0 at level 𝛼when |̂𝜓| exceeds",
+  "options": [
+   "𝑞𝛼;𝑘,𝜈𝑠̂𝜓",
+   "𝑡𝛼/2;𝜈𝑠̂𝜓",
+   "√(𝑘−1)𝐹𝛼; 𝑘−1, 𝜈𝑠̂𝜓",
+   "𝐹𝛼; 𝑘−1, 𝜈𝑠̂𝜓"
+  ],
+  "answer_letter": "c",
+  "explanation": "Scheffé’s constant is √(𝑘−1)𝐹𝛼— valid simultaneously for every contrast."
+ },
+ "F16.13": {
+  "id": "F16.13",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "Consider the following statements about Fisher’s least significant difference (LSD): I. The “protected” LSD is applied only after the overall 𝐹test is significant. II. The LSD for comparing two equal-sized groups is 𝑡𝛼/2;𝜈√2 MSE/𝑛. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Protected LSD = ordinary 𝑡yardstick, gated by the ANOVA 𝐹."
+ },
+ "F16.14": {
+  "id": "F16.14",
+  "section": 16,
+  "topic": "Multiple Comparison Tests: Tukey, Scheffé, SNK, Duncan",
+  "question": "Consider the following statements: I. Tukey’s HSD controls the familywise error rate at 𝛼for the family of all pairwise comparisons. II. Duncan’s multiple range test does not control the familywise error rate at 𝛼. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Tukey: exact FWER control (balanced case); Duncan trades protection for power (2018 Q12 statement 3 flavour)."
+ },
+ "F17.1": {
+  "id": "F17.1",
+  "section": 17,
+  "topic": "ANOVA: Concepts, Assumptions and Behaviour of F",
+  "question": "Which of the following statements regarding the ANOVA technique are correct? I. It is used to test the equality of several population means. II. It is primarily a test of the equality of several population variances. III. Its origin lies in agricultural experiments. Select the answer using the code given below.",
+  "options": [
+   "I and II only",
+   "II and III only",
+   "I and III only",
+   "I, II and III"
+  ],
+  "answer_letter": "c",
+  "explanation": "2024 Q57 verbatim archetype: ANOVA compares means (despite its name); Fisher’s agricultural origin."
+ },
+ "F17.2": {
+  "id": "F17.2",
+  "section": 17,
+  "topic": "ANOVA: Concepts, Assumptions and Behaviour of F",
+  "question": "In ANOVA for one-way classified data, which of the following statements are correct? I. The sums of squares are unaffected by a change of origin. II. The sums of squares are unaffected by a change of scale. III. The variance ratio is unaffected by a change of origin. IV. The variance ratio is unaffected by a change of scale. Select the answer using the code given below.",
+  "options": [
+   "I, II and III",
+   "I, II and IV",
+   "I, III and IV",
+   "II, III and IV"
+  ],
+  "answer_letter": "c",
+  "explanation": "2024 Q58 verbatim archetype: scale multiplies every SS by 𝑐2, which cancels in the ratio."
+ },
+ "F17.3": {
+  "id": "F17.3",
+  "section": 17,
+  "topic": "ANOVA: Concepts, Assumptions and Behaviour of F",
+  "question": "For the validity of the F test in ANOVA, which of the following are assumed? I. The observations are independent. II. The parent populations are normally distributed. III. The error variances are homogeneous (equal) across groups. IV. The various effects are additive in nature. Select the correct answer using the code given below.",
+  "options": [
+   "I, II and III only",
+   "I, II and IV only",
+   "I, III and IV only",
+   "I, II, III and IV"
+  ],
+  "answer_letter": "d",
+  "explanation": "2024 Q60 archetype: independence, normality, homoscedasticity, additivity — the trap option there asserted variances “may differ”."
+ },
+ "F17.4": {
+  "id": "F17.4",
+  "section": 17,
+  "topic": "ANOVA: Concepts, Assumptions and Behaviour of F",
+  "question": "As the variability due to chance (error variance) in an ANOVA decreases, other things remaining the same, the F statistic",
+  "options": [
+   "will always increase",
+   "will always decrease",
+   "will remain constant",
+   "requires additional information to claim any change"
+  ],
+  "answer_letter": "a",
+  "explanation": "2018 Q7 verbatim archetype: smaller MSE, larger 𝐹= MST/MSE."
+ },
+ "F17.5": {
+  "id": "F17.5",
+  "section": 17,
+  "topic": "ANOVA: Concepts, Assumptions and Behaviour of F",
+  "question": "When the 𝑘population means are truly different from each other, a significant F statistic is likely to arise because the average error deviation",
+  "options": [
+   "is relatively large compared to the average treatment deviations",
+   "is relatively small compared to the average treatment deviations",
+   "equals the average treatment deviations",
+   "differs significantly between at least two of the populations"
+  ],
+  "answer_letter": "b",
+  "explanation": "2018 Q8 verbatim archetype: signal large relative to noise."
+ },
+ "F17.6": {
+  "id": "F17.6",
+  "section": 17,
+  "topic": "ANOVA: Concepts, Assumptions and Behaviour of F",
+  "question": "Consider the following statements: I. The ANOVA F test is a right-tailed (one-tailed) test. II. For 𝑘= 2 groups, 𝐹1,𝜈= 𝑡²_𝜈: one-way ANOVA is equivalent to the two-sample pooled 𝑡 test. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Both classical facts; the square of 𝑡𝜈is 𝐹1,𝜈."
+ },
+ "F17.7": {
+  "id": "F17.7",
+  "section": 17,
+  "topic": "ANOVA: Concepts, Assumptions and Behaviour of F",
+  "question": "Consider the following statements: I. The F test in balanced ANOVA is fairly robust to moderate departures from normality. II. Heterogeneity of variances is most damaging when the group sizes are unequal. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Standard robustness folklore, examinable as stated."
+ },
+ "F17.8": {
+  "id": "F17.8",
+  "section": 17,
+  "topic": "ANOVA: Concepts, Assumptions and Behaviour of F",
+  "question": "To stabilize the variance of Poisson-type count data before ANOVA, the standard transformation is",
+  "options": [
+   "the square-root transformation √𝑦",
+   "the arcsine transformation sin−1 √𝑦",
+   "the reciprocal transformation 1/𝑦",
+   "no transformation is ever needed"
+  ],
+  "answer_letter": "a",
+  "explanation": "√𝑦for counts; arcsine for proportions; log when SD ∝mean."
+ },
+ "F17.9": {
+  "id": "F17.9",
+  "section": 17,
+  "topic": "ANOVA: Concepts, Assumptions and Behaviour of F",
+  "question": "Consider the following statements: I. Bartlett’s test is a test of homogeneity of variances, not a multiple-comparison test. II. Levene’s test can be used for the same purpose and is less sensitive to non-normality. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "The 2018 Q11 trap dressed correctly: Bartlett tests variances."
+ },
+ "F17.10": {
+  "id": "F17.10",
+  "section": 17,
+  "topic": "ANOVA: Concepts, Assumptions and Behaviour of F",
+  "question": "If every observation in a one-way layout is transformed as 𝑧𝑖𝑗= 𝑐𝑦𝑖𝑗+ 𝑑with 𝑐≠0, consider the following statements: I. Every sum of squares is multiplied by 𝑐2. II. The F ratio computed from the 𝑧’s equals the F ratio computed from the 𝑦’s. Which of the statements given above is/are correct?",
+  "options": [
+   "I only",
+   "II only",
+   "Both I and II",
+   "Neither I nor II"
+  ],
+  "answer_letter": "c",
+  "explanation": "Origin shift cancels within deviations; scale cancels between numerator and denominator."
+ },
+ "F18.1": {
+  "id": "F18.1",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "In a one-way ANOVA the error degrees of freedom are 15, the total degrees of freedom 17, MSE = 10 and the total sum of squares is 500. The values of (SS Treatment, SS Error, MS Treatment, F) are",
+  "options": [
+   "(350, 150, 175, 17.5)",
+   "(150, 350, 75, 7.5)",
+   "(350, 150, 116.7, 11.67)",
+   "(300, 200, 150, 15)"
+  ],
+  "answer_letter": "a",
+  "explanation": "SSE = 15 × 10 = 150; SSTr = 500 −150 = 350 on 17 −15 = 2 df; MST = 175; 𝐹= 17.5 (2019 Q5 / 2023 Q65 archetype)."
+ },
+ "F18.2": {
+  "id": "F18.2",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "In the following two-way ANOVA table (one observation per cell) a few entries are missing: Source d.f. SS Variance ratio Treatment 24.6 4.1 Variety 𝑥 7.5 Error 𝑦 𝑧 Total The values of 𝑥, 𝑦and 𝑧are respectively",
+  "options": [
+   "2, 6, 12",
+   "3, 5, 10",
+   "2, 6, 15",
+   "2, 5, 12"
+  ],
+  "answer_letter": "a",
+  "explanation": "MST = 24.6/3 = 8.2 and ratio 4.1 ⇒MSE = 2; 7.5 = (30/𝑥)/2 ⇒𝑥= 2; 𝑦= 11 −3 −2 = 6; 𝑧= 6 × 2 = 12 (2025 Q56 archetype)."
+ },
+ "F18.3": {
+  "id": "F18.3",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "A one-way layout has 𝑘= 4 treatments and 𝑁= 24 observations in all, with TSS = 600 and treatment sum of squares = 300. The F statistic equals",
+  "options": [
+   "5.00",
+   "6.67",
+   "10.00",
+   "4.44"
+  ],
+  "answer_letter": "b",
+  "explanation": "MST = 300/3 = 100; MSE = 300/20 = 15; 𝐹= 100/15 = 6.67."
+ },
+ "F18.4": {
+  "id": "F18.4",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "Four methods are compared by six analysts (two-way, one observation per cell). Given TSS = 100, SS(Analysts) = 10, SS(Methods) = 60, the MSE is",
+  "options": [
+   "1.5",
+   "2.0",
+   "3.0",
+   "2.4"
+  ],
+  "answer_letter": "b",
+  "explanation": "SSE = 100 −10 −60 = 30 on 5 × 3 = 15 df: MSE = 2 (2023 Q52 archetype)."
+ },
+ "F18.5": {
+  "id": "F18.5",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "A two-way experiment has factor A at 4 levels, factor B at 3 levels and 3 observations per cell. The degrees of freedom for A, B, interaction and error are respectively",
+  "options": [
+   "3, 2, 6, 24",
+   "4, 3, 12, 24",
+   "3, 2, 6, 23",
+   "3, 2, 5, 25"
+  ],
+  "answer_letter": "a",
+  "explanation": "3, 2, 6, error = 𝑝𝑞(𝑚−1) = 12 × 2 = 24 (2020 Q45 archetype)."
+ },
+ "F18.6": {
+  "id": "F18.6",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "In a two-way layout with factor A at 2 levels, factor B at 3 levels and 2 observations per cell, the sums of squares are SSA = 0.5, SSB = 24, SSE = 0.66. The mean squares for A and error are respectively",
+  "options": [
+   "0.50 and 0.11",
+   "0.25 and 0.11",
+   "0.50 and 0.132",
+   "0.25 and 0.066"
+  ],
+  "answer_letter": "a",
+  "explanation": "d.f.: A = 1, error = 𝑎𝑏(𝑚−1) = 6: MSA = 0.5, MSE = 0.11 (2022 Q9 archetype)."
+ },
+ "F18.7": {
+  "id": "F18.7",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "Continuing F18.6, the F statistics for factors A and B are respectively (to two decimals)",
+  "options": [
+   "4.55 and 109.09",
+   "0.76 and 36.36",
+   "4.55 and 218.18",
+   "2.27 and 109.09"
+  ],
+  "answer_letter": "a",
+  "explanation": "MSB = 24/2 = 12: 𝐹𝐴= 0.5/0.11 = 4.55, 𝐹𝐵= 12/0.11 = 109.09 (2022 Q10 archetype)."
+ },
+ "F18.8": {
+  "id": "F18.8",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "Fish are sampled from three lakes, five observations from each lake (𝑁= 15). The total sum of squares of all 15 observations is 350. If all the observations are pooled into a single sample, their standard deviation equals",
+  "options": [
+   "4.83",
+   "5.00",
+   "25.00",
+   "5.92"
+  ],
+  "answer_letter": "b",
+  "explanation": "Pooled variance = TSS/(𝑁−1) = 350/14 = 25: SD = 5 (2020 Q44 archetype)."
+ },
+ "F18.9": {
+  "id": "F18.9",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "In a balanced fixed-effects one-way model with 𝑘= 3, 𝑛= 5 observations per group, (𝛼1, 𝛼2, 𝛼3) = (−2, 0, 2) and 𝜎2 = 4, the expected value of the treatment mean square is",
+  "options": [
+   "4",
+   "20",
+   "24",
+   "44"
+  ],
+  "answer_letter": "c",
+  "explanation": "E(MST) = σ² + nΣα_i²/(k-1) = 4 + 5(8)/2 = 24."
+ },
+ "F18.10": {
+  "id": "F18.10",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "In a balanced two-way random-effects model with 𝑝= 3, 𝑞= 4, 𝑚= 2, the mean squares are MSA = 60 and MS(AB) = 20. The ANOVA estimate of 𝜎²_𝑎is",
+  "options": [
+   "5",
+   "10",
+   "6.67",
+   "40"
+  ],
+  "answer_letter": "a",
+  "explanation": "σ̂²_a = (MSA - MS(AB))/(qm) = (60-20)/8 = 5 (2022 Q8 archetype)."
+ },
+ "F18.11": {
+  "id": "F18.11",
+  "section": 18,
+  "topic": "Numerical ANOVA Drills: Complete the Table",
+  "question": "In a balanced one-way random-effects model with 𝑛= 4 observations per class, MSBetween = 34 and MSWithin = 10. The estimates of 𝜎²_𝑎and of the intraclass correlation are respectively",
+  "options": [
+   "6 and 0.375",
+   "24 and 0.706",
+   "6 and 0.600",
+   "8 and 0.444"
+  ],
+  "answer_letter": "a",
+  "explanation": "σ̂²_a = (34-10)/4 = 6; ρ̂ = 6/(6+10) = 0.375."
+ }
+}
