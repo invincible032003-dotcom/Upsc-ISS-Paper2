@@ -92,6 +92,15 @@ KEYBOARD SHORTCUTS (exam screen only, disabled while typing in a field)
   Right arrow     next question
   M               toggle mark for review
 
+DARK MODE
+-----------
+The moon/sun button in the top bar toggles between light and dark
+themes. Your choice is remembered on this device (also under an
+"iss_p2_" key), so it stays set the next time you open the app. Until
+you toggle it yourself, the app follows your device/browser's own
+light-or-dark setting automatically. No internet connection or extra
+files are needed - the whole theme is built into styles.css.
+
 EXPORT / IMPORT / RESET PROGRESS
 ----------------------------------
 Everything (attempt history, bookmarks, mistake bank, per-question

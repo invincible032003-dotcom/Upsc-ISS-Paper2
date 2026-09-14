@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>ISS Statistics Paper II - Offline Mock Exam Platform</title>
+<script>
+/* Applied synchronously, before first paint, to avoid a flash of the wrong
+   theme. A stored explicit choice (iss_p2_theme: "light"/"dark") wins;
+   otherwise the OS preference decides via the CSS media query, and this
+   just leaves data-theme unset. */
+(function(){
+  try{
+    var t = localStorage.getItem("iss_p2_theme");
+    if(t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  }catch(e){}
+})();
+</script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,6 +24,7 @@
     <div class="brand" data-action="go-home"><span class="dot"></span> ISS Stats Paper II <span class="faint" style="color:rgba(255,255,255,.75); font-weight:400;">Offline Mock</span></div>
     <div class="topbar-actions">
       <input type="text" id="global-search" placeholder="Search questions, topics, years..." aria-label="Search questions, topics and years" data-action="search-input">
+      <button id="theme-toggle-btn" data-action="toggle-theme" aria-label="Toggle dark mode">&#127769;</button>
       <button data-action="export-progress">Export</button>
       <button data-action="import-progress">Import</button>
       <button data-action="reset-progress">Reset</button>
@@ -121,6 +134,38 @@ function toast(msg){
   t.classList.add("show");
   clearTimeout(toast._t);
   toast._t = setTimeout(function(){ t.classList.remove("show"); }, 2400);
+}
+
+/* ---------- Theme (light/dark) ---------- */
+function getStoredTheme(){
+  try{ return localStorage.getItem("iss_p2_theme"); }catch(e){ return null; }
+}
+function systemPrefersDark(){
+  return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+}
+function effectiveTheme(){
+  var stored = getStoredTheme();
+  if(stored === "light" || stored === "dark") return stored;
+  return systemPrefersDark() ? "dark" : "light";
+}
+function updateThemeButton(){
+  var btn = document.getElementById("theme-toggle-btn");
+  if(!btn) return;
+  var eff = effectiveTheme();
+  btn.textContent = eff === "dark" ? "☀️" : "🌙";
+  btn.setAttribute("aria-label", eff === "dark" ? "Switch to light mode" : "Switch to dark mode");
+}
+function toggleTheme(){
+  var next = effectiveTheme() === "dark" ? "light" : "dark";
+  try{ localStorage.setItem("iss_p2_theme", next); }catch(e){}
+  document.documentElement.setAttribute("data-theme", next);
+  updateThemeButton();
+}
+if(window.matchMedia){
+  var _mq = window.matchMedia("(prefers-color-scheme: dark)");
+  var _onSystemThemeChange = function(){ if(!getStoredTheme()) updateThemeButton(); };
+  if(_mq.addEventListener) _mq.addEventListener("change", _onSystemThemeChange);
+  else if(_mq.addListener) _mq.addListener(_onSystemThemeChange);
 }
 function unitBadgeClass(unit){
   if(unit===UNIT_ORDER[0]) return "badge-unit-lm";
@@ -1501,6 +1546,7 @@ document.addEventListener("click", function(e){
       break;
     }
 
+    case "toggle-theme": toggleTheme(); break;
     case "export-progress": exportProgress(); break;
     case "import-progress": document.getElementById("import-file-input").click(); break;
     case "reset-progress": resetProgress(); break;
@@ -1597,6 +1643,7 @@ document.addEventListener("keydown", function(e){
 /* =========================================================================
    12. BOOT
    ========================================================================= */
+updateThemeButton();
 if(!ALL_Q.length){
   document.getElementById("app-root").innerHTML = '<div class="card empty"><h3>questions2.js failed to load or is empty.</h3><p class="muted">Make sure index.html, questions2.js and styles.css are in the same folder and you opened index.html directly.</p></div>';
 } else {
