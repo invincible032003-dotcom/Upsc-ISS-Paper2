@@ -15,17 +15,17 @@ function escapeHtmlPlain(s){
    ========================================================================= */
 var GREEK_MAP = {
   theta:"θ", Theta:"Θ", mu:"μ", beta:"β", sigma:"σ", Sigma:"Σ",
-  alpha:"α", lambda:"λ", varepsilon:"ε", epsilon:"ε", gamma:"γ", Gamma:"Γ",
-  pi:"π", chi:"χ", phi:"φ", varphi:"φ", Phi:"Φ", rho:"ρ", delta:"δ",
+  alpha:"α", lambda:"λ", Lambda:"Λ", varepsilon:"ε", epsilon:"ε", gamma:"γ", Gamma:"Γ",
+  pi:"π", Pi:"Π", chi:"χ", phi:"φ", varphi:"φ", Phi:"Φ", rho:"ρ", delta:"δ", Delta:"Δ",
   omega:"ω", Omega:"Ω", tau:"τ", eta:"η", psi:"ψ", Psi:"Ψ", zeta:"ζ",
-  kappa:"κ", nu:"ν", xi:"ξ", upsilon:"υ"
+  kappa:"κ", nu:"ν", xi:"ξ", Xi:"Ξ", upsilon:"υ", Upsilon:"Υ", iota:"ι"
 };
 var SYM_MAP = {
   le:"≤", leq:"≤", ge:"≥", geq:"≥", ne:"≠", neq:"≠", approx:"≈",
   equiv:"≡", to:"→", sim:"∼", in:"∈", notin:"∉", mid:"∣", pm:"±", mp:"∓",
   times:"×", cdot:"⋅", infty:"∞", partial:"∂", ldots:"…", dots:"…",
   cdots:"⋯", vdots:"⋮", ddots:"⋱", Rightarrow:"⇒", Leftarrow:"⇐",
-  leftrightarrow:"↔", forall:"∀", exists:"∃", emptyset:"∅", cup:"∪", cap:"∩",
+  leftrightarrow:"↔", Leftrightarrow:"⇔", forall:"∀", exists:"∃", emptyset:"∅", cup:"∪", cap:"∩",
   subset:"⊂", subseteq:"⊆", supset:"⊃", propto:"∝", perp:"⊥", angle:"∠",
   therefore:"∴", because:"∵", star:"★", circ:"∘", oplus:"⊕", otimes:"⊗",
   mapsto:"↦", gg:"≫", ll:"≪", iff:"⟺", ell:"ℓ"
@@ -268,6 +268,10 @@ MathParser.prototype.parseCommand = function(name){
     var ubb = this.readArg();
     return {type:"underbrace", body: ubb};
   }
+  if(name==="stackrel"){
+    var srTop = this.readArg(); var srBottom = this.readArg();
+    return {type:"stackrel", top: srTop, bottom: srBottom};
+  }
   if(name==="not"){
     var nt = this.peek();
     if(nt && nt.t==="CMD" && NOT_MAP.hasOwnProperty(nt.name)){
@@ -370,6 +374,8 @@ function renderNode(node){
       return '<span class="bracket">(</span><span class="binom-stack"><span class="binom-top">'+renderNode(node.top)+'</span><span class="binom-bottom">'+renderNode(node.bottom)+'</span></span><span class="bracket">)</span>';
     case "underbrace":
       return '<span class="underbrace-wrap"><span class="underbrace-body">'+renderNode(node.body)+'</span><span class="underbrace-brace">⏟</span></span>';
+    case "stackrel":
+      return '<span class="stackrel-wrap"><span class="stackrel-top">'+renderNode(node.top)+'</span><span class="stackrel-bottom">'+renderNode(node.bottom)+'</span></span>';
     case "decorate": {
       var body = renderNode(node.body);
       switch(node.deco){

@@ -19,8 +19,8 @@ with the ambiguity explained rather than silently fixed.
 
 HOW TO OPEN IT
 ---------------
-1. Keep index.html, questions2.js, forecast.js and styles.css in the SAME
-   folder.
+1. Keep index.html, questions2.js, forecast.js, prestorm.js and styles.css
+   in the SAME folder.
 2. Double-click index.html (or open it from your browser's File > Open).
 3. That's it. No install, no internet connection, no server, no Python,
    no Node.js required. Works entirely from the local file.

@@ -1,18 +1,17 @@
-// Builds print-ready standalone HTML pages for the three authentic-PYQ
-// study-guide PDFs (one per syllabus unit), topic by topic, using the app's
-// own extracted LaTeX/rich-text renderer (renderer.js) so formulas render
-// identically to the live dashboard. Every question shows all 4 options
-// with the correct one highlighted, plus the full Learning Mode reveal
-// stack: Exam Shortcut, Tips & Tricks and Step-by-Step Solution.
+// Builds a print-ready standalone HTML page for the PreStorm mock-series
+// PDF study guide, grouped by test (1-4), each question shown with all 4
+// options (correct one highlighted) and the Exam Shortcut revealed openly,
+// using the app's own extracted LaTeX/rich-text renderer (renderer.js) so
+// formulas render identically to the live dashboard.
 //
-// Run from the repository root:  node build/pdf/render_pyq_html.js
-// Writes: ISS-Statistics-II-Mock/PDFs/PYQs-<Unit>.html (one per unit)
+// Run from the repository root:  node build/pdf/render_prestorm_html.js
+// Writes: ISS-Statistics-II-Mock/PDFs/PreStorming-Mock-Series.html
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const MOCK_DIR = path.join(ROOT, 'ISS-Statistics-II-Mock');
-const QUESTIONS_JS = path.join(MOCK_DIR, 'questions2.js');
+const PRESTORM_JS = path.join(MOCK_DIR, 'prestorm.js');
 const OUT_DIR = path.join(MOCK_DIR, 'PDFs');
 
 const rendererCode = fs.readFileSync(path.join(__dirname, 'renderer.js'), 'utf8');
@@ -21,27 +20,23 @@ const { renderQuestionText, renderRich, escapeHtmlPlain } = new Function(
 )();
 
 function loadQuestions() {
-  const text = fs.readFileSync(QUESTIONS_JS, 'utf8');
-  const m = text.match(/window\.quizDataPaper2\s*=\s*(\[[\s\S]*\]);/);
-  if (!m) throw new Error('Could not find window.quizDataPaper2 in questions2.js');
+  const text = fs.readFileSync(PRESTORM_JS, 'utf8');
+  const m = text.match(/window\.prestormDataPaper2\s*=\s*(\[[\s\S]*\]);/);
+  if (!m) throw new Error('Could not find window.prestormDataPaper2 in prestorm.js');
   return JSON.parse(m[1]);
 }
 
-const UNIT_SLUG = {
-  'Linear Models': 'Linear-Models',
-  'Statistical Inference and Hypothesis Testing': 'Statistical-Inference-and-Hypothesis-Testing',
-  'Official Statistics': 'Official-Statistics',
+const UNIT_ACCENT = {
+  'Linear Models': { bg: '#eaf1fd', color: '#1a4d8f', border: '#c8dcf7' },
+  'Statistical Inference and Hypothesis Testing': { bg: '#fdeaf3', color: '#9c1a5f', border: '#f5c6dd' },
+  'Official Statistics': { bg: '#eafaf1', color: '#0c7a3f', border: '#bfe9cf' },
 };
 const UNIT_SHORT = {
   'Linear Models': 'LM',
   'Statistical Inference and Hypothesis Testing': 'SI & HT',
   'Official Statistics': 'OS',
 };
-const UNIT_ACCENT = {
-  'Linear Models': { bg: '#eaf1fd', color: '#1a4d8f', border: '#c8dcf7' },
-  'Statistical Inference and Hypothesis Testing': { bg: '#fdeaf3', color: '#9c1a5f', border: '#f5c6dd' },
-  'Official Statistics': { bg: '#eafaf1', color: '#0c7a3f', border: '#bfe9cf' },
-};
+const ACCENT = { bg: '#f1eafc', color: '#5b3fb0', border: '#dcd0f5' };
 
 const PRINT_CSS = `
 @page { size: A4; margin: 18mm 16mm; }
@@ -59,36 +54,25 @@ body { font-family: "Georgia", "Times New Roman", serif; color: #1c2230; font-si
 .toc { page-break-after: always; }
 .toc h2 { font-family: Arial, sans-serif; font-size: 16pt; border-bottom: 2px solid #1c2230; padding-bottom: 6px; }
 .toc-row { display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 10.5pt; padding: 5px 0; border-bottom: 1px dotted #ccc; }
-.toc-sub { padding-left: 16px; color: #5b6472; }
-.topic-heading { page-break-before: always; font-family: Arial, sans-serif; font-size: 15pt; color: #1c2230; border-bottom: 2px solid var(--accent, #1a4d8f); padding-bottom: 6px; margin: 0 0 4px; }
+.topic-heading { page-break-before: always; font-family: Arial, sans-serif; font-size: 15pt; color: #1c2230; border-bottom: 2px solid var(--accent, #5b3fb0); padding-bottom: 6px; margin: 0 0 4px; }
 .topic-heading:first-of-type { page-break-before: auto; }
 .topic-meta { font-family: Arial, sans-serif; font-size: 9.5pt; color: #777; margin-bottom: 10px; }
-.subtopic-heading { font-family: Arial, sans-serif; font-size: 11.5pt; color: #444; margin: 18px 0 8px; font-weight: 700; }
 .qblock { break-inside: avoid; page-break-inside: avoid; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid #e3e3e3; }
 .qmeta { font-family: Arial, sans-serif; font-size: 8.6pt; margin-bottom: 5px; }
 .qmeta .b { display: inline-block; background: #f1f2f4; color: #444; border-radius: 10px; padding: 1px 8px; margin-right: 5px; }
 .qmeta .b.unit { background: var(--ubg, #eaf1fd); color: var(--ucolor, #1a4d8f); }
-.qnum { font-weight: 700; color: var(--accent, #1a4d8f); margin-right: 4px; }
-.shared-stem { background: #f8f9fb; border: 1px dashed #dde1e7; border-radius: 8px; padding: 8px 10px; margin-bottom: 8px; font-size: 10pt; }
-.shared-stem .tag { font-size: 8.4pt; text-transform: uppercase; color: #5b6472; font-weight: 700; letter-spacing: 0.04em; display: block; margin-bottom: 3px; }
+.qnum { font-weight: 700; color: var(--accent, #5b3fb0); margin-right: 4px; }
 .qtext { margin: 0 0 8px; }
 .qtext p { margin: 0 0 6px; }
-.trailing-note { font-size: 9.8pt; color: #5b6472; margin: 0 0 8px; font-style: italic; }
 .opts { margin: 0 0 8px; padding: 0; list-style: none; }
 .opt { padding: 3px 0 3px 22px; position: relative; font-size: 10.6pt; }
 .opt .lab { position: absolute; left: 0; font-weight: 700; }
 .opt.correct { color: #0b6b3a; font-weight: 700; }
 .opt.correct .lab::after { content: " \\2713"; }
 .answer-line { font-family: Arial, sans-serif; font-size: 9.6pt; color: #0b6b3a; font-weight: 700; margin-bottom: 6px; }
-.reveal { background: #f8f9fb; border: 1px solid #dde1e7; border-radius: 8px; padding: 7px 12px; margin-bottom: 6px; }
-.reveal .reveal-title { font-family: Arial, sans-serif; font-size: 8.8pt; text-transform: uppercase; letter-spacing: 0.04em; color: #5b6472; display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
-.reveal.shortcut { background: #f7f5ff; border-left: 3px solid #6b5bd6; }
-.reveal.shortcut .reveal-title { color: #5b3fb0; }
-.reveal ol, .reveal ul { margin: 4px 0 0; padding-left: 18px; }
-.reveal li { margin-bottom: 4px; }
+.reveal { background: #f7f5ff; border: 1px solid #dcd0f5; border-left: 3px solid #6b5bd6; border-radius: 8px; padding: 7px 12px; margin-bottom: 6px; }
+.reveal .reveal-title { font-family: Arial, sans-serif; font-size: 8.8pt; text-transform: uppercase; letter-spacing: 0.04em; color: #5b3fb0; display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
 .ai-note { font-size: 7.6pt; color: #8a5a00; background: #fff4e0; border: 1px solid #f2d9a6; padding: 1px 6px; border-radius: 999px; font-weight: 400; text-transform: none; letter-spacing: 0; }
-.source-note { font-size: 9.6pt; background: #fdecea; border: 1px solid #f2c6c2; color: #b3261e; padding: 6px 10px; border-radius: 8px; margin-top: 6px; }
-.source-note b { font-family: Arial, sans-serif; }
 .footer { font-family: Arial, sans-serif; font-size: 8pt; color: #999; text-align: center; margin-top: 30px; }
 /* math + richtext rules copied verbatim from styles.css's ".math"/".richtext" block */
 .mathblock{display:block; text-align:center; margin:10px 0; font-size:1.08em;}
@@ -143,95 +127,66 @@ body { font-family: "Georgia", "Times New Roman", serif; color: #1c2230; font-si
 
 function esc(s) { return escapeHtmlPlain(String(s == null ? '' : s)); }
 
-function questionBlock(q, indexInSubtopic, accent) {
+function questionBlock(q) {
   const letters = 'ABCD';
-  const sharedStemHtml = q.sharedStem ? `<div class="shared-stem"><span class="tag">Shared context</span>${renderRich(q.sharedStem)}</div>` : '';
-  const trailingHtml = q.trailingNote ? `<div class="trailing-note">${renderQuestionText(q.trailingNote)}</div>` : '';
+  const accent = UNIT_ACCENT[q.unit] || ACCENT;
   const optsHtml = q.options.map((opt, i) => (
     `<li class="opt${i === q.correctAnswer ? ' correct' : ''}"><span class="lab">${letters[i]}.</span> ${renderQuestionText(opt)}</li>`
   )).join('');
   const meta = (
-    `<span class="b unit">${esc(UNIT_SHORT[q.unit] || q.unit)}</span>`
-    + `<span class="b">${esc(q.year)} Q${esc(q.questionNumber)}</span>`
-    + `<span class="b">${esc(q.questionType || '')}</span>`
-    + `<span class="b">${esc(q.difficulty || '')}</span>`
+    `<span class="b unit" style="--ubg:${accent.bg};--ucolor:${accent.color}">${esc(UNIT_SHORT[q.unit] || q.unit)}</span>`
+    + `<span class="b">${esc(q.topic)}</span>`
+    + `<span class="b">${esc(q.subtopic)}</span>`
   );
-  const tips = (q.tipsTricks || []).map(t => `<li>${renderQuestionText(t)}</li>`).join('');
-  const sol = (q.solution || []).map(s => `<li>${renderQuestionText(s.text)}</li>`).join('');
-  const sourceNote = q.sourceAmbiguityNote
-    ? `<div class="source-note"><b>Source note:</b> ${renderQuestionText(q.sourceAmbiguityNote)}</div>` : '';
   return (
-    `<div class="qblock" style="--accent:${accent.color}">`
-    + `<div class="qmeta" style="--ubg:${accent.bg};--ucolor:${accent.color}">${meta}</div>`
-    + sharedStemHtml
-    + `<div class="qtext"><span class="qnum">Q${indexInSubtopic}.</span>${renderRich(q.question)}</div>`
-    + trailingHtml
+    `<div class="qblock">`
+    + `<div class="qmeta">${meta}</div>`
+    + `<div class="qtext"><span class="qnum">Q${q.questionNumber}.</span>${renderRich(q.question)}</div>`
     + `<ul class="opts">${optsHtml}</ul>`
     + `<div class="answer-line">Correct answer: ${letters[q.correctAnswer]}</div>`
-    + `<div class="reveal shortcut"><b class="reveal-title">Exam Shortcut <span class="ai-note">AI-derived explanation</span></b>${renderQuestionText(q.examShortcut || '')}</div>`
-    + (tips ? `<div class="reveal"><b class="reveal-title">Tips &amp; Tricks</b><ul>${tips}</ul></div>` : '')
-    + (sol ? `<div class="reveal"><b class="reveal-title">Step-by-Step Solution</b><ol>${sol}</ol></div>` : '')
-    + sourceNote
+    + `<div class="reveal"><b class="reveal-title">Exam Shortcut <span class="ai-note">AI-derived explanation</span></b>${renderQuestionText(q.examShortcut || '')}</div>`
     + `</div>`
   );
 }
 
-function buildUnitHtml(unit, questions) {
-  const accent = UNIT_ACCENT[unit];
-  // group by topic (first-appearance order) -> subtopic (first-appearance order),
-  // sorted within subtopic by year then question number
-  const topics = [];
-  const topicIndex = {};
+function buildHtml(questions) {
+  const byTest = {};
   for (const q of questions) {
-    const t = q.topic || 'General';
-    if (!(t in topicIndex)) { topicIndex[t] = topics.length; topics.push({ name: t, subIndex: {}, subs: [] }); }
-    const topic = topics[topicIndex[t]];
-    const st = q.subtopic || 'General';
-    if (!(st in topic.subIndex)) { topic.subIndex[st] = topic.subs.length; topic.subs.push({ name: st, items: [] }); }
-    topic.subs[topic.subIndex[st]].items.push(q);
+    (byTest[q.testNo] = byTest[q.testNo] || []).push(q);
   }
-  for (const t of topics) {
-    for (const s of t.subs) {
-      s.items.sort((a, b) => a.year - b.year || a.questionNumber - b.questionNumber);
-    }
-  }
+  const testNos = Object.keys(byTest).map(Number).sort((a, b) => a - b);
+  for (const n of testNos) byTest[n].sort((a, b) => a.questionNumber - b.questionNumber);
 
   const total = questions.length;
-  const tocRows = topics.map(t => {
-    const count = t.subs.reduce((a, s) => a + s.items.length, 0);
-    const subRows = t.subs.map(s => `<div class="toc-row toc-sub"><span>${esc(s.name)}</span><span>${s.items.length}</span></div>`).join('');
-    return `<div class="toc-row"><span><b>${esc(t.name)}</b></span><span>${count} questions</span></div>${subRows}`;
-  }).join('');
+  const tocRows = testNos.map(n => (
+    `<div class="toc-row"><span><b>Test ${n}</b></span><span>${byTest[n].length} questions</span></div>`
+  )).join('');
 
   const bodyParts = [];
-  for (const t of topics) {
-    const count = t.subs.reduce((a, s) => a + s.items.length, 0);
-    bodyParts.push(`<div class="topic-heading" style="--accent:${accent.color}">${esc(t.name)}</div>`);
-    bodyParts.push(`<div class="topic-meta">${count} authentic PYQs in this topic (2018-2026)</div>`);
-    for (const s of t.subs) {
-      bodyParts.push(`<div class="subtopic-heading">${esc(s.name)}</div>`);
-      s.items.forEach((q, i) => bodyParts.push(questionBlock(q, i + 1, accent)));
-    }
+  for (const n of testNos) {
+    bodyParts.push(`<div class="topic-heading">Test ${n}</div>`);
+    bodyParts.push(`<div class="topic-meta">${byTest[n].length} questions &middot; full-length mock, original order and options</div>`);
+    for (const q of byTest[n]) bodyParts.push(questionBlock(q));
   }
 
   const cover = (
     `<div class="cover">`
-    + `<div class="kicker" style="color:${accent.color}">Statistics Paper II &middot; Authentic PYQs 2018-2026</div>`
-    + `<h1>${esc(unit)}</h1>`
-    + `<div class="subtitle">${total} authentic UPSC ISS questions with exam shortcut, tips &amp; tricks and step-by-step solution</div>`
+    + `<div class="kicker" style="color:${ACCENT.color}">Statistics Paper II &middot; PreStorm Mock Series</div>`
+    + `<h1>PreStorming Mock Tests</h1>`
+    + `<div class="subtitle">${total} questions across ${testNos.length} full-length mocks with exam shortcut shown after each answer</div>`
     + `<div class="stats">`
-    + `<div class="stat"><b>${total}</b><span>Authentic PYQs</span></div>`
-    + `<div class="stat"><b>${topics.length}</b><span>Topics Covered</span></div>`
-    + `<div class="stat"><b>9</b><span>Years 2018-2026</span></div>`
+    + `<div class="stat"><b>${total}</b><span>Questions</span></div>`
+    + `<div class="stat"><b>${testNos.length}</b><span>Full Mocks</span></div>`
+    + `<div class="stat"><b>80</b><span>Per Mock</span></div>`
     + `</div>`
-    + `<div class="notice"><b>AI-DERIVED EXPLANATIONS</b>The source booklets carry no official answer key. Every Exam Shortcut, Tips &amp; Tricks and Step-by-Step Solution here is independently derived and verified by the builder of this platform, not copied from an official source.</div>`
+    + `<div class="notice"><b>MOCK SERIES - NOT AN OFFICIAL UPSC PYQ SET</b>These are third-party mock-test questions, not authentic UPSC papers. The question text and options are as printed in the original booklet and the correct answer matches its answer key; the Exam Shortcut explaining each answer is independently derived by the builder of this platform, not copied from an official source.</div>`
     + `</div>`
   );
   const toc = `<div class="toc"><h2>Contents</h2>${tocRows}</div>`;
   const footer = `<div class="footer">Generated offline for personal exam preparation &middot; not an official UPSC publication</div>`;
 
   return (
-    `<!doctype html><html><head><meta charset="utf-8"><title>${esc(unit)} — PYQs 2018-2026</title><style>${PRINT_CSS}</style></head><body>`
+    `<!doctype html><html><head><meta charset="utf-8"><title>PreStorming Mock Tests</title><style>${PRINT_CSS}</style></head><body>`
     + cover + toc + bodyParts.join('') + footer
     + `</body></html>`
   );
@@ -240,13 +195,10 @@ function buildUnitHtml(unit, questions) {
 function main() {
   const data = loadQuestions();
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  for (const unit of Object.keys(UNIT_SLUG)) {
-    const qs = data.filter(q => q.unit === unit);
-    const html = buildUnitHtml(unit, qs);
-    const outPath = path.join(OUT_DIR, `PYQs-${UNIT_SLUG[unit]}.html`);
-    fs.writeFileSync(outPath, html);
-    console.log('Wrote', outPath, `(${qs.length} questions)`);
-  }
+  const html = buildHtml(data);
+  const outPath = path.join(OUT_DIR, 'PreStorming-Mock-Series.html');
+  fs.writeFileSync(outPath, html);
+  console.log('Wrote', outPath, `(${data.length} questions)`);
 }
 
 main();

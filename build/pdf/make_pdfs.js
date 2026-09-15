@@ -13,6 +13,7 @@ const FILES = [
   'PYQs-Linear-Models',
   'PYQs-Statistical-Inference-and-Hypothesis-Testing',
   'PYQs-Official-Statistics',
+  'PreStorming-Mock-Series',
 ];
 
 (async () => {

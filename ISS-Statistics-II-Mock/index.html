@@ -37,6 +37,7 @@
 <input type="file" id="import-file-input" accept="application/json" style="display:none">
 <script src="questions2.js"></script>
 <script src="forecast.js"></script>
+<script src="prestorm.js"></script>
 <script>
 (function(){
 "use strict";
@@ -54,9 +55,17 @@ var ALL_Q = (window.quizDataPaper2 || []).slice();
    id - work uniformly for both without duplicating that machinery. */
 var ALL_FORECAST_Q = (window.forecastDataPaper2 || []).slice();
 var FORECAST_SECTIONS = ["Linear Models", "Estimation", "Hypothesis Testing"];
+/* PreStorm questions are from a third-party mock-test series (not an
+   official UPSC paper, not AI-generated) - the questions and answer key
+   are as printed, only the Exam Shortcut is AI-derived. Kept in its own
+   array for the same reason as ALL_FORECAST_Q: never leak into the
+   authentic-PYQ year/sectional/topic/custom/search flows. */
+var ALL_PRESTORM_Q = (window.prestormDataPaper2 || []).slice();
+var PRESTORM_TEST_NUMBERS = Array.from(new Set(ALL_PRESTORM_Q.map(function(q){return q.testNo;}))).sort(function(a,b){return a-b;});
 var BY_ID = {};
 ALL_Q.forEach(function(q){ BY_ID[q.id] = q; });
 ALL_FORECAST_Q.forEach(function(q){ BY_ID[q.id] = q; });
+ALL_PRESTORM_Q.forEach(function(q){ BY_ID[q.id] = q; });
 var YEARS = Array.from(new Set(ALL_Q.map(function(q){return q.year;}))).sort();
 var UNIT_ORDER = ["Linear Models","Statistical Inference and Hypothesis Testing","Official Statistics"];
 var UNITS = UNIT_ORDER.filter(function(u){ return ALL_Q.some(function(q){return q.unit===u;}); });
@@ -183,17 +192,17 @@ function unitShort(unit){
    ========================================================================= */
 var GREEK_MAP = {
   theta:"θ", Theta:"Θ", mu:"μ", beta:"β", sigma:"σ", Sigma:"Σ",
-  alpha:"α", lambda:"λ", varepsilon:"ε", epsilon:"ε", gamma:"γ", Gamma:"Γ",
-  pi:"π", chi:"χ", phi:"φ", varphi:"φ", Phi:"Φ", rho:"ρ", delta:"δ",
+  alpha:"α", lambda:"λ", Lambda:"Λ", varepsilon:"ε", epsilon:"ε", gamma:"γ", Gamma:"Γ",
+  pi:"π", Pi:"Π", chi:"χ", phi:"φ", varphi:"φ", Phi:"Φ", rho:"ρ", delta:"δ", Delta:"Δ",
   omega:"ω", Omega:"Ω", tau:"τ", eta:"η", psi:"ψ", Psi:"Ψ", zeta:"ζ",
-  kappa:"κ", nu:"ν", xi:"ξ", upsilon:"υ"
+  kappa:"κ", nu:"ν", xi:"ξ", Xi:"Ξ", upsilon:"υ", Upsilon:"Υ", iota:"ι"
 };
 var SYM_MAP = {
   le:"≤", leq:"≤", ge:"≥", geq:"≥", ne:"≠", neq:"≠", approx:"≈",
   equiv:"≡", to:"→", sim:"∼", in:"∈", notin:"∉", mid:"∣", pm:"±", mp:"∓",
   times:"×", cdot:"⋅", infty:"∞", partial:"∂", ldots:"…", dots:"…",
   cdots:"⋯", vdots:"⋮", ddots:"⋱", Rightarrow:"⇒", Leftarrow:"⇐",
-  leftrightarrow:"↔", forall:"∀", exists:"∃", emptyset:"∅", cup:"∪", cap:"∩",
+  leftrightarrow:"↔", Leftrightarrow:"⇔", forall:"∀", exists:"∃", emptyset:"∅", cup:"∪", cap:"∩",
   subset:"⊂", subseteq:"⊆", supset:"⊃", propto:"∝", perp:"⊥", angle:"∠",
   therefore:"∴", because:"∵", star:"★", circ:"∘", oplus:"⊕", otimes:"⊗",
   mapsto:"↦", gg:"≫", ll:"≪", iff:"⟺", ell:"ℓ"
@@ -436,6 +445,10 @@ MathParser.prototype.parseCommand = function(name){
     var ubb = this.readArg();
     return {type:"underbrace", body: ubb};
   }
+  if(name==="stackrel"){
+    var srTop = this.readArg(); var srBottom = this.readArg();
+    return {type:"stackrel", top: srTop, bottom: srBottom};
+  }
   if(name==="not"){
     var nt = this.peek();
     if(nt && nt.t==="CMD" && NOT_MAP.hasOwnProperty(nt.name)){
@@ -538,6 +551,8 @@ function renderNode(node){
       return '<span class="bracket">(</span><span class="binom-stack"><span class="binom-top">'+renderNode(node.top)+'</span><span class="binom-bottom">'+renderNode(node.bottom)+'</span></span><span class="bracket">)</span>';
     case "underbrace":
       return '<span class="underbrace-wrap"><span class="underbrace-body">'+renderNode(node.body)+'</span><span class="underbrace-brace">⏟</span></span>';
+    case "stackrel":
+      return '<span class="stackrel-wrap"><span class="stackrel-top">'+renderNode(node.top)+'</span><span class="stackrel-bottom">'+renderNode(node.bottom)+'</span></span>';
     case "decorate": {
       var body = renderNode(node.body);
       switch(node.deco){
@@ -877,12 +892,33 @@ function buildForecastMock(section, setNo){
   var label = setNo==null ? ("Forecast: "+section) : ("Forecast: "+section+" - Set "+setNo);
   return makeMock(label, "learning", qs, null);
 }
+function prestormPoolForUnit(unit){
+  return ALL_PRESTORM_Q.filter(function(q){ return q.unit===unit; })
+    .slice().sort(function(a,b){ return a.testNo-b.testNo || a.questionNumber-b.questionNumber; });
+}
+function prestormSetsFor(unit){
+  var pool = prestormPoolForUnit(unit);
+  var sets = [];
+  for(var i=0;i<pool.length;i+=25){ sets.push({set: sets.length+1, count: Math.min(25, pool.length-i)}); }
+  return sets;
+}
+function buildPrestormSectionMock(unit, setNo){
+  var pool = prestormPoolForUnit(unit);
+  var label = "PreStorm: "+unitShort(unit);
+  if(setNo!=null){ pool = pool.slice((setNo-1)*25, setNo*25); label += " - Set "+setNo; }
+  return makeMock(label, "learning", pool, null);
+}
+function buildPrestormTestMock(testNo){
+  var qs = ALL_PRESTORM_Q.filter(function(q){ return q.testNo===testNo; })
+    .slice().sort(function(a,b){ return a.questionNumber-b.questionNumber; });
+  return makeMock("PreStorm Test "+testNo+" - Full Mock (Paper II)", "strict", qs, 120*60);
+}
 function computeGlobalAnalytics(){
   var stats = lsGet("stats", {});
   var byUnit={}, byTopic={}, byType={}, byYear={};
   var totalAttempts=0, totalCorrect=0;
   Object.keys(stats).forEach(function(qid){
-    var s = stats[qid]; var q = BY_ID[qid]; if(!q || q.isForecast) return; /* keep analytics scoped to authentic-PYQ performance */
+    var s = stats[qid]; var q = BY_ID[qid]; if(!q || q.isForecast || q.isPrestorm) return; /* keep analytics scoped to authentic-PYQ performance */
     totalAttempts += s.attempts; totalCorrect += s.correct;
     function add(obj,key){ if(!obj[key]) obj[key]={attempts:0,correct:0}; obj[key].attempts+=s.attempts; obj[key].correct+=s.correct; }
     add(byUnit,q.unit); add(byTopic,q.unit+" › "+q.topic); add(byType,q.questionType); add(byYear,q.year);
@@ -929,6 +965,7 @@ function render(){
     case "setupYear": html = viewSetupYear(); break;
     case "setupSectional": html = viewSetupSectional(); break;
     case "setupForecastSection": html = viewSetupForecastSection(); break;
+    case "setupPrestormSection": html = viewSetupPrestormSection(); break;
     case "setupTopic": html = viewSetupTopic(); break;
     case "setupSubtopic": html = viewSetupTopic(true); break;
     case "setupCustom": html = viewSetupCustom(); break;
@@ -987,6 +1024,20 @@ function viewHome(){
           var sets = forecastSetsFor(s);
           var cnt = sets.reduce(function(a,b){return a+b.count;},0);
           return '<button class="tile" data-action="pick-forecast-section" data-section="'+encodeURIComponent(s)+'"><div class="tile-title">'+s+'</div><div class="tile-sub">'+cnt+' questions &middot; '+sets.length+' sets of 25 &middot; shortcut shown after each answer</div></button>';
+        }).join("")
+  +   '</div></div>'
+  + '<div class="section-title">PreStorming Mock Tests <span class="badge badge-ai" style="margin-left:6px;">MOCK SERIES &middot; NOT AUTHENTIC PYQs</span></div>'
+  + '<div class="card" style="margin-bottom:16px;"><p class="muted" style="margin:0 0 12px;">'+ALL_PRESTORM_Q.length+' questions from a third-party ISS Paper II mock-test series (80 questions each, answer key as printed), available as '+PRESTORM_TEST_NUMBERS.length+' full-length Strict Exam mocks or as 25-question Learning Mode sectional sets with the shortcut shown right after each answer.</p>'
+  +   '<div class="grid cols-4">'
+  +     PRESTORM_TEST_NUMBERS.map(function(n){
+          return '<button class="tile" data-action="start-prestorm-test" data-test="'+n+'"><div class="tile-title">Test '+n+' - Full Mock</div><div class="tile-sub">80 questions &middot; Strict Exam &middot; 2h00m</div></button>';
+        }).join("")
+  +   '</div>'
+  +   '<div class="grid cols-3" style="margin-top:10px;">'
+  +     UNITS.filter(function(u){ return ALL_PRESTORM_Q.some(function(q){return q.unit===u;}); }).map(function(u){
+          var sets = prestormSetsFor(u);
+          var cnt = sets.reduce(function(a,b){return a+b.count;},0);
+          return '<button class="tile" data-action="pick-prestorm-section" data-unit="'+encodeURIComponent(u)+'"><div class="tile-title">'+unitShort(u)+' Sectional</div><div class="tile-sub">'+cnt+' questions &middot; '+sets.length+' sets of 25</div></button>';
         }).join("")
   +   '</div></div>'
   + '<div class="section-title">More ways to practice</div>'
@@ -1051,6 +1102,23 @@ function viewSetupForecastSection(){
     + '<h2>Forecast: '+section+' <span class="badge badge-ai" style="margin-left:6px;">AI-GENERATED</span></h2>'
     + '<p class="muted">'+totalCount+' forecast questions across '+sets.length+' sets of 25. Pick any set below - each runs in Learning Mode with the Exam Shortcut shown right after you answer.</p>'
     + '<div class="btn-row"><button class="btn btn-primary" data-action="start-forecast" data-section="'+encodeURIComponent(section)+'">Start All '+totalCount+' as One Mock</button></div>'
+    + '</div>'
+    + '<div class="grid cols-4">'+tiles+'</div>';
+}
+
+function viewSetupPrestormSection(){
+  var unit = App.setupCtx && App.setupCtx.unit;
+  var sets = prestormSetsFor(unit);
+  var totalCount = sets.reduce(function(a,b){return a+b.count;},0);
+  var tiles = sets.map(function(s){
+    return '<button class="tile" data-action="start-prestorm-section" data-unit="'+encodeURIComponent(unit)+'" data-set="'+s.set+'">'
+      + '<div class="tile-title">Set '+s.set+(s.set===1?" (starter)":"")+'</div>'
+      + '<div class="tile-sub">'+s.count+' questions &middot; Learning Mode</div></button>';
+  }).join("");
+  return backBar() + '<div class="card" style="margin-bottom:16px;">'
+    + '<h2>PreStorm: '+unitShort(unit)+' <span class="badge badge-ai" style="margin-left:6px;">MOCK SERIES</span></h2>'
+    + '<p class="muted">'+totalCount+' questions from the PreStorm mock series across '+sets.length+' sets of 25. Pick any set below - each runs in Learning Mode with the Exam Shortcut shown right after you answer.</p>'
+    + '<div class="btn-row"><button class="btn btn-primary" data-action="start-prestorm-section" data-unit="'+encodeURIComponent(unit)+'">Start All '+totalCount+' as One Mock</button></div>'
     + '</div>'
     + '<div class="grid cols-4">'+tiles+'</div>';
 }
@@ -1166,8 +1234,11 @@ function viewExam(){
 
   var metaBadges = q.isForecast
     ? badge(q.section, "badge-ai") + badge(q.topic) + (q.subtopic && q.subtopic!==q.topic ? badge(q.subtopic) : "") + badge(q.questionType)
+    : q.isPrestorm
+    ? badge("Test "+q.testNo+" Q"+q.questionNumber, "badge-ai") + badge(unitShort(q.unit), unitBadgeClass(q.unit)) + badge(q.topic)
     : badge(q.year+" Q"+q.questionNumber) + badge(unitShort(q.unit), unitBadgeClass(q.unit)) + badge(q.topic) + badge(q.questionType);
-  var forecastBanner = q.isForecast ? '<div class="forecast-banner">🔮 '+escapeHtmlPlain(q.provenanceLabel||"FORECAST / AI-GENERATED")+'</div>' : "";
+  var forecastBanner = q.isForecast ? '<div class="forecast-banner">🔮 '+escapeHtmlPlain(q.provenanceLabel||"FORECAST / AI-GENERATED")+'</div>'
+    : q.isPrestorm ? '<div class="forecast-banner">🧪 '+escapeHtmlPlain(q.provenanceLabel||"PRESTORM MOCK SERIES - answer key as printed, shortcut AI-derived")+'</div>' : "";
 
   var sharedStemHtml = q.sharedStem ? '<div class="shared-stem"><span class="tag">Shared context</span>'+renderRich(q.sharedStem)+'</div>' : "";
   var trailingHtml = q.trailingNote ? '<div class="trailing-note">'+renderQuestionText(q.trailingNote)+'</div>' : "";
@@ -1342,8 +1413,11 @@ function reviewCard(q, i, m){
   var status = a===undefined ? '<span class="badge">Unanswered</span>' : (a===q.correctAnswer ? '<span class="badge" style="background:var(--success-bg);color:var(--success);border-color:#bfe9cf;">Correct</span>' : '<span class="badge" style="background:var(--danger-bg);color:var(--danger);border-color:#f2c6c2;">Incorrect</span>');
   var reviewMetaBadges = q.isForecast
     ? badge(q.section, "badge-ai") + badge(q.topic) + (q.subtopic && q.subtopic!==q.topic ? badge(q.subtopic) : "") + status
+    : q.isPrestorm
+    ? badge("Test "+q.testNo+" Q"+q.questionNumber, "badge-ai") + badge(unitShort(q.unit), unitBadgeClass(q.unit)) + badge(q.subtopic) + status
     : badge(q.year+" Q"+q.questionNumber)+badge(unitShort(q.unit), unitBadgeClass(q.unit))+badge(q.subtopic)+status;
-  var reviewForecastBanner = q.isForecast ? '<div class="forecast-banner">🔮 '+escapeHtmlPlain(q.provenanceLabel||"FORECAST / AI-GENERATED")+'</div>' : "";
+  var reviewForecastBanner = q.isForecast ? '<div class="forecast-banner">🔮 '+escapeHtmlPlain(q.provenanceLabel||"FORECAST / AI-GENERATED")+'</div>'
+    : q.isPrestorm ? '<div class="forecast-banner">🧪 '+escapeHtmlPlain(q.provenanceLabel||"PRESTORM MOCK SERIES - answer key as printed, shortcut AI-derived")+'</div>' : "";
   return '<div class="card qcard">'
     + reviewForecastBanner
     + '<div class="qmeta">'+reviewMetaBadges
@@ -1539,6 +1613,15 @@ document.addEventListener("click", function(e){
       var setAttr = t.getAttribute("data-set");
       var setNo = setAttr ? Number(setAttr) : null;
       startMock(buildForecastMock(section, setNo));
+      break;
+    }
+    case "start-prestorm-test": startMock(buildPrestormTestMock(Number(t.getAttribute("data-test")))); break;
+    case "pick-prestorm-section": App.setupCtx = {unit: decodeURIComponent(t.getAttribute("data-unit"))}; App.view="setupPrestormSection"; render(); break;
+    case "start-prestorm-section": {
+      var pUnit = decodeURIComponent(t.getAttribute("data-unit"));
+      var pSetAttr = t.getAttribute("data-set");
+      var pSetNo = pSetAttr ? Number(pSetAttr) : null;
+      startMock(buildPrestormSectionMock(pUnit, pSetNo));
       break;
     }
     case "start-weak": {
