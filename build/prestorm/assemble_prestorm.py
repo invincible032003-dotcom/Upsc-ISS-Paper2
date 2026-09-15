@@ -18,7 +18,7 @@ SCRATCH = Path("/tmp/claude-0/-home-user-Upsc-ISS-Paper2/0cd7bc9c-8ee7-5325-8134
 TAXONOMY = json.loads((SCRATCH / "taxonomy.json").read_text())
 ANSWER_KEYS = json.loads((SCRATCH / "answer_keys.json").read_text())
 
-REQUIRED_FIELDS = ["questionNumber", "question", "options", "correctAnswer", "examShortcut", "unit", "topic", "subtopic"]
+REQUIRED_FIELDS = ["questionNumber", "question", "options", "correctAnswer", "examShortcut", "unit", "topic", "subtopic", "replaced", "replacedReason"]
 
 
 def validate_taxonomy(unit, topic, subtopic, ctx):
@@ -54,13 +54,19 @@ def load_test(test_no):
             raise ValueError(f"{ctx}: expected 4 options, got {len(item['options'])}")
         if not isinstance(item["correctAnswer"], int) or not (0 <= item["correctAnswer"] <= 3):
             raise ValueError(f"{ctx}: bad correctAnswer {item['correctAnswer']!r}")
+        if not isinstance(item["replaced"], bool):
+            raise ValueError(f"{ctx}: 'replaced' must be a boolean, got {item['replaced']!r}")
+        if item["replaced"] and not item.get("replacedReason"):
+            raise ValueError(f"{ctx}: replaced=true but replacedReason is empty")
 
-        expected_idx = letter_to_idx[key[str(qn)]]
-        if item["correctAnswer"] != expected_idx:
-            raise ValueError(
-                f"{ctx}: correctAnswer {item['correctAnswer']} != answer-key index "
-                f"{expected_idx} (key letter {key[str(qn)]!r}) - agent may have mis-keyed"
-            )
+        if not item["replaced"]:
+            expected_idx = letter_to_idx[key[str(qn)]]
+            if item["correctAnswer"] != expected_idx:
+                raise ValueError(
+                    f"{ctx}: correctAnswer {item['correctAnswer']} != answer-key index "
+                    f"{expected_idx} (key letter {key[str(qn)]!r}) - agent may have mis-keyed "
+                    f"(if this question was meant to be replaced, 'replaced' must be true)"
+                )
 
         validate_taxonomy(item["unit"], item["topic"], item["subtopic"], ctx)
         by_num[qn] = item
@@ -106,7 +112,13 @@ def shuffle_item(item, rng, test_no):
         "topic": item["topic"],
         "subtopic": item["subtopic"],
         "isPrestorm": True,
-        "provenanceLabel": "PRESTORM MOCK SERIES - answer key as printed, shortcut AI-derived",
+        "provenanceLabel": (
+            "PRESTORM MOCK SERIES - editorially replaced, shortcut AI-derived"
+            if item["replaced"] else
+            "PRESTORM MOCK SERIES - answer key as printed, shortcut AI-derived"
+        ),
+        "replaced": item["replaced"],
+        "replacedReason": item.get("replacedReason", ""),
     }
 
 
@@ -130,6 +142,11 @@ def main():
     unit_counts = Counter(q["unit"] for q in all_out)
     for u, c in unit_counts.items():
         print(f"  {u}: {c}")
+
+    replaced = [q for q in all_out if q["replaced"]]
+    print(f"\nReplaced {len(replaced)}/{len(all_out)} questions for quality:")
+    for q in replaced:
+        print(f"  {q['id']}: {q['replacedReason']}")
 
 
 if __name__ == "__main__":
