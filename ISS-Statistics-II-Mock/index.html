@@ -190,14 +190,16 @@ var GREEK_MAP = {
 };
 var SYM_MAP = {
   le:"≤", leq:"≤", ge:"≥", geq:"≥", ne:"≠", neq:"≠", approx:"≈",
-  equiv:"≡", to:"→", sim:"∼", in:"∈", notin:"∉", mid:"∣", pm:"±",
+  equiv:"≡", to:"→", sim:"∼", in:"∈", notin:"∉", mid:"∣", pm:"±", mp:"∓",
   times:"×", cdot:"⋅", infty:"∞", partial:"∂", ldots:"…", dots:"…",
   cdots:"⋯", vdots:"⋮", ddots:"⋱", Rightarrow:"⇒", Leftarrow:"⇐",
   leftrightarrow:"↔", forall:"∀", exists:"∃", emptyset:"∅", cup:"∪", cap:"∩",
   subset:"⊂", subseteq:"⊆", supset:"⊃", propto:"∝", perp:"⊥", angle:"∠",
-  therefore:"∴", because:"∵", star:"★", circ:"∘", oplus:"⊕", otimes:"⊗"
+  therefore:"∴", because:"∵", star:"★", circ:"∘", oplus:"⊕", otimes:"⊗",
+  mapsto:"↦", gg:"≫", ll:"≪", iff:"⟺", ell:"ℓ"
 };
-var OP_NAMES = {log:1, ln:1, exp:1, max:1, min:1, lim:1, sup:1, inf:1, det:1, gcd:1, arg:1, tan:1, sin:1, cos:1, argmax:1, argmin:1, Var:1, Cov:1, Bias:1, MSE:1, Corr:1};
+var NOT_MAP = {equiv:"≢", Rightarrow:"⇏", subset:"⊄", subseteq:"⊈", supset:"⊅", supseteq:"⊉", in:"∉", ge:"≱", geq:"≱", le:"≰", leq:"≰", approx:"≉", sim:"≁", exists:"∄", to:"↛"};
+var OP_NAMES = {log:1, ln:1, exp:1, max:1, min:1, lim:1, sup:1, inf:1, det:1, gcd:1, arg:1, tan:1, sin:1, cos:1, argmax:1, argmin:1, Var:1, Cov:1, Bias:1, MSE:1, Corr:1, dim:1};
 /* Per amsmath convention, these "movable limits" operators stack their
    sub/superscript directly above/below the operator name in display
    style, exactly like \sum/\int/\prod - but keep side scripts in text/
@@ -207,6 +209,7 @@ var STACKING_OPS = {gcd:1, inf:1, lim:1, max:1, min:1, sup:1};
 var BIGOPS = {sum:"∑", prod:"∏", int:"∫", oint:"∮"};
 var RENDER_DISPLAY = false;
 var MATHBB_MAP = {R:"ℝ", N:"ℕ", Z:"ℤ", Q:"ℚ", C:"ℂ", E:"ᵐᵉ".length? "𝔼":"E", P:"ℙ", V:"𝕍"};
+var MATHCAL_MAP = {A:"𝒜",B:"ℬ",C:"𝒞",D:"𝒟",E:"ℰ",F:"ℱ",G:"𝒢",H:"ℋ",I:"ℐ",J:"𝒥",K:"𝒦",L:"ℒ",M:"ℳ",N:"𝒩",O:"𝒪",P:"𝒫",Q:"𝒬",R:"ℛ",S:"𝒮",T:"𝒯",U:"𝒰",V:"𝒱",W:"𝒲",X:"𝒳",Y:"𝒴",Z:"𝒵"};
 var BRACKET_OPEN = {"":"{","":"(","":"[","":"|","":"‖"};
 var BRACKET_CLOSE = {"":"}","":")","":"]","":"|","":"‖"};
 
@@ -229,6 +232,7 @@ function preprocessLatex(s){
     .replace(/\\;/g, " ")
     .replace(/\\!/g, "")
     .replace(/\\%/g, "%")
+    .replace(/\\(?:Bigg|bigg|Big|big)[lr]?(?![a-zA-Z])/g, "")
     .replace(/\\xrightarrow/g, "\\to");
 }
 
@@ -300,11 +304,20 @@ MathParser.prototype.readArg = function(){
      (e.g. x_12 means x-sub-1 followed by literal "2"), but our tokenizer
      merges runs of plain characters into a single TEXT token for
      simplicity elsewhere - so split off just the first character here
-     and leave the remainder in place for continued parsing. */
-  if(t && t.t==="TEXT" && t.v.length>1){
-    var first = t.v.charAt(0);
-    t.v = t.v.slice(1);
-    return {type:"text", v:first};
+     and leave the remainder in place for continued parsing. Per LaTeX's
+     own grammar, whitespace right after a control word (\bar y, \hat p)
+     is an insignificant separator, not part of the argument - skip any
+     leading spaces in that token first, otherwise \bar/\hat/etc. would
+     decorate a blank space and leave the real letter undecorated. */
+  if(t && t.t==="TEXT"){
+    var lead = 0;
+    while(lead < t.v.length && t.v.charAt(lead) === " ") lead++;
+    if(lead > 0) t.v = t.v.slice(lead);
+    if(t.v.length > 1){
+      var first = t.v.charAt(0);
+      t.v = t.v.slice(1);
+      return {type:"text", v:first};
+    }
   }
   return this.parseAtom();
 };
@@ -391,6 +404,10 @@ MathParser.prototype.parseCommand = function(name){
     var bb = this.readArg();
     return {type:"decorate", deco:"bb", body: bb};
   }
+  if(name==="mathcal" || name==="mathscr"){
+    var cal = this.readArg();
+    return {type:"decorate", deco:"cal", body: cal};
+  }
   if(name==="bar" || name==="overline"){
     var barb = this.readArg();
     return {type:"decorate", deco:"bar", body: barb};
@@ -414,6 +431,18 @@ MathParser.prototype.parseCommand = function(name){
   if(name==="underline"){
     var ub = this.readArg();
     return {type:"decorate", deco:"under", body: ub};
+  }
+  if(name==="underbrace"){
+    var ubb = this.readArg();
+    return {type:"underbrace", body: ubb};
+  }
+  if(name==="not"){
+    var nt = this.peek();
+    if(nt && nt.t==="CMD" && NOT_MAP.hasOwnProperty(nt.name)){
+      this.next();
+      return {type:"sym", v: NOT_MAP[nt.name]};
+    }
+    return {type:"sym", v:"̸"};
   }
   if(name==="begin"){
     this.next(); /* LBRACE */
@@ -457,6 +486,19 @@ function htmlForTextValue(v){
   }
   return out;
 }
+function singleLetterOf(node){
+  /* \mathbb{R} / \mathcal{R} always arrive braced, so readArg() wraps the
+     argument as {type:"group", body:[...]}, never the bare {type:"text"}
+     shape - unwrap that one level so the single-letter font-variant maps
+     below actually match instead of silently falling back to plain text. */
+  if(!node) return null;
+  if(node.type==="text" && node.v.length===1) return node.v;
+  if(node.type==="group" && node.body && node.body.length===1){
+    var inner = node.body[0];
+    if(inner.type==="text" && inner.v.length===1) return inner.v;
+  }
+  return null;
+}
 function renderNode(node){
   switch(node.type){
     case "text": return htmlForTextValue(node.v);
@@ -494,6 +536,8 @@ function renderNode(node){
       return '<span class="sqrt"><span class="radical">√</span><span class="sqrt-body">'+renderNode(node.body)+'</span></span>';
     case "binom":
       return '<span class="bracket">(</span><span class="binom-stack"><span class="binom-top">'+renderNode(node.top)+'</span><span class="binom-bottom">'+renderNode(node.bottom)+'</span></span><span class="bracket">)</span>';
+    case "underbrace":
+      return '<span class="underbrace-wrap"><span class="underbrace-body">'+renderNode(node.body)+'</span><span class="underbrace-brace">⏟</span></span>';
     case "decorate": {
       var body = renderNode(node.body);
       switch(node.deco){
@@ -506,10 +550,18 @@ function renderNode(node){
         case "upright": return '<span class="upright">'+body+'</span>';
         case "bold": return '<b>'+body+'</b>';
         case "bb": {
-          if(node.body && node.body.type==="text" && node.body.v.length===1 && MATHBB_MAP[node.body.v]){
-            return escapeHtmlPlain(MATHBB_MAP[node.body.v]);
+          var bbLetter = singleLetterOf(node.body);
+          if(bbLetter && MATHBB_MAP[bbLetter]){
+            return escapeHtmlPlain(MATHBB_MAP[bbLetter]);
           }
           return '<b>'+body+'</b>';
+        }
+        case "cal": {
+          var calLetter = singleLetterOf(node.body);
+          if(calLetter && MATHCAL_MAP[calLetter]){
+            return escapeHtmlPlain(MATHCAL_MAP[calLetter]);
+          }
+          return '<span class="upright">'+body+'</span>';
         }
         default: return body;
       }

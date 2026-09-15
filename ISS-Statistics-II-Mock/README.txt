@@ -27,7 +27,7 @@ HOW TO OPEN IT
 
 PDF STUDY GUIDES (offline, in the PDFs/ folder)
 --------------------------------------------------
-Two print-ready PDFs, generated entirely offline from this same question
+Five print-ready PDFs, generated entirely offline from this same question
 bank, for reading or printing without opening the app:
 
 - Forecast-Linear-Models.pdf - every Linear Models forecast question,
@@ -35,10 +35,18 @@ bank, for reading or printing without opening the app:
   and the Exam Shortcut shown openly beneath each question.
 - Forecast-Statistical-Inference.pdf - the same, for the combined
   Estimation and Hypothesis Testing forecast bank.
+- PYQs-Linear-Models.pdf, PYQs-Statistical-Inference-and-Hypothesis-
+  Testing.pdf, PYQs-Official-Statistics.pdf - every authentic PYQ (2018-
+  2026) for that syllabus unit, grouped by topic then subtopic, each
+  question shown with all 4 options, the correct answer highlighted, and
+  the Exam Shortcut, Tips & Tricks and Step-by-Step Solution all revealed
+  openly beneath it (no click-to-reveal needed on paper).
 
-Both carry the same "FORECAST / AI-GENERATED" notice as the app and are
-meant as a portable answer-key companion to the Forecast Sectional Mocks
-below, not a substitute for practising in the app itself.
+The forecast PDFs carry the same "FORECAST / AI-GENERATED" notice as the
+app and are meant as a portable answer-key companion to the Forecast
+Sectional Mocks below; the PYQ PDFs are a portable study-guide companion
+to the Full Year / Sectional / Topic mocks. Neither is a substitute for
+practising in the app itself.
 
 MAIN MODES
 ----------

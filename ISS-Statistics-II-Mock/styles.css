@@ -344,6 +344,8 @@ label{font-size:13px; font-weight:600; color:var(--text-dim); display:block; mar
 .math .decorate-dot::before{content:"."; position:absolute; left:50%; top:-.62em; transform:translateX(-50%); font-size:1em; font-weight:700;}
 .math .decorate-vec{position:relative; display:inline-block;}
 .math .decorate-vec::before{content:"\2192"; position:absolute; left:50%; top:-.78em; transform:translateX(-50%); font-size:.65em;}
+.math .underbrace-wrap{display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; font-style:italic; margin:0 .05em; line-height:1.05;}
+.math .underbrace-brace{font-style:normal; font-size:.85em; margin-top:.02em;}
 .math .matrix, .math .cases{display:inline-flex; align-items:center; vertical-align:middle; font-style:italic;}
 /* .mtable/.ctable use CSS display:table on <span> elements rather than a
    real <table>, so this math markup is safe to nest inside a <p> (see the

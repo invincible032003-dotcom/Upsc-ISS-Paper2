@@ -59,7 +59,7 @@ body { font-family: "Georgia", "Times New Roman", serif; color: #1a1f29; font-si
 .answer-line { font-family: Arial, sans-serif; font-size: 9.6pt; color: #0b6b3a; font-weight: 700; margin-bottom: 6px; }
 .shortcut { background: #f7f5ff; border-left: 3px solid #6b5bd6; padding: 7px 12px; font-size: 10.2pt; }
 .shortcut p { margin: 0 0 6px; }
-.shortcut b { font-family: Arial, sans-serif; font-size: 8.8pt; text-transform: uppercase; letter-spacing: 0.04em; color: #5b3fb0; display: block; margin-bottom: 3px; }
+.shortcut .reveal-title { font-family: Arial, sans-serif; font-size: 8.8pt; text-transform: uppercase; letter-spacing: 0.04em; color: #5b3fb0; display: block; margin-bottom: 3px; }
 .footer { font-family: Arial, sans-serif; font-size: 8pt; color: #999; text-align: center; margin-top: 30px; }
 /* math + richtext rules copied verbatim from styles.css's ".math"/".richtext"
    block (light palette only - a printed PDF has no dark mode) so formulas
@@ -94,6 +94,8 @@ body { font-family: "Georgia", "Times New Roman", serif; color: #1a1f29; font-si
 .math .decorate-dot::before{content:"."; position:absolute; left:50%; top:-.62em; transform:translateX(-50%); font-size:1em; font-weight:700;}
 .math .decorate-vec{position:relative; display:inline-block;}
 .math .decorate-vec::before{content:"\\2192"; position:absolute; left:50%; top:-.78em; transform:translateX(-50%); font-size:.65em;}
+.math .underbrace-wrap{display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; font-style:italic; margin:0 .05em; line-height:1.05;}
+.math .underbrace-brace{font-style:normal; font-size:.85em; margin-top:.02em;}
 .math .matrix, .math .cases{display:inline-flex; align-items:center; vertical-align:middle; font-style:italic;}
 .math .mtable, .math .ctable{display:inline-table; vertical-align:middle; border-collapse:collapse;}
 .math .mrow, .math .crow{display:table-row;}
@@ -124,7 +126,7 @@ function questionBlock(q, indexInTopic) {
     + `<div class="qtext"><span class="qnum">Q${indexInTopic}.</span>${renderRich(q.question)}</div>`
     + `<ul class="opts">${optsHtml}</ul>`
     + `<div class="answer-line">Correct answer: ${letters[q.correctAnswer]}</div>`
-    + `<div class="shortcut"><b>Exam Shortcut</b>${renderQuestionText(q.examShortcut || '')}</div>`
+    + `<div class="shortcut"><b class="reveal-title">Exam Shortcut</b>${renderQuestionText(q.examShortcut || '')}</div>`
     + `</div>`
   );
 }

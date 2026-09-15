@@ -10,6 +10,9 @@ const DIR = path.resolve(__dirname, '..', '..', 'ISS-Statistics-II-Mock', 'PDFs'
 const FILES = [
   'Forecast-Linear-Models',
   'Forecast-Statistical-Inference',
+  'PYQs-Linear-Models',
+  'PYQs-Statistical-Inference-and-Hypothesis-Testing',
+  'PYQs-Official-Statistics',
 ];
 
 (async () => {
