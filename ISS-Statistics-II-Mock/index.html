@@ -546,7 +546,7 @@ function renderNode(node){
     case "frac":
       return '<span class="frac"><span class="num">'+renderNode(node.num)+'</span><span class="den">'+renderNode(node.den)+'</span></span>';
     case "sqrt":
-      return '<span class="sqrt"><span class="radical">√</span><span class="sqrt-body">'+renderNode(node.body)+'</span></span>';
+      return '<span class="sqrt"><svg class="sqrt-radical" viewBox="0 0 32 54" preserveAspectRatio="none"><polyline points="1,33 8,33 15,52 30,2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="butt" stroke-linejoin="miter" vector-effect="non-scaling-stroke"/></svg><span class="sqrt-body">'+renderNode(node.body)+'</span></span>';
     case "binom":
       return '<span class="bracket">(</span><span class="binom-stack"><span class="binom-top">'+renderNode(node.top)+'</span><span class="binom-bottom">'+renderNode(node.bottom)+'</span></span><span class="bracket">)</span>';
     case "underbrace":
@@ -1229,7 +1229,6 @@ function viewExam(){
   var q = m.questions[i];
   var answered = m.answers[i];
   var isLearning = m.mode==="learning";
-  var stage = m.revealStage[i] || 0;
   var locked = isLearning && answered!==undefined;
 
   var metaBadges = q.isForecast
@@ -1267,30 +1266,14 @@ function viewExam(){
     feedbackHtml += '<div class="feedback-banner '+(isCorrect?"correct":"incorrect")+'">'
       + (isCorrect ? "✓ Correct" : "✗ Incorrect - correct answer is "+"ABCD"[q.correctAnswer])
       + '</div>';
-    /* Reveal order: Step-by-Step Solution -> Exam Shortcut -> Tips & Tricks.
-       Each slot's stage threshold shifts to fill in for a missing earlier
-       slot (e.g. shortcut becomes stage>=1 instead of >=2 when there's no
-       solution), same skip-if-missing pattern as before, just reordered. */
+    /* All shown at once on answering, in order: Step-by-Step Solution,
+       Exam Shortcut, Tips & Tricks - no click-to-reveal staging. */
     if(hasSolution){
-      if(stage>=1){
-        feedbackHtml += '<div class="reveal-block"><h4>Step-by-Step Solution</h4><ol>'+q.solution.map(function(s){return "<li>"+renderQuestionText(s.text)+"</li>";}).join("")+'</ol></div>';
-      } else {
-        feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Step-by-Step Solution</button></div>';
-      }
+      feedbackHtml += '<div class="reveal-block"><h4>Step-by-Step Solution</h4><ol>'+q.solution.map(function(s){return "<li>"+renderQuestionText(s.text)+"</li>";}).join("")+'</ol></div>';
     }
-    var afterSolutionStage = hasSolution ? 1 : 0;
-    if(stage>=afterSolutionStage+1){
-      feedbackHtml += '<div class="reveal-block"><h4>Exam Shortcut <span class="ai-note">AI-derived explanation</span></h4>'+renderQuestionText(q.examShortcut||"Not available.")+'</div>';
-    } else if(stage>=afterSolutionStage){
-      feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Exam Shortcut</button></div>';
-    }
-    var afterShortcutStage = afterSolutionStage+1;
+    feedbackHtml += '<div class="reveal-block"><h4>Exam Shortcut <span class="ai-note">AI-derived explanation</span></h4>'+renderQuestionText(q.examShortcut||"Not available.")+'</div>';
     if(hasTips){
-      if(stage>=afterShortcutStage+1){
-        feedbackHtml += '<div class="reveal-block"><h4>Tips &amp; Tricks</h4><ul>'+q.tipsTricks.map(function(t){return "<li>"+renderQuestionText(t)+"</li>";}).join("")+'</ul></div>';
-      } else if(stage>=afterShortcutStage){
-        feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Tips &amp; Tricks</button></div>';
-      }
+      feedbackHtml += '<div class="reveal-block"><h4>Tips &amp; Tricks</h4><ul>'+q.tipsTricks.map(function(t){return "<li>"+renderQuestionText(t)+"</li>";}).join("")+'</ul></div>';
     }
     if(q.sourceAmbiguityNote){
       feedbackHtml += '<div class="source-note"><b>Source note:</b> '+renderQuestionText(q.sourceAmbiguityNote)+'</div>';
@@ -1657,13 +1640,6 @@ document.addEventListener("click", function(e){
       var m = App.mock; var i = m.current;
       if(m.mode==="learning" && m.answers[i]!==undefined) break;
       m.answers[i] = idx;
-      if(m.mode==="learning") m.revealStage[i] = 0;
-      render();
-      break;
-    }
-    case "reveal-next": {
-      var m2 = App.mock; var i2 = m2.current;
-      m2.revealStage[i2] = (m2.revealStage[i2]||0) + 1;
       render();
       break;
     }
@@ -1806,7 +1782,6 @@ document.addEventListener("keydown", function(e){
     if(idx < m.questions[i].options.length){
       if(!(m.mode==="learning" && m.answers[i]!==undefined)){
         m.answers[i] = idx;
-        if(m.mode==="learning") m.revealStage[i]=0;
         render();
       }
     }

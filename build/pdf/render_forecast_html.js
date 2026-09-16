@@ -83,9 +83,9 @@ body { font-family: "Georgia", "Times New Roman", serif; color: #1a1f29; font-si
 .math .opstack-mid{font-style:normal;}
 .math sub, .math sup{font-style:italic;}
 .math .upright sub, .math .upright sup{font-style:normal;}
-.math .sqrt{display:inline-flex; align-items:stretch; font-style:normal; margin:0 .05em;}
-.math .sqrt .radical{padding-right:.05em; align-self:flex-end; transform:scaleY(1.1);}
-.math .sqrt .sqrt-body{border-top:1.3px solid currentColor; padding:0 .15em; font-style:italic;}
+.math .sqrt{display:inline-flex; align-items:stretch; font-style:normal; margin:0 .1em 0 .05em;}
+.math .sqrt-radical{width:.62em; flex:none; overflow:visible; display:block;}
+.math .sqrt .sqrt-body{border-top:1.4px solid currentColor; padding:.04em .14em 0 .1em; font-style:italic; margin-top:1px;}
 .math .decorate-bar{border-top:1.1px solid currentColor; padding-top:1px; display:inline-block;}
 .math .decorate-hat, .math .decorate-tilde{position:relative; display:inline-block;}
 .math .decorate-hat::before{content:"^"; position:absolute; left:50%; top:-.72em; transform:translateX(-50%); font-size:.8em;}

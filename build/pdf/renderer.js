@@ -369,7 +369,7 @@ function renderNode(node){
     case "frac":
       return '<span class="frac"><span class="num">'+renderNode(node.num)+'</span><span class="den">'+renderNode(node.den)+'</span></span>';
     case "sqrt":
-      return '<span class="sqrt"><span class="radical">√</span><span class="sqrt-body">'+renderNode(node.body)+'</span></span>';
+      return '<span class="sqrt"><svg class="sqrt-radical" viewBox="0 0 32 54" preserveAspectRatio="none"><polyline points="1,33 8,33 15,52 30,2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="butt" stroke-linejoin="miter" vector-effect="non-scaling-stroke"/></svg><span class="sqrt-body">'+renderNode(node.body)+'</span></span>';
     case "binom":
       return '<span class="bracket">(</span><span class="binom-stack"><span class="binom-top">'+renderNode(node.top)+'</span><span class="binom-bottom">'+renderNode(node.bottom)+'</span></span><span class="bracket">)</span>';
     case "underbrace":
