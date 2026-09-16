@@ -967,7 +967,6 @@ function render(){
     case "setupForecastSection": html = viewSetupForecastSection(); break;
     case "setupPrestormSection": html = viewSetupPrestormSection(); break;
     case "setupTopic": html = viewSetupTopic(); break;
-    case "setupSubtopic": html = viewSetupTopic(true); break;
     case "setupCustom": html = viewSetupCustom(); break;
     case "setupMistakes": html = viewSetupSimple("mistakes"); break;
     case "setupBookmarks": html = viewSetupSimple("bookmarks"); break;
@@ -1013,8 +1012,6 @@ function viewHome(){
   +     '<div class="stat"><b>'+hist.length+'</b><span>Attempts so far</span></div>'
   +   '</div>'
   + '</div>'
-  + '<div class="section-title">Full Year Mocks</div>'
-  + '<div class="grid cols-4">'+yearsRow+'</div>'
   + '<div class="section-title">Sectional Mocks</div>'
   + '<div class="grid cols-3">'+sectionalRow+'</div>'
   + '<div class="section-title">Forecast Sectional Mocks <span class="badge badge-ai" style="margin-left:6px;">AI-GENERATED &middot; NOT AUTHENTIC PYQs</span></div>'
@@ -1045,13 +1042,14 @@ function viewHome(){
   + '<div class="section-title">More ways to practice</div>'
   + '<div class="grid cols-3">'
   +   '<button class="tile" data-action="go-view" data-view="setupTopic"><div class="tile-icon">📚</div><div class="tile-title">Topic Mocks</div><div class="tile-sub">Filter by unit &rarr; topic</div></button>'
-  +   '<button class="tile" data-action="go-view" data-view="setupSubtopic"><div class="tile-icon">🔎</div><div class="tile-title">Subtopic Mocks</div><div class="tile-sub">Drill a micro-topic</div></button>'
   +   '<button class="tile" data-action="go-view" data-view="setupCustom"><div class="tile-icon">⚙️</div><div class="tile-title">Custom Mock Generator</div><div class="tile-sub">Pick years, units, topics, count</div></button>'
   +   '<button class="tile" data-action="go-view" data-view="setupMistakes"><div class="tile-icon">✖️</div><div class="tile-title">Practice My Mistakes</div><div class="tile-sub">'+mistakes.length+' question(s) in your mistake bank</div></button>'
   +   '<button class="tile" data-action="go-view" data-view="bookmarksList"><div class="tile-icon">🔖</div><div class="tile-title">My Bookmarks</div><div class="tile-sub">'+bookmarks.length+' bookmarked question(s)</div></button>'
   +   '<button class="tile" data-action="go-view" data-view="analytics"><div class="tile-icon">📊</div><div class="tile-title">Analytics &amp; Weak Areas</div><div class="tile-sub">Track your accuracy by topic</div></button>'
   +   '<button class="tile" data-action="go-view" data-view="history"><div class="tile-icon">🕒</div><div class="tile-title">Attempt History</div><div class="tile-sub">'+hist.length+' past attempt(s)</div></button>'
-  + '</div>';
+  + '</div>'
+  + '<div class="section-title">Full Year Mocks</div>'
+  + '<div class="grid cols-4">'+yearsRow+'</div>';
 }
 
 function modeRadios(name, current){
