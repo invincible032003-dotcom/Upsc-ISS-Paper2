@@ -29,41 +29,42 @@ function loadForecast() {
 const PRINT_CSS = `
 @page { size: A4; margin: 18mm 16mm; }
 * { box-sizing: border-box; }
-body { font-family: "Georgia", "Times New Roman", serif; color: #1a1f29; font-size: 11.3pt; line-height: 1.5; margin: 0; }
+html { background: #0f1218; }
+body { font-family: "Georgia", "Times New Roman", serif; color: #e8eaf0; background: #0f1218; font-size: 11.3pt; line-height: 1.5; margin: 0; }
 .cover { min-height: 240mm; display: flex; flex-direction: column; justify-content: center; page-break-after: always; text-align: center; }
-.cover .kicker { color: #6b5bd6; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12pt; margin-bottom: 10px; font-family: Arial, sans-serif; }
-.cover h1 { font-size: 30pt; margin: 0 0 10px; }
-.cover .subtitle { font-size: 14pt; color: #444; margin-bottom: 26px; }
+.cover .kicker { color: #b79cf0; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12pt; margin-bottom: 10px; font-family: Arial, sans-serif; }
+.cover h1 { font-size: 30pt; margin: 0 0 10px; color: #e8eaf0; }
+.cover .subtitle { font-size: 14pt; color: #a3aab8; margin-bottom: 26px; }
 .cover .stats { display: flex; justify-content: center; gap: 34px; margin-bottom: 30px; font-family: Arial, sans-serif; }
-.cover .stat b { display: block; font-size: 22pt; color: #1a1f29; }
-.cover .stat span { font-size: 10pt; color: #666; }
-.cover .notice { max-width: 500px; margin: 0 auto; background: #fff3cd; border: 1px solid #f0c674; border-radius: 8px; padding: 14px 18px; font-size: 10pt; color: #6b4e00; font-family: Arial, sans-serif; text-align: left; }
+.cover .stat b { display: block; font-size: 22pt; color: #e8eaf0; }
+.cover .stat span { font-size: 10pt; color: #a3aab8; }
+.cover .notice { max-width: 500px; margin: 0 auto; background: #3a2e12; border: 1px solid #5c481d; border-radius: 8px; padding: 14px 18px; font-size: 10pt; color: #f2b84b; font-family: Arial, sans-serif; text-align: left; }
 .cover .notice b { display: block; margin-bottom: 4px; font-size: 10.5pt; }
 .toc { page-break-after: always; }
-.toc h2 { font-family: Arial, sans-serif; font-size: 16pt; border-bottom: 2px solid #1a1f29; padding-bottom: 6px; }
-.toc-row { display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 10.5pt; padding: 5px 0; border-bottom: 1px dotted #ccc; }
-.topic-heading { page-break-before: always; font-family: Arial, sans-serif; font-size: 15pt; color: #1a1f29; border-bottom: 2px solid #6b5bd6; padding-bottom: 6px; margin: 0 0 4px; }
+.toc h2 { font-family: Arial, sans-serif; font-size: 16pt; color: #e8eaf0; border-bottom: 2px solid #e8eaf0; padding-bottom: 6px; }
+.toc-row { display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 10.5pt; padding: 5px 0; border-bottom: 1px dotted #2b3140; }
+.topic-heading { page-break-before: always; font-family: Arial, sans-serif; font-size: 15pt; color: #e8eaf0; border-bottom: 2px solid #b79cf0; padding-bottom: 6px; margin: 0 0 4px; }
 .topic-heading:first-of-type { page-break-before: auto; }
-.topic-meta { font-family: Arial, sans-serif; font-size: 9.5pt; color: #777; margin-bottom: 14px; }
-.qblock { break-inside: avoid; page-break-inside: avoid; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid #e3e3e3; }
+.topic-meta { font-family: Arial, sans-serif; font-size: 9.5pt; color: #717988; margin-bottom: 14px; }
+.qblock { break-inside: avoid; page-break-inside: avoid; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid #2b3140; }
 .qmeta { font-family: Arial, sans-serif; font-size: 8.6pt; margin-bottom: 5px; }
-.qmeta .b { display: inline-block; background: #f1eefc; color: #5b3fb0; border-radius: 10px; padding: 1px 8px; margin-right: 5px; }
-.qnum { font-weight: 700; color: #6b5bd6; margin-right: 4px; }
+.qmeta .b { display: inline-block; background: #2a2140; color: #b79cf0; border-radius: 10px; padding: 1px 8px; margin-right: 5px; }
+.qnum { font-weight: 700; color: #b79cf0; margin-right: 4px; }
 .qtext { margin: 0 0 8px; }
 .qtext p { margin: 0 0 6px; }
 .opts { margin: 0 0 8px; padding: 0; list-style: none; }
 .opt { padding: 3px 0 3px 22px; position: relative; font-size: 10.6pt; }
 .opt .lab { position: absolute; left: 0; font-weight: 700; }
-.opt.correct { color: #0b6b3a; font-weight: 700; }
+.opt.correct { color: #3ecf8e; font-weight: 700; }
 .opt.correct .lab::after { content: " \\2713"; }
-.answer-line { font-family: Arial, sans-serif; font-size: 9.6pt; color: #0b6b3a; font-weight: 700; margin-bottom: 6px; }
-.shortcut { background: #f7f5ff; border-left: 3px solid #6b5bd6; padding: 7px 12px; font-size: 10.2pt; }
+.answer-line { font-family: Arial, sans-serif; font-size: 9.6pt; color: #3ecf8e; font-weight: 700; margin-bottom: 6px; }
+.shortcut { background: #211a33; border-left: 3px solid #8b6fe0; padding: 7px 12px; font-size: 10.2pt; }
 .shortcut p { margin: 0 0 6px; }
-.shortcut .reveal-title { font-family: Arial, sans-serif; font-size: 8.8pt; text-transform: uppercase; letter-spacing: 0.04em; color: #5b3fb0; display: block; margin-bottom: 3px; }
-.footer { font-family: Arial, sans-serif; font-size: 8pt; color: #999; text-align: center; margin-top: 30px; }
+.shortcut .reveal-title { font-family: Arial, sans-serif; font-size: 8.8pt; text-transform: uppercase; letter-spacing: 0.04em; color: #b79cf0; display: block; margin-bottom: 3px; }
+.footer { font-family: Arial, sans-serif; font-size: 8pt; color: #717988; text-align: center; margin-top: 30px; }
 /* math + richtext rules copied verbatim from styles.css's ".math"/".richtext"
-   block (light palette only - a printed PDF has no dark mode) so formulas
-   render pixel-for-pixel like the live dashboard. */
+   block, with surface colors swapped to the dark palette so formulas
+   render pixel-for-pixel like the live dashboard in dark mode. */
 .mathblock{display:block; text-align:center; margin:10px 0; font-size:1.08em;}
 .mathinline{font-style:normal;}
 .math{font-family:Georgia,"Times New Roman",serif; font-style:italic; white-space:nowrap; display:inline-block; vertical-align:middle;}
@@ -102,14 +103,14 @@ body { font-family: "Georgia", "Times New Roman", serif; color: #1a1f29; font-si
 .math .mtable, .math .ctable{display:inline-table; vertical-align:middle; border-collapse:collapse;}
 .math .mrow, .math .crow{display:table-row;}
 .math .mcell, .math .ccell{display:table-cell; padding:1px 8px; text-align:center; white-space:nowrap; vertical-align:middle;}
-.math .ccell.case-cond{text-align:left; padding-left:14px; font-style:normal; font-size:.92em; color:#666;}
+.math .ccell.case-cond{text-align:left; padding-left:14px; font-style:normal; font-size:.92em; color:#a3aab8;}
 .math .bracket{font-size:1.5em; font-style:normal; padding:0 .04em; transform:scaleY(1.15); display:inline-block;}
 .math .brace-big{font-size:1.9em; font-style:normal; padding-right:.08em; display:inline-block;}
 .math .space-quad{display:inline-block; width:.9em;}
 .math .space-qquad{display:inline-block; width:1.7em;}
 .richtext table{border-collapse:collapse; margin:10px 0; font-size:10pt;}
-.richtext table td, .richtext table th{border:1px solid #ccc; padding:5px 9px;}
-.richtext table th{background:#f1eefc;}
+.richtext table td, .richtext table th{border:1px solid #2b3140; padding:5px 9px;}
+.richtext table th{background:#2a2140;}
 .richtext p{margin:0 0 8px;}
 .richtext strong{font-weight:700;}
 `;
