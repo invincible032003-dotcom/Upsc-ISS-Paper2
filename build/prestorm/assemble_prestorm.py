@@ -125,7 +125,9 @@ def shuffle_item(item, rng, test_no):
 def main():
     all_out = []
     rng = random.Random(0)
-    for test_no in [1, 2, 3, 4]:
+    available = [n for n in [1, 2, 3, 4] if (SCRATCH / f"t{n}_out.json").exists()]
+    print(f"Assembling available tests: {available} (others not yet extracted, skipped)")
+    for test_no in available:
         items = load_test(test_no)
         for item in items:
             # seed per-question for determinism independent of processing order

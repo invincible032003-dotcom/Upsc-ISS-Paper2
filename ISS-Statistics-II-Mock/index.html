@@ -1026,20 +1026,22 @@ function viewHome(){
           return '<button class="tile" data-action="pick-forecast-section" data-section="'+encodeURIComponent(s)+'"><div class="tile-title">'+s+'</div><div class="tile-sub">'+cnt+' questions &middot; '+sets.length+' sets of 25 &middot; shortcut shown after each answer</div></button>';
         }).join("")
   +   '</div></div>'
-  + '<div class="section-title">PreStorming Mock Tests <span class="badge badge-ai" style="margin-left:6px;">MOCK SERIES &middot; NOT AUTHENTIC PYQs</span></div>'
-  + '<div class="card" style="margin-bottom:16px;"><p class="muted" style="margin:0 0 12px;">'+ALL_PRESTORM_Q.length+' questions from a third-party ISS Paper II mock-test series (80 questions each, answer key as printed), available as '+PRESTORM_TEST_NUMBERS.length+' full-length Strict Exam mocks or as 25-question Learning Mode sectional sets with the shortcut shown right after each answer.</p>'
-  +   '<div class="grid cols-4">'
-  +     PRESTORM_TEST_NUMBERS.map(function(n){
-          return '<button class="tile" data-action="start-prestorm-test" data-test="'+n+'"><div class="tile-title">Test '+n+' - Full Mock</div><div class="tile-sub">80 questions &middot; Strict Exam &middot; 2h00m</div></button>';
-        }).join("")
-  +   '</div>'
-  +   '<div class="grid cols-3" style="margin-top:10px;">'
-  +     UNITS.filter(function(u){ return ALL_PRESTORM_Q.some(function(q){return q.unit===u;}); }).map(function(u){
-          var sets = prestormSetsFor(u);
-          var cnt = sets.reduce(function(a,b){return a+b.count;},0);
-          return '<button class="tile" data-action="pick-prestorm-section" data-unit="'+encodeURIComponent(u)+'"><div class="tile-title">'+unitShort(u)+' Sectional</div><div class="tile-sub">'+cnt+' questions &middot; '+sets.length+' sets of 25</div></button>';
-        }).join("")
-  +   '</div></div>'
+  + (ALL_PRESTORM_Q.length ? (
+      '<div class="section-title">PreStorming Mock Tests <span class="badge badge-ai" style="margin-left:6px;">MOCK SERIES &middot; NOT AUTHENTIC PYQs</span></div>'
+    + '<div class="card" style="margin-bottom:16px;"><p class="muted" style="margin:0 0 12px;">'+ALL_PRESTORM_Q.length+' questions from a third-party ISS Paper II mock-test series (80 questions each, answer key as printed), available as '+PRESTORM_TEST_NUMBERS.length+' full-length Strict Exam mocks or as 25-question Learning Mode sectional sets with the shortcut shown right after each answer.</p>'
+    +   '<div class="grid cols-4">'
+    +     PRESTORM_TEST_NUMBERS.map(function(n){
+            return '<button class="tile" data-action="start-prestorm-test" data-test="'+n+'"><div class="tile-title">Test '+n+' - Full Mock</div><div class="tile-sub">80 questions &middot; Strict Exam &middot; 2h00m</div></button>';
+          }).join("")
+    +   '</div>'
+    +   '<div class="grid cols-3" style="margin-top:10px;">'
+    +     UNITS.filter(function(u){ return ALL_PRESTORM_Q.some(function(q){return q.unit===u;}); }).map(function(u){
+            var sets = prestormSetsFor(u);
+            var cnt = sets.reduce(function(a,b){return a+b.count;},0);
+            return '<button class="tile" data-action="pick-prestorm-section" data-unit="'+encodeURIComponent(u)+'"><div class="tile-title">'+unitShort(u)+' Sectional</div><div class="tile-sub">'+cnt+' questions &middot; '+sets.length+' sets of 25</div></button>';
+          }).join("")
+    +   '</div></div>'
+    ) : "")
   + '<div class="section-title">More ways to practice</div>'
   + '<div class="grid cols-3">'
   +   '<button class="tile" data-action="go-view" data-view="setupTopic"><div class="tile-icon">📚</div><div class="tile-title">Topic Mocks</div><div class="tile-sub">Filter by unit &rarr; topic</div></button>'
