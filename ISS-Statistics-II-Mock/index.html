@@ -1267,20 +1267,30 @@ function viewExam(){
     feedbackHtml += '<div class="feedback-banner '+(isCorrect?"correct":"incorrect")+'">'
       + (isCorrect ? "✓ Correct" : "✗ Incorrect - correct answer is "+"ABCD"[q.correctAnswer])
       + '</div>';
-    if(stage>=1){
+    /* Reveal order: Step-by-Step Solution -> Exam Shortcut -> Tips & Tricks.
+       Each slot's stage threshold shifts to fill in for a missing earlier
+       slot (e.g. shortcut becomes stage>=1 instead of >=2 when there's no
+       solution), same skip-if-missing pattern as before, just reordered. */
+    if(hasSolution){
+      if(stage>=1){
+        feedbackHtml += '<div class="reveal-block"><h4>Step-by-Step Solution</h4><ol>'+q.solution.map(function(s){return "<li>"+renderQuestionText(s.text)+"</li>";}).join("")+'</ol></div>';
+      } else {
+        feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Step-by-Step Solution</button></div>';
+      }
+    }
+    var afterSolutionStage = hasSolution ? 1 : 0;
+    if(stage>=afterSolutionStage+1){
       feedbackHtml += '<div class="reveal-block"><h4>Exam Shortcut <span class="ai-note">AI-derived explanation</span></h4>'+renderQuestionText(q.examShortcut||"Not available.")+'</div>';
-    } else {
+    } else if(stage>=afterSolutionStage){
       feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Exam Shortcut</button></div>';
     }
-    if(hasTips && stage>=2){
-      feedbackHtml += '<div class="reveal-block"><h4>Tips &amp; Tricks</h4><ul>'+q.tipsTricks.map(function(t){return "<li>"+renderQuestionText(t)+"</li>";}).join("")+'</ul></div>';
-    } else if(hasTips && stage>=1){
-      feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Tips &amp; Tricks</button></div>';
-    }
-    if(hasSolution && stage>=3){
-      feedbackHtml += '<div class="reveal-block"><h4>Step-by-Step Solution</h4><ol>'+q.solution.map(function(s){return "<li>"+renderQuestionText(s.text)+"</li>";}).join("")+'</ol></div>';
-    } else if(hasSolution && (stage>=2 || (stage>=1 && !hasTips))){
-      feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Step-by-Step Solution</button></div>';
+    var afterShortcutStage = afterSolutionStage+1;
+    if(hasTips){
+      if(stage>=afterShortcutStage+1){
+        feedbackHtml += '<div class="reveal-block"><h4>Tips &amp; Tricks</h4><ul>'+q.tipsTricks.map(function(t){return "<li>"+renderQuestionText(t)+"</li>";}).join("")+'</ul></div>';
+      } else if(stage>=afterShortcutStage){
+        feedbackHtml += '<div class="btn-row"><button class="btn" data-action="reveal-next">Show Tips &amp; Tricks</button></div>';
+      }
     }
     if(q.sourceAmbiguityNote){
       feedbackHtml += '<div class="source-note"><b>Source note:</b> '+renderQuestionText(q.sourceAmbiguityNote)+'</div>';
