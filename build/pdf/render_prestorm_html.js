@@ -39,10 +39,10 @@ const UNIT_SHORT = {
 const ACCENT = { bg: '#2a2140', color: '#b79cf0', border: '#4d3d78' };
 
 const PRINT_CSS = `
-@page { size: A4; margin: 18mm 16mm; }
+@page { size: A4; margin: 0; }
 * { box-sizing: border-box; }
 html { background: #0f1218; }
-body { font-family: "Georgia", "Times New Roman", serif; color: #e8eaf0; background: #0f1218; font-size: 11.3pt; line-height: 1.5; margin: 0; }
+body { font-family: "Georgia", "Times New Roman", serif; color: #e8eaf0; background: #0f1218; font-size: 11.3pt; line-height: 1.5; margin: 0; padding: 18mm 16mm; }
 .cover { min-height: 240mm; display: flex; flex-direction: column; justify-content: center; page-break-after: always; text-align: center; }
 .cover .kicker { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12pt; margin-bottom: 10px; font-family: Arial, sans-serif; }
 .cover h1 { font-size: 30pt; margin: 0 0 10px; color: #e8eaf0; }
